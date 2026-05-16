@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moje Weby</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --accent: #7c3aed;
+      --accent2: #06b6d4;
+      --card-bg: rgba(255,255,255,0.05);
+      --card-border: rgba(255,255,255,0.12);
+      --text: #f1f5f9;
+      --muted: #94a3b8;
+    }
+
+    html, body { height: 100%; font-family: 'Inter', sans-serif; color: var(--text); overflow-x: hidden; }
+
+    body { background: #030712; position: relative; }
+
+    /* Blob 1 */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -20%; left: -10%;
+      width: 60vw; height: 60vw;
+      background: radial-gradient(circle, rgba(124,58,237,0.35) 0%, transparent 70%);
+      animation: blob1 12s ease-in-out infinite alternate;
+      pointer-events: none; z-index: 0;
+    }
+
+    /* Blob 2 */
+    body::after {
+      content: '';
+      position: fixed;
+      bottom: -20%; right: -10%;
+      width: 55vw; height: 55vw;
+      background: radial-gradient(circle, rgba(6,182,212,0.28) 0%, transparent 70%);
+      animation: blob2 15s ease-in-out infinite alternate;
+      pointer-events: none; z-index: 0;
+    }
+
+    @keyframes blob1 {
+      0%   { transform: translate(0,0) scale(1); }
+      50%  { transform: translate(5%,8%) scale(1.1); }
+      100% { transform: translate(-5%,3%) scale(0.95); }
+    }
+    @keyframes blob2 {
+      0%   { transform: translate(0,0) scale(1); }
+      50%  { transform: translate(-6%,-5%) scale(1.08); }
+      100% { transform: translate(4%,6%) scale(0.97); }
+    }
+
+    .grid-bg {
+      position: fixed; inset: 0; z-index: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .page {
+      position: relative; z-index: 1;
+      min-height: 100vh;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 80px 24px 120px;
+    }
+
+    /* HEADER */
+    header { text-align: center; margin-bottom: 72px; }
+
+    h1 {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 900; line-height: 1.1; letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #fff 0%, #a78bfa 50%, #22d3ee 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      color: var(--muted); font-size: 1.1rem; font-weight: 300;
+      max-width: 480px; margin: 0 auto; line-height: 1.6;
+    }
+
+    /* GRID */
+    .projects-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      width: 100%; max-width: 900px;
+    }
+
+    /* BUTTON */
+    .card {
+      position: relative;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 14px 28px;
+      text-decoration: none; color: var(--text);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      overflow: hidden;
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 1rem; font-weight: 600;
+      cursor: pointer; white-space: nowrap;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute; inset: 0;
+      border-radius: 14px; padding: 1px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+
+    .card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(124,58,237,0.25); }
+    .card:hover::before { opacity: 1; }
+
+    footer {
+      margin-top: 100px; color: var(--muted);
+      font-size: 0.82rem; text-align: center; opacity: 0.6;
+    }
+
+    @media (max-width: 600px) {
+      .page { padding: 60px 16px 80px; }
+      h1    { font-size: 2.4rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grid-bg"></div>
+
+  <div class="page">
+
+    <header>
+      <h1>Moje Weby</h1>
+      <p class="subtitle">Sbírka mých projektů a webových experimentů. Klikni a prozkoumej.</p>
+    </header>
+
+    <!-- =============================================
+         JAK PŘIDAT NOVÝ PROJEKT:
+         1. Zkopíruj celý blok <a class="card"> níže
+         2. Vlož ho ZA poslední </a> v tomto divu
+         3. Uprav href, emoji, card-title, card-desc
+            a card-tag dle svého projektu
+         4. Ulož soubor a nahraj ho na server
+    ============================================= -->
+    <div class="projects-grid">
+
+      <!-- ══════════════════════════════════════════
+           PROJEKT 1
+           Uprav: href="URL" a text mezi tagy
+      ══════════════════════════════════════════ -->
+      <a class="card" href="https://ODKAZ-NA-PROJEKT.cz" target="_blank">
+        Corrado
+      </a>
+
+      <!-- ══════════════════════════════════════════
+           JAK PŘIDAT DALŠÍ PROJEKT:
+           Zkopíruj řádek <a class="card"> výše,
+           vlož ho sem a uprav href + název.
+      ══════════════════════════════════════════ -->
+
+    </div><!-- konec .projects-grid -->
+
+    <footer>© 2026 · moje-weby.cz</footer>
+
+  </div>
+
+</body>
+</html>
