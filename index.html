@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moje Weby</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #080b12;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* ── Mřížka ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size: 52px 52px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Barevné glowy ── */
+    .glow-left {
+      position: fixed;
+      top: 10%; left: -10%;
+      width: 55vw; height: 70vh;
+      background: radial-gradient(ellipse at center, rgba(88,40,180,.55) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .glow-right {
+      position: fixed;
+      top: 20%; right: -8%;
+      width: 45vw; height: 65vh;
+      background: radial-gradient(ellipse at center, rgba(0,160,160,.45) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Obsah ── */
+    main {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.2rem;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 9vw, 6rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      background: linear-gradient(90deg, #c4aaff 0%, #80d8f0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+    }
+
+    p {
+      font-size: clamp(.95rem, 2vw, 1.1rem);
+      color: rgba(255,255,255,.5);
+      max-width: 420px;
+      line-height: 1.6;
+    }
+
+    /* ── Projekt tlačítka ── */
+    .projects {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .9rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .project-btn {
+      display: inline-block;
+      padding: .75rem 2rem;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 12px;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background .22s, border-color .22s, transform .2s;
+    }
+    .project-btn:hover {
+      background: rgba(255,255,255,.12);
+      border-color: rgba(255,255,255,.28);
+      transform: translateY(-2px);
+    }
+
+    /* ── Footer ── */
+    footer {
+      position: fixed;
+      bottom: 1.4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      font-size: .82rem;
+      color: rgba(255,255,255,.28);
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-left"></div>
+  <div class="glow-right"></div>
+
+  <main>
+    <h1>Můj Web</h1>
+    <p>Sbírka mých projektů a webových experimentů. Klikni a prozkoumej.</p>
+    <div class="projects">
+      <a href="./corrado/" class="project-btn">Corrado</a>
+    </div>
+  </main>
+
+  <footer>© 2026 · moje-weby.cz</footer>
+
+</body>
+</html>
