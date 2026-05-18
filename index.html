@@ -8,7 +8,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       font-family: 'Inter', sans-serif;
       background: #080b12;
@@ -21,8 +20,6 @@
       position: relative;
       overflow: hidden;
     }
-
-    /* ── Mřížka ── */
     body::before {
       content: '';
       position: fixed;
@@ -34,8 +31,6 @@
       pointer-events: none;
       z-index: 0;
     }
-
-    /* ── Barevné glowy ── */
     .glow-left {
       position: fixed;
       top: 10%; left: -10%;
@@ -52,8 +47,6 @@
       pointer-events: none;
       z-index: 0;
     }
-
-    /* ── Obsah ── */
     main {
       position: relative;
       z-index: 1;
@@ -64,7 +57,6 @@
       gap: 1.2rem;
       padding: 2rem;
     }
-
     h1 {
       font-size: clamp(3rem, 9vw, 6rem);
       font-weight: 800;
@@ -75,15 +67,12 @@
       background-clip: text;
       line-height: 1.1;
     }
-
     p {
       font-size: clamp(.95rem, 2vw, 1.1rem);
       color: rgba(255,255,255,.5);
       max-width: 420px;
       line-height: 1.6;
     }
-
-    /* ── Projekt tlačítka ── */
     .projects {
       display: flex;
       flex-wrap: wrap;
@@ -91,7 +80,6 @@
       justify-content: center;
       margin-top: 1rem;
     }
-
     .project-btn {
       display: inline-block;
       padding: .75rem 2rem;
@@ -111,8 +99,6 @@
       border-color: rgba(255,255,255,.28);
       transform: translateY(-2px);
     }
-
-    /* ── Footer ── */
     footer {
       position: fixed;
       bottom: 1.4rem;
@@ -126,19 +112,16 @@
   </style>
 </head>
 <body>
-
   <div class="glow-left"></div>
   <div class="glow-right"></div>
-
   <main>
     <h1>Můj Web</h1>
     <p>Sbírka mých projektů a webových experimentů. Klikni a prozkoumej.</p>
     <div class="projects">
       <a href="./corrado/" class="project-btn">Corrado</a>
+      <a href="./PL-Autoservis/" class="project-btn">PL-Autoservis</a>
     </div>
   </main>
-
   <footer>© 2026 · moje-weby.cz</footer>
-
 </body>
 </html>
