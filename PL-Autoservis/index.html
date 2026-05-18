@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PL Autoservis – Paul Libor</title>
+  <meta name="description" content="Profesionální autoservis Paul Libor – mechanické opravy, pneuservis, STK, klimatizace, autodiagnostika a více. Ctiměřice 37, Semčice.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #0a2540;
+      --blue: #1565c0;
+      --blue-mid: #1976d2;
+      --blue-light: #42a5f5;
+      --blue-pale: #e3f2fd;
+      --white: #ffffff;
+      --off-white: #f5f8fc;
+      --gray-light: #eceff4;
+      --gray: #8a9bb0;
+      --text: #1a2b40;
+      --text-light: #4a5f78;
+      --shadow: 0 4px 24px rgba(10,37,64,0.10);
+      --shadow-hover: 0 8px 32px rgba(21,101,192,0.18);
+      --radius: 14px;
+      --transition: 0.28s cubic-bezier(0.4,0,0.2,1);
+    }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: 'Roboto', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+    h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; }
+    a { color: inherit; text-decoration: none; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(10,37,64,0.97);
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      padding: 0 2rem; height: 68px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: box-shadow var(--transition);
+    }
+    nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.28); }
+    .nav-logo { font-family: 'Montserrat', sans-serif; font-size: 1.15rem; font-weight: 800; color: var(--white); letter-spacing: 0.02em; white-space: nowrap; }
+    .nav-logo span { color: var(--blue-light); }
+    .nav-links { display: flex; align-items: center; gap: 0.3rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.78); font-size: 0.82rem; font-weight: 500; padding: 0.5rem 0.9rem; border-radius: 7px; transition: color var(--transition), background var(--transition); letter-spacing: 0.01em; white-space: nowrap; }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); background: rgba(66,165,245,0.18); }
+    .nav-right { display: flex; align-items: center; gap: 0.75rem; }
+    .search-toggle { background: rgba(66,165,245,0.15); border: 1.5px solid rgba(66,165,245,0.4); cursor: pointer; color: var(--blue-light); padding: 0.5rem 1rem; border-radius: 8px; display: flex; align-items: center; gap: 0.5rem; font-family: 'Roboto', sans-serif; font-size: 0.82rem; font-weight: 500; color: rgba(255,255,255,0.85); transition: color var(--transition), background var(--transition), border-color var(--transition); white-space: nowrap; }
+    .search-toggle svg { color: var(--blue-light); flex-shrink: 0; transition: color var(--transition); }
+    .search-toggle:hover { background: rgba(66,165,245,0.28); border-color: var(--blue-light); color: var(--white); }
+    .search-toggle:hover svg { color: var(--white); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 0.4rem; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: transform var(--transition), opacity var(--transition); }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-mobile { display: none; position: fixed; top: 68px; left: 0; right: 0; bottom: 0; background: #081e35; padding: 0.5rem 0 2rem; z-index: 999; transform: translateY(-8px); opacity: 0; pointer-events: none; transition: transform var(--transition), opacity var(--transition); overflow-y: auto; }
+    .nav-mobile.open { transform: translateY(0); opacity: 1; pointer-events: all; }
+    .nav-mobile a { display: flex; align-items: center; color: rgba(255,255,255,0.82); font-size: 1rem; font-weight: 500; padding: 1rem 2rem; border-bottom: 1px solid rgba(255,255,255,0.06); transition: color var(--transition), background var(--transition); }
+    .nav-mobile a:hover { color: var(--blue-light); background: rgba(66,165,245,0.08); }
+
+    /* SEARCH OVERLAY */
+    .search-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,37,64,0.93); backdrop-filter: blur(10px); z-index: 2000; display: flex; flex-direction: column; align-items: center; padding-top: 12vh; opacity: 0; pointer-events: none; transition: opacity var(--transition); }
+    .search-overlay.open { opacity: 1; pointer-events: all; }
+    .search-close { position: absolute; top: 1.5rem; right: 2rem; background: none; border: none; color: rgba(255,255,255,0.65); cursor: pointer; font-size: 1.6rem; line-height: 1; transition: color var(--transition); }
+    .search-close:hover { color: var(--white); }
+    .search-wrapper { width: 100%; max-width: 640px; padding: 0 1.5rem; }
+    .search-wrapper label { display: block; color: var(--blue-light); font-size: 0.78rem; font-weight: 700; margin-bottom: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .search-input-wrap { display: flex; align-items: center; background: rgba(255,255,255,0.07); border: 1.5px solid rgba(66,165,245,0.4); border-radius: 12px; padding: 0.85rem 1.2rem; gap: 0.75rem; transition: border-color var(--transition); }
+    .search-input-wrap:focus-within { border-color: var(--blue-light); }
+    .search-input-wrap svg { color: var(--blue-light); flex-shrink: 0; }
+    #searchInput { background: none; border: none; outline: none; color: var(--white); font-family: 'Roboto', sans-serif; font-size: 1.2rem; width: 100%; }
+    #searchInput::placeholder { color: rgba(255,255,255,0.3); }
+    .search-results { margin-top: 1.5rem; width: 100%; max-width: 640px; padding: 0 1.5rem; }
+    .search-result-item { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.09); border-radius: 10px; padding: 1rem 1.25rem; margin-bottom: 0.55rem; cursor: pointer; transition: background var(--transition), border-color var(--transition); }
+    .search-result-item:hover { background: rgba(66,165,245,0.14); border-color: rgba(66,165,245,0.5); }
+    .search-result-item h4 { color: var(--white); font-size: 0.98rem; margin-bottom: 0.28rem; }
+    .search-result-item p { color: rgba(255,255,255,0.55); font-size: 0.82rem; line-height: 1.5; }
+    .search-no-results { color: rgba(255,255,255,0.45); text-align: center; margin-top: 2.5rem; font-size: 0.95rem; }
+    .search-hint { text-align: center; color: rgba(255,255,255,0.3); font-size: 0.75rem; margin-top: 2rem; }
+
+    /* HERO */
+    #uvod { min-height: 100vh; background: linear-gradient(140deg, #071c32 0%, #0d3a6e 45%, #1565c0 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 8rem 2rem 6rem; position: relative; overflow: hidden; }
+    #uvod::before { content: ''; position: absolute; width: 700px; height: 700px; background: radial-gradient(circle, rgba(66,165,245,0.12) 0%, transparent 65%); top: -150px; right: -150px; border-radius: 50%; pointer-events: none; }
+    #uvod::after { content: ''; position: absolute; width: 450px; height: 450px; background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 65%); bottom: -80px; left: -80px; border-radius: 50%; pointer-events: none; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 0.55rem; background: rgba(255,255,255,0.09); border: 1px solid rgba(255,255,255,0.18); border-radius: 100px; padding: 0.42rem 1.1rem; color: rgba(255,255,255,0.82); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.04em; margin-bottom: 1.6rem; position: relative; }
+    .badge-dot { width: 7px; height: 7px; background: #4caf50; border-radius: 50%; animation: pulse-dot 2.2s infinite; }
+    @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.7;transform:scale(1.35)} }
+    .hero-title { font-size: clamp(2.5rem, 6vw, 4.2rem); color: var(--white); font-weight: 800; line-height: 1.1; margin-bottom: 1.3rem; position: relative; }
+    .hero-title .accent { color: var(--blue-light); }
+    .hero-subtitle { font-size: clamp(1rem, 1.8vw, 1.18rem); color: rgba(255,255,255,0.72); font-weight: 300; max-width: 560px; line-height: 1.75; margin-bottom: 2.5rem; position: relative; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; position: relative; }
+    .btn-primary { background: var(--white); color: var(--navy); font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 0.94rem; padding: 0.9rem 2rem; border-radius: 50px; border: none; cursor: pointer; transition: transform var(--transition), box-shadow var(--transition), background var(--transition); display: inline-flex; align-items: center; gap: 0.5rem; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,255,255,0.22); background: #dceeff; }
+    .btn-outline { background: transparent; color: var(--white); font-family: 'Roboto', sans-serif; font-weight: 500; font-size: 0.94rem; padding: 0.9rem 2rem; border-radius: 50px; border: 1.5px solid rgba(255,255,255,0.38); cursor: pointer; transition: border-color var(--transition), background var(--transition), transform var(--transition); display: inline-flex; align-items: center; gap: 0.5rem; }
+    .btn-outline:hover { border-color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.1); transform: translateY(-2px); }
+    .hero-stats { display: flex; gap: 2.5rem; margin-top: 4.5rem; position: relative; }
+    .stat { text-align: center; }
+    .stat-num { font-family: 'Montserrat', sans-serif; font-size: 2rem; font-weight: 800; color: var(--white); }
+    .stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.55); margin-top: 0.2rem; }
+    .stat-divider { width: 1px; background: rgba(255,255,255,0.18); }
+    .scroll-indicator { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.4rem; color: rgba(255,255,255,0.45); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; animation: bounce 2s infinite; }
+    @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(7px)} }
+
+    /* SERVICES GRID */
+    .services-grid-section { background: var(--off-white); padding: 5.5rem 2rem; text-align: center; }
+    .section-label { display: inline-block; font-size: 0.73rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); background: var(--blue-pale); padding: 0.35rem 1rem; border-radius: 100px; margin-bottom: 0.9rem; }
+    .section-title { font-size: clamp(1.6rem, 3.5vw, 2.4rem); font-weight: 800; color: var(--navy); margin-bottom: 0.7rem; }
+    .section-subtitle { color: var(--text-light); font-size: 0.98rem; font-weight: 300; max-width: 500px; margin: 0 auto 3rem; line-height: 1.75; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 1.2rem; max-width: 1100px; margin: 0 auto; }
+    .service-card { background: var(--white); border-radius: var(--radius); padding: 2rem 1.4rem; text-align: center; border: 1.5px solid transparent; box-shadow: var(--shadow); cursor: pointer; transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition); display: block; position: relative; overflow: hidden; }
+    .service-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--blue-light)); transform: scaleX(0); transform-origin: left; transition: transform var(--transition); }
+    .service-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: #d0e8ff; }
+    .service-card:hover::after { transform: scaleX(1); }
+    .card-icon { width: 54px; height: 54px; background: var(--blue-pale); border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.2rem; color: var(--blue); transition: background var(--transition), color var(--transition); }
+    .service-card:hover .card-icon { background: var(--blue); color: var(--white); }
+    .card-title { font-size: 0.98rem; font-weight: 700; color: var(--navy); margin-bottom: 0.45rem; }
+    .card-desc { font-size: 0.82rem; color: var(--text-light); line-height: 1.6; }
+
+    /* SERVICE SECTIONS */
+    .svc { padding: 5.5rem 2rem; }
+    .svc.bg { background: var(--off-white); }
+    .svc-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1100px; margin: 0 auto; }
+    .svc-inner.rev { direction: rtl; }
+    .svc-inner.rev > * { direction: ltr; }
+    .svc-text .section-label { display: inline-block; }
+    .svc-text h2 { font-size: clamp(1.4rem, 2.5vw, 2rem); color: var(--navy); margin: 0.75rem 0 1.25rem; line-height: 1.25; }
+    .svc-text p { color: var(--text-light); line-height: 1.8; margin-bottom: 1rem; font-weight: 300; }
+    .svc-list { list-style: none; margin: 0.5rem 0; }
+    .svc-list li { display: flex; align-items: flex-start; gap: 0.75rem; color: var(--text); font-size: 0.95rem; padding: 0.6rem 0; border-bottom: 1px solid var(--gray-light); }
+    .svc-list li:last-child { border-bottom: none; }
+    .li-icon { color: var(--blue); flex-shrink: 0; margin-top: 2px; }
+    .svc-visual { background: linear-gradient(135deg, #ddeeff 0%, #bbdefb 100%); border-radius: 20px; padding: 3rem; display: flex; align-items: center; justify-content: center; min-height: 280px; position: relative; overflow: hidden; }
+    .svc-visual::before { content: ''; position: absolute; width: 200px; height: 200px; background: rgba(21,101,192,0.1); border-radius: 50%; top: -40px; right: -40px; }
+    .svc-visual svg { color: var(--blue); position: relative; opacity: 0.85; }
+
+    /* CONTACT */
+    #kontakt { background: var(--navy); padding: 5.5rem 2rem; }
+    .contact-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    #kontakt .section-label { background: rgba(66,165,245,0.15); color: var(--blue-light); }
+    #kontakt .section-title { color: var(--white); }
+    #kontakt .section-subtitle { color: rgba(255,255,255,0.55); margin: 0 0 2rem; max-width: none; }
+    .contact-items { display: flex; flex-direction: column; gap: 1.5rem; }
+    .contact-item { display: flex; align-items: flex-start; gap: 1rem; }
+    .contact-icon { width: 44px; height: 44px; background: rgba(66,165,245,0.14); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--blue-light); flex-shrink: 0; }
+    .contact-text span { display: block; font-size: 0.72rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.07em; font-weight: 500; margin-bottom: 0.25rem; }
+    .contact-text strong { font-size: 1rem; color: var(--white); font-weight: 500; }
+    .contact-text a { color: var(--blue-light); transition: color var(--transition); }
+    .contact-text a:hover { color: var(--white); }
+    .contact-map { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); overflow: hidden; height: 460px; }
+    .contact-map iframe { width: 100%; height: 100%; border: none; filter: grayscale(25%) contrast(1.08); }
+
+    /* FOOTER */
+    footer { background: #061527; color: rgba(255,255,255,0.55); padding: 3.5rem 2rem 2rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .footer-brand .nav-logo { font-size: 1.05rem; margin-bottom: 0.9rem; display: block; }
+    .footer-brand p { font-size: 0.84rem; line-height: 1.75; }
+    .footer-col h4 { color: var(--white); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; margin-bottom: 1.1rem; }
+    .footer-col a { display: block; color: rgba(255,255,255,0.5); font-size: 0.85rem; padding: 0.3rem 0; transition: color var(--transition); }
+    .footer-col a:hover { color: var(--blue-light); }
+    .footer-bottom { max-width: 1100px; margin: 1.75rem auto 0; display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; flex-wrap: wrap; gap: 0.5rem; }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* RESPONSIVE */
+    @media (max-width: 920px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .search-toggle span { display: none; }
+      .nav-mobile { display: block; }
+      .svc-inner, .contact-inner, .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .svc-inner.rev { direction: ltr; }
+      .svc-visual { min-height: 200px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
+      .footer-inner { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 380px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#uvod" class="nav-logo">PL <span>AUTOSERVIS</span></a>
+  <ul class="nav-links">
+    <li><a href="#uvod">Úvod</a></li>
+    <li><a href="#mechanicke-opravy">Mechanické opravy</a></li>
+    <li><a href="#pneuservis">Pneuservis</a></li>
+    <li><a href="#stk-a-emise">STK a emise</a></li>
+    <li><a href="#klimatizace">Klimatizace</a></li>
+    <li><a href="#autodiagnostika">Autodiagnostika</a></li>
+    <li><a href="#autoelektrika">Autoelektrika</a></li>
+    <li><a href="#zabezpeceni">Zabezpečení</a></li>
+    <li><a href="#cisteni">Čištění vozu</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="search-toggle" id="searchToggle" aria-label="Vyhledat">
+      <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span>Hledat</span>
+    </button>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<nav class="nav-mobile" id="navMobile">
+  <a href="#uvod">Úvod</a>
+  <a href="#mechanicke-opravy">Mechanické opravy</a>
+  <a href="#pneuservis">Pneuservis</a>
+  <a href="#stk-a-emise">STK a emise</a>
+  <a href="#klimatizace">Klimatizace</a>
+  <a href="#autodiagnostika">Autodiagnostika</a>
+  <a href="#autoelektrika">Autoelektrika</a>
+  <a href="#zabezpeceni">Zabezpečení vozu</a>
+  <a href="#cisteni">Čištění vozu</a>
+  <a href="#kontakt">Kontakt</a>
+</nav>
+
+<!-- SEARCH -->
+<div class="search-overlay" id="searchOverlay">
+  <button class="search-close" id="searchClose" aria-label="Zavřít">✕</button>
+  <div class="search-wrapper">
+    <label for="searchInput">Vyhledat službu</label>
+    <div class="search-input-wrap">
+      <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="searchInput" placeholder="Např. olej, pneu, STK, brzdy…" autocomplete="off">
+    </div>
+    <p class="search-hint">Stiskněte Esc pro zavření · Ctrl+K pro otevření</p>
+  </div>
+  <div class="search-results" id="searchResults"></div>
+</div>
+
+<!-- HERO -->
+<section id="uvod">
+  <p class="hero-badge"><span class="badge-dot"></span>Profesionální autoservis</p>
+  <h1 class="hero-title">Paul Libor<br><span class="accent">Autoservis</span></h1>
+  <p class="hero-subtitle">Komplexní péče o vaše vozidlo. Od mechanických oprav přes pneuservis až po autodiagnostiku – vše na jednom místě v Semčicích.</p>
+  <div class="hero-btns">
+    <a href="#mechanicke-opravy" class="btn-primary">
+      <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      Naše služby
+    </a>
+    <a href="#kontakt" class="btn-outline">
+      <svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.24.96.49 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.9-.9a2 2 0 0 1 2.11-.45c.91.21 1.85.46 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Kontaktovat
+    </a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Let zkušeností</div></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><div class="stat-num">8</div><div class="stat-label">Druhů služeb</div></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><div class="stat-num">1</div><div class="stat-label">Místo pro vše</div></div>
+  </div>
+  <div class="scroll-indicator">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+    Přejít dolů
+  </div>
+</section>
+
+<!-- SERVICES OVERVIEW -->
+<div class="services-grid-section">
+  <p class="section-label">Naše služby</p>
+  <h2 class="section-title">Co pro vás uděláme</h2>
+  <p class="section-subtitle">Komplexní servis pro osobní i nákladní vozidla na jednom místě.</p>
+  <div class="services-grid">
+    <a href="#mechanicke-opravy" class="service-card reveal">
+      <div class="card-icon"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+      <p class="card-title">Mechanické opravy</p>
+      <p class="card-desc">Motory, převodovky, brzdy, výfuky, podvozek.</p>
+    </a>
+    <a href="#pneuservis" class="service-card reveal">
+      <div class="card-icon"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg></div>
+      <p class="card-title">Pneuservis</p>
+      <p class="card-desc">Přezutí, vyvážení, opravy defektů, skladování.</p>
+    </a>
+    <a href="#stk-a-emise" class="service-card reveal">
+      <div class="card-icon"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+      <p class="card-title">STK a emise</p>
+      <p class="card-desc">Příprava na STK, měření emisí, bezpečnostní prvky.</p>
+    </a>
+    <a href="#klimatizace" class="service-card reveal">
+      <div class="card-icon"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/><path d="M5 5l14 14M19 5 5 19"/></svg></div>
+      <p class="card-title">Klimatizace</p>
+      <p class="card-desc">Plnění, kontrola těsnosti, dezinfekce, opravy.</p>
+    </a>
+    <a href="#autodiagnostika" class="service-card reveal">
+      <div class="card-icon"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+      <p class="card-title">Autodiagnostika</p>
+      <p class="card-desc">Počítačová diagnostika, chybové kódy, elektronika.</p>
+    </a>
+    <a href="#autoelektrika" class="service-card reveal">
+      <div class="card-icon"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+      <p class="card-title">Autoelektrika</p>
+      <p class="card-desc">Elektrická instalace, alternátory, startéry, baterie.</p>
+    </a>
+    <a href="#zabezpeceni" class="service-card reveal">
+      <div class="card-icon"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <p class="card-title">Zabezpečení vozu</p>
+      <p class="card-desc">Mechanické i elektronické zabezpečení, GPS.</p>
+    </a>
+    <a href="#cisteni" class="service-card reveal">
+      <div class="card-icon"><svg width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      <p class="card-title">Čištění vozu</p>
+      <p class="card-desc">Mytí, čištění interiéru, tepování, leštění laku.</p>
+    </a>
+  </div>
+</div>
+
+<!-- MECHANICKÉ OPRAVY -->
+<article class="svc" id="mechanicke-opravy">
+  <div class="svc-inner reveal">
+    <div class="svc-text">
+      <span class="section-label">Mechanické opravy</span>
+      <h2>Komplexní mechanický servis vašeho vozidla</h2>
+      <ul class="svc-list">
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Servisní prohlídky</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Opravy motorů a převodovek</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Výměna motorového oleje včetně filtru</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Výměna zapalovacích a žhavících svíček</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Výměna rozvodů motoru</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Výměna brzdové kapaliny a náplní převodovek/rozvodovek</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Výměny výfuků, tlumičů, opravy brzd a kontrola podvozku</li>
+      </ul>
+    </div>
+    <div class="svc-visual">
+      <svg width="110" height="110" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+    </div>
+  </div>
+</article>
+
+<!-- PNEUSERVIS -->
+<article class="svc bg" id="pneuservis">
+  <div class="svc-inner rev reveal">
+    <div class="svc-text">
+      <span class="section-label">Pneuservis</span>
+      <h2>Péče o pneumatiky od A do Z</h2>
+      <ul class="svc-list">
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Přezutí a vyvážení kol</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Opravy defektů</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Kontrola tlaku a stavu pneumatik</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Montáž a demontáž pneumatik</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Skladování pneumatik</li>
+      </ul>
+    </div>
+    <div class="svc-visual">
+      <svg width="110" height="110" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg>
+    </div>
+  </div>
+</article>
+
+<!-- STK A EMISE -->
+<article class="svc" id="stk-a-emise">
+  <div class="svc-inner reveal">
+    <div class="svc-text">
+      <span class="section-label">STK a emise</span>
+      <h2>Připravíme vás na technickou kontrolu</h2>
+      <ul class="svc-list">
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Příprava vozidla na STK</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Zprostředkování technické kontroly</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Měření emisí</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Kontrola bezpečnostních prvků vozidla</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Odstranění závad bránících průjezdu STK</li>
+      </ul>
+    </div>
+    <div class="svc-visual">
+      <svg width="110" height="110" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+    </div>
+  </div>
+</article>
+
+<!-- KLIMATIZACE -->
+<article class="svc bg" id="klimatizace">
+  <div class="svc-inner rev reveal">
+    <div class="svc-text">
+      <span class="section-label">Klimatizace</span>
+      <h2>Servis a plnění klimatizace</h2>
+      <ul class="svc-list">
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Plnění klimatizace chladivem</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Kontrola těsnosti klimatizačního systému</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Dezinfekce klimatizace</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Opravy klimatizace</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Výměna kabinového filtru</li>
+      </ul>
+    </div>
+    <div class="svc-visual">
+      <svg width="110" height="110" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/><path d="M5 5l14 14M19 5 5 19"/><circle cx="12" cy="12" r="3"/></svg>
+    </div>
+  </div>
+</article>
+
+<!-- AUTODIAGNOSTIKA -->
+<article class="svc" id="autodiagnostika">
+  <div class="svc-inner reveal">
+    <div class="svc-text">
+      <span class="section-label">Autodiagnostika</span>
+      <h2>Přesná počítačová diagnostika vozidla</h2>
+      <ul class="svc-list">
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Počítačová diagnostika vozidla</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Čtení a mazání chybových kódů</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Diagnostika elektronických systémů</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Kontrola řídících jednotek</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Diagnostika ABS, ESP a airbagů</li>
+      </ul>
+    </div>
+    <div class="svc-visual">
+      <svg width="110" height="110" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 7h.01M11 7h5M7 11h2M13 11h3"/></svg>
+    </div>
+  </div>
+</article>
+
+<!-- AUTOELEKTRIKA -->
+<article class="svc bg" id="autoelektrika">
+  <div class="svc-inner rev reveal">
+    <div class="svc-text">
+      <span class="section-label">Autoelektrika</span>
+      <h2>Opravy elektrických systémů vozidla</h2>
+      <ul class="svc-list">
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Opravy elektrické instalace</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Diagnostika elektrických závad</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Opravy alternátorů a startérů</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Výměna autobaterií</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Instalace příslušenství</li>
+      </ul>
+    </div>
+    <div class="svc-visual">
+      <svg width="110" height="110" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+    </div>
+  </div>
+</article>
+
+<!-- ZABEZPEČENÍ VOZU -->
+<article class="svc" id="zabezpeceni">
+  <div class="svc-inner reveal">
+    <div class="svc-text">
+      <span class="section-label">Zabezpečení vozu</span>
+      <h2>Chraňte své vozidlo spolehlivě</h2>
+      <ul class="svc-list">
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Montáž mechanického zabezpečení</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Instalace elektronických zabezpečovacích systémů</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Montáž GPS lokátorů</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Instalace imobilizérů</li>
+      </ul>
+    </div>
+    <div class="svc-visual">
+      <svg width="110" height="110" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    </div>
+  </div>
+</article>
+
+<!-- ČIŠTĚNÍ VOZU -->
+<article class="svc bg" id="cisteni">
+  <div class="svc-inner rev reveal">
+    <div class="svc-text">
+      <span class="section-label">Čištění vozu</span>
+      <h2>Váš vůz jako nový</h2>
+      <ul class="svc-list">
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Ruční mytí exteriéru</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Čištění interiéru</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Tepování sedadel a koberců</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Leštění laku</li>
+        <li><svg class="li-icon" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Čištění motorového prostoru</li>
+      </ul>
+    </div>
+    <div class="svc-visual">
+      <svg width="110" height="110" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+    </div>
+  </div>
+</article>
+
+<!-- KONTAKT -->
+<section id="kontakt">
+  <div class="contact-inner">
+    <div>
+      <span class="section-label">Kontakt</span>
+      <h2 class="section-title">Přijeďte k nám nebo zavolejte</h2>
+      <p class="section-subtitle">Najdete nás v Ctiměřicích u Semčic. Rádi se postaráme o vaše vozidlo.</p>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="contact-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="contact-text"><span>Adresa</span><strong>Ctiměřice 37, Semčice, 294 46</strong></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.42 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.24.96.49 1.9.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.9-.9a2 2 0 0 1 2.11-.45c.91.21 1.85.46 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div class="contact-text"><span>Telefon</span><strong><a href="tel:+420604216678">+420 604 216 678</a></strong></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div class="contact-text"><span>E-mail</span><strong><a href="mailto:libor.paul@email.cz">libor.paul@email.cz</a></strong></div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-map">
+      <iframe src="https://maps.google.com/maps?q=Ctim%C4%9B%C5%99ice+37,+Sem%C4%8Dice&t=&z=14&ie=UTF8&iwloc=&output=embed" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa – PL Autoservis"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="nav-logo">PL <span>AUTOSERVIS</span></span>
+      <p>Profesionální péče o vaše vozidlo. Mechanické opravy, pneuservis, STK, klimatizace, autodiagnostika a mnoho dalšího – vše na jednom místě v Semčicích.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Služby</h4>
+      <a href="#mechanicke-opravy">Mechanické opravy</a>
+      <a href="#pneuservis">Pneuservis</a>
+      <a href="#stk-a-emise">STK a emise</a>
+      <a href="#klimatizace">Klimatizace</a>
+      <a href="#autodiagnostika">Autodiagnostika</a>
+      <a href="#autoelektrika">Autoelektrika</a>
+      <a href="#zabezpeceni">Zabezpečení vozu</a>
+      <a href="#cisteni">Čištění vozu</a>
+    </div>
+    <div class="footer-col">
+      <h4>Kontakt</h4>
+      <a href="tel:+420604216678">+420 604 216 678</a>
+      <a href="mailto:libor.paul@email.cz">libor.paul@email.cz</a>
+      <a href="#kontakt">Ctiměřice 37, Semčice</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 PL Autoservis – Paul Libor. Všechna práva vyhrazena.</span>
+    <span>Ctiměřice 37, 294 46 Semčice</span>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll shadow + active link
+  const nav = document.getElementById('mainNav');
+  const sections = document.querySelectorAll('section[id], article[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 90) cur = s.id; });
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+  });
+
+  // Hamburger
+  const burger = document.getElementById('hamburger');
+  const mob = document.getElementById('navMobile');
+  burger.addEventListener('click', () => { burger.classList.toggle('open'); mob.classList.toggle('open'); });
+  mob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { burger.classList.remove('open'); mob.classList.remove('open'); }));
+
+  // Search
+  const overlay = document.getElementById('searchOverlay');
+  const input = document.getElementById('searchInput');
+  const results = document.getElementById('searchResults');
+  const data = [
+    { t: 'Mechanické opravy', d: 'Servisní prohlídky, opravy motorů, převodovek, brzd, výfuků, podvozku, výměna oleje, svíček, rozvodů.', h: '#mechanicke-opravy' },
+    { t: 'Pneuservis', d: 'Přezutí, vyvážení kol, opravy defektů, kontrola tlaku, montáž a demontáž, skladování pneumatik.', h: '#pneuservis' },
+    { t: 'STK a emise', d: 'Příprava na STK, zprostředkování technické kontroly, měření emisí, bezpečnostní prvky.', h: '#stk-a-emise' },
+    { t: 'Klimatizace', d: 'Plnění chladivem, kontrola těsnosti, dezinfekce, opravy klimatizace, výměna kabinového filtru.', h: '#klimatizace' },
+    { t: 'Autodiagnostika', d: 'Počítačová diagnostika, čtení a mazání chybových kódů, ABS, ESP, airbagy, řídící jednotky.', h: '#autodiagnostika' },
+    { t: 'Autoelektrika', d: 'Elektrická instalace, diagnostika závad, alternátory, startéry, autobaterie, příslušenství.', h: '#autoelektrika' },
+    { t: 'Zabezpečení vozu', d: 'Mechanické a elektronické zabezpečení, GPS lokátory, imobilizéry.', h: '#zabezpeceni' },
+    { t: 'Čištění vozu', d: 'Ruční mytí exteriéru, čištění interiéru, tepování sedadel, leštění laku, motorový prostor.', h: '#cisteni' },
+    { t: 'Kontakt', d: 'PL Autoservis, Ctiměřice 37, Semčice. Tel: +420 604 216 678. Email: libor.paul@email.cz', h: '#kontakt' },
+  ];
+
+  function openSearch() { overlay.classList.add('open'); document.body.style.overflow = 'hidden'; setTimeout(() => input.focus(), 80); render(''); }
+  function closeSearch() { overlay.classList.remove('open'); document.body.style.overflow = ''; input.value = ''; }
+
+  document.getElementById('searchToggle').addEventListener('click', openSearch);
+  document.getElementById('searchClose').addEventListener('click', closeSearch);
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeSearch(); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeSearch();
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); openSearch(); }
+  });
+
+  function render(q) {
+    const s = q.toLowerCase().trim();
+    const hits = s ? data.filter(d => d.t.toLowerCase().includes(s) || d.d.toLowerCase().includes(s)) : data;
+    if (!hits.length) { results.innerHTML = '<p class="search-no-results">Žádné výsledky pro „' + q + '"</p>'; return; }
+    results.innerHTML = hits.map(d =>
+      `<div class="search-result-item" onclick="location.href='${d.h}';closeSearch()"><h4>${d.t}</h4><p>${d.d}</p></div>`
+    ).join('');
+  }
+  input.addEventListener('input', e => render(e.target.value));
+
+  // Scroll reveal
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((en, i) => {
+      if (en.isIntersecting) { setTimeout(() => en.target.classList.add('visible'), i * 70); obs.unobserve(en.target); }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
