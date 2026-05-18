@@ -499,6 +499,10 @@
           <div class="contact-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
           <div class="contact-text"><span>E-mail</span><strong><a href="mailto:libor.paul@email.cz">libor.paul@email.cz</a></strong></div>
         </div>
+        <div class="contact-item">
+          <div class="contact-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+          <div class="contact-text"><span>Otevírací doba</span><strong>Po–Pá: 06:00–18:00<br>So: 08:00–12:00</strong></div>
+        </div>
       </div>
     </div>
     <div class="contact-map">
@@ -530,15 +534,22 @@
       <a href="tel:+420604216678">+420 604 216 678</a>
       <a href="mailto:libor.paul@email.cz">libor.paul@email.cz</a>
       <a href="#kontakt">Ctiměřice 37, Semčice</a>
+      <h4 style="margin-top:1.25rem;">Otevírací doba</h4>
+      <span style="color:rgba(255,255,255,0.5);font-size:0.85rem;padding:0.2rem 0;display:block;">Po–Pá: 06:00–18:00</span>
+      <span style="color:rgba(255,255,255,0.5);font-size:0.85rem;padding:0.2rem 0;display:block;">So: 08:00–12:00</span>
+      <span style="color:rgba(255,255,255,0.35);font-size:0.85rem;padding:0.2rem 0;display:block;">Ne: Zavřeno</span>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2024 PL Autoservis – Paul Libor. Všechna práva vyhrazena.</span>
+    <span>© <span id="year"></span> PL Autoservis – Paul Libor. Všechna práva vyhrazena.</span>
     <span>Ctiměřice 37, 294 46 Semčice</span>
   </div>
 </footer>
 
 <script>
+  // Auto year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
   // Nav scroll shadow + active link
   const nav = document.getElementById('mainNav');
   const sections = document.querySelectorAll('section[id], article[id]');
