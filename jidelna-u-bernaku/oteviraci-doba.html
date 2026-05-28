@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jídelna U berňáku – Otevírací doba</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <h1>Jídelna U berňáku</h1>
+    <p class="subtitle">otevírací doba</p>
+  </header>
+
+  <div class="site-wrap">
+    <nav class="sidebar">
+      <a href="index.html">Dnešní menu</a>
+      <a href="snidane.html">Snídaně</a>
+      <a href="zitrejsi-menu.html">Zítřejší menu</a>
+      <div class="nav-divider"></div>
+      <a href="kde-nas-najdete.html">Kudy k nám?</a>
+      <a href="oteviraci-doba.html" class="active">Otevírací doba</a>
+      <a href="kontakt.html">Kontakt</a>
+      <div class="nav-divider"></div>
+      <a href="prihlaseni.html" class="nav-login">Přihlášení do systému</a>
+    </nav>
+
+    <main class="content">
+      <h1 class="page-title">Otevírací doba</h1>
+      <p class="page-subtitle">Vaříme česká domácí jídla z regionálních potravin</p>
+      <hr class="page-divider">
+
+      <table class="tabulka-oteviraci">
+        <thead>
+          <tr>
+            <th>Den</th>
+            <th>Otevřeno</th>
+            <th>Výdej obědů</th>
+            <th>Stav</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Pondělí</strong></td>
+            <td>6:30 – 14:30</td>
+            <td>11:00 – 14:30</td>
+            <td><span class="tag-otevreno" id="tag-po">otevřeno</span></td>
+          </tr>
+          <tr>
+            <td><strong>Úterý</strong></td>
+            <td>6:30 – 14:30</td>
+            <td>11:00 – 14:30</td>
+            <td><span class="tag-otevreno" id="tag-ut">otevřeno</span></td>
+          </tr>
+          <tr>
+            <td><strong>Středa</strong></td>
+            <td>6:30 – 14:30</td>
+            <td>11:00 – 14:30</td>
+            <td><span class="tag-otevreno" id="tag-st">otevřeno</span></td>
+          </tr>
+          <tr>
+            <td><strong>Čtvrtek</strong></td>
+            <td>6:30 – 14:30</td>
+            <td>11:00 – 14:30</td>
+            <td><span class="tag-otevreno" id="tag-ct">otevřeno</span></td>
+          </tr>
+          <tr>
+            <td><strong>Pátek</strong></td>
+            <td>6:30 – 14:30</td>
+            <td>11:00 – 14:30</td>
+            <td><span class="tag-otevreno" id="tag-pa">otevřeno</span></td>
+          </tr>
+          <tr>
+            <td><strong>Sobota</strong></td>
+            <td colspan="2" style="color:var(--text-svetly);font-style:italic;">zavřeno</td>
+            <td><span class="tag-zavreno">zavřeno</span></td>
+          </tr>
+          <tr>
+            <td><strong>Neděle</strong></td>
+            <td colspan="2" style="color:var(--text-svetly);font-style:italic;">zavřeno</td>
+            <td><span class="tag-zavreno">zavřeno</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="info-box" style="margin-top:1.8rem;">
+        Snídaně podáváme od 6:30 do 9:00. Obědy vydáváme od 11:00 do 14:30. Příchod doporučujeme nejpozději do 14:15.
+      </div>
+
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p class="footer-nazev">Jídelna U berňáku</p>
+    <p class="footer-info">
+      Nádražní 904, 551 01 Jaroměř &nbsp;|&nbsp;
+      <a href="tel:+420491813499">491 813 499</a> &nbsp;|&nbsp;
+      Po–Pá 6:30–14:30
+    </p>
+    <p class="footer-copy">Vaříme česká domácí jídla z regionálních potravin.</p>
+  </footer>
+
+  <script>
+    // Zvýrazni dnešní den
+    (function() {
+      var den = new Date().getDay(); // 0=ne,1=po,...
+      var tagy = { 1:'tag-po', 2:'tag-ut', 3:'tag-st', 4:'tag-ct', 5:'tag-pa' };
+      var now = new Date();
+      var total = now.getHours() * 60 + now.getMinutes();
+      var otevreno = 6 * 60 + 30;
+      var zavreno  = 14 * 60 + 30;
+
+      if (tagy[den]) {
+        var el = document.getElementById(tagy[den]);
+        var jeNyniOtevreno = total >= otevreno && total < zavreno;
+        if (!jeNyniOtevreno) {
+          el.className = 'tag-zavreno';
+          el.textContent = 'dnes zavřeno';
+        } else {
+          el.textContent = 'právě otevřeno';
+        }
+        // Zvýrazni řádek
+        el.closest('tr').style.backgroundColor = 'var(--hneda-pozadi)';
+        el.closest('tr').style.fontWeight = '700';
+      }
+    })();
+  </script>
+
+</body>
+</html>

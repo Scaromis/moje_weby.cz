@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jídelna U berňáku – Dnešní menu</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <h1>Jídelna U berňáku</h1>
+    <p class="subtitle" id="header-subtitle">ověřená jídelna v Jaroměři</p>
+  </header>
+
+  <div class="site-wrap">
+    <nav class="sidebar">
+      <a href="index.html" class="active">Dnešní menu</a>
+      <a href="snidane.html">Snídaně</a>
+      <a href="zitrejsi-menu.html">Zítřejší menu</a>
+      <div class="nav-divider"></div>
+      <a href="kde-nas-najdete.html">Kudy k nám?</a>
+      <a href="oteviraci-doba.html">Otevírací doba</a>
+      <a href="kontakt.html">Kontakt</a>
+      <div class="nav-divider"></div>
+      <a href="prihlaseni.html" class="nav-login">Přihlášení do systému</a>
+    </nav>
+
+    <main class="content">
+
+      <!-- Blok zobrazený BĚHEM otevírací doby -->
+      <div id="blok-otevreno" style="display:none;">
+        <h1 class="page-title">Dnešní menu</h1>
+        <p class="page-subtitle" id="datum-dnes"></p>
+        <hr class="page-divider">
+
+        <div class="menu-sekce">
+          <h2>Polévky</h2>
+          <div class="menu-polozka"><span class="cislo">1.</span><span class="nazev">Polévka žampionová – menu</span></div>
+          <div class="menu-polozka"><span class="cislo">2.</span><span class="nazev">Polévka dršťková</span></div>
+        </div>
+
+        <div class="menu-sekce">
+          <h2>Obědy – hlavní jídla</h2>
+          <div class="menu-polozka"><span class="cislo">1.</span><span class="nazev">Plněný paprikový lusk</span></div>
+          <div class="menu-polozka"><span class="cislo">2.</span><span class="nazev">Trhané vepřové maso + zelí a bram. knedlíky</span></div>
+          <div class="menu-polozka"><span class="cislo">3.</span><span class="nazev">Krůtí marinovaný steak s rajčaty a sýrem</span></div>
+          <div class="menu-polozka"><span class="cislo">4.</span><span class="nazev">Buřty na černém pivu + bramb. kaše</span></div>
+          <div class="menu-polozka"><span class="cislo">5.</span><span class="nazev">Pikantní grilovaná kuřecí křidélka brazil</span></div>
+          <div class="menu-polozka"><span class="cislo">6.</span><span class="nazev">Smažený sýr se šunkou</span></div>
+          <div class="menu-polozka"><span class="cislo">7.</span><span class="nazev">Pečené kuřecí stehno na česneku</span></div>
+        </div>
+
+        <div class="menu-sekce">
+          <h2>Přílohy – co si dáte navíc?</h2>
+          <div class="menu-polozka"><span class="cislo">·</span><span class="nazev">Bramborová kaše</span></div>
+          <div class="menu-polozka"><span class="cislo">·</span><span class="nazev">Bramborové knedlíky (+1 ks 10 Kč)</span></div>
+          <div class="menu-polozka"><span class="cislo">·</span><span class="nazev">Brambory vařené</span></div>
+          <div class="menu-polozka"><span class="cislo">·</span><span class="nazev">Houskové knedlíky (+1 ks 10 Kč)</span></div>
+          <div class="menu-polozka"><span class="cislo">·</span><span class="nazev">Rýže</span></div>
+          <div class="menu-polozka"><span class="cislo">·</span><span class="nazev">Smažené bramborové hranolky</span></div>
+        </div>
+
+        <div class="prihlaseni-panel">
+          <h3>Přihlášení do systému rezervací</h3>
+          <form class="prihlaseni-forma" onsubmit="return false;">
+            <div class="pole">
+              <label for="uzivatel">Uživatelské jméno</label>
+              <input type="text" id="uzivatel" placeholder="Vaše jméno">
+            </div>
+            <div class="pole">
+              <label for="heslo">Heslo</label>
+              <input type="password" id="heslo" placeholder="••••••">
+            </div>
+            <button type="submit" class="btn btn-hneda">Přihlásit se</button>
+          </form>
+          <p class="prihlaseni-registrace">
+            Nemáte účet? <a href="prihlaseni.html">Zaregistrujte se</a> a rezervujte si jídla pohodlně přes internet. Už nikdy se Vám nestane, že Vaše oblíbené jídlo dojde.
+          </p>
+        </div>
+      </div>
+
+      <!-- Blok zobrazený PO zavírací době -->
+      <div id="blok-zavreno" style="display:none;">
+        <h1 class="page-title">Co bylo dneska</h1>
+        <p class="page-subtitle" id="datum-bylo"></p>
+        <hr class="page-divider">
+
+        <div class="zavrit-zprava">
+          <p class="big">Dnes jsme již zavřeni.</p>
+          <p>Vydávali jsme od <strong>11:00 do 14:30</strong>. Děkujeme za návštěvu a těšíme se na Vás zítra!</p>
+          <p>Na zítřek máme připraveno:</p>
+          <a href="zitrejsi-menu.html" class="btn btn-hneda" style="margin-top:0.5rem;">Zobrazit zítřejší menu</a>
+        </div>
+
+        <div class="menu-sekce" style="margin-top:2rem;">
+          <h2>Dnes bylo na jídelníčku</h2>
+          <div class="menu-polozka"><span class="cislo">1.</span><span class="nazev">Plněný paprikový lusk</span></div>
+          <div class="menu-polozka"><span class="cislo">2.</span><span class="nazev">Trhané vepřové maso + zelí a bram. knedlíky</span></div>
+          <div class="menu-polozka"><span class="cislo">3.</span><span class="nazev">Krůtí marinovaný steak s rajčaty a sýrem</span></div>
+          <div class="menu-polozka"><span class="cislo">4.</span><span class="nazev">Buřty na černém pivu + bramb. kaše</span></div>
+          <div class="menu-polozka"><span class="cislo">5.</span><span class="nazev">Pikantní grilovaná kuřecí křidélka brazil</span></div>
+          <div class="menu-polozka"><span class="cislo">6.</span><span class="nazev">Smažený sýr se šunkou</span></div>
+          <div class="menu-polozka"><span class="cislo">7.</span><span class="nazev">Pečené kuřecí stehno na česneku</span></div>
+        </div>
+
+        <div class="prihlaseni-panel">
+          <h3>Přihlášení do systému rezervací</h3>
+          <form class="prihlaseni-forma" onsubmit="return false;">
+            <div class="pole">
+              <label>Uživatelské jméno</label>
+              <input type="text" placeholder="Vaše jméno">
+            </div>
+            <div class="pole">
+              <label>Heslo</label>
+              <input type="password" placeholder="••••••">
+            </div>
+            <button type="submit" class="btn btn-hneda">Přihlásit se</button>
+          </form>
+          <p class="prihlaseni-registrace">
+            Nemáte účet? <a href="prihlaseni.html">Zaregistrujte se</a> a rezervujte si jídla pohodlně přes internet.
+          </p>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p class="footer-nazev">Jídelna U berňáku</p>
+    <p class="footer-info">
+      Nádražní 904, 551 01 Jaroměř &nbsp;|&nbsp;
+      <a href="tel:+420491813499">491 813 499</a> &nbsp;|&nbsp;
+      Po–Pá 6:30–14:30
+    </p>
+    <p class="footer-copy">Vaříme česká domácí jídla z regionálních potravin.</p>
+  </footer>
+
+  <script>
+    (function() {
+      var now = new Date();
+      var h = now.getHours(), m = now.getMinutes();
+      var total = h * 60 + m;
+      var obedy   = 11 * 60;
+      var zavreni = 14 * 60 + 30;
+      var den = now.getDay();
+
+      var dny = ['neděle','pondělí','úterý','středa','čtvrtek','pátek','sobota'];
+      var mesice = ['ledna','února','března','dubna','května','června','července','srpna','září','října','listopadu','prosince'];
+      var datumStr = dny[den] + ' ' + now.getDate() + '. ' + mesice[now.getMonth()] + ' ' + now.getFullYear();
+
+      var jePracovni = den >= 1 && den <= 5;
+      var jePoBez = (total >= zavreni) || !jePracovni;
+
+      if (jePoBez) {
+        document.getElementById('blok-zavreno').style.display = 'block';
+        document.getElementById('datum-bylo').textContent = datumStr;
+        document.getElementById('header-subtitle').textContent = 'co bylo dneska';
+      } else {
+        document.getElementById('blok-otevreno').style.display = 'block';
+        document.getElementById('datum-dnes').textContent = datumStr;
+        if (total < obedy) {
+          document.getElementById('header-subtitle').textContent = 'výdej obědů od 11:00';
+        } else {
+          document.getElementById('header-subtitle').textContent = 'jídelní lístek na dnes';
+        }
+      }
+    })();
+  </script>
+
+</body>
+</html>

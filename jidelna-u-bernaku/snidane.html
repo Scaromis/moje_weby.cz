@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jídelna U berňáku – Snídaně</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <h1>Jídelna U berňáku</h1>
+    <p class="subtitle">snídaně od 6:30</p>
+  </header>
+
+  <div class="site-wrap">
+    <nav class="sidebar">
+      <a href="index.html">Dnešní menu</a>
+      <a href="snidane.html" class="active">Snídaně</a>
+      <a href="zitrejsi-menu.html">Zítřejší menu</a>
+      <div class="nav-divider"></div>
+      <a href="kde-nas-najdete.html">Kudy k nám?</a>
+      <a href="oteviraci-doba.html">Otevírací doba</a>
+      <a href="kontakt.html">Kontakt</a>
+      <div class="nav-divider"></div>
+      <a href="prihlaseni.html" class="nav-login">Přihlášení do systému</a>
+    </nav>
+
+    <main class="content">
+      <h1 class="page-title">Snídaně</h1>
+      <p class="page-subtitle">teplá snídaně každý pracovní den od 6:30</p>
+      <hr class="page-divider">
+
+      <div class="info-box">
+        Snídaně podáváme pondělí až pátek od 6:30 do 9:00. Přijďte si k nám sednout a začněte den pořádně.
+      </div>
+
+      <div class="menu-sekce">
+        <h2>Nabídka snídaní</h2>
+        <div class="menu-polozka"><span class="cislo">1.</span><span class="nazev">Párky libové 1 ks + hořčice</span></div>
+        <div class="menu-polozka"><span class="cislo">2.</span><span class="nazev">Míchaná vejce na másle</span></div>
+        <div class="menu-polozka"><span class="cislo">3.</span><span class="nazev">Míchaná vejce na slanině</span></div>
+        <div class="menu-polozka"><span class="cislo">4.</span><span class="nazev">Vaječná omeleta se sýrem</span></div>
+        <div class="menu-polozka"><span class="cislo">5.</span><span class="nazev">Sázená vejce se šunkou a sýrem</span></div>
+        <div class="menu-polozka"><span class="cislo">6.</span><span class="nazev">Opečená sekaná + hořčice, křen</span></div>
+        <div class="menu-polozka"><span class="cislo">7.</span><span class="nazev">Klobása šunková + hořčice</span></div>
+      </div>
+
+      <div class="prihlaseni-panel">
+        <h3>Přihlášení do systému rezervací</h3>
+        <form class="prihlaseni-forma" onsubmit="return false;">
+          <div class="pole">
+            <label>Uživatelské jméno</label>
+            <input type="text" placeholder="Vaše jméno">
+          </div>
+          <div class="pole">
+            <label>Heslo</label>
+            <input type="password" placeholder="••••••">
+          </div>
+          <button type="submit" class="btn btn-hneda">Přihlásit se</button>
+        </form>
+        <p class="prihlaseni-registrace">
+          Nemáte účet? <a href="prihlaseni.html">Zaregistrujte se</a> a rezervujte si jídla pohodlně přes internet.
+        </p>
+      </div>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p class="footer-nazev">Jídelna U berňáku</p>
+    <p class="footer-info">
+      Nádražní 904, 551 01 Jaroměř &nbsp;|&nbsp;
+      <a href="tel:+420491813499">491 813 499</a> &nbsp;|&nbsp;
+      Po–Pá 6:30–14:30
+    </p>
+    <p class="footer-copy">Vaříme česká domácí jídla z regionálních potravin.</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jídelna U berňáku – Zítřejší menu</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <h1>Jídelna U berňáku</h1>
+    <p class="subtitle">nabídka na zítra</p>
+  </header>
+
+  <div class="site-wrap">
+    <nav class="sidebar">
+      <a href="index.html">Dnešní menu</a>
+      <a href="snidane.html">Snídaně</a>
+      <a href="zitrejsi-menu.html" class="active">Zítřejší menu</a>
+      <div class="nav-divider"></div>
+      <a href="kde-nas-najdete.html">Kudy k nám?</a>
+      <a href="oteviraci-doba.html">Otevírací doba</a>
+      <a href="kontakt.html">Kontakt</a>
+      <div class="nav-divider"></div>
+      <a href="prihlaseni.html" class="nav-login">Přihlášení do systému</a>
+    </nav>
+
+    <main class="content">
+      <h1 class="page-title">Nabídka na zítřek</h1>
+      <p class="page-subtitle" id="datum-zitra"></p>
+      <hr class="page-divider">
+
+      <div class="menu-sekce">
+        <h2>Polévky</h2>
+        <div class="menu-polozka"><span class="cislo">1.</span><span class="nazev">Polévka žampionová – menu</span></div>
+        <div class="menu-polozka"><span class="cislo">2.</span><span class="nazev">Polévka dršťková</span></div>
+      </div>
+
+      <div class="menu-sekce">
+        <h2>Obědy – hlavní jídla</h2>
+        <div class="menu-polozka"><span class="cislo">1.</span><span class="nazev">Plněný paprikový lusk</span></div>
+        <div class="menu-polozka"><span class="cislo">2.</span><span class="nazev">Trhané vepřové maso + zelí a bram. knedlíky</span></div>
+        <div class="menu-polozka"><span class="cislo">3.</span><span class="nazev">Krůtí marinovaný steak s rajčaty a sýrem</span></div>
+        <div class="menu-polozka"><span class="cislo">4.</span><span class="nazev">Buřty na černém pivu + bramb. kaše</span></div>
+        <div class="menu-polozka"><span class="cislo">5.</span><span class="nazev">Pikantní grilovaná kuřecí křidélka brazil</span></div>
+        <div class="menu-polozka"><span class="cislo">6.</span><span class="nazev">Smažený sýr se šunkou</span></div>
+        <div class="menu-polozka"><span class="cislo">7.</span><span class="nazev">Pečené kuřecí stehno na česneku</span></div>
+      </div>
+
+      <div class="menu-sekce">
+        <h2>Přílohy – co si dáte navíc?</h2>
+        <div class="menu-polozka"><span class="cislo">·</span><span class="nazev">Bramborová kaše</span></div>
+        <div class="menu-polozka"><span class="cislo">·</span><span class="nazev">Bramborové knedlíky (+1 ks 10 Kč)</span></div>
+        <div class="menu-polozka"><span class="cislo">·</span><span class="nazev">Brambory vařené</span></div>
+        <div class="menu-polozka"><span class="cislo">·</span><span class="nazev">Houskové knedlíky (+1 ks 10 Kč)</span></div>
+        <div class="menu-polozka"><span class="cislo">·</span><span class="nazev">Rýže</span></div>
+        <div class="menu-polozka"><span class="cislo">·</span><span class="nazev">Smažené bramborové hranolky</span></div>
+      </div>
+
+      <div class="prihlaseni-panel">
+        <h3>Přihlášení do systému rezervací</h3>
+        <form class="prihlaseni-forma" onsubmit="return false;">
+          <div class="pole">
+            <label>Uživatelské jméno</label>
+            <input type="text" placeholder="Vaše jméno">
+          </div>
+          <div class="pole">
+            <label>Heslo</label>
+            <input type="password" placeholder="••••••">
+          </div>
+          <button type="submit" class="btn btn-hneda">Přihlásit se</button>
+        </form>
+        <p class="prihlaseni-registrace">
+          Nemáte účet? <a href="prihlaseni.html">Zaregistrujte se</a> a rezervujte si jídla pohodlně přes internet. Už nikdy se Vám nestane, že Vaše oblíbené jídlo dojde.
+        </p>
+      </div>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p class="footer-nazev">Jídelna U berňáku</p>
+    <p class="footer-info">
+      Nádražní 904, 551 01 Jaroměř &nbsp;|&nbsp;
+      <a href="tel:+420491813499">491 813 499</a> &nbsp;|&nbsp;
+      Po–Pá 6:30–14:30
+    </p>
+    <p class="footer-copy">Vaříme česká domácí jídla z regionálních potravin.</p>
+  </footer>
+
+  <script>
+    (function() {
+      var zitra = new Date(); zitra.setDate(zitra.getDate() + 1);
+      var dny = ['neděle','pondělí','úterý','středa','čtvrtek','pátek','sobota'];
+      var mesice = ['ledna','února','března','dubna','května','června','července','srpna','září','října','listopadu','prosince'];
+      document.getElementById('datum-zitra').textContent =
+        dny[zitra.getDay()] + ' ' + zitra.getDate() + '. ' + mesice[zitra.getMonth()] + ' ' + zitra.getFullYear();
+    })();
+  </script>
+
+</body>
+</html>

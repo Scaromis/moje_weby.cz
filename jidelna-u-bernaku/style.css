@@ -1,0 +1,550 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
+
+/* === RESET & BASE === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --hneda-tmava:    #2C1A0E;
+  --hneda-stredni:  #5D3A1A;
+  --hneda-hlavni:   #7B4F2E;
+  --hneda-svetla:   #A97C52;
+  --hneda-pastel:   #C9A882;
+  --hneda-cream:    #E8D5BC;
+  --hneda-pozadi:   #F5EDE0;
+  --hneda-bila:     #FBF7F2;
+  --text-tmava:     #1E0F05;
+  --text-stredni:   #3D2008;
+  --text-svetly:    #7A5535;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  background-color: var(--hneda-pozadi);
+  color: var(--text-tmava);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === HEADER === */
+.site-header {
+  background-color: var(--hneda-tmava);
+  color: var(--hneda-bila);
+  text-align: center;
+  padding: 2.2rem 2rem 1.8rem;
+  border-bottom: 4px solid var(--hneda-svetla);
+}
+
+.site-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--hneda-cream);
+  line-height: 1.2;
+}
+
+.site-header .subtitle {
+  font-family: 'Crimson Text', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--hneda-pastel);
+  margin-top: 0.35rem;
+  letter-spacing: 0.05em;
+}
+
+/* === LAYOUT === */
+.site-wrap {
+  display: flex;
+  flex: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* === NAV SIDEBAR === */
+nav.sidebar {
+  width: 210px;
+  min-width: 210px;
+  background-color: var(--hneda-stredni);
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+nav.sidebar a {
+  display: block;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--hneda-cream);
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-left: 3px solid transparent;
+  transition: background 0.18s, border-color 0.18s, color 0.18s;
+}
+
+nav.sidebar a:hover {
+  background-color: var(--hneda-hlavni);
+  border-left-color: var(--hneda-pastel);
+  color: #fff;
+}
+
+nav.sidebar a.active {
+  background-color: var(--hneda-hlavni);
+  border-left-color: var(--hneda-cream);
+  color: #fff;
+}
+
+nav.sidebar .nav-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.12);
+  margin: 0.6rem 1.5rem;
+}
+
+nav.sidebar a.nav-login {
+  margin-top: auto;
+  color: var(--hneda-pastel);
+  font-style: italic;
+  text-transform: none;
+  font-size: 0.88rem;
+  font-weight: 400;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: 1rem;
+}
+nav.sidebar a.nav-login:hover {
+  color: #fff;
+  background-color: var(--hneda-hlavni);
+  border-left-color: var(--hneda-pastel);
+}
+
+/* === MAIN CONTENT === */
+main.content {
+  flex: 1;
+  background-color: var(--hneda-bila);
+  padding: 2.5rem 2.8rem;
+  border-left: 1px solid var(--hneda-cream);
+}
+
+/* === PAGE TITLE === */
+.page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.9rem;
+  font-weight: 600;
+  color: var(--hneda-stredni);
+  margin-bottom: 0.3rem;
+  line-height: 1.3;
+}
+
+.page-subtitle {
+  font-family: 'Crimson Text', serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--hneda-svetla);
+  margin-bottom: 1.8rem;
+}
+
+.page-divider {
+  border: none;
+  border-top: 2px solid var(--hneda-cream);
+  margin-bottom: 2rem;
+}
+
+/* === MENU SEKCE === */
+.menu-sekce {
+  margin-bottom: 2rem;
+}
+
+.menu-sekce h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--hneda-hlavni);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--hneda-cream);
+}
+
+.menu-polozka {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 0.55rem 0.8rem;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+
+.menu-polozka:hover {
+  background-color: var(--hneda-pozadi);
+}
+
+.menu-polozka .cislo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: var(--hneda-pastel);
+  min-width: 1.6rem;
+  font-size: 0.95rem;
+}
+
+.menu-polozka .nazev {
+  font-size: 0.97rem;
+  color: var(--text-tmava);
+  line-height: 1.4;
+}
+
+/* === ZPRÁVA PO ZAVÍRACÍ DOBĚ === */
+.zavrit-zprava {
+  background-color: var(--hneda-pozadi);
+  border: 2px solid var(--hneda-cream);
+  border-radius: 8px;
+  padding: 2rem 2.2rem;
+  text-align: center;
+}
+
+.zavrit-zprava .big {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  color: var(--hneda-stredni);
+  margin-bottom: 0.5rem;
+}
+
+.zavrit-zprava p {
+  font-size: 0.97rem;
+  color: var(--text-svetly);
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.zavrit-zprava a {
+  color: var(--hneda-hlavni);
+  font-weight: 700;
+  text-decoration: none;
+}
+.zavrit-zprava a:hover { text-decoration: underline; }
+
+/* === PŘIHLAŠOVACÍ PANEL (na menu stránkách) === */
+.prihlaseni-panel {
+  margin-top: 2.5rem;
+  padding-top: 1.8rem;
+  border-top: 2px solid var(--hneda-cream);
+}
+
+.prihlaseni-panel h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--hneda-stredni);
+  margin-bottom: 1rem;
+  letter-spacing: 0.03em;
+}
+
+.prihlaseni-forma {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  align-items: flex-end;
+}
+
+.prihlaseni-forma .pole {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.prihlaseni-forma label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-svetly);
+}
+
+.prihlaseni-forma input {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.92rem;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid var(--hneda-cream);
+  border-radius: 4px;
+  background: var(--hneda-pozadi);
+  color: var(--text-tmava);
+  width: 180px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.prihlaseni-forma input:focus {
+  border-color: var(--hneda-svetla);
+}
+
+.btn {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.55rem 1.3rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-hneda {
+  background-color: var(--hneda-hlavni);
+  color: #fff;
+}
+.btn-hneda:hover { background-color: var(--hneda-stredni); }
+
+.btn-outline {
+  background: transparent;
+  color: var(--hneda-hlavni);
+  border: 2px solid var(--hneda-hlavni);
+}
+.btn-outline:hover { background: var(--hneda-hlavni); color: #fff; }
+
+.prihlaseni-registrace {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-svetly);
+}
+.prihlaseni-registrace a {
+  color: var(--hneda-hlavni);
+  font-weight: 700;
+  text-decoration: none;
+}
+.prihlaseni-registrace a:hover { text-decoration: underline; }
+
+/* === TABULKA (otevírací doba) === */
+.tabulka-oteviraci {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.97rem;
+  margin-top: 1rem;
+}
+
+.tabulka-oteviraci thead tr {
+  background-color: var(--hneda-hlavni);
+  color: var(--hneda-bila);
+}
+
+.tabulka-oteviraci thead th {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  padding: 0.8rem 1.2rem;
+  text-align: left;
+}
+
+.tabulka-oteviraci tbody tr {
+  border-bottom: 1px solid var(--hneda-cream);
+  transition: background 0.12s;
+}
+
+.tabulka-oteviraci tbody tr:hover {
+  background-color: var(--hneda-pozadi);
+}
+
+.tabulka-oteviraci tbody td {
+  padding: 0.8rem 1.2rem;
+  color: var(--text-tmava);
+}
+
+.tabulka-oteviraci tbody tr:last-child { border-bottom: none; }
+
+.tag-zavreno {
+  display: inline-block;
+  background: var(--hneda-cream);
+  color: var(--text-svetly);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  padding: 0.15rem 0.55rem;
+}
+
+.tag-otevreno {
+  display: inline-block;
+  background: #4a7c3f;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  padding: 0.15rem 0.55rem;
+}
+
+/* === KONTAKT === */
+.kontakt-box {
+  background: var(--hneda-pozadi);
+  border: 1px solid var(--hneda-cream);
+  border-radius: 8px;
+  padding: 1.8rem 2rem;
+  margin-bottom: 1.8rem;
+}
+
+.kontakt-box p {
+  font-size: 0.97rem;
+  color: var(--text-tmava);
+  line-height: 1.8;
+}
+
+.kontakt-box strong {
+  color: var(--hneda-stredni);
+}
+
+/* === KDE NÁS NAJDETE === */
+.mapa-obal {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid var(--hneda-cream);
+  margin-top: 1.5rem;
+}
+
+.mapa-obal iframe {
+  width: 100%;
+  height: 380px;
+  display: block;
+  border: none;
+}
+
+.foto-jidelna {
+  width: 100%;
+  border-radius: 8px;
+  border: 2px solid var(--hneda-cream);
+  margin-bottom: 1.5rem;
+  object-fit: cover;
+  max-height: 260px;
+}
+
+/* === PŘIHLÁŠENÍ STRÁNKA === */
+.prihlaseni-stranka {
+  max-width: 420px;
+}
+
+.prihlaseni-card {
+  background: var(--hneda-pozadi);
+  border: 1px solid var(--hneda-cream);
+  border-radius: 10px;
+  padding: 2.2rem 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.prihlaseni-card h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: var(--hneda-stredni);
+  margin-bottom: 1.2rem;
+}
+
+.prihlaseni-card .pole-full {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.9rem;
+}
+
+.prihlaseni-card label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-svetly);
+}
+
+.prihlaseni-card input {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95rem;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--hneda-cream);
+  border-radius: 5px;
+  background: var(--hneda-bila);
+  color: var(--text-tmava);
+  outline: none;
+  transition: border-color 0.15s;
+  width: 100%;
+}
+
+.prihlaseni-card input:focus { border-color: var(--hneda-svetla); }
+
+.prihlaseni-card .btn { width: 100%; margin-top: 0.4rem; text-align: center; }
+
+.prihlaseni-poznamka {
+  font-size: 0.88rem;
+  color: var(--text-svetly);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* === SNÍDANĚ INFO BOX === */
+.info-box {
+  background: var(--hneda-pozadi);
+  border-left: 4px solid var(--hneda-svetla);
+  border-radius: 0 6px 6px 0;
+  padding: 1rem 1.4rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.93rem;
+  color: var(--text-svetly);
+  font-style: italic;
+}
+
+/* === FOOTER === */
+footer.site-footer {
+  background-color: var(--hneda-tmava);
+  color: var(--hneda-pastel);
+  text-align: center;
+  padding: 1.6rem 2rem;
+  border-top: 3px solid var(--hneda-stredni);
+}
+
+footer.site-footer .footer-nazev {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--hneda-cream);
+  margin-bottom: 0.4rem;
+}
+
+footer.site-footer .footer-info {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--hneda-pastel);
+}
+
+footer.site-footer a {
+  color: var(--hneda-pastel);
+  text-decoration: none;
+}
+footer.site-footer a:hover { color: #fff; text-decoration: underline; }
+
+footer.site-footer .footer-copy {
+  margin-top: 0.8rem;
+  font-size: 0.75rem;
+  color: rgba(201,168,130,0.5);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 720px) {
+  .site-wrap { flex-direction: column; }
+  nav.sidebar { width: 100%; min-width: 0; flex-direction: row; flex-wrap: wrap; padding: 0.5rem; }
+  nav.sidebar a { padding: 0.5rem 0.8rem; font-size: 0.78rem; border-left: none; border-bottom: 2px solid transparent; }
+  nav.sidebar a.active { border-bottom-color: var(--hneda-cream); }
+  nav.sidebar .nav-divider { display: none; }
+  nav.sidebar a.nav-login { margin-top: 0; border-top: none; }
+  main.content { padding: 1.5rem 1.2rem; }
+  .site-header h1 { font-size: 1.9rem; }
+  .prihlaseni-forma { flex-direction: column; }
+  .prihlaseni-forma input { width: 100%; }
+}

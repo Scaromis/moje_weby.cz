@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt – Auto Malý Evo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <a href="index.html">
+      <div class="logo-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <path d="M5 17H3a1 1 0 01-1-1v-3a4 4 0 014-4h12a4 4 0 014 4v3a1 1 0 01-1 1h-2M5 17v2m14-2v2M5 17h14" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="7.5" cy="17" r="1.5" fill="#1a1a1a"/>
+          <circle cx="16.5" cy="17" r="1.5" fill="#1a1a1a"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <strong>Auto Malý Evo</strong>
+        <span>Autoservis Brno</span>
+      </div>
+    </a>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-group-label">Hlavní</div>
+    <a href="index.html" data-page="index.html" data-hash="">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Úvod
+    </a>
+    <a href="o-nas.html" data-page="o-nas.html" data-hash="">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      O nás
+    </a>
+    <div class="nav-group-label">Služby</div>
+    <a href="sluzby.html" data-page="sluzby.html" data-hash="">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>
+      Mechanika
+    </a>
+    <a href="sluzby.html#pneu" data-page="sluzby.html" data-hash="pneu">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>
+      Pneuservis
+    </a>
+    <a href="sluzby.html#elekt" data-page="sluzby.html" data-hash="elekt">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      Elektronika
+    </a>
+    <a href="sluzby.html#prodej" data-page="sluzby.html" data-hash="prodej">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      Prodej
+    </a>
+    <div class="nav-group-label">Informace</div>
+    <a href="cenik.html" data-page="cenik.html" data-hash="">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      Ceník
+    </a>
+    <a href="autobaterie.html" data-page="autobaterie.html" data-hash="">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="11" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="15"/><line x1="10" y1="13.5" x2="14" y2="13.5"/></svg>
+      Autobaterie
+    </a>
+    <a href="kontakt.html" data-page="kontakt.html" data-hash="">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.67 19.79 19.79 0 01.1 1.13 2 2 0 012.11 1H5a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      Kontakt
+    </a>
+  </nav>
+  <div class="sidebar-contact">
+    <p>Kontakt</p>
+    <a href="tel:+420549210115">+420 549 210 115</a>
+    <a href="mailto:servis@amevo.cz">servis@amevo.cz</a>
+  </div>
+</aside>
+
+<main class="main">
+
+  <div class="topbar" id="topbar">
+    <div class="topbar-left"></div>
+    <div class="topbar-actions">
+      <a href="tel:+420549210115" class="topbar-phone">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.67 19.79 19.79 0 01.1 1.13 2 2 0 012.11 1H5a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        +420 549 210 115
+      </a>
+      <a href="kontakt.html" class="btn-sm">Kontakt</a>
+    </div>
+  </div>
+
+  <div class="hero" style="padding:60px 48px">
+    <div class="hero-inner">
+      <h1>Kontakt<em>ujte nás</em></h1>
+      <p>Najdete nás v Brně – Husovicích na ulici Valchařská.</p>
+    </div>
+  </div>
+
+  <div class="content-section">
+    <div class="two-col">
+      <div>
+        <div class="section-eyebrow">Kde nás najdete</div>
+        <h2 class="section-h2">Kontaktní <span>informace</span></h2>
+
+        <!-- Autoservis -->
+        <div style="background:var(--white);border-radius:12px;padding:28px;box-shadow:var(--shadow-sm);border:1px solid var(--border);margin-bottom:20px">
+          <h3 style="font-weight:700;font-size:18px;color:var(--text);margin-bottom:20px">Auto Malý Evo s.r.o.</h3>
+
+          <div class="fc-item" style="margin-bottom:14px">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <strong>Provozovna:</strong><br>
+              Valchařská 24/36, 614 00 Brno – Husovice
+            </div>
+          </div>
+
+          <div class="fc-item" style="margin-bottom:14px">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <strong>Sídlo:</strong><br>
+              Kozlany 75, 683 41 Kozlany/Bohdalice<br>
+              IČ: 06561144 | DIČ: CZ06561144
+            </div>
+          </div>
+
+          <!-- Servis phones -->
+          <div style="margin-bottom:18px;padding:14px 16px;background:var(--teal-pale);border-radius:8px;">
+            <p style="font-size:12px;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">Autoservis / servis</p>
+            <div class="fc-item" style="margin-bottom:8px">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.67 19.79 19.79 0 01.1 1.13 2 2 0 012.11 1H5a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              <a href="tel:+420549210115" style="color:var(--text);font-weight:600;text-decoration:none">+420 549 210 115</a>
+            </div>
+            <div class="fc-item" style="margin-bottom:8px">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.67 19.79 19.79 0 01.1 1.13 2 2 0 012.11 1H5a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              <a href="tel:+420602772036" style="color:var(--text);font-weight:600;text-decoration:none">+420 602 772 036</a>
+            </div>
+            <div class="fc-item" style="margin-bottom:4px">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:servis@amevo.cz" style="color:var(--teal)">servis@amevo.cz</a>
+            </div>
+            <div class="fc-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:malyopel@email.cz" style="color:var(--teal)">malyopel@email.cz</a>
+            </div>
+          </div>
+
+          <!-- Battery contact -->
+          <div style="padding:14px 16px;background:rgba(240,165,0,0.08);border-radius:8px;border-left:3px solid var(--accent);">
+            <p style="font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px;">Prodej baterií</p>
+            <p style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:8px;">Pavel Šidlo</p>
+            <div class="fc-item" style="margin-bottom:6px">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.67 19.79 19.79 0 01.1 1.13 2 2 0 012.11 1H5a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+              <a href="tel:+420606033203" style="color:var(--text);font-weight:600;text-decoration:none">+420 606 033 203</a>
+            </div>
+            <div class="fc-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:pavel.sidlo@amevo.cz" style="color:var(--teal)">pavel.sidlo@amevo.cz</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Opening hours -->
+        <div style="background:var(--white);border-radius:12px;padding:24px;box-shadow:var(--shadow-sm);border:1px solid var(--border)">
+          <h3 style="font-weight:700;font-size:16px;color:var(--text);margin-bottom:16px">Otevírací doba</h3>
+          <div class="hr-row" style="color:var(--text);border-bottom:1px solid var(--border);padding:9px 0"><span>Pondělí – Pátek</span><span style="font-weight:600;color:var(--teal)">7:00 – 17:00</span></div>
+          <div class="hr-row" style="color:var(--text);border-bottom:1px solid var(--border);padding:9px 0"><span>Sobota</span><span style="font-weight:600;color:var(--teal)">8:00 – 12:00</span></div>
+          <div class="hr-row" style="color:var(--text);padding:9px 0"><span>Neděle</span><span style="color:var(--text-muted)">Zavřeno</span></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-eyebrow">Formulář</div>
+        <h2 class="section-h2">Napište <span>nám</span></h2>
+        <div style="background:var(--white);border-radius:12px;padding:32px;box-shadow:var(--shadow-sm);border:1px solid var(--border)">
+          <form onsubmit="this.style.display='none';document.getElementById('ok').style.display='block'" style="display:flex;flex-direction:column;gap:16px">
+            <div class="form-grid">
+              <div class="form-group"><label>Jméno *</label><input type="text" placeholder="Vaše jméno" required></div>
+              <div class="form-group"><label>E-mail *</label><input type="email" placeholder="vas@email.cz" required></div>
+              <div class="form-group"><label>Telefon</label><input type="tel" placeholder="+420 ..."></div>
+              <div class="form-group"><label>Předmět</label><input type="text" placeholder="Téma zprávy"></div>
+              <div class="form-group full"><label>Zpráva *</label><textarea placeholder="Váš dotaz..." required></textarea></div>
+            </div>
+            <button type="submit" class="btn-teal">Odeslat zprávu</button>
+          </form>
+          <div id="ok" style="display:none;padding:20px;background:rgba(13,92,99,0.08);border-radius:8px;color:var(--teal);font-weight:600;text-align:center">✓ Zpráva odeslána! Ozveme se co nejdříve.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAP -->
+  <div class="content-section alt">
+    <div class="section-eyebrow">Jak nás najít</div>
+    <h2 class="section-h2">Valchařská 24/36, <span>Brno – Husovice</span></h2>
+    <div style="border-radius:12px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--border);margin-top:8px;">
+      <iframe
+        src="https://maps.google.com/maps?q=Valcha%C5%99sk%C3%A1+24%2F36%2C+614+00+Brno&output=embed&hl=cs&z=16"
+        width="100%" height="420" style="display:block;border:0;"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div><p style="font-size:14px;line-height:1.8">Rodinný autoservis s více než 30 lety tradice.</p></div>
+      <div>
+        <h4>Navigace</h4>
+        <ul>
+          <li><a href="index.html">Úvod</a></li>
+          <li><a href="o-nas.html">O nás</a></li>
+          <li><a href="sluzby.html">Služby</a></li>
+          <li><a href="cenik.html">Ceník</a></li>
+          <li><a href="autobaterie.html">Autobaterie</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <div class="fc-item">Valchařská 24/36, Brno</div>
+        <div class="fc-item">+420 549 210 115</div>
+        <div class="fc-item">servis@amevo.cz</div>
+      </div>
+      <div>
+        <h4>Otevírací doba</h4>
+        <div class="hr-row"><span>Po–Pá</span><span style="color:#fff">7:00–17:00</span></div>
+        <div class="hr-row"><span>Sobota</span><span style="color:#fff">8:00–12:00</span></div>
+        <div class="hr-row"><span>Neděle</span><span>Zavřeno</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© <span id="year"></span> Auto Malý Evo s.r.o. – Všechna práva vyhrazena.</span></div>
+  </footer>
+
+</main>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+(function(){
+  var page = window.location.pathname.split('/').pop() || 'index.html';
+  if(!page) page = 'index.html';
+  function setActive(){
+    var hash = window.location.hash.slice(1);
+    document.querySelectorAll('.sidebar-nav a[data-page]').forEach(function(a){
+      a.classList.remove('active');
+      if(a.dataset.page === page){
+        var ah = a.dataset.hash || '';
+        if(!hash && !ah){ a.classList.add('active'); }
+        else if(hash && ah === hash){ a.classList.add('active'); }
+      }
+    });
+  }
+  setActive();
+  window.addEventListener('hashchange', setActive);
+})();
+
+(function(){
+  var topbar = document.getElementById('topbar');
+  var hero = document.querySelector('.hero');
+  if(hero){
+    new IntersectionObserver(function(entries){
+      topbar.classList.toggle('solid', !entries[0].isIntersecting);
+    }, {threshold: 0.05}).observe(hero);
+  } else {
+    topbar.classList.add('solid');
+  }
+})();
+</script>
+</body>
+</html>

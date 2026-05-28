@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Služby – Auto Malý Evo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <a href="index.html">
+      <div class="logo-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+          <path d="M5 17H3a1 1 0 01-1-1v-3a4 4 0 014-4h12a4 4 0 014 4v3a1 1 0 01-1 1h-2M5 17v2m14-2v2M5 17h14" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="7.5" cy="17" r="1.5" fill="#1a1a1a"/>
+          <circle cx="16.5" cy="17" r="1.5" fill="#1a1a1a"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <strong>Auto Malý Evo</strong>
+        <span>Autoservis Brno</span>
+      </div>
+    </a>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-group-label">Hlavní</div>
+    <a href="index.html" data-page="index.html" data-hash="">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      Úvod
+    </a>
+    <a href="o-nas.html" data-page="o-nas.html" data-hash="">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      O nás
+    </a>
+    <div class="nav-group-label">Služby</div>
+    <a href="sluzby.html" data-page="sluzby.html" data-hash="">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M12 2v2M12 20v2M2 12h2M20 12h2"/></svg>
+      Mechanika
+    </a>
+    <a href="sluzby.html#pneu" data-page="sluzby.html" data-hash="pneu">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>
+      Pneuservis
+    </a>
+    <a href="sluzby.html#elekt" data-page="sluzby.html" data-hash="elekt">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      Elektronika
+    </a>
+    <a href="sluzby.html#prodej" data-page="sluzby.html" data-hash="prodej">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      Prodej
+    </a>
+    <div class="nav-group-label">Informace</div>
+    <a href="cenik.html" data-page="cenik.html" data-hash="">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+      Ceník
+    </a>
+    <a href="autobaterie.html" data-page="autobaterie.html" data-hash="">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="11" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="15"/><line x1="10" y1="13.5" x2="14" y2="13.5"/></svg>
+      Autobaterie
+    </a>
+    <a href="kontakt.html" data-page="kontakt.html" data-hash="">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.67 19.79 19.79 0 01.1 1.13 2 2 0 012.11 1H5a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      Kontakt
+    </a>
+  </nav>
+  <div class="sidebar-contact">
+    <p>Kontakt</p>
+    <a href="tel:+420549210115">+420 549 210 115</a>
+    <a href="mailto:servis@amevo.cz">servis@amevo.cz</a>
+  </div>
+</aside>
+
+<main class="main">
+
+  <div class="topbar" id="topbar">
+    <div class="topbar-left"></div>
+    <div class="topbar-actions">
+      <a href="tel:+420549210115" class="topbar-phone">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.67 19.79 19.79 0 01.1 1.13 2 2 0 012.11 1H5a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        +420 549 210 115
+      </a>
+      <a href="kontakt.html" class="btn-sm">Kontakt</a>
+    </div>
+  </div>
+
+  <div class="hero" style="padding:60px 48px">
+    <div class="hero-inner">
+      <h1>Naše <em>služby</em></h1>
+      <p>Kompletní servis vozidel všech značek do 4,5t a 3m výšky.</p>
+    </div>
+  </div>
+
+  <div class="content-section alt" id="mechanika">
+    <div class="section-eyebrow">Opravy</div>
+    <h2 class="section-h2">Mechanické opravy</h2>
+    <ul class="feature-list" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <li>Výměny olejů, provozních kapalin, filtrů včetně Haldex</li>
+      <li>Důkladná mechanická diagnostika a prohlídky vozu</li>
+      <li>Evidence vozu a oprav v čase</li>
+      <li>Tlaková výměna brzdové kapaliny</li>
+      <li>Měření tlaků paliva, oleje a mechanická diagnostika</li>
+      <li>Test motoru – úbytků tlaků válců</li>
+      <li>Výměny čepů, ložisek, ramen, silentbloků</li>
+      <li>Výměny spojek včetně SAC</li>
+      <li>Výměny výfuků a katalyzátorů</li>
+      <li>Měření emisí – benzín</li>
+      <li>Kontrola, výměna a opravy brzdových částí</li>
+      <li>Repase brzdových třmenů</li>
+      <li>Výroba brzdových trubek</li>
+      <li>Příprava a provedení STK / ME</li>
+      <li>Plnění klimatizace a diagnostika</li>
+      <li>Test vstřikovačů (benzín)</li>
+      <li>Ultrazvukové čištění vstřiků</li>
+      <li>Chemický test těsnosti hlavy válců</li>
+    </ul>
+  </div>
+
+  <div class="content-section" id="pneu">
+    <div class="section-eyebrow">Pneumatiky</div>
+    <h2 class="section-h2">Pneuservis</h2>
+    <ul class="feature-list">
+      <li>Výměna pneumatik</li>
+      <li>Vyvážení kol</li>
+      <li>Geometrie kol</li>
+      <li>Prodej nových pneu (Tasy, IHLE, K&amp;K pneu, GPD)</li>
+      <li>Montáž vlastních pneu za stejnou cenu</li>
+      <li>Likvidace pneu</li>
+      <li>Programování TPMS</li>
+    </ul>
+  </div>
+
+  <div class="content-section alt" id="elekt">
+    <div class="section-eyebrow">Diagnostika</div>
+    <h2 class="section-h2">Elektronika</h2>
+    <p class="section-desc">Zařízení: Texa, GM Tech 2, Autocom ADP186, Vag-Com, Bosch KTS 500, motortester Bosch MOT 250.</p>
+    <ul class="feature-list">
+      <li>Diagnostika všech elektronických systémů</li>
+      <li>Oprava el. systémů a kabelových svazků</li>
+      <li>Test a opravy napájecí soustavy</li>
+      <li>Opravy alternátorů a startérů</li>
+      <li>Elektronický tester stavu autobaterie (s tiskem protokolu)</li>
+      <li>Měření dobíjení a vybíjení vozu</li>
+    </ul>
+  </div>
+
+  <div class="content-section" id="prodej">
+    <div class="section-eyebrow">Prodej</div>
+    <h2 class="section-h2">Prodej dílů &amp; příslušenství</h2>
+    <ul class="feature-list">
+      <li>Prodej a servis autobaterií AKUMA, VARTA, Profi, Fiamm, Monbat</li>
+      <li>Prodej pneumatik a příslušenství</li>
+      <li>Prodej autodílů a motorových olejů</li>
+      <li>Prodej originálních dílů a kapalin OPEL</li>
+    </ul>
+  </div>
+
+  <div class="cta-band">
+    <div><h2>Objednejte se ještě dnes</h2><p>Volejte nebo pište.</p></div>
+    <a href="kontakt.html" class="btn-accent">Kontaktovat nás</a>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div><p style="font-size:14px;line-height:1.8">Rodinný autoservis s více než 30 lety tradice.</p></div>
+      <div>
+        <h4>Navigace</h4>
+        <ul>
+          <li><a href="index.html">Úvod</a></li>
+          <li><a href="o-nas.html">O nás</a></li>
+          <li><a href="sluzby.html">Služby</a></li>
+          <li><a href="cenik.html">Ceník</a></li>
+          <li><a href="autobaterie.html">Autobaterie</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <div class="fc-item">Valchařská 24/36, Brno</div>
+        <div class="fc-item">+420 549 210 115</div>
+        <div class="fc-item">servis@amevo.cz</div>
+      </div>
+      <div>
+        <h4>Otevírací doba</h4>
+        <div class="hr-row"><span>Po–Pá</span><span style="color:#fff">7:00–17:00</span></div>
+        <div class="hr-row"><span>Sobota</span><span style="color:#fff">8:00–12:00</span></div>
+        <div class="hr-row"><span>Neděle</span><span>Zavřeno</span></div>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© <span id="year"></span> Auto Malý Evo s.r.o.</span></div>
+  </footer>
+
+</main>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+(function(){
+  var page = window.location.pathname.split('/').pop() || 'index.html';
+  if(!page) page = 'index.html';
+  function setActive(){
+    var hash = window.location.hash.slice(1);
+    document.querySelectorAll('.sidebar-nav a[data-page]').forEach(function(a){
+      a.classList.remove('active');
+      if(a.dataset.page === page){
+        var ah = a.dataset.hash || '';
+        if(!hash && !ah){ a.classList.add('active'); }
+        else if(hash && ah === hash){ a.classList.add('active'); }
+      }
+    });
+  }
+  setActive();
+  window.addEventListener('hashchange', setActive);
+
+  // Update active nav on scroll for sections on this page
+  var sections = ['mechanika','pneu','elekt','prodej'];
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        var id = e.target.id;
+        window.history.replaceState(null, '', id ? '#'+id : window.location.pathname);
+        setActive();
+      }
+    });
+  }, {threshold: 0.4});
+  sections.forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) obs.observe(el);
+  });
+})();
+
+</script>
+</body>
+</html>

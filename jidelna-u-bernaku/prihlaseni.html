@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jídelna U berňáku – Přihlášení</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <h1>Jídelna U berňáku</h1>
+    <p class="subtitle">systém rezervací jídel</p>
+  </header>
+
+  <div class="site-wrap">
+    <nav class="sidebar">
+      <a href="index.html">Dnešní menu</a>
+      <a href="snidane.html">Snídaně</a>
+      <a href="zitrejsi-menu.html">Zítřejší menu</a>
+      <div class="nav-divider"></div>
+      <a href="kde-nas-najdete.html">Kudy k nám?</a>
+      <a href="oteviraci-doba.html">Otevírací doba</a>
+      <a href="kontakt.html">Kontakt</a>
+      <div class="nav-divider"></div>
+      <a href="prihlaseni.html" class="nav-login active" style="color:#fff;border-left-color:var(--hneda-cream);">Přihlášení do systému</a>
+    </nav>
+
+    <main class="content">
+      <h1 class="page-title">Přihlášení do systému</h1>
+      <p class="page-subtitle">rezervujte si jídla pohodlně přes internet</p>
+      <hr class="page-divider">
+
+      <div style="display:flex;gap:2rem;flex-wrap:wrap;align-items:flex-start;">
+
+        <div class="prihlaseni-stranka">
+          <div class="prihlaseni-card">
+            <h2>Přihlásit se</h2>
+            <form onsubmit="return false;">
+              <div class="pole-full">
+                <label for="login-user">Uživatelské jméno</label>
+                <input type="text" id="login-user" placeholder="Vaše uživatelské jméno">
+              </div>
+              <div class="pole-full">
+                <label for="login-pass">Heslo</label>
+                <input type="password" id="login-pass" placeholder="••••••••">
+              </div>
+              <button type="submit" class="btn btn-hneda">Přihlásit se</button>
+            </form>
+          </div>
+
+          <div class="prihlaseni-card">
+            <h2>Registrace nového účtu</h2>
+            <form onsubmit="return false;">
+              <div class="pole-full">
+                <label for="reg-user">Uživatelské jméno</label>
+                <input type="text" id="reg-user" placeholder="Zvolte si jméno">
+              </div>
+              <div class="pole-full">
+                <label for="reg-email">E-mail</label>
+                <input type="email" id="reg-email" placeholder="vas@email.cz">
+              </div>
+              <div class="pole-full">
+                <label for="reg-pass">Heslo</label>
+                <input type="password" id="reg-pass" placeholder="Zvolte si heslo">
+              </div>
+              <div class="pole-full">
+                <label for="reg-pass2">Heslo znovu</label>
+                <input type="password" id="reg-pass2" placeholder="Zopakujte heslo">
+              </div>
+              <button type="submit" class="btn btn-outline">Zaregistrovat se</button>
+            </form>
+          </div>
+        </div>
+
+        <div style="flex:1;min-width:220px;padding-top:0.5rem;">
+          <p class="prihlaseni-poznamka" style="margin-bottom:1rem;">
+            Systém rezervací Vám umožní objednat si jídlo předem. Oblíbené jídlo Vám tak nikdy nedojde.
+          </p>
+          <p class="prihlaseni-poznamka" style="margin-bottom:1rem;">
+            Po přihlášení budete mít přehled o Vašich objednávkách a zůstatku kreditu.
+          </p>
+          <p class="prihlaseni-poznamka">
+            Registrace je zdarma. V případě problémů nás kontaktujte na čísle
+            <a href="tel:+420491813499" style="color:var(--hneda-hlavni);font-weight:700;">491 813 499</a>.
+          </p>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p class="footer-nazev">Jídelna U berňáku</p>
+    <p class="footer-info">
+      Nádražní 904, 551 01 Jaroměř &nbsp;|&nbsp;
+      <a href="tel:+420491813499">491 813 499</a> &nbsp;|&nbsp;
+      Po–Pá 6:30–14:30
+    </p>
+    <p class="footer-copy">Vaříme česká domácí jídla z regionálních potravin.</p>
+  </footer>
+
+</body>
+</html>

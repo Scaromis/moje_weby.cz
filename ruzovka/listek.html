@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jídelní a nápojový lístek – Hostinec Růžovka Jaroměř." />
+  <title>Jídelní lístek | Hostinec Růžovka</title>
+  <link rel="stylesheet" href="style.css?v=4" />
+  <script>
+  !function(){var h=document.documentElement;
+  window.addEventListener('touchstart',function(){h.classList.remove('can-hover');},{passive:true});
+  window.addEventListener('mousemove',function(){h.classList.add('can-hover');},{passive:true});
+  }();
+  </script>
+  <style>
+    /* Doplňkové styly specifické pro tuto stránku */
+    .listek-page { padding: 52px 0 80px; }
+    .listek-page h1 { font-size: clamp(1.8rem,3.5vw,2.6rem); margin-bottom: 10px; }
+    .listek-page .sub { color: var(--text-light); margin-bottom: 36px; font-size:.95rem; }
+    .napoj-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media(max-width:700px){ .napoj-cols { grid-template-columns:1fr; } }
+    .napoj-block { background:var(--cream); border-radius:var(--radius); padding:20px 22px; }
+    .napoj-block h3 { font-size:1.1rem; margin-bottom:12px; border-bottom:2px solid var(--red); padding-bottom:6px; }
+    .napoj-row { display:flex; justify-content:space-between; align-items:baseline; padding:5px 0; border-bottom:1px dashed var(--cream-dark); font-size:.88rem; gap:8px; }
+    .napoj-row:last-child { border:none; }
+    .napoj-row .nname { color:var(--text); }
+    .napoj-row .nprice { font-weight:600; color:var(--red); white-space:nowrap; }
+    .napoj-row .nsize { color:var(--text-light); font-size:.78rem; margin-left:4px; }
+    /* Hlavičky tabulky nápojů s více sloupci */
+    .napoj-multi { width:100%; border-collapse:collapse; font-size:.88rem; }
+    .napoj-multi th { font-family:'Playfair Display',serif; color:var(--brown); font-size:.85rem; padding:5px 4px; border-bottom:1px solid var(--cream-dark); text-align:left; }
+    .napoj-multi th:not(:first-child) { text-align:right; }
+    .napoj-multi td { padding:5px 4px; border-bottom:1px dashed var(--cream-dark); vertical-align:middle; }
+    .napoj-multi td:not(:first-child) { text-align:right; font-weight:600; color:var(--red); }
+    .napoj-multi tr:last-child td { border:none; }
+    html.can-hover .napoj-multi tr:hover td { background:rgba(139,26,26,.04); }
+    /* Upozornění pro děti */
+    .info-note { font-size:.85rem; color:var(--text-light); font-style:italic; margin-top:10px; }
+    /* Kotva admin */
+    .admin-anchor { display:block; height:0; visibility:hidden; }
+  </style>
+</head>
+<body>
+
+<!-- ══ ADMIN BAR ══ -->
+<div class="admin-bar" id="adminBar">
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+  <span>Režim úpravy cen – klikni na cenu a přepiš</span>
+  <button id="adminSaveBtn">💾 Uložit</button>
+  <button id="adminResetBtn" style="background:rgba(255,255,255,.2);color:white;margin-left:4px;">Obnovit původní</button>
+  <button id="adminExitBtn" style="background:rgba(255,255,255,.2);color:white;">✕ Ukončit</button>
+</div>
+
+<!-- ══ HEADER ══ -->
+<header id="page-top">
+  <div class="header-inner">
+    <a href="index.html" class="logo-link">
+      <div class="logo-name">Hostinec Růžovka<span>Jaroměř</span></div>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="index.html">O nás</a></li>
+        <li><a href="listek.html" class="active">Jídelní lístek</a></li>
+        <li><a href="index.html#sipky">Šipky</a></li>
+        <li><a href="fotogalerie.html">Fotogalerie</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+        <li class="nav-rezervace"><a href="kontakt.html#rezervace" class="btn btn-primary">Rezervace</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ══ OBSAH ══ -->
+<main class="listek-page">
+  <div class="container">
+    <h1>Jídelní &amp; nápojový lístek</h1>
+    <p class="sub">Kompletní nabídka jídel a nápojů &nbsp;·&nbsp; <a href="download/dnesni-menu.pdf">Dnešní menu (PDF)</a></p>
+
+    <!-- Rychlá navigace -->
+    <nav class="listek-nav" aria-label="Sekce lístku">
+      <a href="#jidelni">Jídelní lístek</a>
+      <a href="#napojovy">Nápojový lístek</a>
+      <a href="#kureci">Kuřecí</a>
+      <a href="#veprove">Vepřové</a>
+      <a href="#salaty">Saláty</a>
+      <a href="#bezmasá">Bezmasá</a>
+      <a href="#prilohy">Přílohy</a>
+      <a href="#detska">Dětská jídla</a>
+      <a href="#pivo">Pivo</a>
+      <a href="#panduláci">Panďuláci</a>
+    </nav>
+
+    <!-- ════ JÍDELNÍ LÍSTEK ════ -->
+    <div class="listek-wrap" id="jidelni">
+      <div class="listek-section">
+        <h2>Jídelní lístek</h2>
+
+        <!-- Kuřecí -->
+        <h3 id="kureci">Kuřecí maso</h3>
+        <table class="menu-table">
+          <tbody>
+            <tr><td>150 g</td><td>Smažený kuřecí řízek</td><td class="price-cell"><span class="price-val" data-key="k1">169,-</span></td></tr>
+            <tr><td>150 g</td><td>Johančino tajemství<br><small>kuřecí prsíčka s broskví zapečená eidamem</small></td><td class="price-cell"><span class="price-val" data-key="k2">179,-</span></td></tr>
+            <tr><td>150 g</td><td>Kuřecí směs se zeleninou<br><small>kuřecí prsíčka, zelenina, provensálské koření</small></td><td class="price-cell"><span class="price-val" data-key="k3">179,-</span></td></tr>
+            <tr><td>150 g</td><td>Ďábelské kuřecí nudličky<br><small>kuřecí prsíčka, zelenina, feferónky, rajčatový protlak</small></td><td class="price-cell"><span class="price-val" data-key="k4">179,-</span></td></tr>
+            <tr><td>150 g</td><td>Kuřecí prsíčka na medu<br><small>kuřecí prsíčka, med, ořechy, niva</small></td><td class="price-cell"><span class="price-val" data-key="k5">179,-</span></td></tr>
+            <tr><td>150 g</td><td>Kuřecí prsíčka na žampionech<br><small>kuřecí prsíčka, žampiony, máslo</small></td><td class="price-cell"><span class="price-val" data-key="k6">179,-</span></td></tr>
+            <tr><td>150 g</td><td>Jaromírova kapsa<br><small>smažená kuřecí prsíčka plněná nivou a pórkem</small></td><td class="price-cell"><span class="price-val" data-key="k7">179,-</span></td></tr>
+          </tbody>
+        </table>
+
+        <!-- Vepřové -->
+        <h3 id="veprove">Vepřové maso</h3>
+        <table class="menu-table">
+          <tbody>
+            <tr><td>150 g</td><td>Smažený vepřový řízek</td><td class="price-cell"><span class="price-val" data-key="v1">159,-</span></td></tr>
+            <tr><td>150 g</td><td>Vepřový řízek Pavlišov<br><small>smažený řízek, houskový knedlík, zelí</small></td><td class="price-cell"><span class="price-val" data-key="v2">179,-</span></td></tr>
+            <tr><td>150 g</td><td>Pikantní vepřový steak<br><small>vepřová kýta, feferónky</small></td><td class="price-cell"><span class="price-val" data-key="v3">179,-</span></td></tr>
+            <tr><td>150 g</td><td>Vepřový steak NIVA<br><small>vepřová kýta a pórek, zapečené nivou</small></td><td class="price-cell"><span class="price-val" data-key="v4">179,-</span></td></tr>
+            <tr><td>150 g</td><td>Vepřový steak na žampionech<br><small>vepřová kýta, žampiony, máslo</small></td><td class="price-cell"><span class="price-val" data-key="v5">179,-</span></td></tr>
+          </tbody>
+        </table>
+
+        <!-- Saláty -->
+        <h3 id="salaty">Čerstvé zeleninové saláty</h3>
+        <table class="menu-table">
+          <tbody>
+            <tr><td>400 g</td><td>Zeleninový salát s kuřecím masem, toust</td><td class="price-cell"><span class="price-val" data-key="s1">169,-</span></td></tr>
+            <tr><td>400 g</td><td>Zeleninový salát s hermelínem, toust</td><td class="price-cell"><span class="price-val" data-key="s2">159,-</span></td></tr>
+            <tr><td>400 g</td><td>Zeleninový salát s tuňákem, toust</td><td class="price-cell"><span class="price-val" data-key="s3">159,-</span></td></tr>
+          </tbody>
+        </table>
+        <table class="menu-table" style="margin-top:8px;">
+          <tbody>
+            <tr><td style="width:160px;">Dresinky k salátům 50 g</td><td>Jogurtový s bylinkami</td><td class="price-cell"><span class="price-val" data-key="d1">25,-</span></td></tr>
+            <tr><td></td><td>Jogurtový s česnekem</td><td class="price-cell"><span class="price-val" data-key="d2">25,-</span></td></tr>
+            <tr><td></td><td>Francouzský</td><td class="price-cell"><span class="price-val" data-key="d3">25,-</span></td></tr>
+          </tbody>
+        </table>
+
+        <!-- Bezmasá -->
+        <h3 id="bezmasá">Bezmasá jídla</h3>
+        <table class="menu-table">
+          <tbody>
+            <tr><td>120 g</td><td>Smažený Eidam</td><td class="price-cell"><span class="price-val" data-key="b1">109,-</span></td></tr>
+            <tr><td>100 g</td><td>Smažený Hermelín</td><td class="price-cell"><span class="price-val" data-key="b2">116,-</span></td></tr>
+            <tr><td></td><td>Zeleninová směs Růžovka<br><small>orestovaná čerstvá zelenina, koření, máslo</small></td><td class="price-cell"><span class="price-val" data-key="b3">119,-</span></td></tr>
+          </tbody>
+        </table>
+
+        <!-- Přílohy -->
+        <h3 id="prilohy">Přílohy</h3>
+        <table class="menu-table">
+          <tbody>
+            <tr><td>200 g</td><td>Brambor</td><td class="price-cell"><span class="price-val" data-key="p1">25,-</span></td></tr>
+            <tr><td>150 g</td><td>Rýže</td><td class="price-cell"><span class="price-val" data-key="p2">25,-</span></td></tr>
+            <tr><td>4 ks</td><td>Houskový knedlík</td><td class="price-cell"><span class="price-val" data-key="p3">25,-</span></td></tr>
+            <tr><td>5 ks</td><td>Bramborový knedlík</td><td class="price-cell"><span class="price-val" data-key="p4">25,-</span></td></tr>
+            <tr><td>200 g</td><td>Bramborový salát</td><td class="price-cell"><span class="price-val" data-key="p5">35,-</span></td></tr>
+            <tr><td>100 g</td><td>Zelí</td><td class="price-cell"><span class="price-val" data-key="p6">25,-</span></td></tr>
+            <tr><td>100 g</td><td>Špenát</td><td class="price-cell"><span class="price-val" data-key="p7">25,-</span></td></tr>
+            <tr><td>150 g</td><td>Hranolky</td><td class="price-cell"><span class="price-val" data-key="p8">40,-</span></td></tr>
+            <tr><td>150 g</td><td>Americké brambory</td><td class="price-cell"><span class="price-val" data-key="p9">45,-</span></td></tr>
+            <tr><td>4 ks</td><td>Bramboráčky</td><td class="price-cell"><span class="price-val" data-key="p10">45,-</span></td></tr>
+            <tr><td>150 g</td><td>Krokety</td><td class="price-cell"><span class="price-val" data-key="p11">45,-</span></td></tr>
+            <tr><td>1 ks</td><td>Rohlík</td><td class="price-cell"><span class="price-val" data-key="p12">5,-</span></td></tr>
+            <tr><td>1 ks</td><td>Chléb</td><td class="price-cell"><span class="price-val" data-key="p13">2,-</span></td></tr>
+            <tr><td>30 g</td><td>Tatarská omáčka</td><td class="price-cell"><span class="price-val" data-key="p14">20,-</span></td></tr>
+            <tr><td>30 g</td><td>Kečup</td><td class="price-cell"><span class="price-val" data-key="p15">15,-</span></td></tr>
+            <tr><td>100 g</td><td>Zelný salát</td><td class="price-cell"><span class="price-val" data-key="p16">25,-</span></td></tr>
+          </tbody>
+        </table>
+
+        <!-- Dětská jídla -->
+        <h3 id="detska">Dětská jídla</h3>
+        <table class="menu-table">
+          <tbody>
+            <tr><td>75 g</td><td>Pipimňamka – kuřecí prsíčka přírodní nebo smažená, brambor</td><td class="price-cell"><span class="price-val" data-key="det1">78,-</span></td></tr>
+            <tr><td>75 g</td><td>Česílkova rybička – smažené rybí prsty, brambor</td><td class="price-cell"><span class="price-val" data-key="det2">72,-</span></td></tr>
+            <tr><td>150 g</td><td>Nudle Makové panenky – nudle s mákem</td><td class="price-cell"><span class="price-val" data-key="det3">62,-</span></td></tr>
+            <tr><td>150 g</td><td>Štaflíkovy špagetky – špagety s kečupem a sýrem</td><td class="price-cell"><span class="price-val" data-key="det4">62,-</span></td></tr>
+            <tr><td>250 g</td><td>Kašička ze zelenýho rendlíčka – krupicová kaše s cukrem a kakaem</td><td class="price-cell"><span class="price-val" data-key="det5">62,-</span></td></tr>
+          </tbody>
+        </table>
+        <p class="info-note">Jídla pro Vaše děti připravujeme na objednávku, proto počítejte s časovou prodlevou. Děkujeme za pochopení.</p>
+      </div>
+
+      <!-- ════ NÁPOJOVÝ LÍSTEK ════ -->
+      <div class="listek-section" id="napojovy">
+        <h2>Nápojový lístek</h2>
+
+        <div class="napoj-cols">
+
+          <!-- Levý sloupec -->
+          <div>
+            <div class="napoj-block">
+              <h3>Nealkoholické – rozlévané</h3>
+              <div class="napoj-row"><span class="nname">Perlivá voda <span class="nsize">0,2 l</span></span><span class="nprice"><span class="price-val" data-key="na1">8,-</span> Kč</span></div>
+              <div class="napoj-row"><span class="nname">Kohoutková voda s citrónem, džbánek <span class="nsize">1 l</span></span><span class="nprice"><span class="price-val" data-key="na2">30,-</span> Kč</span></div>
+              <div class="napoj-row"><span class="nname">Kohoutková voda <span class="nsize">0,3 l</span></span><span class="nprice"><span class="price-val" data-key="na3">10,-</span> Kč</span></div>
+              <div class="napoj-row"><span class="nname">Džus Relax <span class="nsize">0,25 l</span></span><span class="nprice"><span class="price-val" data-key="na4">34,-</span> Kč</span></div>
+              <div class="napoj-row"><span class="nname">Relax limo <span class="nsize">0,33 l</span></span><span class="nprice"><span class="price-val" data-key="na5">38,-</span> Kč</span></div>
+            </div>
+            <div class="napoj-block" style="margin-top:14px;">
+              <h3>Nealkoholické – sklo</h3>
+              <div class="napoj-row"><span class="nname">Coca Cola <span class="nsize">0,33 l</span></span><span class="nprice"><span class="price-val" data-key="nb1">38,-</span> Kč</span></div>
+              <div class="napoj-row"><span class="nname">Mattoni <span class="nsize">0,3 l</span></span><span class="nprice"><span class="price-val" data-key="nb2">24,-</span> Kč</span></div>
+              <div class="napoj-row"><span class="nname">Aquila neperlivá <span class="nsize">0,33 l</span></span><span class="nprice"><span class="price-val" data-key="nb3">24,-</span> Kč</span></div>
+              <div class="napoj-row"><span class="nname">Ovocná krabička <span class="nsize">0,2 l</span></span><span class="nprice"><span class="price-val" data-key="nb4">10,-</span> Kč</span></div>
+              <div class="napoj-row"><span class="nname">Točená Kofola <span class="nsize">0,1 l</span></span><span class="nprice"><span class="price-val" data-key="nb5">8,-</span> Kč</span></div>
+              <div class="napoj-row"><span class="nname">Birrell Pomelo <span class="nsize">0,1 l</span></span><span class="nprice"><span class="price-val" data-key="nb6">9,-</span> Kč</span></div>
+            </div>
+            <div class="napoj-block" style="margin-top:14px;">
+              <h3>Káva</h3>
+              <div class="napoj-row"><span class="nname">Turecká</span><span class="nprice"><span class="price-val" data-key="ka1">25,-</span> Kč</span></div>
+              <div class="napoj-row"><span class="nname">Espresso</span><span class="nprice"><span class="price-val" data-key="ka2">36,-</span> Kč</span></div>
+              <div class="napoj-row"><span class="nname">Cappuccino</span><span class="nprice"><span class="price-val" data-key="ka3">40,-</span> Kč</span></div>
+              <div class="napoj-row"><span class="nname">Vídeňská</span><span class="nprice"><span class="price-val" data-key="ka4">46,-</span> Kč</span></div>
+              <div class="napoj-row"><span class="nname">Caffe Latté</span><span class="nprice"><span class="price-val" data-key="ka5">46,-</span> Kč</span></div>
+              <div class="napoj-row"><span class="nname">Ledová káva</span><span class="nprice"><span class="price-val" data-key="ka6">46,-</span> Kč</span></div>
+            </div>
+            <div class="napoj-block" style="margin-top:14px;">
+              <h3>Čaj &amp; teplé nápoje</h3>
+              <div class="napoj-row"><span class="nname">Černý čaj</span><span class="nprice"><span class="price-val" data-key="ca1">25,-</span> Kč</span></div>
+              <div class="napoj-row"><span class="nname">Ovocný čaj</span><span class="nprice"><span class="price-val" data-key="ca2">25,-</span> Kč</span></div>
+              <div class="napoj-row"><span class="nname">Zelený čaj</span><span class="nprice"><span class="price-val" data-key="ca3">25,-</span> Kč</span></div>
+              <div class="napoj-row"><span class="nname">Grog</span><span class="nprice"><span class="price-val" data-key="ca4">40,-</span> Kč</span></div>
+              <div class="napoj-row"><span class="nname">Svařená Griotka</span><span class="nprice"><span class="price-val" data-key="ca5">35,-</span> Kč</span></div>
+              <div class="napoj-row"><span class="nname">Horká Medovina</span><span class="nprice"><span class="price-val" data-key="ca6">42,-</span> Kč</span></div>
+              <div class="napoj-row"><span class="nname">Svařené víno <span class="nsize">0,3 l</span></span><span class="nprice"><span class="price-val" data-key="ca7">57,-</span> Kč</span></div>
+            </div>
+            <div class="napoj-block" style="margin-top:14px;">
+              <h3>Energetické nápoje</h3>
+              <div class="napoj-row"><span class="nname">Red Bull</span><span class="nprice"><span class="price-val" data-key="en1">49,-</span> Kč</span></div>
+            </div>
+          </div>
+
+          <!-- Pravý sloupec -->
+          <div>
+            <div class="napoj-block" id="pivo">
+              <h3>Pivo točené</h3>
+              <table class="napoj-multi">
+                <thead><tr><th>Název</th><th>0,5 l</th><th>0,3 l</th></tr></thead>
+                <tbody>
+                  <tr><td>Krakonoš 12</td><td><span class="price-val" data-key="pi1a">32,-</span> Kč</td><td><span class="price-val" data-key="pi1b">19,-</span> Kč</td></tr>
+                  <tr><td>Ratar 11</td><td><span class="price-val" data-key="pi2a">47,-</span> Kč</td><td><span class="price-val" data-key="pi2b">27,-</span> Kč</td></tr>
+                  <tr><td>Krakonoš tmavý 10</td><td><span class="price-val" data-key="pi3a">30,-</span> Kč</td><td><span class="price-val" data-key="pi3b">18,-</span> Kč</td></tr>
+                  <tr><td>Plzeň</td><td><span class="price-val" data-key="pi4a">54,-</span> Kč</td><td><span class="price-val" data-key="pi4b">33,-</span> Kč</td></tr>
+                  <tr><td>Birell Pomelo</td><td><span class="price-val" data-key="pi5a">45,-</span> Kč</td><td><span class="price-val" data-key="pi5b">24,-</span> Kč</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="napoj-block" style="margin-top:14px;">
+              <h3>Pivo lahvové</h3>
+              <div class="napoj-row"><span class="nname">Radegast Birell světlý, polotmavý <span class="nsize">0,5 l</span></span><span class="nprice"><span class="price-val" data-key="pl1">35,-</span> Kč</span></div>
+            </div>
+            <div class="napoj-block" style="margin-top:14px;">
+              <h3>Víno</h3>
+              <div class="napoj-row"><span class="nname">Rozlévané bílé/červené <span class="nsize">0,2 l</span></span><span class="nprice"><span class="price-val" data-key="vi1">36,-</span> Kč</span></div>
+              <div class="napoj-row"><span class="nname">Rozlévané <span class="nsize">1 l</span></span><span class="nprice"><span class="price-val" data-key="vi2">180,-</span> Kč</span></div>
+              <div class="napoj-row"><span class="nname">Jakostní odrůdové <span class="nsize">0,7 l</span></span><span class="nprice"><span class="price-val" data-key="vi3">170,-</span> Kč</span></div>
+              <div class="napoj-row"><span class="nname">Přívlastkové <span class="nsize">0,7 l</span></span><span class="nprice"><span class="price-val" data-key="vi4">240,-</span> Kč</span></div>
+              <div class="napoj-row"><span class="nname">Bohemia Sekt <span class="nsize">0,7 l</span></span><span class="nprice"><span class="price-val" data-key="vi5">185,-</span> Kč</span></div>
+            </div>
+            <div class="napoj-block" style="margin-top:14px;" id="panduláci">
+              <h3>Panďuláci</h3>
+              <table class="napoj-multi">
+                <thead><tr><th>Název</th><th>0,05 l</th><th>0,02 l</th></tr></thead>
+                <tbody>
+                  <tr><td>Zelená</td><td><span class="price-val" data-key="pa1a">36,-</span> Kč</td><td><span class="price-val" data-key="pa1b">15,-</span> Kč</td></tr>
+                  <tr><td>Griotka</td><td><span class="price-val" data-key="pa2a">36,-</span> Kč</td><td><span class="price-val" data-key="pa2b">15,-</span> Kč</td></tr>
+                  <tr><td>Vaječný koňak</td><td><span class="price-val" data-key="pa3a">36,-</span> Kč</td><td><span class="price-val" data-key="pa3b">15,-</span> Kč</td></tr>
+                  <tr><td>Rum (Božkov)</td><td><span class="price-val" data-key="pa4a">39,-</span> Kč</td><td><span class="price-val" data-key="pa4b">16,-</span> Kč</td></tr>
+                  <tr><td>Vodka konzumní</td><td><span class="price-val" data-key="pa5a">39,-</span> Kč</td><td><span class="price-val" data-key="pa5b">16,-</span> Kč</td></tr>
+                  <tr><td>Berentzen</td><td><span class="price-val" data-key="pa6a">40,-</span> Kč</td><td><span class="price-val" data-key="pa6b">16,-</span> Kč</td></tr>
+                  <tr><td>Puschkin</td><td><span class="price-val" data-key="pa7a">40,-</span> Kč</td><td><span class="price-val" data-key="pa7b">16,-</span> Kč</td></tr>
+                  <tr><td>Fernet Stock</td><td><span class="price-val" data-key="pa8a">45,-</span> Kč</td><td><span class="price-val" data-key="pa8b">18,-</span> Kč</td></tr>
+                  <tr><td>Fernet Stock Citrus</td><td><span class="price-val" data-key="pa9a">45,-</span> Kč</td><td><span class="price-val" data-key="pa9b">18,-</span> Kč</td></tr>
+                  <tr><td>Fernet Stock 8000</td><td><span class="price-val" data-key="pa10a">45,-</span> Kč</td><td><span class="price-val" data-key="pa10b">18,-</span> Kč</td></tr>
+                  <tr><td>Moravská švestka Jelínek</td><td><span class="price-val" data-key="pa11a">42,-</span> Kč</td><td><span class="price-val" data-key="pa11b">17,-</span> Kč</td></tr>
+                  <tr><td>Becherovka</td><td><span class="price-val" data-key="pa12a">49,-</span> Kč</td><td><span class="price-val" data-key="pa12b">20,-</span> Kč</td></tr>
+                  <tr><td>Vodka Finlandia</td><td><span class="price-val" data-key="pa13a">48,-</span> Kč</td><td><span class="price-val" data-key="pa13b">20,-</span> Kč</td></tr>
+                  <tr><td>Beefeater Gin</td><td><span class="price-val" data-key="pa14a">55,-</span> Kč</td><td><span class="price-val" data-key="pa14b">22,-</span> Kč</td></tr>
+                  <tr><td>Jägermeister</td><td><span class="price-val" data-key="pa15a">58,-</span> Kč</td><td><span class="price-val" data-key="pa15b">24,-</span> Kč</td></tr>
+                  <tr><td>Absinth 70%</td><td><span class="price-val" data-key="pa16a">54,-</span> Kč</td><td><span class="price-val" data-key="pa16b">22,-</span> Kč</td></tr>
+                  <tr><td>Metaxa *****</td><td><span class="price-val" data-key="pa17a">55,-</span> Kč</td><td><span class="price-val" data-key="pa17b">22,-</span> Kč</td></tr>
+                  <tr><td>Jim Beam</td><td><span class="price-val" data-key="pa18a">60,-</span> Kč</td><td><span class="price-val" data-key="pa18b">24,-</span> Kč</td></tr>
+                  <tr><td>Ballantine's</td><td><span class="price-val" data-key="pa19a">60,-</span> Kč</td><td><span class="price-val" data-key="pa19b">24,-</span> Kč</td></tr>
+                  <tr><td>Johnnie Walker</td><td><span class="price-val" data-key="pa20a">60,-</span> Kč</td><td><span class="price-val" data-key="pa20b">24,-</span> Kč</td></tr>
+                  <tr><td>Jameson</td><td><span class="price-val" data-key="pa21a">70,-</span> Kč</td><td><span class="price-val" data-key="pa21b">28,-</span> Kč</td></tr>
+                  <tr><td>Tullamore</td><td><span class="price-val" data-key="pa22a">70,-</span> Kč</td><td><span class="price-val" data-key="pa22b">28,-</span> Kč</td></tr>
+                  <tr><td>Jack Daniel's / JD Fire</td><td><span class="price-val" data-key="pa23a">79,-</span> Kč</td><td><span class="price-val" data-key="pa23b">32,-</span> Kč</td></tr>
+                  <tr><td>Kraken</td><td><span class="price-val" data-key="pa24a">75,-</span> Kč</td><td><span class="price-val" data-key="pa24b">30,-</span> Kč</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div><!-- /napoj-cols -->
+      </div><!-- /listek-section napojovy -->
+    </div><!-- /listek-wrap -->
+
+  </div><!-- /container -->
+</main>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div style="margin-bottom:14px;">
+          <div style="font-family:'Playfair Display',serif;color:var(--cream);font-size:1.15rem;font-weight:700;">Hostinec Růžovka</div>
+        </div>
+        <address>
+          Na Vrších 257, 551 01 Jaroměř<br /><br />
+          <a href="tel:+420605173350" class="footer-tel">+420 605 173 350</a><br />
+          <a href="tel:+420704157935">+420 704 157 935</a> (rezervace)
+        </address>
+      </div>
+      <div>
+        <h4>Otevírací doba</h4>
+        <ul class="footer-otevreno">
+          <li><span>Po – Čt</span><span>11:00 – 24:00</span></li>
+          <li><span>Pátek</span><span>11:00 – 03:00</span></li>
+          <li><span>So – Ne</span><span>14:00 – 24:00</span></li>
+          <li><span>Kuchyň Po–Pá</span><span>11:00 – 15:00</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Navigace</h4>
+        <ul style="list-style:none;line-height:2;">
+          <li><a href="index.html">O nás</a></li>
+          <li><a href="listek.html">Jídelní lístek</a></li>
+          <li><a href="index.html#sipky">Šipky</a></li>
+          <li><a href="fotogalerie.html">Fotogalerie</a></li>
+          <li><a href="index.html#kontakt">Kontakt &amp; Mapa</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Hostinec Růžovka, Jaroměř. Veškerý obsah je chráněn autorským právem.</span>
+      <button class="admin-lock" id="adminLockBtn" title="Administrace" aria-label="Admin">
+        <svg width="16" height="16" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </button>
+    </div>
+  </div>
+</footer>
+
+<!-- Admin popup -->
+<span class="admin-anchor" id="admin"></span>
+<div class="admin-popup" id="adminPopup">
+  <label for="adminInput">Zadej přístupové heslo:</label>
+  <input type="password" id="adminInput" placeholder="heslo…" autocomplete="off" />
+  <p class="popup-hint" id="adminHint">Zadej heslo pro úpravu cen.</p>
+</div>
+
+<script>
+// ── Rok v patičce ──
+(function(){ const y = document.getElementById('year'); if(y) y.textContent = new Date().getFullYear(); })();
+
+// ── Načtení cen z localStorage ──
+const STORAGE_KEY = 'ruzovka_prices';
+function loadPrices() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+    document.querySelectorAll('.price-val').forEach(el => {
+      const key = el.dataset.key;
+      if (saved[key] !== undefined) el.textContent = saved[key];
+    });
+  } catch(e) {}
+}
+loadPrices();
+
+// ── Admin systém ──
+const adminBar    = document.getElementById('adminBar');
+const adminPopup  = document.getElementById('adminPopup');
+const adminInput  = document.getElementById('adminInput');
+const adminHint   = document.getElementById('adminHint');
+const lockBtn     = document.getElementById('adminLockBtn');
+let   adminMode   = false;
+
+// Otevřít popup kliknutím na zámek
+lockBtn.addEventListener('click', () => {
+  adminPopup.classList.toggle('open');
+  if (adminPopup.classList.contains('open')) adminInput.focus();
+});
+
+// Kontrola hesla po stisku Enter nebo každém znaku
+adminInput.addEventListener('input', () => {
+  if (adminInput.value === 'Asta_the_wizard_king') activateAdmin();
+});
+adminInput.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && adminInput.value === 'Asta_the_wizard_king') activateAdmin();
+});
+
+// Skrýt popup kliknutím mimo
+document.addEventListener('click', e => {
+  if (!e.target.closest('#adminPopup') && !e.target.closest('#adminLockBtn')) {
+    adminPopup.classList.remove('open');
+  }
+});
+
+// Otevřít automaticky pokud přijdeme přes #admin odkaz
+if (window.location.hash === '#admin') {
+  adminPopup.classList.add('open');
+  setTimeout(() => adminInput.focus(), 300);
+}
+
+function activateAdmin() {
+  adminMode = true;
+  adminPopup.classList.remove('open');
+  adminInput.value = '';
+  adminBar.classList.add('active');
+  document.body.classList.add('edit-mode');
+  // Přidat padding kvůli admin baru
+  document.body.style.paddingTop = '44px';
+  // Zpřístupnit ceny jako editovatelné
+  document.querySelectorAll('.price-val').forEach(el => {
+    el.contentEditable = 'true';
+    el.setAttribute('spellcheck', 'false');
+  });
+  adminHint.textContent = 'Aktivováno!';
+}
+
+function deactivateAdmin() {
+  adminMode = false;
+  adminBar.classList.remove('active');
+  document.body.classList.remove('edit-mode');
+  document.body.style.paddingTop = '';
+  document.querySelectorAll('.price-val').forEach(el => {
+    el.contentEditable = 'false';
+  });
+}
+
+// Uložit ceny
+document.getElementById('adminSaveBtn').addEventListener('click', () => {
+  const prices = {};
+  document.querySelectorAll('.price-val').forEach(el => {
+    prices[el.dataset.key] = el.textContent.trim();
+  });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(prices));
+  // Vizuální potvrzení
+  const btn = document.getElementById('adminSaveBtn');
+  const orig = btn.textContent;
+  btn.textContent = '✓ Uloženo!';
+  btn.style.background = '#2ecc71';
+  setTimeout(() => { btn.textContent = orig; btn.style.background = ''; }, 2000);
+});
+
+// Reset cen
+document.getElementById('adminResetBtn').addEventListener('click', () => {
+  if (!confirm('Opravdu obnovit původní ceny? Změny budou ztraceny.')) return;
+  localStorage.removeItem(STORAGE_KEY);
+  location.reload();
+});
+
+// Ukončit admin
+document.getElementById('adminExitBtn').addEventListener('click', deactivateAdmin);
+
+// ── Scroll reveal ──
+const reveals = document.querySelectorAll('.listek-section, .napoj-block, .card');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '1';
+      e.target.style.transform = 'translateY(0)';
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+reveals.forEach(el => {
+  el.style.opacity   = '0';
+  el.style.transform = 'translateY(22px)';
+  el.style.transition = 'opacity .5s ease, transform .5s ease';
+  obs.observe(el);
+});
+</script>
+</body>
+</html>

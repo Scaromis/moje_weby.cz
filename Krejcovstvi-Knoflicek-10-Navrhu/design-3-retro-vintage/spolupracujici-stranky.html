@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spolupracující stránky | Krejčovství Knoflíček</title>
+<meta name="description" content="Krejčovství Knoflíček Praha 9, Letňany — krejčovské práce od A do Z od roku 1994.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#faf3e0;--surface:#f0e6c8;--text:#2e1f14;--muted:#7a6050;--muted-dark:#4a3020;--accent:#8b1a1a;--accent-text:#faf3e0;--body-font:'Lato';--heading-font:'EB Garamond';--logo-color:#c8a97a;--logo-sub-color:rgba(240,230,200,.65);--logo-spacing:2px;--header-bg:#3d2518;--header-border:4px solid #c8a97a;--header-shadow:none;--nav-border:rgba(200,169,122,.3);--nav-text:rgba(240,230,200,.6);--nav-active:#c8a97a;--nav-hover:#c8a97a;--hero-bg:#3d2518;--hero-text:#c8a97a;--hero-sub:rgba(240,230,200,.6);--badge-bg:rgba(200,169,122,.2);--badge-text:#c8a97a;--inner-hero-bg:#3d2518;--inner-hero-border:4px solid #c8a97a;--inner-hero-text:#c8a97a;--page-sub-color:rgba(200,169,122,.7);--card-bg:#f0e6c8;--card-border:#c8a97a;--card-radius:2px;--h-head-bg:#3d2518;--h-head-text:#c8a97a;--today-bg:rgba(139,26,26,.08);--hover-row:rgba(200,169,122,.15);--footer-bg:#3d2518;--footer-text:rgba(240,230,200,.55);--footer-heading:#c8a97a;--footer-border:rgba(200,169,122,.2);--footer-dim:rgba(240,230,200,.25);--btn-radius:2px;--red:#8b1a1a;--shadow-color:rgba(92,61,46,.15);}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body-font),sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden}
+header{position:fixed;top:0;width:100%;z-index:100;background:var(--header-bg);border-bottom:var(--header-border);box-shadow:var(--header-shadow)}
+.logo-wrap{text-align:center;padding:1rem 1rem 0}
+.logo-name{font-family:var(--heading-font),serif;font-size:clamp(1.2rem,4.5vw,1.8rem);color:var(--logo-color);display:block;letter-spacing:var(--logo-spacing)}
+.logo-sub{font-size:.62rem;color:var(--logo-sub-color);letter-spacing:3px;text-transform:uppercase;display:block;margin-top:2px;margin-bottom:.7rem}
+nav{display:flex;flex-wrap:wrap;justify-content:center;border-top:1px solid var(--nav-border)}
+nav a{color:var(--nav-text);text-decoration:none;font-size:.71rem;padding:.6rem .6rem;font-weight:500;letter-spacing:.2px;position:relative;transition:color .22s,background .22s}
+nav a.active{color:var(--nav-active)}
+.hero-banner{background:var(--hero-bg);padding:3.5rem 1rem 3rem;text-align:center;position:relative;overflow:hidden}
+.hero-banner h1{font-family:var(--heading-font),serif;font-size:clamp(1.8rem,6vw,3rem);color:var(--hero-text);line-height:1.1;margin-bottom:.5rem}
+.hero-tagline{color:var(--hero-sub);font-size:.85rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:.8rem}
+.hero-badge{display:inline-block;background:var(--badge-bg);color:var(--badge-text);font-size:.72rem;font-weight:600;padding:.3rem .9rem;border-radius:100px;letter-spacing:.5px}
+.inner-hero{background:var(--inner-hero-bg);padding:2.5rem 1rem 2rem;text-align:center;border-bottom:var(--inner-hero-border);position:relative;overflow:hidden}
+.inner-hero h1{font-family:var(--heading-font),serif;font-size:clamp(1.7rem,5.5vw,2.6rem);color:var(--inner-hero-text);margin-bottom:.3rem}
+.page-sub{font-size:.72rem;color:var(--page-sub-color);letter-spacing:2.5px;text-transform:uppercase}
+.page-body{flex:1;max-width:860px;margin:0 auto;width:100%;padding:2rem 1rem 3.5rem}
+.lead{font-size:.95rem;line-height:1.8;color:var(--text);margin-bottom:1.8rem}
+.quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1.8rem}
+.quick-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--card-radius);padding:1rem;text-decoration:none;color:var(--text);display:flex;flex-direction:column;gap:.25rem;transition:transform .2s,box-shadow .2s}
+.qc-ico{font-size:1.5rem}
+.quick-card strong{font-size:.88rem;color:var(--accent)}
+.quick-card span{font-size:.75rem;color:var(--muted)}
+.cta-row{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.8rem;justify-content:space-between}
+.cta-btn{background:var(--accent);color:var(--accent-text);text-decoration:none;font-size:.75rem;font-weight:600;padding:.5rem 1.1rem;border-radius:var(--btn-radius);transition:opacity .2s;display:inline-block}
+.svc-block{margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid var(--card-border)}
+.svc-block:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.svc-block h2{font-family:var(--heading-font),serif;font-size:clamp(1.2rem,4vw,1.6rem);color:var(--accent);margin-bottom:.8rem}
+.svc-block h3{font-size:.83rem;font-weight:700;color:var(--text);margin:.8rem 0 .4rem;text-transform:uppercase;letter-spacing:.5px}
+.svc-block ul,.svc-block ol,.steps{padding-left:1.3rem;line-height:1}
+.svc-block li,.steps li{font-size:.88rem;color:var(--muted-dark);line-height:1;padding:.3rem 0}
+.svc-block p{font-size:.88rem;line-height:1.75;color:var(--muted-dark);margin:.5rem 0}
+.svc-note{font-size:.82rem;color:var(--muted);margin-top:.8rem!important;font-style:italic}
+.svc-cols{display:flex;flex-direction:column;gap:1rem}
+.info-box{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--card-radius);padding:1.5rem;margin-bottom:1.5rem}
+.info-box p{font-size:.88rem;line-height:1.75;color:var(--muted-dark);margin-bottom:.65rem}
+.info-box p:last-child{margin-bottom:0}
+.info-box h2{font-family:var(--heading-font),serif;font-size:1.1rem;color:var(--accent);margin-bottom:.6rem}
+.highlight-line{color:var(--accent)!important;font-weight:700!important;font-size:.9rem!important}
+.txt-link{color:var(--accent);text-decoration:underline}
+.contact-grid{display:grid;grid-template-columns:1fr;gap:.75rem}
+.ct-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--card-radius);padding:1.2rem}
+.ct-card h2{font-family:var(--heading-font),serif;font-size:1rem;color:var(--accent);margin-bottom:.6rem}
+.ct-card p{font-size:.85rem;line-height:1.7;color:var(--muted-dark);margin-bottom:.3rem}
+.ct-link{display:block;color:var(--accent);text-decoration:none;font-size:.88rem;margin-bottom:.3rem;font-weight:500}
+.map-btn{display:inline-block;margin-top:.5rem;font-size:.78rem;color:var(--accent);text-decoration:underline;font-weight:600}
+.hours-page{max-width:680px}
+.hours-wrap{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--card-radius);overflow:hidden}
+.h-head{display:grid;grid-template-columns:36% 1fr 1fr;background:var(--h-head-bg);padding:.7rem 1rem;gap:.5rem}
+.h-head span{font-size:.63rem;text-transform:uppercase;letter-spacing:2px;color:var(--h-head-text);font-weight:700}
+.h-row{display:grid;grid-template-columns:36% 1fr 1fr;padding:.95rem 1rem;gap:.5rem;border-top:1px solid var(--card-border);align-items:center;transition:background .18s}
+.h-day{font-weight:700;font-size:.88rem;color:var(--text)}
+.h-time{font-size:.85rem;color:var(--muted-dark)}
+.h-dash{color:var(--card-border);text-align:center;font-size:1.1rem}
+.h-closed{color:var(--red);font-weight:700;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;grid-column:2/4;text-align:center}
+.h-row.today{background:var(--today-bg)!important}
+.h-row.today .h-day{color:var(--accent)}
+.partner-list{display:flex;flex-direction:column;gap:.6rem;margin-top:1rem}
+.partner-item{background:var(--card-bg);border:1px solid var(--card-border);border-radius:var(--card-radius);padding:1rem 1.2rem;color:var(--accent);text-decoration:none;font-weight:600;font-size:.9rem;transition:transform .2s,box-shadow .2s}
+footer{background:var(--footer-bg);color:var(--footer-text);padding:2.2rem 5% 1.2rem;font-size:.8rem;position:relative;z-index:1}
+.f-grid{max-width:1100px;margin:0 auto 1.3rem;display:grid;grid-template-columns:1fr;gap:1.3rem}
+.f-sec h3{color:var(--footer-heading);font-size:.65rem;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:.55rem;font-weight:700}
+.f-sec p,.f-sec a{display:flex;align-items:flex-start;gap:6px;margin-bottom:.28rem;color:var(--footer-text);text-decoration:none;line-height:1.55;font-size:.78rem}
+.f-sec svg{flex-shrink:0;margin-top:2px}
+.f-closed{opacity:.7}
+.f-bottom{border-top:1px solid var(--footer-border);padding-top:.9rem;text-align:center;font-size:.68rem;color:var(--footer-dim)}
+@media(min-width:560px){.quick-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:640px){.contact-grid{grid-template-columns:1fr 1fr}.svc-cols{flex-direction:row}.svc-cols>div{flex:1}}
+@media(min-width:768px){
+  nav a{font-size:.76rem;padding:.72rem .95rem}
+  .page-body{padding:2.5rem 2rem 4.5rem}
+  .inner-hero{padding:3rem 2rem 2.5rem}
+  .hero-banner{padding:4.5rem 2rem 4rem}
+  .f-grid{grid-template-columns:1fr 1fr 1fr}
+  .quick-grid{grid-template-columns:repeat(4,1fr)}
+}
+@media(hover:hover){
+  nav a:hover{color:var(--nav-hover)}
+  .quick-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px var(--shadow-color)}
+  .partner-item:hover{transform:translateY(-2px);box-shadow:0 6px 20px var(--shadow-color)}
+  .cta-btn:hover{opacity:.82}
+  .h-row:hover{background:var(--hover-row)!important}
+  .ct-link:hover{text-decoration:underline}
+}
+
+body{background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c8a97a' fill-opacity='0.07'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E")}.logo-name::before,.logo-name::after{content:' ✂ '}.svc-block h2{border-left:4px solid #c8a97a;padding-left:.7rem}.info-box{border:2px solid #c8a97a;box-shadow:3px 3px 0 rgba(200,169,122,.4)}.hours-wrap{border:2px solid #c8a97a;box-shadow:3px 3px 0 rgba(200,169,122,.4)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-wrap">
+    <span class="logo-name">Krejčovství Knoflíček</span>
+    <span class="logo-sub">Praha 9 · Letňany · Od roku 1994</span>
+  </div>
+  <nav>
+    <a href="index.html">O nás</a>
+    <a href="nabidka-sluzeb.html">Nabídka služeb</a>
+    <a href="oteviraci-doba.html">Otevírací doba</a>
+    <a href="cenik.html">Ceník</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="cisteni-peri.html">Čištění peří</a>
+    <a href="spolupracujici-stranky.html" class="active">Spolupracující stránky</a>
+  </nav>
+</header>
+<div class="inner-hero">
+  <h1>Spolupracující stránky</h1>
+  <p class="page-sub">Krejčovství Knoflíček</p>
+</div>
+<div class="page-body">
+  <p class="lead">Na této stránce naleznete odkazy na weby, se kterými spolupracujeme.</p>
+  <div class="partner-list">
+    <a class="partner-item" href="http://rc-tanky.com" target="_blank" rel="noopener">rc-tanky.com ↗</a>
+    <a class="partner-item" href="http://peri-mares.cz" target="_blank" rel="noopener">peri-mares.cz ↗</a>
+    <a class="partner-item" href="http://www.terezajanmua.com" target="_blank" rel="noopener">terezajanmua.com ↗</a>
+  </div>
+</div>
+<footer>
+  <div class="f-grid">
+    <div class="f-sec">
+      <h3>Kontakt</h3>
+      <p><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg> Bludovická 397, 199 00 Praha 9, Letňany</p>
+      <a href="tel:+420283921733"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 010 1.18 2 2 0 011.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L5.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg> +420 283 921 733</a>
+      <a href="tel:+420604244211"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> +420 604 244 211</a>
+      <a href="mailto:zdenka.knoflik@seznam.cz"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> zdenka.knoflik@seznam.cz</a>
+    </div>
+    <div class="f-sec">
+      <h3>Otevírací doba</h3>
+      <p><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Pondělí: 08–11:30 | 12:30–18:00</p>
+      <p><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Úterý: 12:30–17:00</p>
+      <p><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Středa: 12:30–19:00</p>
+      <p><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Čtvrtek: 10–11:30 | 12:30–17:00</p>
+      <p class="f-closed"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Pátek: Zavřeno</p>
+    </div>
+    <div class="f-sec">
+      <h3>Informace</h3>
+      <p><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Krejčovství od roku 1994</p>
+      <p><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> Přijímáme platební karty</p>
+      <p><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> IČ: 47130822</p>
+    </div>
+  </div>
+  <div class="f-bottom">© <span class="yr"></span> Krejčovství Knoflíček — Veškerý obsah těchto stránek je chráněn autorským právem.</div>
+</footer>
+<script>
+var hdr=document.querySelector('header');if(hdr){document.body.style.paddingTop=hdr.offsetHeight+'px';window.addEventListener('resize',function(){document.body.style.paddingTop=hdr.offsetHeight+'px';});}
+document.querySelectorAll('.yr').forEach(function(el){el.textContent=new Date().getFullYear()});
+var h=document.querySelector('.hero-banner h1,.inner-hero h1');if(h){var txt=h.textContent,i=0;h.textContent='';h.style.borderRight='2px solid #c8a97a';var ti=setInterval(function(){h.textContent+=txt[i++];if(i>=txt.length){clearInterval(ti);setTimeout(function(){h.style.borderRight='none'},600)}},70)}var t=new Date().getDay();document.querySelectorAll('.h-row').forEach(function(r){if(+r.dataset.day===t)r.classList.add('today')});
+</script>
+</body>
+</html>
