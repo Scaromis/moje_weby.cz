@@ -8,6 +8,13 @@
 </head>
 <body>
 
+  <div class="mob-bar">
+    <a href="index.html" class="mob-title">Jídelna U berňáku</a>
+    <button class="hamburger" aria-label="Otevřít menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
   <header class="site-header">
     <h1>Jídelna U berňáku</h1>
     <p class="subtitle">nabídka na zítra</p>
@@ -83,9 +90,10 @@
     <p class="footer-info">
       Nádražní 904, 551 01 Jaroměř &nbsp;|&nbsp;
       <a href="tel:+420491813499">491 813 499</a> &nbsp;|&nbsp;
+      <a href="mailto:jidelna@ubernaku.cz">jidelna@ubernaku.cz</a> &nbsp;|&nbsp;
       Po–Pá 6:30–14:30
     </p>
-    <p class="footer-copy">Vaříme česká domácí jídla z regionálních potravin.</p>
+    <p class="footer-copy">© 2026 · Jídelna U berňáku · Všechna práva vyhrazena</p>
   </footer>
 
   <script>
@@ -95,6 +103,22 @@
       var mesice = ['ledna','února','března','dubna','května','června','července','srpna','září','října','listopadu','prosince'];
       document.getElementById('datum-zitra').textContent =
         dny[zitra.getDay()] + ' ' + zitra.getDate() + '. ' + mesice[zitra.getMonth()] + ' ' + zitra.getFullYear();
+    })();
+
+    (function() {
+      var btn = document.querySelector('.hamburger');
+      var nav = document.querySelector('.sidebar');
+      if (!btn || !nav) return;
+      btn.addEventListener('click', function() {
+        btn.classList.toggle('open');
+        nav.classList.toggle('open');
+      });
+      nav.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() {
+          btn.classList.remove('open');
+          nav.classList.remove('open');
+        });
+      });
     })();
   </script>
 

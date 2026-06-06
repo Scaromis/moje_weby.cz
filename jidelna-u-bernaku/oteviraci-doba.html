@@ -8,6 +8,13 @@
 </head>
 <body>
 
+  <div class="mob-bar">
+    <a href="index.html" class="mob-title">Jídelna U berňáku</a>
+    <button class="hamburger" aria-label="Otevřít menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
   <header class="site-header">
     <h1>Jídelna U berňáku</h1>
     <p class="subtitle">otevírací doba</p>
@@ -87,7 +94,6 @@
       <div class="info-box" style="margin-top:1.8rem;">
         Snídaně podáváme od 6:30 do 9:00. Obědy vydáváme od 11:00 do 14:30. Příchod doporučujeme nejpozději do 14:15.
       </div>
-
     </main>
   </div>
 
@@ -96,21 +102,20 @@
     <p class="footer-info">
       Nádražní 904, 551 01 Jaroměř &nbsp;|&nbsp;
       <a href="tel:+420491813499">491 813 499</a> &nbsp;|&nbsp;
+      <a href="mailto:jidelna@ubernaku.cz">jidelna@ubernaku.cz</a> &nbsp;|&nbsp;
       Po–Pá 6:30–14:30
     </p>
-    <p class="footer-copy">Vaříme česká domácí jídla z regionálních potravin.</p>
+    <p class="footer-copy">© 2026 · Jídelna U berňáku · Všechna práva vyhrazena</p>
   </footer>
 
   <script>
-    // Zvýrazni dnešní den
     (function() {
-      var den = new Date().getDay(); // 0=ne,1=po,...
+      var den = new Date().getDay();
       var tagy = { 1:'tag-po', 2:'tag-ut', 3:'tag-st', 4:'tag-ct', 5:'tag-pa' };
       var now = new Date();
       var total = now.getHours() * 60 + now.getMinutes();
       var otevreno = 6 * 60 + 30;
       var zavreno  = 14 * 60 + 30;
-
       if (tagy[den]) {
         var el = document.getElementById(tagy[den]);
         var jeNyniOtevreno = total >= otevreno && total < zavreno;
@@ -120,10 +125,25 @@
         } else {
           el.textContent = 'právě otevřeno';
         }
-        // Zvýrazni řádek
         el.closest('tr').style.backgroundColor = 'var(--hneda-pozadi)';
         el.closest('tr').style.fontWeight = '700';
       }
+    })();
+
+    (function() {
+      var btn = document.querySelector('.hamburger');
+      var nav = document.querySelector('.sidebar');
+      if (!btn || !nav) return;
+      btn.addEventListener('click', function() {
+        btn.classList.toggle('open');
+        nav.classList.toggle('open');
+      });
+      nav.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() {
+          btn.classList.remove('open');
+          nav.classList.remove('open');
+        });
+      });
     })();
   </script>
 
