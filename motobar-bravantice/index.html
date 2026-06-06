@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motobar Bravantice – Restaurace & Penzion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --blue-dark: #0d2b5e;
+  --blue: #1a4a9c;
+  --blue-light: #2563c0;
+  --brown: #7a4c20;
+  --brown-dark: #4e2f0e;
+  --brown-light: #c8904a;
+  --white: #ffffff;
+  --off-white: #f8f5f1;
+  --text: #222222;
+  --text-light: #555555;
+  --border: rgba(255,255,255,0.15);
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Roboto', sans-serif;
+  color: var(--text);
+  background: var(--white);
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+
+/* ===== COOKIE BANNER ===== */
+#cookie-banner {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  background: var(--blue-dark);
+  color: var(--white);
+  padding: 1rem 1.5rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+#cookie-banner p { font-size: 0.85rem; line-height: 1.5; }
+#cookie-banner p a { color: var(--brown-light); text-decoration: underline; }
+.cookie-btns { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.cookie-btn {
+  padding: 0.5rem 1.1rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  font-weight: 500;
+  transition: opacity 0.2s;
+}
+.cookie-btn:hover { opacity: 0.85; }
+.cookie-accept { background: var(--brown-light); color: var(--white); }
+.cookie-reject { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,0.4); }
+
+/* ===== HEADER ===== */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 5%;
+  height: 64px;
+  background: rgba(13,43,94,0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s;
+}
+header.scrolled { background: var(--blue-dark); }
+.logo-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  color: var(--white);
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+.logo-text span { color: var(--brown-light); }
+nav { display: flex; gap: 0; }
+nav a {
+  color: rgba(255,255,255,0.85);
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.4rem 0.9rem;
+  border-radius: 4px;
+  letter-spacing: 0.02em;
+  transition: color 0.2s, background 0.2s;
+  position: relative;
+}
+nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 50%; right: 50%;
+  height: 2px;
+  background: var(--brown-light);
+  transition: left 0.25s, right 0.25s;
+  border-radius: 2px;
+}
+nav a:hover { color: var(--white); }
+nav a:hover::after { left: 0.9rem; right: 0.9rem; }
+
+/* ===== HERO ===== */
+#uvod {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 1.5rem 3rem;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('https://www.bravantice.cz/evt_image.php?img=1990') center/cover no-repeat;
+  filter: brightness(0.45);
+  z-index: 0;
+  transform: scale(1.05);
+  animation: zoomOut 8s ease forwards;
+}
+@keyframes zoomOut { to { transform: scale(1); } }
+.hero-content { position: relative; z-index: 1; }
+.hero-logo-wrap {
+  width: 130px; height: 130px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: 3px solid rgba(200,144,74,0.7);
+  backdrop-filter: blur(4px);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+.hero-logo-wrap svg { width: 70px; height: 70px; }
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 7vw, 3.8rem);
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 0.4rem;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+}
+h1 span { color: var(--brown-light); }
+.hero-sub {
+  font-size: clamp(0.9rem, 2.5vw, 1.15rem);
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 2rem;
+  max-width: 520px;
+  margin-left: auto; margin-right: auto;
+}
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+.badge {
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: var(--white);
+  border-radius: 20px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.8rem;
+  backdrop-filter: blur(4px);
+}
+.btn {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  letter-spacing: 0.03em;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.25); }
+.btn-primary { background: var(--brown); color: var(--white); }
+.btn-primary:hover { background: var(--brown-dark); }
+.scroll-arrow {
+  position: absolute;
+  bottom: 2rem; left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  animation: bounce 2s ease-in-out infinite;
+  opacity: 0.7;
+}
+.scroll-arrow svg { color: var(--white); width: 28px; height: 28px; }
+@keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+
+/* ===== SECTIONS ===== */
+section { scroll-margin-top: 64px; }
+.section-inner { max-width: 1100px; margin: 0 auto; padding: 5rem 5%; }
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brown);
+  margin-bottom: 0.5rem;
+}
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  color: var(--blue-dark);
+  margin-bottom: 1rem;
+  line-height: 1.15;
+}
+.divider {
+  width: 48px; height: 3px;
+  background: var(--brown-light);
+  border-radius: 3px;
+  margin-bottom: 2rem;
+}
+
+/* ===== MENU SECTION ===== */
+#menu { background: var(--off-white); }
+
+/* Daily menu */
+.daily-menu-box {
+  background: var(--blue-dark);
+  color: var(--white);
+  border-radius: 12px;
+  padding: 1.8rem 2rem;
+  margin-bottom: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.daily-menu-box::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 160px; height: 160px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 50%;
+}
+.daily-menu-box h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  margin-bottom: 0.3rem;
+}
+.daily-menu-box .menu-time {
+  font-size: 0.8rem;
+  opacity: 0.65;
+  margin-bottom: 1.2rem;
+}
+.daily-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  flex-wrap: wrap;
+}
+.daily-item:last-child { border-bottom: none; }
+.daily-item-name { font-size: 0.95rem; }
+.daily-item-soup { font-style: italic; opacity: 0.7; font-size: 0.9rem; }
+.daily-price {
+  font-weight: 700;
+  color: var(--brown-light);
+  white-space: nowrap;
+  font-size: 1rem;
+}
+.menu-note { font-size: 0.78rem; opacity: 0.55; margin-top: 1rem; }
+
+/* Menu cards */
+.menu-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+.menu-card {
+  background: var(--white);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+  transition: box-shadow 0.25s, transform 0.25s;
+  cursor: pointer;
+}
+.menu-card-header {
+  background: var(--blue-dark);
+  color: var(--white);
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.menu-card-header svg { width: 22px; height: 22px; opacity: 0.85; flex-shrink: 0; }
+.menu-card-header h3 { font-size: 1.05rem; font-weight: 600; }
+.menu-card-body { padding: 1.5rem; }
+.menu-category {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brown);
+  margin: 1.1rem 0 0.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid #eee;
+}
+.menu-category:first-child { margin-top: 0; }
+.menu-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px dashed #f0ebe4;
+  flex-wrap: wrap;
+}
+.menu-row:last-child { border-bottom: none; }
+.menu-item-name { font-size: 0.88rem; color: var(--text); }
+.menu-item-weight { font-size: 0.75rem; color: var(--text-light); }
+.menu-item-price {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: var(--blue-dark);
+  white-space: nowrap;
+  data-price: attr(data-price);
+}
+
+/* Password lock */
+.price-lock-section {
+  background: var(--white);
+  border: 2px dashed #ddd;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+.lock-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+.price-lock-section p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 1rem; }
+.lock-form { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
+.lock-input {
+  padding: 0.6rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.9rem;
+  width: 220px;
+}
+.btn-lock { background: var(--blue-dark); color: var(--white); padding: 0.6rem 1.4rem; font-size: 0.9rem; }
+
+/* Edit mode */
+.price-edit-panel {
+  display: none;
+  background: #fff;
+  border: 2px solid var(--brown-light);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+}
+.price-edit-panel h4 { margin-bottom: 1rem; color: var(--blue-dark); font-size: 1rem; }
+.edit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1.5rem; margin-bottom: 1rem; }
+.edit-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #f0ebe4;
+}
+.edit-row label { font-size: 0.82rem; color: var(--text); flex: 1; }
+.edit-row input {
+  width: 80px;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  text-align: right;
+  font-family: 'Roboto', sans-serif;
+}
+.edit-actions { display: flex; gap: 0.7rem; flex-wrap: wrap; justify-content: flex-end; }
+.btn-save { background: var(--brown); color: var(--white); font-size: 0.88rem; padding: 0.55rem 1.3rem; }
+.btn-close-edit { background: transparent; color: var(--text-light); font-size: 0.88rem; padding: 0.55rem 1rem; border: 1px solid #ccc; border-radius: 6px; cursor: pointer; font-family: 'Roboto', sans-serif; transition: background 0.2s; }
+.btn-close-edit:hover { background: #f5f5f5; }
+.edit-saved-msg { font-size: 0.82rem; color: green; display: none; margin-top: 0.5rem; }
+
+/* ===== ABOUT strip ===== */
+.about-strip {
+  background: var(--blue-dark);
+  color: var(--white);
+  padding: 3.5rem 5%;
+}
+.about-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+.about-text h2 { color: var(--white); }
+.about-text p { font-size: 0.95rem; line-height: 1.75; color: rgba(255,255,255,0.8); margin-bottom: 1rem; }
+.about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 1.5rem; }
+.feat {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.45;
+}
+.feat svg { width: 18px; height: 18px; color: var(--brown-light); flex-shrink: 0; margin-top: 2px; }
+.about-img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+.about-img-grid img { border-radius: 8px; width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+
+/* ===== UBYTOVÁNÍ ===== */
+#ubytovani { background: var(--white); }
+.pension-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+.pension-text p { font-size: 0.95rem; line-height: 1.75; color: var(--text-light); margin-bottom: 1rem; }
+.pension-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 1.5rem; }
+.highlight {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.75rem;
+  background: var(--off-white);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: var(--text);
+  line-height: 1.4;
+}
+.highlight svg { width: 18px; height: 18px; color: var(--blue); flex-shrink: 0; margin-top: 1px; }
+.pension-info-box {
+  background: var(--blue-dark);
+  color: var(--white);
+  border-radius: 12px;
+  padding: 2rem;
+}
+.pension-info-box h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  color: var(--white);
+}
+.info-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.85);
+}
+.info-row:last-child { border-bottom: none; }
+.info-row svg { width: 18px; height: 18px; color: var(--brown-light); flex-shrink: 0; }
+.info-row strong { color: var(--white); }
+.pension-tag {
+  display: inline-block;
+  background: var(--brown);
+  color: var(--white);
+  border-radius: 20px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-top: 1.2rem;
+  letter-spacing: 0.04em;
+}
+
+/* ===== KONTAKT ===== */
+#kontakt { background: var(--off-white); }
+.kontakt-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 2.5rem; align-items: start; }
+.contact-card {
+  background: var(--blue-dark);
+  color: var(--white);
+  border-radius: 12px;
+  padding: 2rem;
+}
+.contact-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  margin-bottom: 1.2rem;
+}
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.45;
+}
+.contact-item:last-child { border-bottom: none; }
+.contact-item svg { width: 18px; height: 18px; color: var(--brown-light); flex-shrink: 0; margin-top: 2px; }
+.contact-item a { color: rgba(255,255,255,0.85); transition: color 0.2s; }
+.contact-item a:hover { color: var(--brown-light); }
+.opening-table { width: 100%; margin-top: 1rem; }
+.opening-table tr td { padding: 0.4rem 0; font-size: 0.88rem; color: rgba(255,255,255,0.8); }
+.opening-table tr td:first-child { padding-right: 1rem; font-weight: 500; color: var(--white); }
+.map-wrap {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+}
+.map-wrap iframe { width: 100%; height: 380px; border: none; display: block; }
+
+/* ===== FOOTER ===== */
+footer {
+  background: #080f1f;
+  color: rgba(255,255,255,0.65);
+  padding: 2rem 5%;
+}
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-col h4 {
+  color: var(--white);
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.05em;
+}
+.footer-col p, .footer-col a {
+  font-size: 0.82rem;
+  line-height: 1.8;
+  display: block;
+  color: rgba(255,255,255,0.6);
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--brown-light); }
+.footer-bottom {
+  max-width: 1100px;
+  margin: 1.2rem auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+}
+.footer-bottom span { color: rgba(255,255,255,0.35); }
+.footer-copy { color: rgba(255,255,255,0.4); }
+
+/* ===== SCROLL REVEAL ===== */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ===== TABLET / MOBILE ===== */
+@media (max-width: 700px) {
+  nav a { padding: 0.4rem 0.5rem; font-size: 0.82rem; }
+  .logo-text { font-size: 1rem; }
+  .menu-cards { grid-template-columns: 1fr; }
+  .about-inner { grid-template-columns: 1fr; }
+  .about-img-grid { display: none; }
+  .pension-grid { grid-template-columns: 1fr; }
+  .pension-highlights { grid-template-columns: 1fr; }
+  .kontakt-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 1.2rem; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .edit-grid { grid-template-columns: 1fr; }
+  .about-features { grid-template-columns: 1fr; }
+}
+@media (min-width: 701px) and (max-width: 900px) {
+  .menu-cards { grid-template-columns: 1fr 1fr; }
+  .about-inner { grid-template-columns: 1fr; }
+  .about-img-grid { display: none; }
+  .pension-grid { grid-template-columns: 1fr; }
+  .kontakt-grid { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner" role="region" aria-label="Souhlas s cookies">
+  <p>Tento web používá cookies nezbytné pro správné fungování stránek. Kliknutím na „Přijmout vše" souhlasíte i s analytickými cookies. Více v <a href="#kontakt">Zásadách ochrany osobních údajů</a>.</p>
+  <div class="cookie-btns">
+    <button class="cookie-btn cookie-accept" onclick="acceptCookies()">Přijmout vše</button>
+    <button class="cookie-btn cookie-reject" onclick="rejectCookies()">Pouze nezbytné</button>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="site-header">
+  <div class="logo-text">MOTOBAR <span>BRAVANTICE</span></div>
+  <nav>
+    <a href="#uvod">Úvod</a>
+    <a href="#menu">Menu</a>
+    <a href="#ubytovani">Ubytování</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section id="uvod">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-logo-wrap">
+      <!-- Moto / kolo ikona -->
+      <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="52" r="13" stroke="#c8904a" stroke-width="3"/>
+        <circle cx="60" cy="52" r="13" stroke="#c8904a" stroke-width="3"/>
+        <path d="M20 52 L33 30 L47 30 L60 52" stroke="#c8904a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M33 30 L38 20 L50 20" stroke="#c8904a" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="20" cy="52" r="4" fill="#c8904a"/>
+        <circle cx="60" cy="52" r="4" fill="#c8904a"/>
+      </svg>
+    </div>
+    <h1>Motobar <span>Bravantice</span></h1>
+    <p class="hero-sub">Restaurace s nevšedním interiérem u dálnice D1 — skvělá česká kuchyně, pivo jako křen a ubytování non-stop.</p>
+    <div class="hero-badges">
+      <span class="badge">🍺 Točená Plzeň</span>
+      <span class="badge">🏍️ Přátelé motorkářů</span>
+      <span class="badge">🛏️ Penzion non-stop</span>
+      <span class="badge">🌿 Letní zahrádka</span>
+    </div>
+    <a href="#menu" class="btn btn-primary">Prohlédnout menu</a>
+  </div>
+  <div class="scroll-arrow">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 12 15 18 9"/>
+    </svg>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="section-inner">
+    <p class="section-label reveal">Jídlo & Pití</p>
+    <h2 class="reveal">Naše menu</h2>
+    <div class="divider reveal"></div>
+
+    <!-- Denní menu -->
+    <div class="daily-menu-box reveal">
+      <h3>🍽️ Denní menu</h3>
+      <p class="menu-time">Podáváme každý den 10:00 – 14:00 · Polovina porce = 70 % ceny</p>
+      <div class="daily-item">
+        <span class="daily-item-soup">Polévka: Frankfurtská</span>
+      </div>
+      <div class="daily-item">
+        <span class="daily-item-name">1. &nbsp;150 g Drůbeží perkelt, těstoviny</span>
+        <span class="daily-price">169 Kč</span>
+      </div>
+      <div class="daily-item">
+        <span class="daily-item-name">2. &nbsp;150 g Pečené kolínko, červené zelí, knedlík</span>
+        <span class="daily-price">179 Kč</span>
+      </div>
+      <p class="menu-note">Menu se aktualizuje každý den. Aktuální denní menu najdete také na <a href="https://www.menicka.cz/2101-motobar-bravantice.html" target="_blank" rel="noopener" style="color:var(--brown-light);text-decoration:underline;">menicka.cz</a>.</p>
+    </div>
+
+    <!-- Jídelní & Nápojový lístek -->
+    <div class="menu-cards">
+      <!-- Jídelní lístek -->
+      <div class="menu-card reveal">
+        <div class="menu-card-header">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 002-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 00-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg>
+          <h3>Jídelní lístek</h3>
+        </div>
+        <div class="menu-card-body" id="jidelni-listek">
+          <p class="menu-category">Polévky</p>
+          <div class="menu-row"><span class="menu-item-name">Frankfurtská <span class="menu-item-weight">(0,33 l)</span></span><span class="menu-item-price" data-key="pol-frank">40 Kč</span></div>
+          <div class="menu-row"><span class="menu-item-name">Gulášová <span class="menu-item-weight">(0,33 l)</span></span><span class="menu-item-price" data-key="pol-gulas">40 Kč</span></div>
+          <div class="menu-row"><span class="menu-item-name">Vývar s nudlemi <span class="menu-item-weight">(0,33 l)</span></span><span class="menu-item-price" data-key="pol-vyvar">35 Kč</span></div>
+
+          <p class="menu-category">Vepřové</p>
+          <div class="menu-row"><span class="menu-item-name">Vepřový řízek, brambory <span class="menu-item-weight">(200 g)</span></span><span class="menu-item-price" data-key="vep-rizek">185 Kč</span></div>
+          <div class="menu-row"><span class="menu-item-name">Pečené kolínko, zelí, knedlík <span class="menu-item-weight">(500 g)</span></span><span class="menu-item-price" data-key="vep-kolinko">259 Kč</span></div>
+          <div class="menu-row"><span class="menu-item-name">Segedínský guláš, knedlík <span class="menu-item-weight">(250 g)</span></span><span class="menu-item-price" data-key="vep-segk">169 Kč</span></div>
+
+          <p class="menu-category">Drůbeží</p>
+          <div class="menu-row"><span class="menu-item-name">Kuřecí řízek, hranolky <span class="menu-item-weight">(200 g)</span></span><span class="menu-item-price" data-key="dru-rizek">179 Kč</span></div>
+          <div class="menu-row"><span class="menu-item-name">Kuřecí nudličky na žampiónech, těstoviny <span class="menu-item-weight">(200 g)</span></span><span class="menu-item-price" data-key="dru-nudl">169 Kč</span></div>
+          <div class="menu-row"><span class="menu-item-name">Drůbeží perkelt, těstoviny <span class="menu-item-weight">(200 g)</span></span><span class="menu-item-price" data-key="dru-perk">169 Kč</span></div>
+
+          <p class="menu-category">Ryby</p>
+          <div class="menu-row"><span class="menu-item-name">Smažený kapr, brambory <span class="menu-item-weight">(200 g)</span></span><span class="menu-item-price" data-key="ryb-kapr">195 Kč</span></div>
+
+          <p class="menu-category">Přílohy</p>
+          <div class="menu-row"><span class="menu-item-name">Bramborový knedlík</span><span class="menu-item-price" data-key="pril-knedlik">30 Kč</span></div>
+          <div class="menu-row"><span class="menu-item-name">Hranolky</span><span class="menu-item-price" data-key="pril-hranolky">45 Kč</span></div>
+          <div class="menu-row"><span class="menu-item-name">Rýže</span><span class="menu-item-price" data-key="pril-ryze">25 Kč</span></div>
+
+          <p class="menu-category">Saláty</p>
+          <div class="menu-row"><span class="menu-item-name">Zelný salát</span><span class="menu-item-price" data-key="sal-zelny">35 Kč</span></div>
+          <div class="menu-row"><span class="menu-item-name">Okurkový salát</span><span class="menu-item-price" data-key="sal-okurka">35 Kč</span></div>
+
+          <p class="menu-category">Dezerty</p>
+          <div class="menu-row"><span class="menu-item-name">Domácí zákusek</span><span class="menu-item-price" data-key="dez-zakusek">45 Kč</span></div>
+          <div class="menu-row"><span class="menu-item-name">Palačinky s džemem</span><span class="menu-item-price" data-key="dez-palacinka">65 Kč</span></div>
+        </div>
+      </div>
+
+      <!-- Nápojový lístek -->
+      <div class="menu-card reveal">
+        <div class="menu-card-header">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 010 8h-1"/><path d="M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4V8z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg>
+          <h3>Nápojový lístek</h3>
+        </div>
+        <div class="menu-card-body" id="napojovy-listek">
+          <p class="menu-category">Točené pivo</p>
+          <div class="menu-row"><span class="menu-item-name">Plzeň 12° <span class="menu-item-weight">(0,5 l)</span></span><span class="menu-item-price" data-key="pivo-plzen05">55 Kč</span></div>
+          <div class="menu-row"><span class="menu-item-name">Plzeň 12° <span class="menu-item-weight">(0,3 l)</span></span><span class="menu-item-price" data-key="pivo-plzen03">38 Kč</span></div>
+          <div class="menu-row"><span class="menu-item-name">Točený birell <span class="menu-item-weight">(0,5 l)</span></span><span class="menu-item-price" data-key="pivo-birell">45 Kč</span></div>
+
+          <p class="menu-category">Nealkoholické</p>
+          <div class="menu-row"><span class="menu-item-name">Točená Kofola <span class="menu-item-weight">(0,5 l)</span></span><span class="menu-item-price" data-key="nal-kofola">39 Kč</span></div>
+          <div class="menu-row"><span class="menu-item-name">Coca-Cola <span class="menu-item-weight">(0,33 l)</span></span><span class="menu-item-price" data-key="nal-cola">45 Kč</span></div>
+          <div class="menu-row"><span class="menu-item-name">Fanta / Sprite <span class="menu-item-weight">(0,33 l)</span></span><span class="menu-item-price" data-key="nal-fanta">45 Kč</span></div>
+          <div class="menu-row"><span class="menu-item-name">Džus <span class="menu-item-weight">(0,2 l)</span></span><span class="menu-item-price" data-key="nal-dzus">35 Kč</span></div>
+          <div class="menu-row"><span class="menu-item-name">Minerální voda <span class="menu-item-weight">(0,33 l)</span></span><span class="menu-item-price" data-key="nal-voda">30 Kč</span></div>
+
+          <p class="menu-category">Teplé nápoje</p>
+          <div class="menu-row"><span class="menu-item-name">Espresso</span><span class="menu-item-price" data-key="tep-espresso">45 Kč</span></div>
+          <div class="menu-row"><span class="menu-item-name">Cappuccino</span><span class="menu-item-price" data-key="tep-cappuccino">55 Kč</span></div>
+          <div class="menu-row"><span class="menu-item-name">Čaj <span class="menu-item-weight">(0,3 l)</span></span><span class="menu-item-price" data-key="tep-caj">35 Kč</span></div>
+          <div class="menu-row"><span class="menu-item-name">Horká čokoláda</span><span class="menu-item-price" data-key="tep-cokolada">55 Kč</span></div>
+
+          <p class="menu-category">Víno</p>
+          <div class="menu-row"><span class="menu-item-name">Bílé víno <span class="menu-item-weight">(0,2 l)</span></span><span class="menu-item-price" data-key="vino-bile">55 Kč</span></div>
+          <div class="menu-row"><span class="menu-item-name">Červené víno <span class="menu-item-weight">(0,2 l)</span></span><span class="menu-item-price" data-key="vino-cervene">55 Kč</span></div>
+          <div class="menu-row"><span class="menu-item-name">Sekt <span class="menu-item-weight">(0,1 l)</span></span><span class="menu-item-price" data-key="vino-sekt">60 Kč</span></div>
+
+          <p class="menu-category">Destiláty & lihoviny</p>
+          <div class="menu-row"><span class="menu-item-name">Slivovice <span class="menu-item-weight">(0,04 l)</span></span><span class="menu-item-price" data-key="des-slivovice">45 Kč</span></div>
+          <div class="menu-row"><span class="menu-item-name">Rum <span class="menu-item-weight">(0,04 l)</span></span><span class="menu-item-price" data-key="des-rum">45 Kč</span></div>
+          <div class="menu-row"><span class="menu-item-name">Whisky <span class="menu-item-weight">(0,04 l)</span></span><span class="menu-item-price" data-key="des-whisky">65 Kč</span></div>
+          <div class="menu-row"><span class="menu-item-name">Vermut <span class="menu-item-weight">(0,1 l)</span></span><span class="menu-item-price" data-key="des-vermut">50 Kč</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Password lock for price editing -->
+    <div class="price-lock-section reveal" id="price-lock-section">
+      <div class="lock-icon">🔒</div>
+      <p>Správa cen — zadejte heslo pro úpravu cen v lístcích</p>
+      <div class="lock-form">
+        <input type="password" class="lock-input" id="price-password" placeholder="Heslo správce" onkeydown="if(event.key==='Enter')unlockPrices()">
+        <button class="btn btn-lock" onclick="unlockPrices()">Odemknout</button>
+      </div>
+      <p id="wrong-pass-msg" style="color:#c0392b;font-size:0.82rem;margin-top:0.5rem;display:none;">Nesprávné heslo.</p>
+    </div>
+
+    <!-- Edit panel -->
+    <div class="price-edit-panel" id="price-edit-panel">
+      <h4>✏️ Úprava cen — změny se uloží do tohoto prohlížeče</h4>
+      <div class="edit-grid" id="edit-grid"></div>
+      <div class="edit-actions">
+        <span class="edit-saved-msg" id="edit-saved-msg">✓ Ceny uloženy</span>
+        <button class="btn-close-edit" onclick="lockPrices()">Zamknout</button>
+        <button class="btn btn-save" onclick="savePrices()">Uložit ceny</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KDO JSME -->
+<div class="about-strip">
+  <div class="about-inner">
+    <div class="about-text">
+      <p class="section-label" style="color:var(--brown-light)">O nás</p>
+      <h2>Kdo jsme?</h2>
+      <div class="divider"></div>
+      <p>Motobar Bravantice je restaurace s nevšedním interiérem, která Vás překvapí velice dobrou českou kuchyní a <strong>pivem jako křen</strong>. Jsme ideálním místem pro pořádání svateb, rodinných oslav, firemních akcí, školení i večírků.</p>
+      <p>K dispozici máme <strong>oddělený salónek pro 45 osob</strong> a celkovou kapacitu až 100 míst. V nabídce najdete denní menu, hotová jídla i celodenní kuchyni — a samozřejmě skvělou Plzeň, točený birell a kofolu.</p>
+      <div class="about-features">
+        <div class="feat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          Kapacita až 100 osob
+        </div>
+        <div class="feat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg>
+          Salónek pro 45 osob
+        </div>
+        <div class="feat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Česká kuchyně
+        </div>
+        <div class="feat">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>
+          Platební karty
+        </div>
+      </div>
+    </div>
+    <div class="about-img-grid">
+      <img src="https://www.menicka.cz/foto/thumb4/2101-2-restaurace.jpg" alt="Interiér restaurace" loading="lazy">
+      <img src="https://www.menicka.cz/foto/thumb4/2101-3-28.jpg" alt="Motobar Bravantice" loading="lazy">
+      <img src="https://www.menicka.cz/foto/thumb4/2101-4-20.jpg" alt="Restaurace Bravantice" loading="lazy">
+      <img src="https://www.menicka.cz/foto/thumb4/2101-1-8.jpg" alt="Motobar exteriér" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<!-- UBYTOVÁNÍ -->
+<section id="ubytovani">
+  <div class="section-inner">
+    <p class="section-label reveal">Odpočinek</p>
+    <h2 class="reveal">Penzion Bravantice</h2>
+    <div class="divider reveal"></div>
+    <div class="pension-grid">
+      <div class="pension-text reveal">
+        <p>Ubytování je situováno pouhých <strong>300 metrů od sjezdu z dálnice D1</strong> směr Klimkovice nebo Bílovec. Možnost ubytování <strong>NONSTOP</strong> — penzion je součástí velkého parkoviště v areálu Motobaru.</p>
+        <p>Máme k dispozici celkem <strong>7 pokojů s kapacitou 18 lůžek</strong>. Všechny pokoje jsou vybaveny sociálním zařízením. V okolí je 8 km lázně Klimkovice a 10 km letiště Leoše Janáčka Mošnov.</p>
+        <div class="pension-highlights">
+          <div class="highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0M12 20h.01"/></svg>
+            Wi-Fi zdarma na každém pokoji
+          </div>
+          <div class="highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+            TV v každém pokoji
+          </div>
+          <div class="highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 4v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            Parkoviště zdarma
+          </div>
+          <div class="highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+            Stravování v restauraci
+          </div>
+          <div class="highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Sociální zařízení na pokoji
+          </div>
+          <div class="highlight">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Ubytování non-stop 24/7
+          </div>
+        </div>
+      </div>
+      <div class="pension-info-box reveal">
+        <h3>Rezervace ubytování</h3>
+        <div class="info-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.1 1.18 2 2 0 012.07.01h3a2 2 0 012 1.72c.12.96.36 1.9.72 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.36 1.85.6 2.81.72A2 2 0 0122 14.9v2.02z"/></svg>
+          <span><strong>Telefon:</strong> <a href="tel:+420602761137">+420 602 761 137</a></span>
+        </div>
+        <div class="info-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span><strong>E-mail:</strong> <a href="mailto:rene.krcmar@volny.cz">rene.krcmar@volny.cz</a></span>
+        </div>
+        <div class="info-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          <span><strong>Platba kartou</strong> akceptována</span>
+        </div>
+        <div class="info-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span><strong>Adresa:</strong> Bravantice 248, 742 81</span>
+        </div>
+        <div class="info-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <span><strong>7 pokojů</strong>, kapacita 18 lůžek</span>
+        </div>
+        <span class="pension-tag">UBYTOVÁNÍ NON-STOP</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt">
+  <div class="section-inner">
+    <p class="section-label reveal">Kde nás najdete</p>
+    <h2 class="reveal">Kontakt & Mapa</h2>
+    <div class="divider reveal"></div>
+    <div class="kontakt-grid">
+      <div class="contact-card reveal">
+        <h3>Motobar Bravantice</h3>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Bravantice 248<br>742 81, okres Nový Jičín</span>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82 19.79 19.79 0 01.1 1.18 2 2 0 012.07.01h3a2 2 0 012 1.72c.12.96.36 1.9.72 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.36 1.85.6 2.81.72A2 2 0 0122 14.9v2.02z"/></svg>
+          <span>Restaurace: <a href="tel:+420722540300">+420 722 540 300</a><br><a href="tel:+420608077775">+420 608 077 775</a></span>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:info@motobarbravantice.cz">info@motobarbravantice.cz</a>
+        </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>
+            <table class="opening-table">
+              <tr><td>Po</td><td>10:00–20:00</td></tr>
+              <tr><td>Út–Pá</td><td>10:00–22:00</td></tr>
+              <tr><td>Sobota</td><td>10:00–22:00</td></tr>
+              <tr><td>Neděle</td><td>10:00–20:00</td></tr>
+            </table>
+          </span>
+        </div>
+      </div>
+      <div class="map-wrap reveal">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2573.97!2d18.0854!3d49.7527!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4713f7a3b3c3c3c3%3A0x0!2sMotobar+Bravantice!5e0!3m2!1scs!2scz!4v1700000000000!5m2!1scs!2scz&q=Bravantice+248,+742+81+Bravantice&center=49.752758,18.0876961&zoom=15"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Mapa – Motobar Bravantice">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>MOTOBAR BRAVANTICE</h4>
+      <p>Restaurace rodinného stylu s nevšedním interiérem a ubytováním non-stop u dálnice D1.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Kontakt</h4>
+      <a href="tel:+420722540300">+420 722 540 300</a>
+      <a href="mailto:info@motobarbravantice.cz">info@motobarbravantice.cz</a>
+      <p>Bravantice 248, 742 81</p>
+      <p>Otevřeno Po–Ne 10:00–22:00</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigace</h4>
+      <a href="#uvod">Úvod</a>
+      <a href="#menu">Menu</a>
+      <a href="#ubytovani">Ubytování</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© <span id="footer-year"></span> Motobar Bravantice. Všechna práva vyhrazena.</span>
+    <span>Obsah těchto stránek je chráněn autorským zákonem a nesmí být kopírován bez souhlasu provozovatele.</span>
+  </div>
+</footer>
+
+<script>
+/* === YEAR === */
+document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+/* === HEADER SCROLL === */
+const hdr = document.getElementById('site-header');
+window.addEventListener('scroll', () => {
+  hdr.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+/* === COOKIES === */
+(function() {
+  if (localStorage.getItem('mb-cookies')) {
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+})();
+function acceptCookies() {
+  localStorage.setItem('mb-cookies', 'all');
+  document.getElementById('cookie-banner').style.display = 'none';
+}
+function rejectCookies() {
+  localStorage.setItem('mb-cookies', 'minimal');
+  document.getElementById('cookie-banner').style.display = 'none';
+}
+
+/* === SCROLL REVEAL === */
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+revealEls.forEach(el => observer.observe(el));
+
+/* === PRICE MANAGEMENT === */
+const ADMIN_PASS = 'motobar2026';
+
+// Load saved prices from localStorage
+function loadPrices() {
+  const saved = JSON.parse(localStorage.getItem('mb-prices') || '{}');
+  document.querySelectorAll('[data-key]').forEach(el => {
+    if (saved[el.dataset.key]) el.textContent = saved[el.dataset.key] + ' Kč';
+  });
+}
+loadPrices();
+
+function unlockPrices() {
+  const pw = document.getElementById('price-password').value;
+  const msg = document.getElementById('wrong-pass-msg');
+  if (pw === ADMIN_PASS) {
+    msg.style.display = 'none';
+    document.getElementById('price-lock-section').style.display = 'none';
+    buildEditGrid();
+    document.getElementById('price-edit-panel').style.display = 'block';
+  } else {
+    msg.style.display = 'block';
+  }
+}
+
+function buildEditGrid() {
+  const grid = document.getElementById('edit-grid');
+  grid.innerHTML = '';
+  const saved = JSON.parse(localStorage.getItem('mb-prices') || '{}');
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const key = el.dataset.key;
+    const currentText = el.textContent.replace(' Kč', '').trim();
+    const label = el.closest('.menu-row')?.querySelector('.menu-item-name')?.textContent?.trim().replace(/\(.*\)/g,'').trim() || key;
+    const row = document.createElement('div');
+    row.className = 'edit-row';
+    row.innerHTML = `<label title="${key}">${label.substring(0,38)}</label><input type="number" id="edit-${key}" value="${saved[key] || currentText}" min="0" step="1"> Kč`;
+    grid.appendChild(row);
+  });
+}
+
+function savePrices() {
+  const saved = {};
+  document.querySelectorAll('[data-key]').forEach(el => {
+    const key = el.dataset.key;
+    const input = document.getElementById('edit-' + key);
+    if (input && input.value) {
+      saved[key] = input.value;
+      el.textContent = input.value + ' Kč';
+    }
+  });
+  localStorage.setItem('mb-prices', JSON.stringify(saved));
+  const msg = document.getElementById('edit-saved-msg');
+  msg.style.display = 'inline';
+  setTimeout(() => msg.style.display = 'none', 2500);
+}
+
+function lockPrices() {
+  document.getElementById('price-edit-panel').style.display = 'none';
+  document.getElementById('price-lock-section').style.display = 'block';
+  document.getElementById('price-password').value = '';
+}
+
+/* === SMOOTH NAV ACTIVE === */
+const sections = document.querySelectorAll('section[id], div.about-strip');
+const navLinks = document.querySelectorAll('nav a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 80) current = s.id || '';
+  });
+  navLinks.forEach(a => {
+    a.style.color = a.getAttribute('href') === '#' + current ? 'var(--brown-light)' : '';
+  });
+}, { passive: true });
+</script>
+</body>
+</html>
