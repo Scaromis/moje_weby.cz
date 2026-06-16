@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Pizzerie Malecí v Novém Městě nad Metují – pravá italská pizza z kamenné pece, denní menu, posezení i firemní akce.">
+<title>Úvod | Pizzerie Malecí</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@400;500;700&family=DynaPuff:wght@500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Fixní buttony (jediné position:fixed na celém webu) -->
+<a class="fab fab-left" href="kontakt.html#rezervace">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  Rezervace
+</a>
+<a class="fab fab-right" href="kontakt.html#poukaz">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+  Dárkový poukaz
+</a>
+
+<!-- HLAVIČKA -->
+<header class="site-header">
+  <div class="container">
+    <!-- LOGO: až budeš mít hotové, nahraď text <img src="img/site/logo.png" alt="Pizzerie Malecí"> -->
+    <a href="index.html" class="logo" aria-label="Pizzerie Malecí"><img src="img/site/logo.png" alt="Pizzerie Malecí"></a>
+    <nav class="main-nav" aria-label="Hlavní navigace">
+      <ul>
+        <li><a href="index.html" class="active">Úvod</a></li>
+        <li><a href="pizza-menu.html">Pizza menu</a></li>
+        <li><a href="drink-menu.html">Drink menu</a></li>
+        <li><a href="poledni-menu.html">Polední menu</a></li>
+        <li><a href="fotografie.html">Fotografie</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <h1 class="page-title">Kdo jsme?</h1>
+    <p class="lead">Vítejte na oficiálním webu pizzerie Malecí. Během roku nabízíme pár akcí&nbsp;– podívejte se, jestli se náhodou nějaká <a href="#akce">neblíží</a>!</p>
+  </div>
+</section>
+
+<main>
+  <div class="container">
+
+    <div class="intro-layout block">
+      <!-- KDO JSME -->
+      <section class="card reveal about">
+        <h2 class="section-title">O nás</h2>
+        <p>V naší pizzerii pečeme pravou <strong>italskou pizzu v kamenné peci</strong> a každý den pro vás chystáme minutkové menu i denní polední nabídku. Obědy navíc rozvážíme do firem.</p>
+        <p style="margin-top:12px">Disponujeme velkou kapacitou míst, takže u nás rádi uspořádáme firemní večírky, oslavy, narozeniny i jiné významné události&nbsp;– a k tomu pořádáme tématické akce s živou hudbou.</p>
+        <p style="margin-top:12px">K příjemnému posezení nabízíme i zastřešenou letní zahrádku, parkovat můžete přímo před restaurací a celé prostředí je <strong>nekuřácké</strong>.</p>
+      </section>
+
+      <!-- AKCE (postranní) -->
+      <aside class="aside-box reveal" id="akce">
+        <h2 class="section-title">Akce</h2>
+        <p>Právě teď v nejbližší době žádné akce nechystáme. Nezapomeňte ale web pravidelně kontrolovat, ať vám žádná z našich akcí neuteče!</p>
+      </aside>
+    </div>
+
+    <!-- SOCIÁLNÍ SÍTĚ -->
+    <section class="block reveal" style="text-align:center">
+      <h2 class="section-title center">Sociální sítě</h2>
+      <p style="max-width:620px;margin:0 auto 22px">Momentálně nás můžete sledovat na Facebooku, kam pravidelně dáváme novinky o naší pizzerii.</p>
+      <a class="fb-expand" href="https://www.facebook.com/pages/Pizzerie-Malec%C3%AD/131911436834984" target="_blank" rel="noopener">
+        <span class="fb-ic"><svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.52c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg></span>
+        <span class="fb-tx">Sledujte nás na Facebooku</span>
+      </a>
+    </section>
+
+    <!-- NÁHODNÁ ŘADA FOTEK -->
+    <section class="block reveal">
+      <h2 class="section-title center">Mrkněte k nám</h2>
+      <div class="gallery-strip" id="randomStrip" aria-hidden="true"></div>
+    </section>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Pizzerie Malecí</div>
+        <p>Malecí 205<br>Nové Město nad Metují</p>
+        <p style="margin-top:8px"><a href="tel:+420773514299">+420 773 514 299</a></p>
+        <p><a href="mailto:pizzeriemaleci@seznam.cz">pizzeriemaleci@seznam.cz</a></p>
+      </div>
+      <div class="footer-center">
+        <h4>Navigace</h4>
+        <ul class="footer-nav">
+          <li><a href="index.html">Úvod</a></li>
+          <li><a href="pizza-menu.html">Pizza menu</a></li>
+          <li><a href="drink-menu.html">Drink menu</a></li>
+          <li><a href="poledni-menu.html">Polední menu</a></li>
+          <li><a href="fotografie.html">Fotografie</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+        <a class="footer-fb" href="https://www.facebook.com/pages/Pizzerie-Malec%C3%AD/131911436834984" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.52c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+        </a>
+      </div>
+      <div class="footer-right">
+        <h4>Otevírací doba</h4>
+        <ul class="footer-hours">
+          <li><span>Po&nbsp;–&nbsp;Čt</span><span>11:00&nbsp;–&nbsp;22:00</span></li>
+          <li><span>Pátek</span><span>11:00&nbsp;–&nbsp;23:00</span></li>
+          <li><span>So&nbsp;–&nbsp;Ne</span><span class="closed">Zavřeno</span></li>
+        </ul>
+        <p class="footer-voucher">Rezervace i dárkové poukazy vyřídíte u nás v restauraci. Dárkové poukazy je možné zakoupit v hodnotě 300 a 500&nbsp;Kč.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © <span id="year"></span> Pizzerie Malecí · Všechna práva vyhrazena.
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+/* Náhodná, stále se měnící řada fotek z fotogalerie */
+(function () {
+  var photos = [
+    'http://pizzeriemaleci.cz/media/photos/thumb/1611061000T198l1.jpg',
+    'http://pizzeriemaleci.cz/media/photos/thumb/1611061000Treziw.jpg',
+    'http://pizzeriemaleci.cz/media/photos/thumb/1611060959T1ay1l.jpg',
+    'http://pizzeriemaleci.cz/media/photos/thumb/1611061331T1e2l7.jpg',
+    'http://pizzeriemaleci.cz/media/photos/thumb/1611061331Txriv0.jpg',
+    'http://pizzeriemaleci.cz/media/photos/thumb/1711082305Tl4qr0.jpg',
+    'http://pizzeriemaleci.cz/media/photos/thumb/1711082315Td8xw6.jpg',
+    'http://pizzeriemaleci.cz/media/photos/thumb/1611061000T1eivh.jpg',
+    'http://pizzeriemaleci.cz/media/photos/thumb/1611141821T89818.jpg',
+    'http://pizzeriemaleci.cz/media/photos/thumb/1801081355Tkla1e.jpg',
+    'http://pizzeriemaleci.cz/media/photos/thumb/1711082315Tyd3p4.jpg',
+    'http://pizzeriemaleci.cz/media/photos/thumb/1611060959Tr2skz.jpg'
+  ];
+  var strip = document.getElementById('randomStrip');
+  if (!strip) return;
+  var SLOTS = window.matchMedia('(min-width:1040px)').matches ? 4 : (window.matchMedia('(min-width:820px)').matches ? 3 : 2);
+  var current = [];
+
+  function pickDifferent(exclude) {
+    var pool = photos.filter(function (p) { return current.indexOf(p) === -1; });
+    if (!pool.length) pool = photos;
+    return pool[Math.floor(Math.random() * pool.length)];
+  }
+  // počáteční náhodný výběr
+  var shuffled = photos.slice().sort(function () { return Math.random() - 0.5; });
+  for (var i = 0; i < SLOTS; i++) {
+    var img = document.createElement('div');
+    img.className = 'shot deco';
+    var im = document.createElement('img');
+    im.loading = 'lazy'; im.alt = 'Z naší pizzerie';
+    im.src = shuffled[i]; current[i] = shuffled[i];
+    img.appendChild(im); strip.appendChild(img);
+  }
+  // každé ~3 s vyměň jednu náhodnou fotku za jinou náhodnou
+  setInterval(function () {
+    var slot = Math.floor(Math.random() * SLOTS);
+    var next = pickDifferent();
+    var im = strip.children[slot].querySelector('img');
+    im.style.opacity = '0';
+    setTimeout(function () { im.src = next; current[slot] = next; im.style.opacity = '1'; }, 280);
+  }, 3000);
+  Array.prototype.forEach.call(strip.querySelectorAll('img'), function (im) { im.style.transition = 'opacity .35s ease'; });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,523 @@
+/* ============================================================
+   PIZZERIE MALECÍ – sdílené styly
+   Mobile-first. Hovery jen na zařízeních s myší (html.can-hover).
+   Palety: krémová / italská červená / bazalkově zelená.
+   Fonty: DynaPuff (úvodní nadpisy), Alkatra (nadpisy sekcí),
+          Roboto (texty + navigace).
+   ============================================================ */
+
+:root{
+  --cream:#fbf6ea;
+  --cream-2:#f4ead4;
+  --cream-3:#ece0c4;
+  --paper:#ffffff;
+  --red:#c23b32;
+  --red-dark:#9c2a23;
+  --red-soft:#e0584d;
+  --green:#2f6043;
+  --green-deep:#173726;
+  --green-deep-2:#102619;
+  --ink:#2b2520;
+  --ink-soft:#5d544b;
+  --gold:#d8a13f;
+  --fb:#1877f2;
+  --fb-dark:#0f5ed6;
+  --radius:14px;
+  --radius-lg:22px;
+  --shadow:0 8px 26px rgba(23,55,38,.12);
+  --shadow-soft:0 4px 14px rgba(23,55,38,.08);
+  --maxw:1180px;
+  --header-h:64px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+
+body{
+  font-family:'Roboto',system-ui,Arial,sans-serif;
+  color:var(--ink);
+  background:var(--cream);
+  line-height:1.6;
+  overflow-x:hidden;
+  /* jemné krémové pozadí s náznakem textury */
+  background-image:
+    radial-gradient(circle at 12% 18%, rgba(47,96,67,.05), transparent 38%),
+    radial-gradient(circle at 88% 8%, rgba(194,59,50,.05), transparent 42%);
+  background-attachment:fixed;
+}
+
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+.container{width:100%;max-width:var(--maxw);margin:0 auto;padding:0 18px}
+
+/* Typografie */
+h1,h2,h3{line-height:1.15}
+.section-title{
+  font-family:'Alkatra',system-ui,cursive;
+  color:var(--green);
+  font-weight:700;
+  font-size:clamp(1.5rem,4.5vw,2.3rem);
+  margin-bottom:14px;
+  position:relative;
+}
+.section-title::after{
+  content:"";display:block;width:62px;height:4px;border-radius:3px;
+  background:linear-gradient(90deg,var(--red),var(--gold));
+  margin-top:8px;
+}
+.section-title.center{text-align:center}
+.section-title.center::after{margin-left:auto;margin-right:auto}
+
+/* ============================================================
+   FIXNÍ BUTTONY – Rezervace + Dárkový poukaz
+   Hover: Holographic card (#1) – scale, barevný stín, holografický třpyt
+   ============================================================ */
+.fab{
+  position:fixed;
+  top:10px;
+  z-index:120;
+  display:inline-flex;align-items:center;gap:7px;
+  padding:9px 14px;
+  font-size:.82rem;font-weight:700;letter-spacing:.2px;
+  color:#fff;
+  border-radius:12px;
+  background:linear-gradient(135deg,var(--red),var(--red-dark));
+  box-shadow:0 6px 16px rgba(156,42,35,.34);
+  overflow:hidden;
+  isolation:isolate;
+  transition:transform .35s cubic-bezier(.2,.9,.3,1.2), box-shadow .35s ease;
+}
+.fab svg{width:16px;height:16px;flex:none}
+.fab-left{left:10px}
+.fab-right{right:10px;background:linear-gradient(135deg,var(--green),var(--green-deep));box-shadow:0 6px 16px rgba(23,55,38,.34)}
+/* holografická vrstva */
+.fab::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(115deg,
+    transparent 18%,
+    rgba(255,255,255,.55) 32%,
+    rgba(216,161,63,.55) 44%,
+    rgba(47,96,67,.5) 56%,
+    rgba(255,255,255,.55) 68%,
+    transparent 82%);
+  background-size:240% 240%;
+  background-position:0% 0%;
+  opacity:0;
+  mix-blend-mode:overlay;
+  transition:opacity .4s ease, background-position .8s ease;
+}
+html.can-hover .fab:hover{
+  transform:scale(1.07) translateY(1px);
+  box-shadow:0 0 22px rgba(216,161,63,.6),0 10px 24px rgba(156,42,35,.4);
+}
+html.can-hover .fab-right:hover{
+  box-shadow:0 0 22px rgba(216,161,63,.6),0 10px 24px rgba(23,55,38,.45);
+}
+html.can-hover .fab:hover::before{opacity:1;background-position:100% 100%}
+
+/* ============================================================
+   HLAVIČKA – logo + navigace
+   ============================================================ */
+.site-header{
+  position:relative;
+  padding:54px 0 8px;
+  text-align:center;
+}
+/* logo Pizzerie Malecí */
+.logo{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:clamp(220px,56vw,360px);
+  margin:0 auto 14px;
+}
+.logo img{width:100%;height:auto;object-fit:contain}
+
+/* Navigace */
+.main-nav{margin-top:4px}
+.main-nav ul{
+  list-style:none;
+  display:flex;flex-wrap:wrap;justify-content:center;
+  gap:6px 4px;
+  background:var(--green-deep);
+  border-radius:16px;
+  padding:8px;
+  max-width:760px;margin:0 auto;
+  box-shadow:var(--shadow-soft);
+}
+.main-nav a{
+  position:relative;
+  display:block;
+  padding:10px 16px;
+  margin:0 3px;                 /* paddingy se nedotýkají */
+  font-size:.92rem;font-weight:500;
+  color:var(--cream);
+  border-radius:10px;
+  overflow:hidden;
+  isolation:isolate;
+  transition:color .3s ease;
+}
+/* #21 Creative menu hover: ::before = rámeček nalétne, ::after = výplň se roztáhne */
+.main-nav a::before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  border:2px solid var(--gold);border-radius:10px;
+  transform:scale(.5);opacity:0;
+  transition:transform .32s cubic-bezier(.2,.9,.3,1.3),opacity .3s ease;
+}
+.main-nav a::after{
+  content:"";position:absolute;inset:0;z-index:-2;
+  background:linear-gradient(135deg,var(--red),var(--red-soft));
+  transform:translateY(105%);
+  transition:transform .34s cubic-bezier(.2,.9,.3,1.2);
+}
+html.can-hover .main-nav a:hover{color:#fff}
+html.can-hover .main-nav a:hover::before{transform:scale(1);opacity:1}
+html.can-hover .main-nav a:hover::after{transform:translateY(0)}
+.main-nav a.active{color:#fff;background:linear-gradient(135deg,var(--red),var(--red-dark))}
+
+/* ============================================================
+   HERO – úvodní nadpis stránky (DynaPuff), nálet zespodu
+   ============================================================ */
+.hero{
+  text-align:center;
+  padding:26px 0 14px;
+}
+.page-title{
+  font-family:'DynaPuff',system-ui,cursive;
+  font-weight:700;
+  font-size:clamp(2rem,7vw,3.6rem);
+  color:var(--red);
+  text-shadow:2px 3px 0 rgba(23,55,38,.13);
+  letter-spacing:.5px;
+  display:inline-block;
+  /* výchozí stav: schované dole, nálet vyřeší .flew */
+  opacity:0;
+  transform:translateY(70px);
+  transition:opacity .9s ease,transform 1s cubic-bezier(.16,.84,.32,1);
+}
+.page-title.flew{opacity:1;transform:translateY(0)}
+.hero .lead{
+  max-width:680px;margin:14px auto 0;
+  font-size:1.02rem;color:var(--ink-soft);
+}
+.hero .lead a{color:var(--red);font-weight:700;border-bottom:2px solid rgba(194,59,50,.35)}
+
+/* Reveal on scroll (sekce nalétnou zespodu) */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .6s ease,transform .7s cubic-bezier(.16,.84,.32,1)}
+.reveal.flew{opacity:1;transform:translateY(0)}
+
+/* ============================================================
+   OBECNÉ KARTY / SEKCE
+   ============================================================ */
+main{padding:10px 0 60px}
+.card{
+  background:var(--paper);
+  border-radius:var(--radius-lg);
+  box-shadow:var(--shadow);
+  padding:24px 22px;
+}
+.block{margin:34px 0}
+
+/* Postranní akcentní sekce (Akce / Dárkový poukaz apod.) */
+.aside-box{
+  background:linear-gradient(160deg,var(--green-deep),var(--green));
+  color:var(--cream);
+  border-radius:var(--radius-lg);
+  padding:22px 20px;
+  box-shadow:var(--shadow);
+}
+.aside-box .section-title{color:var(--gold)}
+.aside-box .section-title::after{background:var(--cream)}
+
+/* ============================================================
+   MENU / LÍSTEK – tabulky položek a ceny
+   ============================================================ */
+.menu-cat{margin-bottom:20px}
+.menu-cat.card{padding:18px 18px}
+.menu-cat > h3{
+  font-family:'Alkatra',cursive;
+  color:var(--red);
+  font-size:1.2rem;
+  border-bottom:3px solid var(--cream-3);
+  padding-bottom:5px;margin-bottom:8px;
+  display:flex;align-items:center;gap:9px;
+}
+.menu-row{
+  display:flex;align-items:baseline;gap:10px;
+  padding:4px 2px;
+  border-bottom:1px dashed var(--cream-3);
+}
+.menu-row .m-name small{line-height:1.3}
+.menu-row:last-child{border-bottom:none}
+.menu-row .m-name{flex:1;min-width:0}
+.menu-row .m-name small{display:block;color:var(--ink-soft);font-size:.82rem;font-weight:400}
+.menu-row .m-size{color:var(--ink-soft);font-size:.8rem;white-space:nowrap}
+.menu-row .m-price{font-weight:700;color:var(--green);white-space:nowrap}
+.price-val{white-space:nowrap}
+.menu-cat{scroll-margin-top:18px}
+
+/* menu přes celou šířku webu na PC (ne jen uprostřed) */
+@media (min-width:1100px){ .menu-wide{max-width:none;padding-left:40px;padding-right:40px} }
+@media (min-width:1700px){ .menu-wide{padding-left:60px;padding-right:60px} }
+
+/* rychlá navigace po kategoriích – pro mobil a tablet (na PC skrytá) */
+.menu-quicknav{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:8px;
+  background:var(--paper);border-radius:16px;box-shadow:var(--shadow-soft);
+  padding:12px 14px;margin-bottom:26px;
+}
+.menu-quicknav a{
+  font-size:.9rem;font-weight:500;color:var(--green);
+  padding:8px 15px;border-radius:999px;background:var(--cream-2);
+  border:1px solid var(--cream-3);
+  transition:background .25s ease,color .25s ease,transform .2s ease,border-color .25s ease;
+}
+html.can-hover .menu-quicknav a:hover{background:var(--red);color:#fff;border-color:var(--red);transform:translateY(-2px)}
+/* na PC skrytá – tam je menu rozložené do stran a vidět najednou */
+@media (min-width:1100px){ .menu-quicknav{display:none} }
+
+/* odkaz na PDF lístek */
+.pdf-box{
+  display:flex;flex-direction:column;align-items:center;gap:12px;
+  text-align:center;
+  background:linear-gradient(150deg,var(--cream-2),var(--cream));
+  border:1px solid var(--cream-3);
+  border-radius:var(--radius-lg);
+  padding:24px 18px;
+  margin-top:26px;
+}
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:12px 22px;
+  font-weight:700;color:#fff;border:none;cursor:pointer;
+  background:linear-gradient(135deg,var(--red),var(--red-dark));
+  border-radius:12px;
+  box-shadow:0 6px 16px rgba(156,42,35,.3);
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.btn svg{width:18px;height:18px}
+.btn.green{background:linear-gradient(135deg,var(--green),var(--green-deep));box-shadow:0 6px 16px rgba(23,55,38,.3)}
+html.can-hover .btn:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(156,42,35,.4)}
+
+/* ============================================================
+   ADMIN – editace cen (jako u Růžovky)
+   ============================================================ */
+.admin-bar{
+  position:fixed;top:0;left:0;right:0;z-index:300;
+  display:none;align-items:center;gap:10px;flex-wrap:wrap;
+  background:var(--green-deep);color:#fff;
+  padding:8px 14px;font-size:.85rem;
+  box-shadow:0 3px 12px rgba(0,0,0,.3);
+}
+.admin-bar.active{display:flex}
+.admin-bar button{
+  background:var(--red);color:#fff;border:none;border-radius:8px;
+  padding:6px 12px;font-weight:600;cursor:pointer;font-size:.82rem;
+}
+body.edit-mode .price-val,
+body.edit-mode .text-val{
+  background:rgba(216,161,63,.25);
+  outline:1px dashed var(--gold);
+  border-radius:5px;padding:0 4px;cursor:text;
+}
+.admin-lock{
+  background:transparent;border:none;cursor:pointer;
+  color:var(--cream);opacity:.5;padding:4px;
+}
+.admin-lock svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2}
+.admin-popup{
+  position:fixed;bottom:18px;right:18px;z-index:310;
+  background:var(--paper);border-radius:14px;box-shadow:var(--shadow);
+  padding:16px;width:min(260px,86vw);display:none;
+}
+.admin-popup.open{display:block}
+.admin-popup input{width:100%;padding:9px;border:1px solid var(--cream-3);border-radius:8px;margin-top:8px}
+.admin-popup .popup-hint{font-size:.75rem;color:var(--ink-soft);margin-top:6px}
+
+/* ============================================================
+   FOOTER – stejný na každé stránce
+   ============================================================ */
+.site-footer{
+  background:var(--green-deep-2);
+  color:var(--cream);
+  padding:40px 0 18px;
+  margin-top:30px;
+}
+.footer-grid{
+  display:grid;grid-template-columns:1fr;gap:26px;
+  text-align:center;
+}
+.footer-grid h4{
+  font-family:'Alkatra',cursive;color:var(--gold);
+  font-size:1.05rem;margin-bottom:10px;
+}
+.footer-brand{font-family:'DynaPuff',cursive;font-size:1.25rem;color:#fff;margin-bottom:8px}
+.footer-grid a{color:var(--cream);border-bottom:1px solid transparent;transition:border-color .25s,color .25s}
+html.can-hover .footer-grid a:hover{color:#fff;border-color:var(--gold)}
+.footer-hours{list-style:none;display:inline-block;text-align:left;font-size:.92rem}
+.footer-hours li{display:flex;justify-content:space-between;gap:26px;padding:3px 0}
+/* levý sloupec footeru – větší mezery mezi řádky */
+.footer-grid > div:first-child p{margin:0 0 14px;line-height:1.85}
+.footer-grid > div:first-child p:last-child{margin-bottom:0}
+/* text o dárkovém poukazu – posunutý níž + delší */
+.footer-voucher{margin-top:30px;line-height:1.7}
+.footer-hours .closed{color:var(--red-soft)}
+.footer-nav{list-style:none;line-height:2.1}
+.footer-fb{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:44px;height:44px;border-radius:50%;
+  background:var(--fb);margin-top:10px;
+  transition:transform .3s ease,box-shadow .3s ease;
+}
+.footer-fb svg{width:22px;height:22px;fill:#fff}
+html.can-hover .footer-fb:hover{transform:translateY(-3px) scale(1.06);box-shadow:0 8px 18px rgba(24,119,242,.5)}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.12);
+  margin-top:28px;padding-top:16px;
+  font-size:.8rem;color:rgba(251,246,234,.7);
+  text-align:center;
+}
+
+/* ============================================================
+   FACEBOOK button – #20 expanding icon (Úvod)
+   ikona se zmenší, text nalétne, gradient + záře
+   ============================================================ */
+.fb-expand{
+  position:relative;display:inline-flex;align-items:center;
+  gap:0;overflow:hidden;
+  background:linear-gradient(135deg,var(--fb),var(--fb-dark));
+  color:#fff;border-radius:40px;
+  padding:0;height:60px;width:60px;
+  box-shadow:0 8px 20px rgba(24,119,242,.35);
+  transition:width .42s cubic-bezier(.2,.9,.3,1.2),box-shadow .4s ease;
+}
+.fb-expand .fb-ic{
+  flex:none;width:60px;height:60px;display:flex;align-items:center;justify-content:center;
+  transition:transform .4s ease;
+}
+.fb-expand .fb-ic svg{width:26px;height:26px;fill:#fff}
+.fb-expand .fb-tx{
+  white-space:nowrap;font-weight:700;
+  opacity:0;transform:scale(.6);transform-origin:left center;
+  padding-right:24px;
+  transition:opacity .35s ease .08s,transform .35s ease .08s;
+}
+html.can-hover .fb-expand:hover{width:290px;box-shadow:0 0 26px rgba(24,119,242,.55),0 10px 24px rgba(24,119,242,.4)}
+html.can-hover .fb-expand:hover .fb-tx{opacity:1;transform:scale(1)}
+/* na mobilu rozbalený natrvalo (bez hoveru) */
+@media (max-width:768px){
+  .fb-expand{width:auto;height:54px}
+  .fb-expand .fb-ic{width:54px;height:54px}
+  .fb-expand .fb-tx{opacity:1;transform:none;padding-right:22px}
+}
+
+/* ============================================================
+   GALERIE / LIGHTBOX (Fotografie)
+   ============================================================ */
+.gallery-cat{margin-bottom:42px}
+.gallery-strip{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:10px;
+}
+.gallery-strip .shot{
+  position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:14px;
+  box-shadow:var(--shadow-soft);cursor:pointer;background:var(--cream-3);
+}
+.gallery-strip .shot img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+html.can-hover .gallery-strip .shot:hover img{transform:scale(1.08)}
+.gallery-strip .shot.deco{cursor:default}
+
+.lightbox{
+  position:fixed;inset:0;z-index:400;display:none;
+  background:rgba(16,38,25,.94);
+  align-items:center;justify-content:center;flex-direction:column;
+  padding:18px;
+}
+.lightbox.open{display:flex}
+.lightbox img{max-width:94vw;max-height:74vh;border-radius:10px;box-shadow:0 12px 40px rgba(0,0,0,.5)}
+.lightbox .lb-close{position:absolute;top:14px;right:16px;font-size:2rem;color:#fff;cursor:pointer;background:none;border:none;line-height:1}
+.lightbox .lb-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:2.4rem;color:#fff;background:rgba(0,0,0,.3);border:none;cursor:pointer;padding:6px 16px;border-radius:10px}
+.lightbox .lb-prev{left:10px}.lightbox .lb-next{right:10px}
+.lb-thumbs{display:flex;gap:8px;overflow-x:auto;max-width:94vw;margin-top:14px;padding-bottom:6px}
+.lb-thumbs img{width:62px;height:46px;object-fit:cover;border-radius:6px;opacity:.55;cursor:pointer;flex:none;border:2px solid transparent}
+.lb-thumbs img.active{opacity:1;border-color:var(--gold)}
+
+/* ============================================================
+   KONTAKT – mapa, otevírací doba
+   ============================================================ */
+.hours-table{width:100%;border-collapse:collapse;margin-top:6px}
+.hours-table th,.hours-table td{padding:9px 8px;text-align:left;border-bottom:1px solid var(--cream-3);font-size:.95rem}
+.hours-table td:last-child{text-align:right;font-weight:600}
+.hours-table tr.today{background:rgba(216,161,63,.16)}
+.hours-table .closed{color:var(--red)}
+.contact-info p{margin:4px 0}
+.contact-info strong{color:var(--green)}
+
+.map-wrap{border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);margin-top:14px}
+.map-wrap iframe{width:100%;height:380px;border:0;display:block}
+.map-toggle{display:none}
+
+/* na mobilu mapa schovaná za button, ne přes celý screen */
+@media (max-width:768px){
+  .map-toggle{display:inline-flex}
+  .map-wrap{display:none;height:0}
+  .map-wrap.open{display:block;height:auto}
+  .map-wrap iframe{height:260px}
+}
+
+/* ============================================================
+   GRID layouty – desktop (mobile-first → rozšíření výš)
+   ============================================================ */
+.layout-2{display:grid;grid-template-columns:1fr;gap:24px}
+.layout-side{display:grid;grid-template-columns:1fr;gap:24px}
+.menu-cols{display:grid;grid-template-columns:1fr;gap:24px}
+
+/* Úvod: O nás doprostřed, Akce menší na stranu (maličko od kraje) */
+.intro-layout{display:grid;grid-template-columns:1fr;gap:24px}
+.intro-layout .about{max-width:720px}
+@media (min-width:900px){
+  .intro-layout{grid-template-columns:1fr 268px;align-items:start;gap:30px}
+  .intro-layout .about{justify-self:center;margin:0 auto}
+  .intro-layout .aside-box{align-self:start}
+}
+
+@media (min-width:820px){
+  :root{--header-h:72px}
+  .footer-grid{grid-template-columns:1fr 1fr 1fr;text-align:left}
+  .footer-grid .footer-center{text-align:center}
+  .footer-grid .footer-right{text-align:right}
+  .footer-hours{display:inline-block;text-align:left;min-width:230px}
+  .footer-right .footer-voucher{text-align:right;max-width:260px;margin-left:auto}
+  .layout-2{grid-template-columns:2fr 1fr}
+  .layout-side{grid-template-columns:1fr 320px}
+  .menu-cols{grid-template-columns:1fr 1fr}
+  .gallery-strip{grid-template-columns:repeat(3,1fr)}
+  .fab{top:14px;padding:11px 18px;font-size:.9rem}
+  .fab-left{left:18px}.fab-right{right:18px}
+}
+@media (min-width:1040px){
+  .gallery-strip{grid-template-columns:repeat(4,1fr)}
+  .menu-cols.three{grid-template-columns:repeat(3,1fr)}
+}
+
+/* záložní zarovnání při šířce ~800px (aby se buttony nezalamovaly divně) */
+@media (max-width:819px){
+  .site-header{padding-top:64px}
+}
+
+/* TELEFON – pevné, jednotné paddingy (ať se nemění podle šířky displeje) */
+@media (max-width:600px){
+  .container{padding:0 16px}
+  .site-header{padding:60px 0 8px}
+  .hero{padding:22px 0 12px}
+  main{padding:10px 0 48px}
+  .block{margin:26px 0}
+  .card{padding:20px 18px}
+  .aside-box{padding:20px 18px}
+  .pdf-box{padding:22px 16px}
+  .menu-cat.card{padding:18px 16px}
+  .main-nav ul{padding:7px}
+  .main-nav a{padding:10px 14px}
+}
+
+@media print{
+  .fab,.main-nav,.site-footer,.admin-bar,.admin-popup,.admin-lock{display:none!important}
+}

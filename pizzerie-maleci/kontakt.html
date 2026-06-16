@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kontakt na Pizzerii Malecí – adresa, telefon, e-mail, otevírací doba, mapa a dárkové poukazy.">
+<title>Kontakt | Pizzerie Malecí</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@400;500;700&family=DynaPuff:wght@500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .contact-grid{display:grid;grid-template-columns:1fr;gap:24px}
+  @media (min-width:900px){ .contact-grid{grid-template-columns:300px 1fr 300px;align-items:start} }
+  .deco-slideshow{position:relative;aspect-ratio:4/3;border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow);background:var(--cream-3)}
+  .deco-slideshow img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s ease}
+  .deco-slideshow img.show{opacity:1}
+  .poukaz-img{border-radius:12px;margin-top:14px;box-shadow:var(--shadow-soft)}
+  .map-toggle{align-items:center;gap:9px;margin-top:6px}
+</style>
+</head>
+<body>
+
+<a class="fab fab-left" href="#rezervace">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  Rezervace
+</a>
+<a class="fab fab-right" href="#poukaz">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+  Dárkový poukaz
+</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo" aria-label="Pizzerie Malecí"><img src="img/site/logo.png" alt="Pizzerie Malecí"></a>
+    <nav class="main-nav" aria-label="Hlavní navigace">
+      <ul>
+        <li><a href="index.html">Úvod</a></li>
+        <li><a href="pizza-menu.html">Pizza menu</a></li>
+        <li><a href="drink-menu.html">Drink menu</a></li>
+        <li><a href="poledni-menu.html">Polední menu</a></li>
+        <li><a href="fotografie.html">Fotografie</a></li>
+        <li><a href="kontakt.html" class="active">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container"><h1 class="page-title">Kontakt na pizzerii Malecí</h1></div>
+</section>
+
+<main>
+  <div class="container">
+    <div class="contact-grid block">
+
+      <!-- vlevo: dárkový poukaz -->
+      <aside class="aside-box reveal" id="poukaz">
+        <h2 class="section-title">Dárkový poukaz</h2>
+        <p>Dárkové poukazy je možné zakoupit u nás v restauraci v hodnotě <strong>300</strong> a <strong>500&nbsp;Kč</strong>.</p>
+        <img class="poukaz-img" src="http://pizzeriemaleci.cz/default/img/dp.jpg" alt="Dárkový poukaz Pizzerie Malecí" loading="lazy">
+      </aside>
+
+      <!-- střed: hlavní informace + otevírací doba -->
+      <section class="card reveal" id="rezervace">
+        <h2 class="section-title">Pizzerie Malecí</h2>
+        <div class="contact-info">
+          <p>Malecí 205</p>
+          <p>549 01 Nové Město nad Metují</p>
+          <p>Česká republika</p>
+          <p style="margin-top:10px">Mobil: <strong><a href="tel:+420773514299">+420 773 514 299</a></strong></p>
+          <p>Email: <strong><a href="mailto:pizzeriemaleci@seznam.cz">pizzeriemaleci@seznam.cz</a></strong></p>
+        </div>
+
+        <h3 class="section-title" style="font-size:1.2rem;margin-top:22px">Otevírací doba</h3>
+        <table class="hours-table" id="hoursTable">
+          <tr data-d="1"><th>Pondělí</th><td>11:00 – 22:00</td></tr>
+          <tr data-d="2"><th>Úterý</th><td>11:00 – 22:00</td></tr>
+          <tr data-d="3"><th>Středa</th><td>11:00 – 22:00</td></tr>
+          <tr data-d="4"><th>Čtvrtek</th><td>11:00 – 22:00</td></tr>
+          <tr data-d="5"><th>Pátek</th><td>11:00 – 23:00</td></tr>
+          <tr data-d="6"><th>Sobota</th><td class="closed">Zavřeno</td></tr>
+          <tr data-d="0"><th>Neděle</th><td class="closed">Zavřeno</td></tr>
+        </table>
+
+        <!-- mapa: desktop normálně, mobil přes button (ne přes celý screen) -->
+        <button class="btn green map-toggle" id="mapToggle" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span class="mt-label">Zobrazit mapu</span>
+        </button>
+        <div class="map-wrap" id="mapWrap">
+          <iframe title="Mapa – Pizzerie Malecí" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=Male%C4%8D%C3%AD%20205,%20Nov%C3%A9%20M%C4%9Bsto%20nad%20Metuj%C3%AD&t=&z=16&ie=UTF8&iwloc=&output=embed"></iframe>
+        </div>
+      </section>
+
+      <!-- vpravo: dekorativní promítání fotek z restaurace -->
+      <aside class="reveal">
+        <h2 class="section-title">Naše restaurace</h2>
+        <div class="deco-slideshow" id="decoShow">
+          <img src="http://pizzeriemaleci.cz/media/photos/thumb/1611061331T1e2l7.jpg" alt="Restaurace" class="show">
+          <img src="http://pizzeriemaleci.cz/media/photos/thumb/1611061331Txriv0.jpg" alt="Restaurace">
+          <img src="http://pizzeriemaleci.cz/media/photos/thumb/1711082315Td8xw6.jpg" alt="Restaurace">
+          <img src="http://pizzeriemaleci.cz/media/photos/thumb/1711082305Tl4qr0.jpg" alt="Restaurace">
+          <img src="http://pizzeriemaleci.cz/media/photos/thumb/1711082315Tyd3p4.jpg" alt="Restaurace">
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Pizzerie Malecí</div>
+        <p>Malecí 205<br>Nové Město nad Metují</p>
+        <p style="margin-top:8px"><a href="tel:+420773514299">+420 773 514 299</a></p>
+        <p><a href="mailto:pizzeriemaleci@seznam.cz">pizzeriemaleci@seznam.cz</a></p>
+      </div>
+      <div class="footer-center">
+        <h4>Navigace</h4>
+        <ul class="footer-nav">
+          <li><a href="index.html">Úvod</a></li>
+          <li><a href="pizza-menu.html">Pizza menu</a></li>
+          <li><a href="drink-menu.html">Drink menu</a></li>
+          <li><a href="poledni-menu.html">Polední menu</a></li>
+          <li><a href="fotografie.html">Fotografie</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+        <a class="footer-fb" href="https://www.facebook.com/pages/Pizzerie-Malec%C3%AD/131911436834984" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.52c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+        </a>
+      </div>
+      <div class="footer-right">
+        <h4>Otevírací doba</h4>
+        <ul class="footer-hours">
+          <li><span>Po&nbsp;–&nbsp;Čt</span><span>11:00&nbsp;–&nbsp;22:00</span></li>
+          <li><span>Pátek</span><span>11:00&nbsp;–&nbsp;23:00</span></li>
+          <li><span>So&nbsp;–&nbsp;Ne</span><span class="closed">Zavřeno</span></li>
+        </ul>
+        <p class="footer-voucher">Rezervace i dárkové poukazy vyřídíte u nás v restauraci. Dárkové poukazy je možné zakoupit v hodnotě 300 a 500&nbsp;Kč.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © <span id="year"></span> Pizzerie Malecí · Všechna práva vyhrazena.
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+/* zvýraznění dnešního dne v tabulce otevírací doby */
+(function(){
+  var d = new Date().getDay();
+  var row = document.querySelector('#hoursTable tr[data-d="'+d+'"]');
+  if (row) row.classList.add('today');
+})();
+/* dekorativní promítání fotek z restaurace (bez přiblížení) */
+(function(){
+  var imgs = document.querySelectorAll('#decoShow img');
+  if (imgs.length < 2) return;
+  var i = 0;
+  setInterval(function(){
+    imgs[i].classList.remove('show');
+    i = (i+1) % imgs.length;
+    imgs[i].classList.add('show');
+  }, 3500);
+})();
+</script>
+</body>
+</html>

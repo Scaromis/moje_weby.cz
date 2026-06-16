@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Drink menu Pizzerie Malecí – káva, horké nápoje, víno, pivo, míchané koktejly, rum a alkoholické nápoje.">
+<title>Drink menu | Pizzerie Malecí</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@400;500;700&family=DynaPuff:wght@500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .menu-cat > h3{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:clamp(1.02rem,2.2vw,1.22rem)}
+  .menu-row .m-name{font-size:1rem}
+  .menu-row .m-price{font-size:1.02rem}
+  .cat-note{color:var(--ink-soft);font-size:.86rem;margin:-4px 0 10px}
+  .group-label{font-weight:700;color:var(--ink);margin:10px 0 2px}
+  .menu-cat small{display:block;color:var(--ink-soft);font-size:.8rem;font-weight:400}
+  /* na PC: karty se pakují do sloupců bez mezer, ať se vejde víc na obrazovku */
+  @media (min-width:1100px){
+    .menu-cols.three{display:block;columns:4;column-gap:24px}
+    .menu-cols.three .menu-cat{break-inside:avoid;margin-bottom:24px;width:100%}
+  }
+  @media (min-width:1700px){ .menu-cols.three{columns:5} }
+</style>
+</head>
+<body data-price-store="maleci_drink_prices">
+
+<div class="admin-bar" id="adminBar">
+  <span>Režim úpravy cen – klikni na cenu a přepiš.</span>
+  <button id="adminSaveBtn">Uložit</button>
+  <button id="adminResetBtn">Obnovit původní</button>
+  <button id="adminExitBtn">Ukončit</button>
+</div>
+
+<a class="fab fab-left" href="kontakt.html#rezervace">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  Rezervace
+</a>
+<a class="fab fab-right" href="kontakt.html#poukaz">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+  Dárkový poukaz
+</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo" aria-label="Pizzerie Malecí"><img src="img/site/logo.png" alt="Pizzerie Malecí"></a>
+    <nav class="main-nav" aria-label="Hlavní navigace">
+      <ul>
+        <li><a href="index.html">Úvod</a></li>
+        <li><a href="pizza-menu.html">Pizza menu</a></li>
+        <li><a href="drink-menu.html" class="active">Drink menu</a></li>
+        <li><a href="poledni-menu.html">Polední menu</a></li>
+        <li><a href="fotografie.html">Fotografie</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1 class="page-title">Drink menu</h1>
+    <p class="lead">Co si u nás můžete dát?</p>
+  </div>
+</section>
+
+<main>
+  <div class="container menu-wide">
+    <nav class="menu-quicknav" aria-label="Kategorie nápojů">
+      <a href="#kava">Káva</a>
+      <a href="#horke">Horké nápoje</a>
+      <a href="#nealko">Nealko</a>
+      <a href="#vino">Víno</a>
+      <a href="#pivo">Pivo</a>
+      <a href="#michane">Míchané</a>
+      <a href="#rum">Rum</a>
+      <a href="#alko">Alko</a>
+      <a href="#whiskey">Whiskey &amp; Cognac</a>
+      <a href="#chut">Na chuť</a>
+      <a href="#sladke">Něco sladkého</a>
+    </nav>
+    <div class="menu-cols three block">
+
+      <!-- KÁVA -->
+      <section class="menu-cat card reveal" id="kava">
+        <h3>Káva / Coffee</h3>
+        <div class="menu-row"><span class="m-name">Espresso se smetanou</span><span class="m-price"><span class="price-val" data-key="kva1">45,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Cappuccino</span><span class="m-price"><span class="price-val" data-key="kva2">59,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Latté Macchiato</span><span class="m-price"><span class="price-val" data-key="kva3">59,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Turecká káva</span><span class="m-price"><span class="price-val" data-key="kva4">25,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Vídeňská káva</span><span class="m-price"><span class="price-val" data-key="kva5">49,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Alžírská káva</span><span class="m-price"><span class="price-val" data-key="kva6">65,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Smetánka do kávy</span><span class="m-price"><span class="price-val" data-key="kva7">5,-</span></span></div>
+      </section>
+
+      <!-- HORKÉ NÁPOJE -->
+      <section class="menu-cat card reveal" id="horke">
+        <h3>Horké nápoje / Hot drinks</h3>
+        <div class="menu-row"><span class="m-name">Čokoláda se šlehačkou</span><span class="m-price"><span class="price-val" data-key="hot1">50,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Čaj dle výběru</span><span class="m-price"><span class="price-val" data-key="hot2">32,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Svařené Juice</span><span class="m-price"><span class="price-val" data-key="hot3">42,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Svařák bílý / červený</span><span class="m-price"><span class="price-val" data-key="hot4">50,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Horká Griotka</span><span class="m-price"><span class="price-val" data-key="hot5">45,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Grog</span><span class="m-price"><span class="price-val" data-key="hot6">45,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Bombardino</span><span class="m-price"><span class="price-val" data-key="hot7">65,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Med</span><span class="m-price"><span class="price-val" data-key="hot8">10,-</span></span></div>
+      </section>
+
+      <!-- NEALKO -->
+      <section class="menu-cat card reveal" id="nealko">
+        <h3>Nealko nápoje / Non-alcoholic</h3>
+        <p class="group-label">Kofola originál čepovaná</p>
+        <div class="menu-row"><span class="m-name">0,5 l</span><span class="m-price"><span class="price-val" data-key="nea1">38,-</span></span></div>
+        <div class="menu-row"><span class="m-name">0,4 l</span><span class="m-price"><span class="price-val" data-key="nea2">35,-</span></span></div>
+        <div class="menu-row"><span class="m-name">0,3 l</span><span class="m-price"><span class="price-val" data-key="nea3">32,-</span></span></div>
+        <div class="menu-row"><span class="m-name">0,2 l</span><span class="m-price"><span class="price-val" data-key="nea4">29,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Coca Cola clasic / light <span class="m-size">0,33 l</span></span><span class="m-price"><span class="price-val" data-key="nea5">45,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Fanta <span class="m-size">0,33 l</span></span><span class="m-price"><span class="price-val" data-key="nea6">45,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Sprite <span class="m-size">0,33 l</span></span><span class="m-price"><span class="price-val" data-key="nea7">45,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Tonic originál / zázvor <span class="m-size">0,33 l</span></span><span class="m-price"><span class="price-val" data-key="nea8">45,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Vinea <span class="m-size">0,2 l</span></span><span class="m-price"><span class="price-val" data-key="nea9">36,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Soda <span class="m-size">0,33 l</span></span><span class="m-price"><span class="price-val" data-key="nea10">20,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Rajec <span class="m-size">0,33 l</span><small>neperlivý / jemně / perlivý</small></span><span class="m-price"><span class="price-val" data-key="nea11">30,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Juice dle výběru <span class="m-size">0,2 l</span></span><span class="m-price"><span class="price-val" data-key="nea12">38,-</span></span></div>
+        <div class="menu-row"><span class="m-name">My homemade lemonade <span class="m-size">0,5 l</span><small>domácí sirupy</small></span><span class="m-price"><span class="price-val" data-key="nea13">60,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Kohoutkovka <span class="m-size">0,4 l</span><small>voda s citronem</small></span><span class="m-price"><span class="price-val" data-key="nea14">15,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Džbán / voda s citronem <span class="m-size">1 l</span></span><span class="m-price"><span class="price-val" data-key="nea15">45,-</span></span></div>
+      </section>
+
+      <!-- VÍNO -->
+      <section class="menu-cat card reveal" id="vino">
+        <h3>Víno / Wine</h3>
+        <p class="cat-note">Rozlévané 0,2 l</p>
+        <div class="menu-row"><span class="m-name">Chardonnay</span><span class="m-price"><span class="price-val" data-key="vin1">48,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Rulandské šedé</span><span class="m-price"><span class="price-val" data-key="vin2">48,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Zweigeltrebe rosé</span><span class="m-price"><span class="price-val" data-key="vin3">48,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Cabernet Sauvignon</span><span class="m-price"><span class="price-val" data-key="vin4">48,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Modrý Portugal</span><span class="m-price"><span class="price-val" data-key="vin5">48,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Prosecco</span><span class="m-price"><span class="price-val" data-key="vin6">60,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Vinný střik</span><span class="m-price"><span class="price-val" data-key="vin7">68,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Cinzano Bianco Vermut <span class="m-size">0,1 l</span></span><span class="m-price"><span class="price-val" data-key="vin8">50,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Campari <span class="m-size">0,05 l</span></span><span class="m-price"><span class="price-val" data-key="vin9">50,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Prosecco <span class="m-size">0,75 l</span></span><span class="m-price"><span class="price-val" data-key="vin10">245,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Bohemia Sekt <span class="m-size">0,75 l</span></span><span class="m-price"><span class="price-val" data-key="vin11">255,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Víno <span class="m-size">0,75 l</span> – dle výběru<small>více info u obsluhy</small></span><span class="m-price">—</span></div>
+      </section>
+
+      <!-- PIVO -->
+      <section class="menu-cat card reveal" id="pivo">
+        <h3>Pivo / Beer</h3>
+        <p class="cat-note">Ceny pro 0,3 l / 0,5 l</p>
+        <div class="menu-row"><span class="m-name">Extra chmelená 11°</span><span class="m-price"><span class="price-val" data-key="piv1a">38,-</span> / <span class="price-val" data-key="piv1b">46,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Horká ze sklepa 12°</span><span class="m-price"><span class="price-val" data-key="piv2a">38,-</span> / <span class="price-val" data-key="piv2b">46,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Pilsner Urquell</span><span class="m-price"><span class="price-val" data-key="piv3a">46,-</span> / <span class="price-val" data-key="piv3b">55,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Staropramen nealko<small>čepovaný klasik, čepovaný grep</small></span><span class="m-price"><span class="price-val" data-key="piv4a">34,-</span> / <span class="price-val" data-key="piv4b">42,-</span></span></div>
+      </section>
+
+      <!-- MÍCHANÉ -->
+      <section class="menu-cat card reveal" id="michane">
+        <h3>Míchané nápoje / Cocktails</h3>
+        <p class="cat-note">Všechny koktejly za <span class="price-val" data-key="mix0">105,-</span></p>
+        <div class="menu-row"><span class="m-name">Aperol Spritz<small>aperol, prosecco, soda, pomeranč, led</small></span></div>
+        <div class="menu-row"><span class="m-name">Mojito<small>kuba rum, třtinový cukr, limeta, máta, soda, led</small></span></div>
+        <div class="menu-row"><span class="m-name">Cuba Libre<small>kuba rum, cola, limeta, led</small></span></div>
+        <div class="menu-row"><span class="m-name">Piña Colada<small>kuba rum, ananas juice, smetana, kokosový sirup, led</small></span></div>
+        <div class="menu-row"><span class="m-name">Pacifik<small>malibu, broskvová, curacao, ananas juice, led</small></span></div>
+        <div class="menu-row"><span class="m-name">Tequila Sunrise<small>tequila silver, pomeranč juice, granadina, led</small></span></div>
+        <div class="menu-row"><span class="m-name">Sex on the Beach<small>vodka, broskvová, pomeranč juice, grenadina, led</small></span></div>
+      </section>
+
+      <!-- RUM -->
+      <section class="menu-cat card reveal" id="rum">
+        <h3>Rum</h3>
+        <p class="cat-note">0,04 l</p>
+        <div class="menu-row"><span class="m-name">Captain Morgan</span><span class="m-price"><span class="price-val" data-key="rum1">50,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Republica</span><span class="m-price"><span class="price-val" data-key="rum2">50,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Havana 3 Aňos</span><span class="m-price"><span class="price-val" data-key="rum3">60,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Legendario Elixir</span><span class="m-price"><span class="price-val" data-key="rum4">55,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Pampero Aniversario</span><span class="m-price"><span class="price-val" data-key="rum5">70,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Don Papa</span><span class="m-price"><span class="price-val" data-key="rum6">95,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Diplomatico Reserva 12</span><span class="m-price"><span class="price-val" data-key="rum7">120,-</span></span></div>
+      </section>
+
+      <!-- ALKO -->
+      <section class="menu-cat card reveal" id="alko">
+        <h3>Alko nápoje / Alcoholic drinks</h3>
+        <p class="cat-note">0,04 l</p>
+        <div class="menu-row"><span class="m-name">Berentzen<small>dle nabídky</small></span><span class="m-price"><span class="price-val" data-key="alk1">40,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Becherovka<small>clasic / lemond</small></span><span class="m-price"><span class="price-val" data-key="alk2">40,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Beefeater</span><span class="m-price"><span class="price-val" data-key="alk3">55,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Baileys</span><span class="m-price"><span class="price-val" data-key="alk4">55,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Curacao Blue</span><span class="m-price"><span class="price-val" data-key="alk5">35,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Fernet<small>stock / citrus</small></span><span class="m-price"><span class="price-val" data-key="alk6">45,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Finlandia Vodka</span><span class="m-price"><span class="price-val" data-key="alk7">50,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Griotka</span><span class="m-price"><span class="price-val" data-key="alk8">35,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Jägermeister</span><span class="m-price"><span class="price-val" data-key="alk9">50,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Koskenkorva Peach</span><span class="m-price"><span class="price-val" data-key="alk10">35,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Malibu</span><span class="m-price"><span class="price-val" data-key="alk11">40,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Metaxa 7*</span><span class="m-price"><span class="price-val" data-key="alk12">65,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Metaxa 12*</span><span class="m-price"><span class="price-val" data-key="alk13">105,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Peprmintový likér</span><span class="m-price"><span class="price-val" data-key="alk14">40,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Rum Božkov</span><span class="m-price"><span class="price-val" data-key="alk15">40,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Slivovice Jelínek</span><span class="m-price"><span class="price-val" data-key="alk16">50,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Stará Myslivecká</span><span class="m-price"><span class="price-val" data-key="alk17">40,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Tequila Silver / Gold</span><span class="m-price"><span class="price-val" data-key="alk18">55,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Vaječný likér</span><span class="m-price"><span class="price-val" data-key="alk19">40,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Williams Pircher</span><span class="m-price"><span class="price-val" data-key="alk20">60,-</span></span></div>
+      </section>
+
+      <!-- WHISKEY -->
+      <section class="menu-cat card reveal" id="whiskey">
+        <h3>Whiskey's &amp; Cognac</h3>
+        <p class="cat-note">0,04 l</p>
+        <div class="menu-row"><span class="m-name">Jameson Irish</span><span class="m-price"><span class="price-val" data-key="whk1">60,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Jim Beam</span><span class="m-price"><span class="price-val" data-key="whk2">60,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Jack Daniels<small>original / honey</small></span><span class="m-price"><span class="price-val" data-key="whk3">65,-</span></span></div>
+      </section>
+
+      <!-- NĚCO NA CHUŤ -->
+      <section class="menu-cat card reveal" id="chut">
+        <h3>Něco na chuť</h3>
+        <div class="menu-row"><span class="m-name">Oříšky</span><span class="m-price"><span class="price-val" data-key="cht1">40,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Brambůrky</span><span class="m-price"><span class="price-val" data-key="cht2">50,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Mandle</span><span class="m-price"><span class="price-val" data-key="cht3">65,-</span></span></div>
+        <div class="menu-row"><span class="m-name">Nachos s dipem dle výběru</span><span class="m-price"><span class="price-val" data-key="cht4">85,-</span></span></div>
+      </section>
+
+      <!-- NĚCO SLADKÉHO -->
+      <section class="menu-cat card reveal" id="sladke">
+        <h3>Něco sladkého</h3>
+        <p class="cat-note">Aktuální nabídka dezertů vždy v naší vitríně.</p>
+      </section>
+
+    </div>
+
+    <!-- odkaz na PDF lístek -->
+    <section class="pdf-box reveal">
+      <p>Na následujícím odkazu si můžete prohlédnout celý Drink&nbsp;menu v&nbsp;PDF.</p>
+      <a class="btn" href="img/menu/drink-menu.pdf" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 12 15 15"/></svg>
+        Drink menu (PDF)
+      </a>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Pizzerie Malecí</div>
+        <p>Malecí 205<br>Nové Město nad Metují</p>
+        <p style="margin-top:8px"><a href="tel:+420773514299">+420 773 514 299</a></p>
+        <p><a href="mailto:pizzeriemaleci@seznam.cz">pizzeriemaleci@seznam.cz</a></p>
+      </div>
+      <div class="footer-center">
+        <h4>Navigace</h4>
+        <ul class="footer-nav">
+          <li><a href="index.html">Úvod</a></li>
+          <li><a href="pizza-menu.html">Pizza menu</a></li>
+          <li><a href="drink-menu.html">Drink menu</a></li>
+          <li><a href="poledni-menu.html">Polední menu</a></li>
+          <li><a href="fotografie.html">Fotografie</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+        <a class="footer-fb" href="https://www.facebook.com/pages/Pizzerie-Malec%C3%AD/131911436834984" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.52c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+        </a>
+      </div>
+      <div class="footer-right">
+        <h4>Otevírací doba</h4>
+        <ul class="footer-hours">
+          <li><span>Po&nbsp;–&nbsp;Čt</span><span>11:00&nbsp;–&nbsp;22:00</span></li>
+          <li><span>Pátek</span><span>11:00&nbsp;–&nbsp;23:00</span></li>
+          <li><span>So&nbsp;–&nbsp;Ne</span><span class="closed">Zavřeno</span></li>
+        </ul>
+        <p class="footer-voucher">Rezervace i dárkové poukazy vyřídíte u nás v restauraci. Dárkové poukazy je možné zakoupit v hodnotě 300 a 500&nbsp;Kč.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © <span id="year"></span> Pizzerie Malecí · Všechna práva vyhrazena.
+      <button class="admin-lock" id="adminLockBtn" title="Úprava cen" aria-label="Úprava cen">
+        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </button>
+    </div>
+  </div>
+</footer>
+
+<div class="admin-popup" id="adminPopup">
+  <input type="password" id="adminInput" autocomplete="off" aria-label="Heslo">
+</div>
+
+<script src="main.js"></script>
+<script src="prices.js"></script>
+</body>
+</html>

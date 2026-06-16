@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Pizza menu Pizzerie Malecí – italská pizza z kamenné pece, dětská pizza, nabídka jídel a přílohy.">
+<title>Pizza menu | Pizzerie Malecí</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@400;500;700&family=DynaPuff:wght@500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .pizza-layout{display:grid;grid-template-columns:1fr;gap:24px}
+  @media (min-width:900px){ .pizza-layout{grid-template-columns:1fr 1fr;align-items:start} }
+  /* na PC: víc místa Italské a její dlouhý seznam do 2 sloupců, ať se vejde víc na obrazovku */
+  @media (min-width:1100px){
+    .pizza-layout{grid-template-columns:1.7fr 1fr;gap:28px}
+    #italska{columns:2;column-gap:30px}
+    #italska > h3{column-span:all}
+    #italska .menu-row{break-inside:avoid}
+  }
+  .pizza-col{display:flex;flex-direction:column;gap:24px}
+  .menu-cat > h3 .dia{font-family:'Roboto',sans-serif;font-weight:400;font-size:.8rem;color:var(--ink-soft);margin-left:6px}
+  .menu-row .m-name{font-size:1rem}
+  .menu-row .m-price{font-size:1.02rem}
+  .menu-cat small{display:block;color:var(--ink-soft);font-size:.8rem;font-weight:400;line-height:1.4}
+  .wt{display:inline-block;min-width:50px;color:var(--ink-soft);font-size:.82rem}
+  .num{display:inline-block;min-width:26px;color:var(--red);font-weight:700}
+  .allergen-note{color:var(--ink-soft);font-size:.82rem;font-style:italic;margin-top:8px}
+</style>
+</head>
+<body data-price-store="maleci_pizza_prices">
+
+<div class="admin-bar" id="adminBar">
+  <span>Režim úpravy cen – klikni na cenu a přepiš.</span>
+  <button id="adminSaveBtn">Uložit</button>
+  <button id="adminResetBtn">Obnovit původní</button>
+  <button id="adminExitBtn">Ukončit</button>
+</div>
+
+<a class="fab fab-left" href="kontakt.html#rezervace">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  Rezervace
+</a>
+<a class="fab fab-right" href="kontakt.html#poukaz">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+  Dárkový poukaz
+</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo" aria-label="Pizzerie Malecí"><img src="img/site/logo.png" alt="Pizzerie Malecí"></a>
+    <nav class="main-nav" aria-label="Hlavní navigace">
+      <ul>
+        <li><a href="index.html">Úvod</a></li>
+        <li><a href="pizza-menu.html" class="active">Pizza menu</a></li>
+        <li><a href="drink-menu.html">Drink menu</a></li>
+        <li><a href="poledni-menu.html">Polední menu</a></li>
+        <li><a href="fotografie.html">Fotografie</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container"><h1 class="page-title">Naše pizza menu!</h1></div>
+</section>
+
+<main>
+  <div class="container menu-wide">
+    <nav class="menu-quicknav" aria-label="Kategorie jídel">
+      <a href="#italska">Italská pizza</a>
+      <a href="#detska">Dětská pizza</a>
+      <a href="#jidla">Nabídka jídel</a>
+      <a href="#prilohy">Přílohy</a>
+    </nav>
+    <div class="pizza-layout block">
+
+      <!-- LEVÝ SLOUPEC: Italská + Dětská -->
+      <div class="pizza-col">
+        <section class="menu-cat card reveal" id="italska">
+          <h3>Italská pizza <span class="dia">Ø 32 cm</span></h3>
+          <div class="menu-row"><span class="m-name"><span class="num">1.</span>Šunková<small>drcená rajčata, edam, šunka</small></span><span class="m-price"><span class="price-val" data-key="ip1">149,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">2.</span>Sýrová<small>drcená rajčata, edam</small></span><span class="m-price"><span class="price-val" data-key="ip2">129,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">3.</span>Salámová<small>drcená rajčata, mozzarella, trvanlivý salám, cibule</small></span><span class="m-price"><span class="price-val" data-key="ip3">149,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">4.</span>Napolenata<small>drcená rajčata, mozzarella, pikantní salám, olivy</small></span><span class="m-price"><span class="price-val" data-key="ip4">159,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">5.</span>Hermelínová<small>drcená rajčata, hermelín, šunka, vejce</small></span><span class="m-price"><span class="price-val" data-key="ip5">159,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">7.</span>Sofia<small>drcená rajčata, mozzarella, žampiony, kuřecí maso, pórek, grana padano</small></span><span class="m-price"><span class="price-val" data-key="ip7">164,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">8.</span>Margherita<small>drcená rajčata, mozzarella, čerstvá rajčata, bazalka</small></span><span class="m-price"><span class="price-val" data-key="ip8">134,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">9.</span>Quatro Formaggi<small>drcená rajčata, edam, mozzarella, niva, grana padano</small></span><span class="m-price"><span class="price-val" data-key="ip9">164,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">10.</span>Peperoni<small>drcená rajčata, mozzarella, angl. slanina, pikantní salám, feferonky, česnek, grana padano</small></span><span class="m-price"><span class="price-val" data-key="ip10">164,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">13.</span>Bianca con Salmone<small>smetana, mozzarella, losos, sušená rajčata, rukola</small></span><span class="m-price"><span class="price-val" data-key="ip13">164,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">14.</span>Funghi<small>drcená rajčata, žampiony</small></span><span class="m-price"><span class="price-val" data-key="ip14">129,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">15.</span>Quatro Stragioni<small>drcená rajčata, edam, trvanlivý salám, žampiony, feferonky, olivy</small></span><span class="m-price"><span class="price-val" data-key="ip15">164,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">17.</span>Hawai<small>drcená rajčata, mozzarella, šunka, ananas</small></span><span class="m-price"><span class="price-val" data-key="ip17">155,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">18.</span>Piacere di Pomodoro<small>drcená rajčata, mozzarella, parmská šunka, čerstvá rajčata, sušená rajčata, rukola, grana padano</small></span><span class="m-price"><span class="price-val" data-key="ip18">179,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">21.</span>Montanara – pálivá<small>pikantní rajčatový základ s kuřecím masem, mozzarella, pikantní salám, feferonky, grana padano</small></span><span class="m-price"><span class="price-val" data-key="ip21">169,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">22.</span>Di Parma<small>smetana, parmská šunka, houby, rukola</small></span><span class="m-price"><span class="price-val" data-key="ip22">174,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">23.</span>Valina<small>drcená rajčata, edam, kuřecí maso, olivy, žampiony</small></span><span class="m-price"><span class="price-val" data-key="ip23">164,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">24.</span>Řecká<small>drcená rajčata, edam, niva, olivy, čerstvá rajčata, cibule, oregáno</small></span><span class="m-price"><span class="price-val" data-key="ip24">155,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">25.</span>Carpacio<small>smetana, plátky marinované svíčkové, mozzarella, grana padano, rukola</small></span><span class="m-price"><span class="price-val" data-key="ip25">189,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">27.</span>Spinaci<small>drcená rajčata, mozzarella, trvanlivý salám, špenát, rozšlehané vejce, žampiony</small></span><span class="m-price"><span class="price-val" data-key="ip27">169,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">28.</span>Kapsa Pizzerie Malecí<small>drcená rajčata, edam, žampiony, angl. slanina, čerstvá rajčata, feferonky</small></span><span class="m-price"><span class="price-val" data-key="ip28">164,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">30.</span>Tre Valli<small>smetana, edam, mozzarella, niva, angl. slanina, žampiony</small></span><span class="m-price"><span class="price-val" data-key="ip30">164,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">31.</span>Basilicata<small>smetana, mozzarella, kuřecí maso, hermelín, čerstvá rajčata, kukuřice</small></span><span class="m-price"><span class="price-val" data-key="ip31">164,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">32.</span>Tonale<small>smetana, mozzarella, niva, anglická slanina, pikantní salám, cibule</small></span><span class="m-price"><span class="price-val" data-key="ip32">169,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">35.</span>Quatro Salami<small>drcená rajčata, šunka, suchý salám, angl. slanina, klobása</small></span><span class="m-price"><span class="price-val" data-key="ip35">174,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">36.</span>Foccacia – pizza chléb<small>česnek, olivový olej, oregáno</small></span><span class="m-price"><span class="price-val" data-key="ip36">70,-</span></span></div>
+        </section>
+
+        <section class="menu-cat card reveal" id="detska">
+          <h3>Dětská pizza <span class="dia">Ø 20 cm</span></h3>
+          <div class="menu-row"><span class="m-name"><span class="num">1.</span>Šunková<small>drcená rajčata, edam, šunka</small></span><span class="m-price"><span class="price-val" data-key="dp1">109,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">2.</span>Sýrová<small>drcená rajčata, edam</small></span><span class="m-price"><span class="price-val" data-key="dp2">99,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">9.</span>Quatro Formaggi<small>drcená rajčata, edam, mozzarella, niva, grana padano</small></span><span class="m-price"><span class="price-val" data-key="dp9">119,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">14.</span>Funghi<small>drcená rajčata, žampiony</small></span><span class="m-price"><span class="price-val" data-key="dp14">99,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">17.</span>Hawai<small>drcená rajčata, mozzarella, šunka, ananas</small></span><span class="m-price"><span class="price-val" data-key="dp17">109,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="num">30.</span>Tre Valli<small>smetana, edam, mozzarella, niva, angl. slanina, žampiony</small></span><span class="m-price"><span class="price-val" data-key="dp30">119,-</span></span></div>
+        </section>
+      </div>
+
+      <!-- PRAVÝ SLOUPEC: Nabídka jídel + Přílohy -->
+      <div class="pizza-col">
+        <section class="menu-cat card reveal" id="jidla">
+          <h3>Nabídka jídel</h3>
+          <div class="menu-row"><span class="m-name"><span class="wt">0,25 l</span>Polévka<small>dle denní nabídky</small></span><span class="m-price"><span class="price-val" data-key="j1">50,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="wt">100 g</span>Caprese<small>čerstvá rajčata, mozzarella, olivy, bazalka, pečivo</small></span><span class="m-price"><span class="price-val" data-key="j2">115,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="wt">200 g</span>Míchaný zeleninový salát s filírovanými kuřecími prsíčky<small>pečivo</small></span><span class="m-price"><span class="price-val" data-key="j3">195,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="wt">200 g</span>Míchaný zeleninový salát di Parma<small>míchaná zelenina, parmská šunka, sušená rajčata, mozzarella</small></span><span class="m-price"><span class="price-val" data-key="j4">209,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="wt">250 g</span>Lasagne<small>italské lasagne s mletým masem</small></span><span class="m-price"><span class="price-val" data-key="j5">205,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="wt">150 g</span>BBQ Burger<small>hovězí trhané maso, zelenina, cibule, bbq omáčka, hranolky, tatarská omáčka</small></span><span class="m-price"><span class="price-val" data-key="j6">189,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="wt">100 g</span>Smažený sýr eidam<small>hranolky, tatarská omáčka</small></span><span class="m-price"><span class="price-val" data-key="j7">155,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="wt">200 g</span>Kuřecí prsíčka zapékaná anglickou slaninou a nivou</span><span class="m-price"><span class="price-val" data-key="j8">195,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="wt">200 g</span>Vepřová panenka<small>s hříbkovou omáčkou / s pepřovou omáčkou</small></span><span class="m-price"><span class="price-val" data-key="j9">235,-</span></span></div>
+          <p class="allergen-note">Naše jídla jsou připravována běžným způsobem a mohou obsahovat alergeny. Více informací u obsluhy.</p>
+        </section>
+
+        <section class="menu-cat card reveal" id="prilohy">
+          <h3>Přílohy</h3>
+          <div class="menu-row"><span class="m-name"><span class="wt">200 g</span>Hranolky</span><span class="m-price"><span class="price-val" data-key="pr1">50,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="wt">200 g</span>Krokety</span><span class="m-price"><span class="price-val" data-key="pr2">50,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="wt">3 ks</span>Bramboráčky</span><span class="m-price"><span class="price-val" data-key="pr3">55,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="wt">50 g</span>Tatarská omáčka, kečup</span><span class="m-price"><span class="price-val" data-key="pr4">20,-</span></span></div>
+          <div class="menu-row"><span class="m-name"><span class="wt">100 g</span>Malý přílohový salátek</span><span class="m-price"><span class="price-val" data-key="pr5">70,-</span></span></div>
+          <div class="menu-row"><span class="m-name">Pizza krabička</span><span class="m-price"><span class="price-val" data-key="pr6">8,-</span></span></div>
+          <div class="menu-row"><span class="m-name">Menu box</span><span class="m-price"><span class="price-val" data-key="pr7">5,-</span></span></div>
+        </section>
+      </div>
+
+    </div>
+
+    <section class="pdf-box reveal">
+      <p>Na následujícím odkazu si můžete prohlédnout celé Pizza&nbsp;menu v&nbsp;PDF.</p>
+      <a class="btn" href="img/menu/pizza-menu.pdf" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 12 15 15"/></svg>
+        Pizza menu (PDF)
+      </a>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Pizzerie Malecí</div>
+        <p>Malecí 205<br>Nové Město nad Metují</p>
+        <p style="margin-top:8px"><a href="tel:+420773514299">+420 773 514 299</a></p>
+        <p><a href="mailto:pizzeriemaleci@seznam.cz">pizzeriemaleci@seznam.cz</a></p>
+      </div>
+      <div class="footer-center">
+        <h4>Navigace</h4>
+        <ul class="footer-nav">
+          <li><a href="index.html">Úvod</a></li>
+          <li><a href="pizza-menu.html">Pizza menu</a></li>
+          <li><a href="drink-menu.html">Drink menu</a></li>
+          <li><a href="poledni-menu.html">Polední menu</a></li>
+          <li><a href="fotografie.html">Fotografie</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+        <a class="footer-fb" href="https://www.facebook.com/pages/Pizzerie-Malec%C3%AD/131911436834984" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.52c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+        </a>
+      </div>
+      <div class="footer-right">
+        <h4>Otevírací doba</h4>
+        <ul class="footer-hours">
+          <li><span>Po&nbsp;–&nbsp;Čt</span><span>11:00&nbsp;–&nbsp;22:00</span></li>
+          <li><span>Pátek</span><span>11:00&nbsp;–&nbsp;23:00</span></li>
+          <li><span>So&nbsp;–&nbsp;Ne</span><span class="closed">Zavřeno</span></li>
+        </ul>
+        <p class="footer-voucher">Rezervace i dárkové poukazy vyřídíte u nás v restauraci. Dárkové poukazy je možné zakoupit v hodnotě 300 a 500&nbsp;Kč.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © <span id="year"></span> Pizzerie Malecí · Všechna práva vyhrazena.
+      <button class="admin-lock" id="adminLockBtn" title="Úprava cen" aria-label="Úprava cen">
+        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </button>
+    </div>
+  </div>
+</footer>
+
+<div class="admin-popup" id="adminPopup">
+  <input type="password" id="adminInput" autocomplete="off" aria-label="Heslo">
+</div>
+
+<script src="main.js"></script>
+<script src="prices.js"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Polední menu Pizzerie Malecí – denní nabídka hotových jídel.">
+<title>Polední menu | Pizzerie Malecí</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@400;500;700&family=DynaPuff:wght@500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .menu-date{font-family:'Alkatra',cursive;color:var(--green);text-align:center;font-size:1.15rem;margin-top:-2px}
+  .menu-row .m-name{font-size:1.02rem}.menu-row .m-price{font-size:1.05rem}
+  .num{display:inline-block;min-width:30px;color:var(--red);font-weight:700}
+  .daily-sub{text-align:center;color:var(--ink-soft);font-style:italic;margin-bottom:6px}
+  .soup-row{background:var(--cream-2);border-radius:10px;padding:10px 12px!important;margin-bottom:8px}
+  .edit-hint{color:var(--ink-soft);font-size:.82rem;text-align:center;margin-top:14px}
+</style>
+</head>
+<body data-price-store="maleci_poledni_prices">
+
+<div class="admin-bar" id="adminBar">
+  <span>Režim úpravy – klikni na název jídla nebo cenu a přepiš.</span>
+  <button id="adminSaveBtn">Uložit</button>
+  <button id="adminResetBtn">Obnovit původní</button>
+  <button id="adminExitBtn">Ukončit</button>
+</div>
+
+<a class="fab fab-left" href="kontakt.html#rezervace">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  Rezervace
+</a>
+<a class="fab fab-right" href="kontakt.html#poukaz">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+  Dárkový poukaz
+</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo" aria-label="Pizzerie Malecí"><img src="img/site/logo.png" alt="Pizzerie Malecí"></a>
+    <nav class="main-nav" aria-label="Hlavní navigace">
+      <ul>
+        <li><a href="index.html">Úvod</a></li>
+        <li><a href="pizza-menu.html">Pizza menu</a></li>
+        <li><a href="drink-menu.html">Drink menu</a></li>
+        <li><a href="poledni-menu.html" class="active">Polední menu</a></li>
+        <li><a href="fotografie.html">Fotografie</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1 class="page-title">Polední menu na dnešek!</h1>
+    <p class="menu-date" id="todayDate"></p>
+  </div>
+</section>
+
+<main>
+  <div class="container">
+
+    <section class="menu-cat card reveal" style="max-width:680px;margin:0 auto">
+      <p class="daily-sub">Denní nabídka jídel Pizzerie Malecí pro dnešní den</p>
+      <h3>Dnešní nabídka</h3>
+
+      <div class="menu-row soup-row"><span class="m-name">Polévka: <span class="text-val" data-key="psoup">Drůbeží vývar s písmenky</span></span><span class="m-price"><span class="price-val" data-key="psoupp">40,-</span></span></div>
+
+      <div class="menu-row"><span class="m-name"><span class="num">1.</span><span class="text-val" data-key="d1">Salát Caesar s kuřecím masem a slaninou</span></span><span class="m-price"><span class="price-val" data-key="d1p">144,-</span></span></div>
+      <div class="menu-row"><span class="m-name"><span class="num">2.</span><span class="text-val" data-key="d2">Pikantní masové rizoto, sypané sýrem, okurka</span></span><span class="m-price"><span class="price-val" data-key="d2p">144,-</span></span></div>
+      <div class="menu-row"><span class="m-name"><span class="num">3.</span><span class="text-val" data-key="d3">Vepřový kotlet s hořčičným přelivem, vařené brambory</span></span><span class="m-price"><span class="price-val" data-key="d3p">144,-</span></span></div>
+      <div class="menu-row"><span class="m-name"><span class="num">4.</span><span class="text-val" data-key="d4">Smažený kuřecí řízek, bramborový salát</span></span><span class="m-price"><span class="price-val" data-key="d4p">144,-</span></span></div>
+
+      <p class="edit-hint">Menu se mění denně – v režimu úpravy (zámeček v patičce) přepíšeš názvy jídel i ceny.</p>
+    </section>
+
+    <section class="pdf-box reveal" style="max-width:680px;margin-left:auto;margin-right:auto">
+      <p>Zde si můžete prohlédnout polední menu také v&nbsp;PDF.</p>
+      <a class="btn green" href="img/menu/poledni-menu.pdf" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><polyline points="9 15 12 12 15 15"/></svg>
+        Polední menu (PDF)
+      </a>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Pizzerie Malecí</div>
+        <p>Malecí 205<br>Nové Město nad Metují</p>
+        <p style="margin-top:8px"><a href="tel:+420773514299">+420 773 514 299</a></p>
+        <p><a href="mailto:pizzeriemaleci@seznam.cz">pizzeriemaleci@seznam.cz</a></p>
+      </div>
+      <div class="footer-center">
+        <h4>Navigace</h4>
+        <ul class="footer-nav">
+          <li><a href="index.html">Úvod</a></li>
+          <li><a href="pizza-menu.html">Pizza menu</a></li>
+          <li><a href="drink-menu.html">Drink menu</a></li>
+          <li><a href="poledni-menu.html">Polední menu</a></li>
+          <li><a href="fotografie.html">Fotografie</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+        <a class="footer-fb" href="https://www.facebook.com/pages/Pizzerie-Malec%C3%AD/131911436834984" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.52c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+        </a>
+      </div>
+      <div class="footer-right">
+        <h4>Otevírací doba</h4>
+        <ul class="footer-hours">
+          <li><span>Po&nbsp;–&nbsp;Čt</span><span>11:00&nbsp;–&nbsp;22:00</span></li>
+          <li><span>Pátek</span><span>11:00&nbsp;–&nbsp;23:00</span></li>
+          <li><span>So&nbsp;–&nbsp;Ne</span><span class="closed">Zavřeno</span></li>
+        </ul>
+        <p class="footer-voucher">Rezervace i dárkové poukazy vyřídíte u nás v restauraci. Dárkové poukazy je možné zakoupit v hodnotě 300 a 500&nbsp;Kč.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © <span id="year"></span> Pizzerie Malecí · Všechna práva vyhrazena.
+      <button class="admin-lock" id="adminLockBtn" title="Úprava cen" aria-label="Úprava cen">
+        <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </button>
+    </div>
+  </div>
+</footer>
+
+<div class="admin-popup" id="adminPopup">
+  <input type="password" id="adminInput" autocomplete="off" aria-label="Heslo">
+</div>
+
+<script src="main.js"></script>
+<script src="prices.js"></script>
+<script>
+(function(){
+  var dny=['neděle','pondělí','úterý','středa','čtvrtek','pátek','sobota'];
+  var mes=['ledna','února','března','dubna','května','června','července','srpna','září','října','listopadu','prosince'];
+  var d=new Date();
+  var el=document.getElementById('todayDate');
+  if(el) el.textContent = dny[d.getDay()] + ' ' + d.getDate() + '. ' + mes[d.getMonth()] + ' ' + d.getFullYear();
+})();
+</script>
+</body>
+</html>

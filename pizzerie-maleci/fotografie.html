@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Fotogalerie Pizzerie Malecí – interiér restaurace, naše pizza, dětský koutek, ukázka stolování a svatomartinská zábava.">
+<title>Fotografie | Pizzerie Malecí</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alkatra:wght@400;500;700&family=DynaPuff:wght@500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* lightbox: na širokém displeji menu náhledů vpravo */
+  @media (min-width:900px){
+    .lightbox.open{flex-direction:row;align-items:center;gap:18px}
+    .lightbox .lb-stage{display:flex;align-items:center;justify-content:center;flex:1;min-width:0}
+    .lb-thumbs{flex-direction:column;flex-wrap:nowrap;max-height:80vh;max-width:140px;margin-top:0}
+    .lb-thumbs img{width:118px;height:78px}
+  }
+</style>
+</head>
+<body>
+
+<a class="fab fab-left" href="kontakt.html#rezervace">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  Rezervace
+</a>
+<a class="fab fab-right" href="kontakt.html#poukaz">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+  Dárkový poukaz
+</a>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo" aria-label="Pizzerie Malecí"><img src="img/site/logo.png" alt="Pizzerie Malecí"></a>
+    <nav class="main-nav" aria-label="Hlavní navigace">
+      <ul>
+        <li><a href="index.html">Úvod</a></li>
+        <li><a href="pizza-menu.html">Pizza menu</a></li>
+        <li><a href="drink-menu.html">Drink menu</a></li>
+        <li><a href="poledni-menu.html">Polední menu</a></li>
+        <li><a href="fotografie.html" class="active">Fotografie</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container"><h1 class="page-title">Fotografie od nás.</h1></div>
+</section>
+
+<main>
+  <div class="container" id="galRoot"></div>
+</main>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lb-close" id="lbClose" aria-label="Zavřít">&times;</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Předchozí">&#8249;</button>
+  <div class="lb-stage"><img id="lbImg" src="" alt="Fotografie"></div>
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Další">&#8250;</button>
+  <div class="lb-thumbs" id="lbThumbs"></div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Pizzerie Malecí</div>
+        <p>Malecí 205<br>Nové Město nad Metují</p>
+        <p style="margin-top:8px"><a href="tel:+420773514299">+420 773 514 299</a></p>
+        <p><a href="mailto:pizzeriemaleci@seznam.cz">pizzeriemaleci@seznam.cz</a></p>
+      </div>
+      <div class="footer-center">
+        <h4>Navigace</h4>
+        <ul class="footer-nav">
+          <li><a href="index.html">Úvod</a></li>
+          <li><a href="pizza-menu.html">Pizza menu</a></li>
+          <li><a href="drink-menu.html">Drink menu</a></li>
+          <li><a href="poledni-menu.html">Polední menu</a></li>
+          <li><a href="fotografie.html">Fotografie</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+        <a class="footer-fb" href="https://www.facebook.com/pages/Pizzerie-Malec%C3%AD/131911436834984" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.52c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
+        </a>
+      </div>
+      <div class="footer-right">
+        <h4>Otevírací doba</h4>
+        <ul class="footer-hours">
+          <li><span>Po&nbsp;–&nbsp;Čt</span><span>11:00&nbsp;–&nbsp;22:00</span></li>
+          <li><span>Pátek</span><span>11:00&nbsp;–&nbsp;23:00</span></li>
+          <li><span>So&nbsp;–&nbsp;Ne</span><span class="closed">Zavřeno</span></li>
+        </ul>
+        <p class="footer-voucher">Rezervace i dárkové poukazy vyřídíte u nás v restauraci. Dárkové poukazy je možné zakoupit v hodnotě 300 a 500&nbsp;Kč.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © <span id="year"></span> Pizzerie Malecí · Všechna práva vyhrazena.
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+(function () {
+  var B = 'http://pizzeriemaleci.cz/media/photos/thumb/';
+  function u(arr){ return arr.map(function(id){ return B + id + '.jpg'; }); }
+
+  var categories = [
+    { title:'Fotky z interiéru', photos:u(['1611061330Tldk18','1611061331T1e2l7','1611061331Tspdxq','1611061331Tu9vkb','1611061331Txriv0','1611061331T2yx8t','1711082315Tf1upr','1711082315Tpt8il','1711082315Td8xw6','1711082315Tkw421','1711082315Tyd3p4','1711082315Tak011','1711082315Tz2rt4','1711082315Tw8wxk','1711082316Tguw12']) },
+    { title:'Sídlo dětí', photos:u(['1801081355Ttppr0','1801081355Tatau3','1801081355T11q01','1801081355Tkla1e','1801081355T1b57q']) },
+    { title:'Naše pizzy', photos:u(['1611060959T1ay1l','1611060959T29d16','1611060959T16ej8','1611060959Tr2skz','1611060959T15wr1','1611061000Treziw','1611061000T82514','1611061000T1eivh','1611061000T198l1']) },
+    { title:'Ukázka jak stolujeme', photos:u(['1711082305T18faq','1711082305Temt15','1711082305T11lc1','1711082305Tjo619','1711082305Tl4qr0','1711082305T13351']) },
+    { title:'Fotky ze Svatomartinské zábavy (11/11/2016)', photos:u(['1611141820T18su1','1611141821T89818','1611141821T5zuxx','1611141821Tyj7hh','1611141821T1ain1','1611141821T418m8','1611141821T195fn','1611141821Tqi96z','1611141821T18qyh','1611141822T8c61c','1611141822Tciq5e','1611141822T12yy4','1611141822T19kyb','1611141822Tv22xh','1611141822T39sov','1611141822Tv7668','1611141824Te85p1','1611141824Ts3jjx','1611141824Tjql1b','1611141824Tshi12','1611141824Tjxr11','1611141825Tog56x','1611141825T6qdog','1611141825Tbz54z','1611141825Tag9uq','1611141825Tfbs8d','1611141825T123hs','1611141825Twyq11','1611141826Tc9p18','1611141827Tt498p']) }
+  ];
+
+  var root = document.getElementById('galRoot');
+  var slots = window.matchMedia('(min-width:1040px)').matches ? 4 : (window.matchMedia('(min-width:820px)').matches ? 3 : 2);
+
+  categories.forEach(function (cat, ci) {
+    var sec = document.createElement('section');
+    sec.className = 'gallery-cat reveal';
+    var h = document.createElement('h2');
+    h.className = 'section-title'; h.textContent = cat.title;
+    var strip = document.createElement('div'); strip.className = 'gallery-strip';
+    sec.appendChild(h); sec.appendChild(strip); root.appendChild(sec);
+
+    var n = Math.min(slots, cat.photos.length);
+    var shuffled = cat.photos.slice().sort(function(){return Math.random()-0.5;});
+    var live = [];
+    for (var i = 0; i < n; i++) {
+      var shot = document.createElement('div'); shot.className = 'shot';
+      var im = document.createElement('img'); im.loading='lazy'; im.alt=cat.title;
+      im.style.transition='opacity .35s ease';
+      im.src = shuffled[i]; live[i] = shuffled[i];
+      shot.appendChild(im); strip.appendChild(shot);
+      (function(idx){ shot.addEventListener('click', function(){ openLB(ci, cat.photos.indexOf(live[idx])); }); })(i);
+    }
+    // náhodná, stále se měnící řada náhledů
+    if (cat.photos.length > n) {
+      setInterval(function(){
+        var slot = Math.floor(Math.random()*n);
+        var pool = cat.photos.filter(function(p){ return live.indexOf(p)===-1; });
+        if(!pool.length) return;
+        var next = pool[Math.floor(Math.random()*pool.length)];
+        var im = strip.children[slot].querySelector('img');
+        im.style.opacity='0';
+        setTimeout(function(){ im.src=next; live[slot]=next; im.style.opacity='1'; },300);
+      }, 3200 + ci*400);
+    }
+  });
+
+  /* ---- Lightbox ---- */
+  var lb = document.getElementById('lightbox'),
+      lbImg = document.getElementById('lbImg'),
+      lbThumbs = document.getElementById('lbThumbs');
+  var curCat = 0, curIdx = 0;
+
+  function openLB(ci, idx) {
+    curCat = ci; curIdx = idx < 0 ? 0 : idx;
+    buildThumbs();
+    show();
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function show() {
+    var list = categories[curCat].photos;
+    lbImg.src = list[curIdx];
+    Array.prototype.forEach.call(lbThumbs.children, function (t, i) {
+      t.classList.toggle('active', i === curIdx);
+    });
+    var active = lbThumbs.children[curIdx];
+    if (active) active.scrollIntoView({ block:'nearest', inline:'nearest' });
+  }
+  function buildThumbs() {
+    lbThumbs.innerHTML = '';
+    categories[curCat].photos.forEach(function (src, i) {
+      var t = document.createElement('img'); t.src = src; t.loading='lazy'; t.alt='Náhled';
+      t.addEventListener('click', function (e) { e.stopPropagation(); curIdx = i; show(); });
+      lbThumbs.appendChild(t);
+    });
+  }
+  function close(){ lb.classList.remove('open'); document.body.style.overflow=''; }
+  function next(){ curIdx = (curIdx+1) % categories[curCat].photos.length; show(); }
+  function prev(){ var l=categories[curCat].photos.length; curIdx=(curIdx-1+l)%l; show(); }
+
+  document.getElementById('lbClose').addEventListener('click', close);
+  document.getElementById('lbNext').addEventListener('click', function(e){e.stopPropagation();next();});
+  document.getElementById('lbPrev').addEventListener('click', function(e){e.stopPropagation();prev();});
+  lb.addEventListener('click', function(e){ if(e.target===lb || e.target.classList.contains('lb-stage')) close(); });
+  document.addEventListener('keydown', function(e){
+    if(!lb.classList.contains('open')) return;
+    if(e.key==='Escape') close(); else if(e.key==='ArrowRight') next(); else if(e.key==='ArrowLeft') prev();
+  });
+})();
+</script>
+</body>
+</html>
