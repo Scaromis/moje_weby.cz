@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Občerstvení u slepiček v Křižanech pod Ještědem – pštrosí steaky, 22 druhů kávy, pizza, čepované pivo, terasa a dětský koutek. Otevřeno dle počasí.">
+<title>Úvod | Občerstvení u slepiček</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Roboto:wght@300;400;500;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo" aria-label="Občerstvení u slepiček – úvod">
+      <img src="img/logo.png" alt="Logo Občerstvení u slepiček">
+    </a>
+    <button class="nav-toggle" aria-label="Otevřít menu"><span></span><span></span><span></span></button>
+    <nav class="main-nav" aria-label="Hlavní navigace">
+      <ul>
+        <li><a href="index.html" class="active">Úvod</a></li>
+        <li><a href="nabidka.html">Nabídka</a></li>
+        <li><a href="fotky.html">Fotky</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== HERO / Kdo jsme (text o podniku, obrázek v pozadí) ===== -->
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow rise" style="color:var(--yellow-soft)">Občerstvení u slepiček · Křižany</p>
+    <h1 class="rise">Kdo jsme?</h1>
+    <p class="lead rise">Jsme malé venkovní občerstvení v Křižanech pod Ještědem – místo, kde se dobře najíte,
+      v klidu posedíte na terase a vychutnáte si jednu z dvaceti dvou druhů kávy.</p>
+    <p class="lead rise">Na grilu u nás voní <strong>pštrosí steaky</strong>, krkovice i pštrosí klobása, k tomu si dáte pizzu
+      nebo popcorn a v horkém dni vás osvěží ledová tříšť, nanuk i vodní mlha nad terasou.
+      Čepujeme <strong>Svijany a Plzeň</strong>, nalijeme limo, víno i džus. Vítáni jsou cyklisté i děti –
+      pro ně máme dětský koutek. Když svítí sluníčko, slepičky už na vás čekají.</p>
+  </div>
+</section>
+
+<!-- ===== Kde nás najdete ===== -->
+<main>
+  <section class="block">
+    <div class="container">
+      <div class="section-head reveal-up">
+        <h2>Kde nás najdete?</h2>
+        <p>Zastavte se cestou na výlet – pěšky, na kole i autem.</p>
+      </div>
+
+      <div class="findus-grid">
+        <!-- vlevo: povídání + mapa pod sebou -->
+        <div class="findus-left">
+          <article class="findus-text reveal-up">
+            <p>Najdete nás v <strong>Křižanech</strong> kousek od Liberce, v podještědí, na adrese
+              Křižany ev. č. 114. Je to ideální zastávka při toulkách okolím – zaparkovat můžete přímo u nás
+              a posadit se na terasu do stínu.</p>
+            <p style="margin-top:1rem">Otevíráme <strong>dle počasí</strong>, takže za hezkých dní vás rádi
+              obsloužíme od odpoledne, o víkendu už od dopoledne. Za nepříznivého počasí máme zavřeno.</p>
+          </article>
+          <div class="map-embed reveal-up">
+            <iframe title="Mapa – Občerstvení u slepiček, Křižany"
+              src="https://maps.google.com/maps?q=50.7375336,14.9064733&z=16&output=embed"
+              loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+
+        <!-- vpravo: probíhající fotky (slideshow po 2 s) -->
+        <a href="fotky.html#okruhy" class="slideshow js-slideshow reveal-up" data-cat="uvod" aria-label="Přejít na výběr okruhů fotek">
+          <span class="caption">Mrkněte k nám – vyberte si okruh fotek 🐔</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Navigace</h4>
+        <ul class="footer-nav">
+          <li><a href="index.html">Úvod</a></li>
+          <li><a href="nabidka.html">Nabídka</a></li>
+          <li><a href="fotky.html">Fotky</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-center">
+        <h4>Občerstvení u slepiček</h4>
+        <p class="copy">© <span id="year">2026</span> Občerstvení u slepiček<br>Všechna práva vyhrazena · J. S.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <ul class="footer-contact">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+420602228248">+420 602 228 248</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg><a href="mailto:antos@kpnreality.cz">antos@kpnreality.cz</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Křižany ev. č. 114, 463 53</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">IČO 28227476 · Provoz dle počasí, za nepříznivého počasí zavřeno.</div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

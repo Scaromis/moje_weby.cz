@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kontakt na Občerstvení u slepiček v Křižanech – telefon, e-mail, adresa a otevírací doba. Otevřeno dle počasí.">
+<title>Kontakt | Občerstvení u slepiček</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Roboto:wght@300;400;500;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="logo" aria-label="Občerstvení u slepiček – úvod">
+      <img src="img/logo.png" alt="Logo Občerstvení u slepiček">
+    </a>
+    <button class="nav-toggle" aria-label="Otevřít menu"><span></span><span></span><span></span></button>
+    <nav class="main-nav" aria-label="Hlavní navigace">
+      <ul>
+        <li><a href="index.html">Úvod</a></li>
+        <li><a href="nabidka.html">Nabídka</a></li>
+        <li><a href="fotky.html">Fotky</a></li>
+        <li><a href="kontakt.html" class="active">Kontakt</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="block-tight">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow rise">Ozvěte se nám</p>
+        <h1 class="rise">Kontakt</h1>
+      </div>
+
+      <!-- Kontaktní karty s "fantasy" hoverem -->
+      <div class="contact-grid">
+        <!-- E-mail: panel se rozevře z levého horního rohu -->
+        <div class="contact-card from-left">
+          <svg class="c-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+          <span class="c-info"><b>E-mail</b><span class="c-val">antos@kpnreality.cz</span></span>
+          <a class="reveal-panel" href="mailto:antos@kpnreality.cz" aria-label="Napsat e-mail">
+            <svg class="big-ico ico-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+          </a>
+        </div>
+
+        <!-- Telefon: okénko se otevře z pravého horního rohu (prohozené strany) -->
+        <div class="contact-card from-right">
+          <svg class="c-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span class="c-info"><b>Telefon</b><span class="c-val">+420 602 228 248</span></span>
+          <a class="reveal-panel" href="tel:+420602228248" aria-label="Zavolat">
+            <svg class="big-ico ico-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </a>
+        </div>
+
+        <!-- Adresa: klasická karta -->
+        <div class="contact-card wide">
+          <svg class="c-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span class="c-info"><b>Adresa</b><span class="c-val">Křižany ev. č. 114, 463 53</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Otevírací doba ===== -->
+  <section class="block-tight">
+    <div class="container">
+      <div class="section-head reveal-up">
+        <h2>Otevírací doba</h2>
+      </div>
+      <div class="hours-wrap reveal-up">
+        <table class="hours-table">
+          <thead><tr><th>Den</th><th style="text-align:right">Otevřeno</th></tr></thead>
+          <tbody>
+            <tr data-day="po"><td>Pondělí</td><td>15:00–19:00</td></tr>
+            <tr data-day="ut"><td>Úterý</td><td>15:00–19:00</td></tr>
+            <tr data-day="st"><td>Středa</td><td>15:00–19:00</td></tr>
+            <tr data-day="ct"><td>Čtvrtek</td><td>15:00–19:00</td></tr>
+            <tr data-day="pa"><td>Pátek</td><td>15:00–19:00</td></tr>
+            <tr data-day="so"><td>Sobota</td><td>11:00–19:00</td></tr>
+            <tr data-day="ne"><td>Neděle</td><td>11:00–19:00</td></tr>
+          </tbody>
+        </table>
+        <p class="hours-note">Otevřeno dle počasí. V případě nepříznivého počasí zavřeno.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Mapa ===== -->
+  <section class="block-tight">
+    <div class="container">
+      <div class="map-embed reveal-up" style="min-height:380px">
+        <iframe title="Mapa – Občerstvení u slepiček, Křižany"
+          src="https://maps.google.com/maps?q=50.7375336,14.9064733&z=16&output=embed"
+          style="min-height:380px" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>Navigace</h4>
+        <ul class="footer-nav">
+          <li><a href="index.html">Úvod</a></li>
+          <li><a href="nabidka.html">Nabídka</a></li>
+          <li><a href="fotky.html">Fotky</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-center">
+        <h4>Občerstvení u slepiček</h4>
+        <p class="copy">© <span id="year">2026</span> Občerstvení u slepiček<br>Všechna práva vyhrazena · J. S.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <ul class="footer-contact">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+420602228248">+420 602 228 248</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg><a href="mailto:antos@kpnreality.cz">antos@kpnreality.cz</a></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Křižany ev. č. 114, 463 53</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">IČO 28227476 · Provoz dle počasí, za nepříznivého počasí zavřeno.</div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
