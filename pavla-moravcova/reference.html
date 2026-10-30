@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reference | Ing. Pavla Moravcová</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --krem: #F7F3EC;
+    --text: #2F3A33;
+    --salvej: #8FA58C;
+    --salvej-tmava: #5F7A5C;
+    --bezova: #D9C7B0;
+    --bezova-svetla: #EFE6D8;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--krem);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ---------- Navigace (na podstránce je vidět pořád) ---------- */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(247, 243, 236, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(47, 58, 51, 0.08);
+  }
+
+  .nav-obsah {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .nav-jmeno {
+    font-family: var(--serif);
+    font-size: 1.55rem;
+    margin-right: auto;
+  }
+
+  .nav ul {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+    font-size: 0.95rem;
+  }
+
+  .nav ul a {
+    padding: 4px 0;
+    background-image: linear-gradient(var(--salvej), var(--salvej));
+    background-size: 0% 2px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.35s ease, color 0.25s ease;
+  }
+
+  /* Podtržení se střídá: liché odkazy zleva, sudé zprava */
+  .nav li:nth-child(even) a { background-position: 100% 100%; }
+
+  .nav ul a:hover,
+  .nav ul a.aktivni {
+    background-size: 100% 2px;
+    color: var(--salvej-tmava);
+  }
+
+  .menu-tlacitko {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    padding: 6px;
+  }
+
+  /* ---------- Úvod podstránky ---------- */
+  .zahlavi {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 96px 32px 72px;
+    text-align: center;
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 1.05;
+    margin-bottom: 12px;
+  }
+
+  .podtitul {
+    font-family: var(--serif);
+    font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+    color: var(--salvej-tmava);
+    margin-bottom: 56px;
+  }
+
+  /* ---------- Tlačítko „Zobrazit reference“ s načítací animací ---------- */
+  .zobrazit {
+    position: relative;
+    height: 64px;
+    width: 280px;
+    border: none;
+    border-radius: 999px;
+    background: var(--salvej-tmava);
+    color: #fff;
+    font-family: var(--sans);
+    font-size: 1.05rem;
+    font-weight: 500;
+    cursor: pointer;
+    overflow: hidden;
+    transition: width 0.5s cubic-bezier(.6,.05,.25,1), transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease, background 0.3s ease;
+  }
+
+  .zobrazit:hover {
+    background: #4E674B;
+    transform: translateY(-3px);
+    box-shadow: 0 16px 30px -14px rgba(95, 122, 92, 0.9);
+  }
+
+  .zobrazit-text { transition: opacity 0.2s ease; }
+
+  /* Kroužek, který se točí místo textu */
+  .zobrazit::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 2.5px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #fff;
+    opacity: 0;
+    transition: opacity 0.2s ease 0.3s;
+  }
+
+  .zobrazit.nacita {
+    width: 64px;
+    pointer-events: none;
+    transform: none;
+    box-shadow: none;
+  }
+
+  .zobrazit.nacita .zobrazit-text { opacity: 0; }
+
+  .zobrazit.nacita::after {
+    opacity: 1;
+    animation: tocit 0.8s linear infinite;
+  }
+
+  .zobrazit.hotovo {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+
+  @keyframes tocit { to { rotate: 360deg; } }
+
+  /* ---------- Nástěnka s lístky ---------- */
+  .nastenka {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.9s cubic-bezier(.6,.05,.25,1);
+  }
+
+  .nastenka.otevrena { grid-template-rows: 1fr; }
+
+  .nastenka { scroll-margin-top: 60px; }
+
+  .nastenka-vnitrek { overflow: hidden; }
+
+  .predel {
+    display: block;
+    width: 100%;
+    height: 70px;
+  }
+
+  .listky-obal {
+    background: var(--bezova-svetla);
+    padding: 64px 32px 120px;
+  }
+
+  .listky {
+    list-style: none;
+    max-width: 1200px;
+    margin: 0 auto;
+    columns: 3;
+    column-gap: 40px;
+  }
+
+  .listek {
+    position: relative;
+    break-inside: avoid;
+    display: inline-block;
+    width: 100%;
+    margin: 18px 0 44px;
+    background: var(--krem);
+    padding: 40px 30px 28px;
+    border-radius: 6px;
+    box-shadow: 0 18px 34px -22px rgba(47, 58, 51, 0.45);
+    rotate: var(--natoceni, 0deg);
+    opacity: 0;
+    transition: box-shadow 0.4s ease, opacity 0.7s ease;
+  }
+
+  .listek:nth-child(6n+1) { --natoceni: -2deg; }
+  .listek:nth-child(6n+2) { --natoceni: 1.5deg; }
+  .listek:nth-child(6n+3) { --natoceni: -1deg; }
+  .listek:nth-child(6n+4) { --natoceni: 2deg; }
+  .listek:nth-child(6n+5) { --natoceni: -1.5deg; }
+  .listek:nth-child(6n)   { --natoceni: 0.8deg; }
+
+  /* Lístek se plynule objeví na nástěnce */
+  .listek.ukazat { opacity: 1; }
+
+  /* Lístky se nehýbou (natočený text by se při pohybu rozmazal), jen zesílí stín */
+  .listek:hover {
+    box-shadow: 0 28px 44px -20px rgba(47, 58, 51, 0.6);
+  }
+
+  /* Kousek lepicí pásky nahoře */
+  .listek::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    width: 86px;
+    height: 24px;
+    margin-left: -43px;
+    background: rgba(143, 165, 140, 0.45);
+    rotate: -3deg;
+  }
+
+  .listek-nadpis {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    line-height: 1.3;
+    margin-bottom: 14px;
+  }
+
+  .listek-text {
+    font-size: 0.98rem;
+    line-height: 1.7;
+  }
+
+  .listek-text p + p { margin-top: 10px; }
+
+  /* Dlouhé reference jsou zkrácené, dokud se nerozbalí */
+  .listek.dlouhy .listek-text {
+    max-height: 13.6em;
+    overflow: hidden;
+    position: relative;
+    transition: max-height 0.8s ease;
+  }
+
+  .listek.dlouhy .listek-text::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 4em;
+    background: linear-gradient(rgba(247, 243, 236, 0), var(--krem));
+    transition: opacity 0.4s ease;
+  }
+
+  .listek.rozbaleny .listek-text::after { opacity: 0; }
+
+  .cist-cele {
+    margin-top: 14px;
+    background: none;
+    border: none;
+    padding: 4px 0;
+    font-family: var(--sans);
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--salvej-tmava);
+    cursor: pointer;
+    background-image: linear-gradient(var(--salvej), var(--salvej));
+    background-size: 0% 2px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.35s ease;
+  }
+
+  .cist-cele:hover { background-size: 100% 2px; }
+
+  .listek-podpis { margin-top: 20px; }
+
+  .listek-jmeno {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+  }
+
+  .listek-prace {
+    font-size: 0.88rem;
+    color: var(--salvej-tmava);
+  }
+
+  /* ---------- Výzva k objednání ---------- */
+  .vyzva {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 96px 32px 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .vyzva p {
+    font-family: var(--serif);
+    font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+    line-height: 1.2;
+  }
+
+  .tlacitko {
+    display: inline-block;
+    background: var(--salvej-tmava);
+    color: #fff;
+    font-weight: 500;
+    padding: 16px 36px;
+    border-radius: 999px;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .tlacitko:hover {
+    background: #4E674B;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px -12px rgba(95, 122, 92, 0.8);
+  }
+
+  /* ---------- Footer ---------- */
+  .predel-footer {
+    display: block;
+    width: 100%;
+    height: 70px;
+  }
+
+  .paticka {
+    background: var(--text);
+    color: #E9E1D3;
+    padding: 40px 32px 32px;
+    font-size: 0.95rem;
+  }
+
+  .paticka-obsah {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(233, 225, 211, 0.15);
+  }
+
+  .paticka-jmeno {
+    font-family: var(--serif);
+    font-size: 1.9rem;
+    line-height: 1.15;
+    color: var(--krem);
+    margin-bottom: 10px;
+  }
+
+  .paticka-titul { color: #B9CBB6; }
+
+  .paticka h3 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: var(--krem);
+    margin-bottom: 16px;
+  }
+
+  .paticka ul { list-style: none; }
+
+  .paticka li + li { margin-top: 8px; }
+
+  .paticka a {
+    padding: 2px 0;
+    background-image: linear-gradient(#B9CBB6, #B9CBB6);
+    background-size: 0% 1.5px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.35s ease, color 0.25s ease;
+  }
+
+  .paticka a:hover {
+    background-size: 100% 1.5px;
+    color: var(--krem);
+  }
+
+  .paticka-spodek {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.85rem;
+    color: rgba(233, 225, 211, 0.7);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .listek { transition: none; }
+    .nastenka, .zobrazit { transition: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ---------- Tablet a mobil ---------- */
+  @media (max-width: 1000px) {
+    .listky { columns: 2; }
+  }
+
+  @media (max-width: 860px) {
+    .menu-tlacitko { display: block; }
+
+    .nav-obsah { padding: 12px 20px; gap: 12px; flex-wrap: wrap; }
+
+    .nav-jmeno { font-size: 1.3rem; }
+
+    .nav ul {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      gap: 4px;
+      padding: 8px 0 12px;
+    }
+
+    .nav.otevrena ul { display: flex; }
+
+    .zahlavi { padding: 64px 20px 56px; }
+
+    .listky-obal { padding: 48px 20px 80px; }
+
+    .vyzva { padding: 64px 20px 80px; }
+
+    .paticka { padding: 32px 20px 24px; }
+
+    .paticka-obsah { grid-template-columns: 1fr 1fr; gap: 36px; }
+
+    .paticka-obsah > div:first-child { grid-column: 1 / -1; }
+  }
+
+  @media (max-width: 640px) {
+    .listky { columns: 1; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav" aria-label="Hlavní navigace">
+  <div class="nav-obsah">
+    <a href="index.html" class="nav-jmeno">Ing. Pavla Moravcová</a>
+    <button class="menu-tlacitko" id="menuTlacitko" aria-label="Otevřít menu" aria-expanded="false">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <ul>
+      <li><a href="index.html">Úvod</a></li>
+      <li><a href="#">O mně</a></li>
+      <li><a href="#">Služby</a></li>
+      <li><a href="reference.html" class="aktivni" aria-current="page">Reference</a></li>
+      <li><a href="#">Ceník</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">Kontakt</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+  <header class="zahlavi">
+    <h1>Reference</h1>
+    <p class="podtitul">Zkušenosti mých klientů</p>
+    <button class="zobrazit" id="zobrazit" type="button" aria-controls="nastenka" aria-expanded="false">
+      <span class="zobrazit-text">Zobrazit reference</span>
+    </button>
+  </header>
+
+  <section class="nastenka" id="nastenka" aria-label="Reference klientů">
+    <div class="nastenka-vnitrek">
+      <svg class="predel" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 44 C 220 14, 520 6, 760 32 S 1180 64, 1440 26 L1440 70 L0 70 Z" fill="#EFE6D8"/>
+      </svg>
+      <div class="listky-obal">
+        <ul class="listky" id="listky"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="vyzva">
+    <p>Udělejte první krok a objednejte se!</p>
+    <a href="index.html#rezervace" class="tlacitko">Objednat se</a>
+  </section>
+</main>
+
+<svg class="predel-footer" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0 36 C 260 4, 560 8, 820 34 S 1240 66, 1440 30 L1440 70 L0 70 Z" fill="#2F3A33"/>
+</svg>
+
+<footer class="paticka">
+  <div class="paticka-obsah">
+    <div>
+      <p class="paticka-jmeno">Ing. Pavla Moravcová</p>
+      <p class="paticka-titul">certifikovaná BCST terapeutka<br>Kraniosakrální Biodynamika</p>
+    </div>
+    <div>
+      <h3>Kontakt</h3>
+      <ul>
+        <li><a href="tel:+420702439143">+420 702 439 143</a></li>
+        <li><a href="mailto:olsavska.pavla@centrum.cz">olsavska.pavla@centrum.cz</a></li>
+        <li><a href="https://facebook.com/kraniozamberk">Facebook</a></li>
+        <li>Letohrad a Hradec Králové</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Stránky</h3>
+      <ul>
+        <li><a href="index.html">Úvod</a></li>
+        <li><a href="#">O mně</a></li>
+        <li><a href="#">Služby</a></li>
+        <li><a href="reference.html">Reference</a></li>
+        <li><a href="#">Ceník</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Dokumenty</h3>
+      <ul>
+        <li><a href="#">Všeobecné obchodní podmínky</a></li>
+        <li><a href="#">Ochrana osobních údajů</a></li>
+        <li><a href="#">Pravidla ochrany soukromí</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="paticka-spodek">
+    <p>© <span class="rok">2026</span> Ing. Pavla Moravcová. Všechna práva vyhrazena.</p>
+    <p>Kopírování obsahu bez souhlasu autorky je zakázáno.</p>
+  </div>
+</footer>
+
+<script src="reference-data.js"></script>
+<script>
+  const seznam = document.getElementById('listky');
+  const tlacitko = document.getElementById('zobrazit');
+  const nastenka = document.getElementById('nastenka');
+
+  // Vytvoří lístek z jedné reference (texty se vkládají jako text, ne jako HTML)
+  function vytvorListek(ref) {
+    const li = document.createElement('li');
+    li.className = 'listek';
+
+    // J.Z. má u reference nadpis místo povolání
+    const jeNadpis = ref.prace.length > 40;
+    if (jeNadpis) {
+      const nadpis = document.createElement('p');
+      nadpis.className = 'listek-nadpis';
+      nadpis.textContent = ref.prace;
+      li.appendChild(nadpis);
+    }
+
+    const text = document.createElement('blockquote');
+    text.className = 'listek-text';
+    ref.text.split(/\n+/).forEach((odstavec) => {
+      const p = document.createElement('p');
+      p.textContent = odstavec;
+      text.appendChild(p);
+    });
+    li.appendChild(text);
+
+    if (ref.text.length > 420) {
+      li.classList.add('dlouhy');
+      const cist = document.createElement('button');
+      cist.type = 'button';
+      cist.className = 'cist-cele';
+      cist.textContent = 'Číst celé';
+      cist.setAttribute('aria-expanded', 'false');
+      cist.addEventListener('click', () => {
+        const rozbalit = !li.classList.contains('rozbaleny');
+        li.classList.toggle('rozbaleny', rozbalit);
+        text.style.maxHeight = rozbalit ? text.scrollHeight + 'px' : '';
+        cist.textContent = rozbalit ? 'Sbalit' : 'Číst celé';
+        cist.setAttribute('aria-expanded', rozbalit);
+      });
+      li.appendChild(cist);
+    }
+
+    const podpis = document.createElement('div');
+    podpis.className = 'listek-podpis';
+    const jmeno = document.createElement('p');
+    jmeno.className = 'listek-jmeno';
+    jmeno.textContent = ref.jmeno;
+    podpis.appendChild(jmeno);
+    if (ref.prace && !jeNadpis) {
+      const prace = document.createElement('p');
+      prace.className = 'listek-prace';
+      prace.textContent = ref.prace;
+      podpis.appendChild(prace);
+    }
+    li.appendChild(podpis);
+    return li;
+  }
+
+  REFERENCE.forEach((ref) => seznam.appendChild(vytvorListek(ref)));
+
+  // Lístky se „přišpendlí“, až se dostanou na obrazovku (vždy po skupinkách s malým zpožděním)
+  let fronta = [];
+  let casovac = null;
+  const pozorovatel = new IntersectionObserver((zaznamy) => {
+    zaznamy.forEach((z) => {
+      if (!z.isIntersecting) return;
+      fronta.push(z.target);
+      pozorovatel.unobserve(z.target);
+    });
+    if (!casovac) casovac = setInterval(() => {
+      const dalsi = fronta.shift();
+      if (dalsi) dalsi.classList.add('ukazat');
+      else { clearInterval(casovac); casovac = null; }
+    }, 110);
+  }, { threshold: 0.1 });
+
+  // Klik na „Zobrazit reference“: načítání, otevření nástěnky a lístky
+  tlacitko.addEventListener('click', () => {
+    tlacitko.classList.add('nacita');
+    tlacitko.setAttribute('aria-busy', 'true');
+
+    setTimeout(() => {
+      tlacitko.classList.add('hotovo');
+      nastenka.classList.add('otevrena');
+      tlacitko.setAttribute('aria-expanded', 'true');
+      tlacitko.removeAttribute('aria-busy');
+
+      setTimeout(() => {
+        tlacitko.style.display = 'none';
+        nastenka.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        document.querySelectorAll('.listek').forEach((l) => pozorovatel.observe(l));
+      }, 500);
+    }, 1400);
+  });
+
+  // Rok v patičce se aktualizuje sám
+  document.querySelectorAll('.rok').forEach((el) => el.textContent = new Date().getFullYear());
+
+  // Mobilní menu
+  const nav = document.getElementById('nav');
+  const menuTlacitko = document.getElementById('menuTlacitko');
+  menuTlacitko.addEventListener('click', () => {
+    const otevreno = nav.classList.toggle('otevrena');
+    menuTlacitko.setAttribute('aria-expanded', otevreno);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ing. Pavla Moravcová | Kraniosakrální Biodynamika</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --krem: #F7F3EC;
+    --text: #2F3A33;
+    --salvej: #8FA58C;
+    --salvej-tmava: #5F7A5C;
+    --bezova: #D9C7B0;
+    --bezova-svetla: #EFE6D8;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--krem);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.7;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ---------- Horní lišta v úvodu ---------- */
+  .lista {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 28px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .lista-jmeno {
+    font-family: var(--serif);
+    font-size: 1.75rem;
+  }
+
+  .lista-kontakt {
+    font-weight: 500;
+    color: var(--salvej-tmava);
+    padding: 4px 0;
+    background-image: linear-gradient(var(--salvej), var(--salvej));
+    background-size: 0% 2px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.35s ease;
+  }
+
+  .lista-kontakt:hover { background-size: 100% 2px; }
+
+  /* ---------- Přilepená navigace (objeví se po odscrollování úvodu) ---------- */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 50;
+    background: rgba(247, 243, 236, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(47, 58, 51, 0.08);
+    transform: translateY(-100%);
+    transition: transform 0.45s ease;
+  }
+
+  .nav.viditelna { transform: translateY(0); }
+
+  .nav-obsah {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px 32px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .nav-jmeno {
+    font-family: var(--serif);
+    font-size: 1.55rem;
+    margin-right: auto;
+  }
+
+  .nav ul {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+    font-size: 0.95rem;
+  }
+
+  .nav ul a {
+    padding: 4px 0;
+    background-image: linear-gradient(var(--salvej), var(--salvej));
+    background-size: 0% 2px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.35s ease, color 0.25s ease;
+  }
+
+  /* Podtržení se střídá: liché odkazy zleva, sudé zprava */
+  .nav li:nth-child(even) a { background-position: 100% 100%; }
+
+  .nav ul a:hover {
+    background-size: 100% 2px;
+    color: var(--salvej-tmava);
+  }
+
+  .menu-tlacitko {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    padding: 6px;
+  }
+
+  /* ---------- Úvod: fotka vlevo, nadpis vpravo ---------- */
+  .uvod {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 48px 32px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .oblouk {
+    position: relative;
+    justify-self: center;
+    width: min(100%, 400px);
+  }
+
+  .oblouk::before {
+    content: "";
+    position: absolute;
+    inset: -18px -18px 18px 18px;
+    border: 1.5px solid var(--salvej);
+    border-radius: 999px 999px 0 0;
+  }
+
+  .oblouk img {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 999px 999px 0 0;
+    background: var(--bezova);
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2.3rem, 4.2vw, 3.6rem);
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    margin-bottom: 28px;
+  }
+
+  .podnadpis {
+    max-width: 30em;
+    font-size: 1.08rem;
+    margin-bottom: 8px;
+  }
+
+  .misto {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    color: var(--salvej-tmava);
+  }
+
+  /* ---------- Vlnitý předěl ---------- */
+  .predel {
+    display: block;
+    width: 100%;
+    height: 70px;
+    margin-top: 24px;
+  }
+
+  /* ---------- Poznáváte se? ---------- */
+  .poznavate {
+    background: var(--bezova-svetla);
+    padding: 48px 32px 200px;
+  }
+
+  .poznavate-obsah {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .poznavate-foto {
+    position: relative;
+    order: 2;
+    aspect-ratio: 4 / 5;
+    border-radius: 160px 16px 16px 16px;
+    overflow: hidden;
+    background: var(--bezova);
+  }
+
+  .poznavate-foto img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s ease;
+  }
+
+  .poznavate-foto:hover img { transform: scale(1.04); }
+
+  .poznavate h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+    line-height: 1.15;
+    margin-bottom: 32px;
+  }
+
+  .stavy {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 48px;
+    margin-bottom: 36px;
+  }
+
+  .stavy li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 0;
+    font-size: 1.1rem;
+    border-bottom: 1px solid rgba(47, 58, 51, 0.12);
+  }
+
+  .stavy li::before {
+    content: "";
+    width: 18px;
+    height: 1.5px;
+    background: var(--salvej);
+    flex-shrink: 0;
+  }
+
+  /* Tlačítko s obrysem: při najetí se barva „vlije“ zleva doprava */
+  .vice {
+    --vypln: var(--salvej-tmava);
+    display: inline-block;
+    font-weight: 500;
+    color: var(--salvej-tmava);
+    padding: 14px 32px;
+    border: 1.5px solid var(--salvej-tmava);
+    border-radius: 999px;
+    background-color: transparent;
+    background-image: linear-gradient(var(--vypln), var(--vypln));
+    background-size: 0% 100%;
+    background-position: left center;
+    background-repeat: no-repeat;
+    transition: background-size 0.5s cubic-bezier(.6,.05,.25,1), color 0.35s ease 0.1s, transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  }
+
+  .vice:hover {
+    background-size: 100% 100%;
+    color: #fff;
+    transform: translateY(-4px);
+    box-shadow: 0 16px 30px -14px rgba(95, 122, 92, 0.9);
+  }
+
+  .vice:active { transform: translateY(-1px) scale(0.98); }
+
+  /* ---------- Předěl do tmavé sekce ---------- */
+  .predel-tmavy {
+    display: block;
+    width: 100%;
+    height: 70px;
+    background: var(--bezova-svetla);
+  }
+
+  /* ---------- Kdo jsem já? (tmavě zelená) ---------- */
+  .kdo {
+    background: var(--text);
+    color: var(--krem);
+    padding: 40px 32px 120px;
+  }
+
+  .kdo-obsah {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 72px;
+    align-items: center;
+  }
+
+  .kdo-foto {
+    position: relative;
+    z-index: 2;
+    margin-top: -170px;
+    aspect-ratio: 1 / 1;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--bezova);
+    box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.45);
+  }
+
+  .kdo-foto img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .kdo h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+    line-height: 1.15;
+    margin-bottom: 24px;
+  }
+
+  .kdo-text {
+    color: #E9E1D3;
+    font-size: 1.08rem;
+    max-width: 34em;
+    margin-bottom: 28px;
+  }
+
+  .kdo-text b { color: #fff; font-weight: 600; }
+
+  .kdo blockquote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.3rem, 2vw, 1.6rem);
+    line-height: 1.4;
+    color: #B9CBB6;
+    padding-left: 24px;
+    border-left: 1.5px solid var(--salvej);
+    margin-bottom: 36px;
+  }
+
+  .kdo .vice {
+    --vypln: var(--krem);
+    color: var(--krem);
+    border: none;
+    background-color: rgba(247, 243, 236, 0.1);
+  }
+
+  .kdo .vice:hover {
+    color: var(--text);
+    box-shadow: 0 16px 30px -14px rgba(0, 0, 0, 0.7);
+  }
+
+  /* Tlačítko se dvěma šipkami: vyjedou zespodu vlevo a vpravo od textu a poskakují */
+  .vice-sipky {
+    position: relative;
+    overflow: hidden;
+    transition: background-size 0.5s cubic-bezier(.6,.05,.25,1), color 0.35s ease 0.1s, transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease, padding 0.4s ease;
+  }
+
+  .vice-sipky { padding: 16px 60px; font-size: 1.05rem; }
+
+  /* U „Můj celý příběh“ barva přitéká zespodu */
+  .vice-sipky {
+    background-size: 100% 0%;
+    background-position: center bottom;
+  }
+
+  .vice-sipky:hover { background-size: 100% 100%; }
+
+  /* Tlačítko na střed sloupce s textem */
+  .vice-sipky {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+  }
+
+  .vice-sipky svg {
+    position: absolute;
+    top: 50%;
+    width: 18px;
+    height: 18px;
+    margin-top: -9px;
+    opacity: 0;
+    transform: translateY(30px);
+    /* odjezd zpět: pomalu a plynule */
+    transition: opacity 0.5s ease, transform 0.6s cubic-bezier(.4,0,.2,1);
+  }
+
+  .vice-sipky .sipka-vlevo { left: 24px; }
+  .vice-sipky .sipka-vpravo { right: 24px; }
+
+  .vice-sipky:hover svg {
+    opacity: 1;
+    transform: translateY(0);
+    /* příjezd: s lehkým pružením */
+    transition: opacity 0.3s ease, transform 0.45s cubic-bezier(.3,1.4,.5,1);
+    animation: poskok 0.8s ease-in-out 0.45s infinite;
+  }
+
+  .vice-sipky:hover .sipka-vpravo { animation-delay: 0.55s; }
+
+  @keyframes poskok {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(5px); }
+  }
+
+  /* ---------- Předěl z tmavé zpět do krémové ---------- */
+  .predel-svetly {
+    display: block;
+    width: 100%;
+    height: 70px;
+    background: var(--text);
+  }
+
+  /* ---------- Jak to u mě probíhá? ---------- */
+  .kroky {
+    padding: 60px 32px 120px;
+  }
+
+  .kroky-obsah {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .kroky h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+    line-height: 1.15;
+    margin-bottom: 96px;
+  }
+
+  .kroky ol {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  .kroky li {
+    position: relative;
+    flex: 1;
+    text-align: center;
+    padding: 0 28px 32px;
+    border: 1.5px solid var(--salvej);
+    border-bottom: none;
+    border-radius: 999px 999px 0 0;
+    transition: border-color 0.4s ease;
+  }
+
+  .kroky li:hover { border-color: var(--salvej-tmava); }
+
+  /* Číslo při najetí poskakuje */
+  .kroky li:hover .kroky-cislo {
+    animation: skok 0.5s cubic-bezier(.3,0,.3,1) infinite;
+  }
+
+  @keyframes skok {
+    0%, 100% { transform: translateY(0); }
+    40%      { transform: translateY(-16px); }
+    60%      { transform: translateY(-16px); }
+  }
+
+  .kroky-cislo {
+    display: inline-block;
+    font-family: var(--serif);
+    font-size: clamp(4.5rem, 7vw, 6rem);
+    line-height: 1;
+    color: var(--salvej-tmava);
+    background: var(--krem);
+    padding: 0 18px;
+    margin-top: -0.55em;
+    margin-bottom: 20px;
+  }
+
+  .kroky li p {
+    max-width: 15em;
+    margin: 12px auto 0;
+    font-size: 1.05rem;
+  }
+
+  /* Výzva k objednání */
+  .vyzva {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(47, 58, 51, 0.15);
+  }
+
+  .vyzva p {
+    font-family: var(--serif);
+    font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+    line-height: 1.2;
+  }
+
+  .tlacitko {
+    display: inline-block;
+    background: var(--salvej-tmava);
+    color: #fff;
+    font-weight: 500;
+    padding: 16px 36px;
+    border-radius: 999px;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .tlacitko:hover {
+    background: #4E674B;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px -12px rgba(95, 122, 92, 0.8);
+  }
+
+  /* ---------- Reference: lístky ---------- */
+  .predel-reference {
+    display: block;
+    width: 100%;
+    height: 70px;
+  }
+
+  .reference {
+    background: var(--bezova-svetla);
+    padding: 48px 32px 120px;
+  }
+
+  .reference-obsah {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .reference h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+    line-height: 1.15;
+    margin-bottom: 72px;
+    text-align: left;
+  }
+
+  .listky {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    align-items: start;
+    text-align: left;
+    margin-bottom: 64px;
+  }
+
+  .listek {
+    position: relative;
+    background: var(--krem);
+    padding: 40px 30px 30px;
+    border-radius: 6px;
+    box-shadow: 0 18px 34px -22px rgba(47, 58, 51, 0.45);
+    rotate: var(--natoceni, 0deg);
+    transition: box-shadow 0.4s ease, opacity 0.9s ease;
+  }
+
+  .listek:nth-child(1) { --natoceni: -2deg; }
+  .listek:nth-child(2) { --natoceni: 1.5deg; margin-top: 48px; }
+  .listek:nth-child(3) { --natoceni: -1deg; margin-top: 16px; }
+
+  /* Kousek lepicí pásky nahoře */
+  .listek::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    width: 86px;
+    height: 24px;
+    margin-left: -43px;
+    background: rgba(143, 165, 140, 0.45);
+    rotate: -3deg;
+  }
+
+  /* Lístky se nehýbou (natočený text by se při pohybu rozmazal), jen zesílí stín */
+  .listek:hover {
+    box-shadow: 0 28px 44px -20px rgba(47, 58, 51, 0.6);
+  }
+
+  .listek blockquote {
+    font-size: 0.98rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .listek-jmeno {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+  }
+
+  .listek-prace {
+    font-size: 0.88rem;
+    color: var(--salvej-tmava);
+  }
+
+  /* Lístky se při scrollu snesou na místo */
+  .listek.skryty { opacity: 0; }
+
+  /* ---------- Rezervace ---------- */
+  .predel-rezervace {
+    display: block;
+    width: 100%;
+    height: 70px;
+    background: var(--bezova-svetla);
+  }
+
+  .rezervace {
+    padding: 56px 32px 120px;
+    scroll-margin-top: 40px;
+  }
+
+  .rezervace form {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .rezervace h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+    line-height: 1.15;
+    margin-bottom: 40px;
+  }
+
+  .popisek {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  /* Dlaždice s balíčky (dají se vybrat i zase odznačit) */
+  .balicky {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .balicek {
+    position: relative;
+    text-align: left;
+    font-family: var(--sans);
+    color: var(--text);
+    background: #fff;
+    border: 1.5px solid var(--bezova);
+    border-radius: 16px;
+    padding: 22px 24px;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .balicek:hover {
+    border-color: var(--salvej);
+    transform: translateY(-3px);
+    box-shadow: 0 14px 28px -18px rgba(47, 58, 51, 0.5);
+  }
+
+  .balicek-nazev {
+    display: block;
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    line-height: 1.1;
+    margin-bottom: 6px;
+    transition: color 0.3s ease;
+  }
+
+  .balicek-popis { font-size: 0.95rem; }
+
+  /* Fajfka v rohu vybrané dlaždice */
+  .balicek::after {
+    content: "";
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 1.5px solid var(--bezova);
+    background: #fff no-repeat center / 14px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .balicek[aria-pressed="true"] {
+    border-color: var(--salvej-tmava);
+    background: #EEF2EC;
+  }
+
+  .balicek[aria-pressed="true"] .balicek-nazev { color: var(--salvej-tmava); }
+
+  .balicek[aria-pressed="true"]::after {
+    border-color: var(--salvej-tmava);
+    background-color: var(--salvej-tmava);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12l5 5 9-10'/%3E%3C/svg%3E");
+  }
+
+  .pole {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .rezervace input[type="text"],
+  .rezervace input[type="email"],
+  .rezervace input[type="tel"],
+  .rezervace textarea {
+    width: 100%;
+    font-family: var(--sans);
+    font-size: 1rem;
+    color: var(--text);
+    background: #fff;
+    border: 1.5px solid var(--bezova);
+    border-radius: 12px;
+    padding: 14px 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .rezervace textarea { min-height: 140px; resize: vertical; }
+
+  .rezervace label:not(.souhlas) { display: block; }
+
+  .rezervace input:focus,
+  .rezervace textarea:focus {
+    outline: none;
+    border-color: var(--salvej-tmava);
+    box-shadow: 0 0 0 4px rgba(143, 165, 140, 0.25);
+  }
+
+  .souhlas {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 20px 0 32px;
+    font-size: 0.92rem;
+    cursor: pointer;
+  }
+
+  .souhlas input {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    margin-top: 3px;
+    accent-color: var(--salvej-tmava);
+    cursor: pointer;
+  }
+
+  .rezervace .tlacitko {
+    border: none;
+    font-family: var(--sans);
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .odeslano {
+    display: none;
+    margin-top: 20px;
+    font-weight: 500;
+    color: var(--salvej-tmava);
+  }
+
+  .odeslano.ukazat { display: block; }
+
+  /* ---------- Footer ---------- */
+  .predel-footer {
+    display: block;
+    width: 100%;
+    height: 70px;
+  }
+
+  .paticka {
+    background: var(--text);
+    color: #E9E1D3;
+    padding: 40px 32px 32px;
+    font-size: 0.95rem;
+  }
+
+  .paticka-obsah {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(233, 225, 211, 0.15);
+  }
+
+  .paticka-jmeno {
+    font-family: var(--serif);
+    font-size: 1.9rem;
+    line-height: 1.15;
+    color: var(--krem);
+    margin-bottom: 10px;
+  }
+
+  .paticka-titul { color: #B9CBB6; }
+
+  .paticka h3 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: var(--krem);
+    margin-bottom: 16px;
+  }
+
+  .paticka ul { list-style: none; }
+
+  .paticka li + li { margin-top: 8px; }
+
+  .paticka a {
+    padding: 2px 0;
+    background-image: linear-gradient(#B9CBB6, #B9CBB6);
+    background-size: 0% 1.5px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.35s ease, color 0.25s ease;
+  }
+
+  .paticka a:hover {
+    background-size: 100% 1.5px;
+    color: var(--krem);
+  }
+
+  .paticka-spodek {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.85rem;
+    color: rgba(233, 225, 211, 0.7);
+  }
+
+  /* Postupné objevení při scrollu */
+  .objevit {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease, border-color 0.4s ease;
+  }
+
+  .objevit.ukazat { opacity: 1; transform: none; }
+
+
+  /* ---------- Jemný nástup při načtení ---------- */
+  .nastup {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+
+  .nastup.ukazat { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nastup, .objevit { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ---------- Mobil ---------- */
+  @media (max-width: 860px) {
+    .lista { padding: 20px; }
+
+    .uvod {
+      grid-template-columns: 1fr;
+      gap: 48px;
+      padding: 32px 20px 20px;
+    }
+
+    .oblouk { width: min(70%, 280px); }
+
+    .menu-tlacitko { display: block; }
+
+    .nav-obsah { padding: 12px 20px; gap: 12px; flex-wrap: wrap; }
+
+    .nav ul {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      gap: 4px;
+      padding: 8px 0 12px;
+    }
+
+    .nav.otevrena ul { display: flex; }
+
+    .poznavate { padding: 32px 20px 100px; }
+
+    .poznavate-obsah { grid-template-columns: 1fr; gap: 40px; }
+
+    .poznavate-foto { order: 0; aspect-ratio: 4 / 3; border-radius: 100px 16px 16px 16px; }
+
+    .stavy { column-gap: 24px; }
+
+    .kdo { padding: 24px 20px 80px; }
+
+    .kdo-obsah { grid-template-columns: 1fr; gap: 40px; }
+
+    .kdo-foto { margin-top: -90px; width: min(90%, 380px); }
+
+    .kroky { padding: 40px 20px 80px; }
+
+    .kroky h2 { margin-bottom: 72px; }
+
+    .kroky ol { flex-direction: column; gap: 72px; }
+
+    .vyzva { margin-top: 56px; }
+
+    .reference { padding: 32px 20px 80px; }
+
+    .listky { grid-template-columns: 1fr; gap: 48px; }
+
+    .listek:nth-child(n) { margin-top: 0; }
+
+    .rezervace { padding: 40px 20px 80px; }
+
+    .balicky, .pole { grid-template-columns: 1fr; }
+
+    .paticka { padding: 32px 20px 24px; }
+
+    .paticka-obsah { grid-template-columns: 1fr 1fr; gap: 36px; }
+
+    .paticka-obsah > div:first-child { grid-column: 1 / -1; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav" aria-label="Hlavní navigace">
+  <div class="nav-obsah">
+    <a href="#" class="nav-jmeno">Ing. Pavla Moravcová</a>
+    <button class="menu-tlacitko" id="menuTlacitko" aria-label="Otevřít menu" aria-expanded="false">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+    <ul>
+      <li><a href="#">Úvod</a></li>
+      <li><a href="#">O mně</a></li>
+      <li><a href="#">Služby</a></li>
+      <li><a href="reference.html">Reference</a></li>
+      <li><a href="#">Ceník</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">Kontakt</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="lista">
+  <a href="#" class="lista-jmeno">Ing. Pavla Moravcová</a>
+  <a href="#" class="lista-kontakt">Kontakt</a>
+</header>
+
+<main>
+  <section class="uvod" id="uvod">
+    <figure class="oblouk nastup">
+      <img src="https://b8ae4d241f.clvaw-cdnwnd.com/8a299ae536205b34aecc40ddc3f71897/200002405-d3da4d3da5/700/J%C3%A1%20Thassos.jpeg" alt="Ing. Pavla Moravcová">
+    </figure>
+
+    <div>
+      <h1 class="nastup">Pomáhám lidem od panických atak a extrémního vnitřního tlaku nalézt vnitřní klid a stabilitu</h1>
+      <p class="podnadpis nastup">20 let praxe v oblasti bodyterapie, Kraniosakrální Biodynamiky a Mitochondriální medicíny</p>
+      <p class="misto nastup">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        Letohrad a Hradec Králové
+      </p>
+    </div>
+  </section>
+
+  <svg class="predel" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 40 C 240 10, 480 10, 720 38 S 1200 66, 1440 30 L1440 70 L0 70 Z" fill="#EFE6D8"/>
+  </svg>
+
+  <section class="poznavate">
+    <div class="poznavate-obsah">
+      <figure class="poznavate-foto">
+        <!-- Foto: Unsplash (volná licence), slunce prosvítající lesem -->
+        <img src="https://images.unsplash.com/photo-1694274928091-7d533e146597?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="Slunce prosvítající stromy na lesní cestě">
+
+      </figure>
+      <div>
+      <h2>Poznáváte se?</h2>
+      <ul class="stavy">
+        <li>Panická ataka</li>
+        <li>Úzkost</li>
+        <li>Vyhoření</li>
+        <li>Únava</li>
+        <li>Nespavost</li>
+        <li>Deprese</li>
+        <li>Migréna</li>
+        <li>Bolest</li>
+      </ul>
+      </div>
+    </div>
+  </section>
+
+  <svg class="predel-tmavy" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 30 C 300 70, 620 66, 900 36 S 1300 6, 1440 34 L1440 70 L0 70 Z" fill="#2F3A33"/>
+  </svg>
+
+  <section class="kdo">
+    <div class="kdo-obsah">
+      <figure class="kdo-foto">
+        <img src="https://b8ae4d241f.clvaw-cdnwnd.com/8a299ae536205b34aecc40ddc3f71897/200001151-5f3905f393/700/20220808_201617.jpeg" alt="Ing. Pavla Moravcová">
+      </figure>
+      <div>
+        <h2>Kdo jsem já?</h2>
+        <p class="kdo-text">Jsem BCST terapeutka Kraniosakrální Biodynamiky (<b>3letý profesionální výcvik švýcarského institutu ICSB</b>) s osobním <b>prožitkem hluboké posttraumatické stresové poruchy</b> (traumatu), která mne vyřadila na pár let ze života.</p>
+        <blockquote>Dotkla jsem se mocných sil a mechanismů jež udržují naše těla při životě a tuto zkušenost předávám dál ve svých sezeních.</blockquote>
+        <a href="#" class="vice vice-sipky"><svg class="sipka-vlevo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v15M6 13l6 6 6-6"/></svg>Můj celý příběh<svg class="sipka-vpravo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v15M6 13l6 6 6-6"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <svg class="predel-svetly" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 36 C 260 4, 560 8, 820 34 S 1240 66, 1440 30 L1440 70 L0 70 Z" fill="#F7F3EC"/>
+  </svg>
+
+  <section class="kroky">
+    <div class="kroky-obsah">
+      <h2>Jak to u mě probíhá?</h2>
+      <ol>
+        <li class="objevit"><span class="kroky-cislo">1</span><p>První objednání, domluvíme pro vás i pro mě výhodný termín</p></li>
+        <li class="objevit"><span class="kroky-cislo">2</span><p>Sejdeme se na 60-90 minut na každé sezení a zjistíme, co přesně je váš problém</p></li>
+        <li class="objevit"><span class="kroky-cislo">3</span><p>Zjistíte, jestli vám terapie vyhovuje a budete se moct objednat na další sezení</p></li>
+      </ol>
+      <div class="vyzva">
+        <p>Udělejte první krok a objednejte se!</p>
+        <a href="#rezervace" class="tlacitko">Objednat se</a>
+      </div>
+    </div>
+  </section>
+
+  <svg class="predel-reference" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 44 C 220 14, 520 6, 760 32 S 1180 64, 1440 26 L1440 70 L0 70 Z" fill="#EFE6D8"/>
+  </svg>
+
+  <section class="reference">
+    <div class="reference-obsah">
+      <h2>Zkušenosti mých klientů</h2>
+      <ul class="listky">
+        <li class="listek skryty">
+          <blockquote>Daří se mi skvěle, nepamatuji si už pomalu, kdy jsem byla šťastná jen tak, sama od sebe. Na prvním sezení se mi srovnala páteř, na dalších dvou ještě taky trochu pracovala. Ani dvě série rehabilitací neměly takový účinek. A to jsem přišla na terapii z úplně jiného důvodu.</blockquote>
+          <p class="listek-jmeno">Lucie</p>
+          <p class="listek-prace">Učitel</p>
+        </li>
+        <li class="listek skryty">
+          <blockquote>Kraniosakrální Biodynamika mne neuvěřitelným způsobem zklidnila, cítím se jistější, vyrovnanější, mám víc energie a žije se mi lehčeji. Je to pro mne vlastně takový velký zázrak nebo dar z nebes, který mne v životě potkal a byl dán. Vážím si velice toho, že jsem paní Pavlu poznala. NEPOTŤREBUJI ŽÁDNÉ LÉKY NA ÚZKOST a PANICKOU PORUCHU, bez kterých jsme myslela, že už nebudu moci normálně žít. Toto vše přijímám s velkou pokorou a vděčností za to, že jsem měla možnost poznat jak úžasná metoda Kraniosakrální biodynamika je.</blockquote>
+          <p class="listek-jmeno">Petra</p>
+          <p class="listek-prace">Zahradnice</p>
+        </li>
+        <li class="listek skryty">
+          <blockquote>Na <b>Kraniosakrální terapii</b> jsem se dostal na doporučení kamaráda, kdy jsem potřeboval pomoc při psychických a zdravotních potížích. Velký <b>psychický tlak</b> v zaměstnání, <b>nemoc syna</b>, která zasáhla celou rodinu, mé <b>dlouhodobé bolesti po operaci páteře a ztráta chuti do života.</b> Těžko, opravdu těžko se popisuje, co moje tělo samo se sebou dělalo již po první návštěvě. Nyní jsem téměř bez bolestí, psychicky vyrovnanější a silnější řešit problémy. Kdo tuto terapii neprožil, nepochopí. Je to opravdový start k radosti do dalšího života. Moc Vám, Pavlo, děkuji</blockquote>
+          <p class="listek-jmeno">Zbyněk V.</p>
+          <p class="listek-prace">Manažer</p>
+        </li>
+      </ul>
+      <a href="reference.html" class="vice">Všechny reference</a>
+    </div>
+  </section>
+
+  <svg class="predel-rezervace" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 30 C 260 66, 560 70, 840 40 S 1260 4, 1440 32 L1440 70 L0 70 Z" fill="#F7F3EC"/>
+  </svg>
+
+  <section class="rezervace" id="rezervace">
+    <form id="formular" novalidate>
+      <h2>Rezervujte si svůj první termín!</h2>
+
+      <span class="popisek" id="balicky-popisek">Pro nově příchozí</span>
+      <div class="balicky" role="group" aria-labelledby="balicky-popisek">
+        <button type="button" class="balicek" aria-pressed="false" data-hodnota="2+1 zdarma Hradec Králové">
+          <span class="balicek-nazev">2+1 zdarma</span>
+          <span class="balicek-popis">Hradec Králové, ušetříte 1 500Kč</span>
+        </button>
+        <button type="button" class="balicek" aria-pressed="false" data-hodnota="3+3 zdarma Letohrad">
+          <span class="balicek-nazev">3+3 zdarma</span>
+          <span class="balicek-popis">pouze Letohrad, ušetříte 3 900Kč</span>
+        </button>
+      </div>
+      <input type="hidden" name="balicek" id="balicek" value="">
+
+      <div class="pole">
+        <label><span class="popisek">Jméno a příjmení</span><input type="text" name="jmeno" autocomplete="name" required></label>
+        <label><span class="popisek">E-mail</span><input type="email" name="email" autocomplete="email" required></label>
+        <label><span class="popisek">Telefonní číslo</span><input type="tel" name="telefon" autocomplete="tel"></label>
+      </div>
+
+      <label><span class="popisek">Co Vás ke mne přivádí? Prosím popište v krátkosti.</span><textarea name="zprava"></textarea></label>
+
+      <label class="souhlas"><input type="checkbox" name="souhlas" required>Souhlasím se zpracováním osobních údajů pro marketingové účely</label>
+
+      <button type="submit" class="tlacitko">Rezervovat</button>
+      <p class="odeslano" id="odeslano" role="status"></p>
+    </form>
+  </section>
+</main>
+
+<svg class="predel-footer" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0 36 C 260 4, 560 8, 820 34 S 1240 66, 1440 30 L1440 70 L0 70 Z" fill="#2F3A33"/>
+</svg>
+
+<footer class="paticka">
+  <div class="paticka-obsah">
+    <div>
+      <p class="paticka-jmeno">Ing. Pavla Moravcová</p>
+      <p class="paticka-titul">certifikovaná BCST terapeutka<br>Kraniosakrální Biodynamika</p>
+    </div>
+    <div>
+      <h3>Kontakt</h3>
+      <ul>
+        <li><a href="tel:+420702439143">+420 702 439 143</a></li>
+        <li><a href="mailto:olsavska.pavla@centrum.cz">olsavska.pavla@centrum.cz</a></li>
+        <li><a href="https://facebook.com/kraniozamberk">Facebook</a></li>
+        <li>Letohrad a Hradec Králové</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Stránky</h3>
+      <ul>
+        <li><a href="index.html">Úvod</a></li>
+        <li><a href="#">O mně</a></li>
+        <li><a href="#">Služby</a></li>
+        <li><a href="reference.html">Reference</a></li>
+        <li><a href="#">Ceník</a></li>
+        <li><a href="#">Blog</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Dokumenty</h3>
+      <ul>
+        <li><a href="#">Všeobecné obchodní podmínky</a></li>
+        <li><a href="#">Ochrana osobních údajů</a></li>
+        <li><a href="#">Pravidla ochrany soukromí</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="paticka-spodek">
+    <p>© <span class="rok">2026</span> Ing. Pavla Moravcová. Všechna práva vyhrazena.</p>
+    <p>Kopírování obsahu bez souhlasu autorky je zakázáno.</p>
+  </div>
+</footer>
+
+<script>
+  // Jemný postupný nástup úvodu
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.nastup').forEach((el, i) => {
+      setTimeout(() => el.classList.add('ukazat'), 150 * i);
+    });
+  });
+
+  // Navigace se přilepí nahoru, až uživatel odscrolluje úvod
+  const nav = document.getElementById('nav');
+  const uvod = document.getElementById('uvod');
+  new IntersectionObserver(([zaznam]) => {
+    nav.classList.toggle('viditelna', !zaznam.isIntersecting);
+    if (zaznam.isIntersecting) nav.classList.remove('otevrena');
+  }, { threshold: 0.15 }).observe(uvod);
+
+  // Kroky se postupně objeví, když k nim uživatel doscrolluje
+  const pozorovatel = new IntersectionObserver((zaznamy) => {
+    zaznamy.forEach((zaznam) => {
+      if (!zaznam.isIntersecting) return;
+      const vsechny = [...document.querySelectorAll('.objevit')];
+      setTimeout(() => zaznam.target.classList.add('ukazat'), 180 * (vsechny.indexOf(zaznam.target) % 3));
+      pozorovatel.unobserve(zaznam.target);
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.objevit').forEach((el) => pozorovatel.observe(el));
+
+  // Lístky s referencemi se snesou na místo jeden po druhém
+  const listky = [...document.querySelectorAll('.listek')];
+  const pozorovatelListku = new IntersectionObserver((zaznamy) => {
+    if (!zaznamy.some((z) => z.isIntersecting)) return;
+    listky.forEach((l, i) => setTimeout(() => l.classList.remove('skryty'), 200 * i));
+    pozorovatelListku.disconnect();
+  }, { threshold: 0.2 });
+  listky.forEach((l) => pozorovatelListku.observe(l));
+
+  // Dlaždice s balíčky: klik vybere, druhý klik zase odznačí (vybraná může být jen jedna)
+  const balicky = document.querySelectorAll('.balicek');
+  const balicekPole = document.getElementById('balicek');
+  balicky.forEach((b) => b.addEventListener('click', () => {
+    const vybrat = b.getAttribute('aria-pressed') !== 'true';
+    balicky.forEach((jiny) => jiny.setAttribute('aria-pressed', 'false'));
+    b.setAttribute('aria-pressed', vybrat);
+    balicekPole.value = vybrat ? b.dataset.hodnota : '';
+  }));
+
+  // Formulář: zatím jen ukázka (odesílání se napojí, až bude web na hostingu)
+  const formular = document.getElementById('formular');
+  formular.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!formular.reportValidity()) return;
+    document.getElementById('odeslano').textContent = 'Odesláno';
+    document.getElementById('odeslano').classList.add('ukazat');
+  });
+
+  // Rok v patičce se aktualizuje sám
+  document.querySelectorAll('.rok').forEach((el) => el.textContent = new Date().getFullYear());
+
+  // Mobilní menu
+  const menuTlacitko = document.getElementById('menuTlacitko');
+  menuTlacitko.addEventListener('click', () => {
+    const otevreno = nav.classList.toggle('otevrena');
+    menuTlacitko.setAttribute('aria-expanded', otevreno);
+  });
+</script>
+</body>
+</html>

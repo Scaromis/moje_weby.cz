@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Porovnání fotek | Poznáváte se?</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #F7F3EC; color: #2F3A33; font-family: 'Inter', sans-serif; line-height: 1.7; }
+  .cislo {
+    max-width: 1200px; margin: 0 auto; padding: 56px 32px 16px;
+    font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: #5F7A5C;
+  }
+  section { background: #EFE6D8; padding: 56px 32px; }
+  .obsah {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 80px; align-items: center;
+  }
+  figure { aspect-ratio: 4 / 5; border-radius: 16px 160px 16px 16px; overflow: hidden; background: #D9C7B0; }
+  figure img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  h2 { font-family: 'DM Serif Display', serif; font-weight: 400; font-size: clamp(2.2rem, 3.8vw, 3.2rem); margin-bottom: 32px; }
+  ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; column-gap: 48px; margin-bottom: 36px; }
+  li { display: flex; align-items: center; gap: 14px; padding: 12px 0; font-size: 1.1rem; border-bottom: 1px solid rgba(47,58,51,.12); }
+  li::before { content: ""; width: 18px; height: 1.5px; background: #8FA58C; }
+  a { color: #5F7A5C; font-weight: 500; text-decoration: none; }
+  @media (max-width: 860px) {
+    .obsah { grid-template-columns: 1fr; gap: 40px; }
+    figure { aspect-ratio: 4 / 3; }
+  }
+</style>
+</head>
+<body>
+<main id="varianty"></main>
+
+<template id="sekce">
+  <p class="cislo"></p>
+  <section>
+    <div class="obsah">
+      <figure><img alt=""></figure>
+      <div>
+        <h2>Poznáváte se?</h2>
+        <ul>
+          <li>Panická ataka</li><li>Úzkost</li><li>Vyhoření</li><li>Únava</li>
+          <li>Nespavost</li><li>Deprese</li><li>Migréna</li><li>Bolest</li>
+        </ul>
+        <a href="#">Chcete vědět více? →</a>
+      </div>
+    </div>
+  </section>
+</template>
+
+<script>
+  const fotky = [
+    ['Pampová tráva', 'photo-1570451488142-71d08e1511e3'],
+    ['Pšeničné pole', 'photo-1590559079415-b085a0d1db63'],
+    ['Vysoká tráva ve větru', 'photo-1634133864945-5cc3b4120d8e'],
+    ['Knihy a hrnek', 'photo-1651841689044-00521ab0fa66'],
+    ['Bílý hrnek na látce', 'photo-1605187151664-9d89904d62d0'],
+    ['Ruce s hrnkem', 'photo-1595425504122-ed7894db7711'],
+    ['Pírko v dlani', 'photo-1527380992061-b126c88cbb41'],
+    ['Slunce v lese', 'photo-1694274928091-7d533e146597']
+  ];
+  const sablona = document.getElementById('sekce');
+  const kam = document.getElementById('varianty');
+  fotky.forEach(([nazev, id], i) => {
+    const kopie = sablona.content.cloneNode(true);
+    kopie.querySelector('.cislo').textContent = (i + 1) + ' — ' + nazev;
+    const img = kopie.querySelector('img');
+    img.src = 'https://images.unsplash.com/' + id + '?fm=jpg&q=80&w=1000&auto=format&fit=crop';
+    img.alt = nazev;
+    kam.appendChild(kopie);
+  });
+</script>
+</body>
+</html>
