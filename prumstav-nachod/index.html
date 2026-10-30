@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Průmstav Náchod s.r.o. – stavební společnost z Náchoda. Od roku 1997 stavíme průmyslové, občanské i bytové stavby v Královéhradeckém kraji.">
+<title>Průmstav Náchod s.r.o. | Stavební společnost</title>
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<!-- Sada SVG ikonek (používá se přes <use>) -->
+<svg class="icon-sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></g></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></g></symbol>
+  <symbol id="i-award" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M8.2 13.6 7 22l5-3 5 3-1.2-8.4"/></g></symbol>
+</svg>
+
+<!-- ===== Lišta po sjetí (position: fixed) – sem „přiletí“ název a odkazy z úvodu ===== -->
+<nav class="topbar" aria-label="Menu v liště">
+  <a class="brand topbar-brand" href="#uvod">Průmstav Náchod</a>
+  <button class="burger" type="button" aria-label="Otevřít menu" aria-expanded="false" aria-controls="topbar-menu"><span></span></button>
+  <ul class="menu topbar-menu" id="topbar-menu">
+    <li><a class="menu-link" href="#o-nas"><span>O nás</span></a></li>
+    <li><a class="menu-link" href="#sluzby"><span>Služby</span></a></li>
+    <li><a class="menu-link" href="#kontakt"><span>Kontakt</span></a></li>
+    <li><a class="menu-link" href="kariera.html"><span>Kariéra</span></a></li>
+  </ul>
+</nav>
+
+<!-- ===== 1 · Úvod ===== -->
+<header class="hero" id="uvod">
+  <div class="hero-slides" aria-hidden="true"></div>
+  <h1 class="brand hero-brand">Průmstav Náchod</h1>
+  <nav class="hero-nav" aria-label="Hlavní menu">
+    <ul class="menu">
+      <li><a class="menu-link" href="#o-nas" style="--i:0"><span>O nás</span></a></li>
+      <li><a class="menu-link" href="#sluzby" style="--i:1"><span>Služby</span></a></li>
+      <li><a class="menu-link" href="#kontakt" style="--i:2"><span>Kontakt</span></a></li>
+      <li><a class="menu-link" href="kariera.html" style="--i:3"><span>Kariéra</span></a></li>
+    </ul>
+  </nav>
+  <a class="scroll-cue" href="#sluzby" aria-label="Sjet níž na nabídku"></a>
+</header>
+
+<main>
+
+  <!-- ===== 2 · Co Vám můžeme nabídnout? ===== -->
+  <section class="offer" id="sluzby" aria-labelledby="sluzby-nadpis">
+    <h2 class="section-title reveal" id="sluzby-nadpis">Co Vám můžeme nabídnout?</h2>
+    <ul class="obory">
+      <li class="obor reveal">
+        <a class="obor-card" href="prumyslova-vystavba.html" data-photos="prumyslova">
+          <h3 class="obor-name"><span>Průmyslová výstavba</span><span aria-hidden="true">Průmyslová výstavba</span></h3>
+          <span class="obor-arrow" aria-hidden="true"><svg viewBox="0 0 14 24"><path d="M2 2l10 10L2 22"/></svg></span>
+        </a>
+        <p class="obor-desc">Průmyslová výstavba je naší hlavní činností. Stavíme <strong>výrobní a skladové haly</strong>, celé <strong>výrobní areály</strong> i <strong>administrativní a technické zázemí firem</strong> – novostavby, přístavby i rekonstrukce. Stavěli jsme mimo jiné pro WIKOV MGI, NUTRICIA DEVA, MESA, AMETEK, TANEX-PLASTY, tiskárny Integraf a Merkurtisk nebo pro VČE.</p>
+      </li>
+      <li class="obor reveal">
+        <a class="obor-card" href="obcanska-vystavba.html" data-photos="obcanska">
+          <h3 class="obor-name"><span>Občanská výstavba</span><span aria-hidden="true">Občanská výstavba</span></h3>
+          <span class="obor-arrow" aria-hidden="true"><svg viewBox="0 0 14 24"><path d="M2 2l10 10L2 22"/></svg></span>
+        </a>
+        <p class="obor-desc"><strong>Školy a školky</strong>, <strong>zdravotnická a sociální zařízení</strong>, kulturní i úřední budovy a obchody. Pracovali jsme například pro Nemocnici Náchod, náchodskou polikliniku a ZUŠ Náchod, rozšiřovali jsme Domov sv. Josefa v Žirči a stavěli či opravovali základní školy v Náchodě, Červeném Kostelci a Batňovicích.</p>
+      </li>
+      <li class="obor reveal">
+        <a class="obor-card" href="bytova-vystavba.html" data-photos="bytova">
+          <h3 class="obor-name"><span>Bytová výstavba</span><span aria-hidden="true">Bytová výstavba</span></h3>
+          <span class="obor-arrow" aria-hidden="true"><svg viewBox="0 0 14 24"><path d="M2 2l10 10L2 22"/></svg></span>
+        </a>
+        <p class="obor-desc"><strong>Rodinné domy</strong>, <strong>nástavby bytových domů</strong> a <strong>rekonstrukce fasád včetně zateplení a výměny oken</strong>. Postavili jsme například rodinný dům v Rtyni v Podkrkonoší a opravili a zateplili bytové domy v Červeném Kostelci a v Novém Městě nad Metují.</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ===== 3 · Kdo jsme? ===== -->
+  <section class="about" id="o-nas" aria-labelledby="o-nas-nadpis">
+    <h2 class="section-title reveal" id="o-nas-nadpis">Kdo jsme?</h2>
+
+    <article class="glow-box about-text">
+      <p><strong>Průmstav Náchod s.r.o.</strong> je ryze česká stavební společnost se sídlem v Náchodě. Na trhu jsme <strong>od roku 1997</strong> a jako <strong>generální dodavatel staveb</strong> zajišťujeme širokou škálu stavebních prací – především <strong>průmyslovou výstavbu</strong>, ale také občanskou a bytovou výstavbu a zemědělské stavby.</p>
+      <p>Působíme hlavně v <strong>Královéhradeckém kraji</strong> a v krajích sousedních. Náš tým tvoří <strong>55 zaměstnanců</strong> – 16 techniků a 39 řemeslníků přímo na stavbách.</p>
+      <p>Stavíme podle <strong>certifikovaného systému řízení jakosti</strong> (od roku 2000) a zakládáme si na <strong>poctivém a seriózním jednání</strong>. Spokojenost zákazníka je pro nás vždy na prvním místě – a jako místní firma podporujeme i regionální sportovní, kulturní a společenské aktivity.</p>
+    </article>
+
+    <section class="about-certs" aria-labelledby="overeni-nadpis">
+      <h3 class="about-sub" id="overeni-nadpis">Potřebujete ověření?</h3>
+      <p class="about-note">Jsme držiteli několika certifikátů</p>
+      <!-- Pás certifikátů: jezdí dokola, na najetí zrychlí a rámeček se rozzáří; klik certifikát zvětší -->
+      <div class="cert-marquee glow-box">
+        <ul class="cert-track">
+          <li><button class="cert" type="button" data-cert="0" aria-label="Zobrazit certifikát ČSN EN ISO 9001:2015"></button></li>
+          <li><button class="cert" type="button" data-cert="1" aria-label="Zobrazit certifikát ČSN EN ISO 14001:2015"></button></li>
+          <li><button class="cert" type="button" data-cert="2" aria-label="Zobrazit certifikát ČSN EN ISO 45001:2018"></button></li>
+          <li><button class="cert" type="button" data-cert="3" aria-label="Zobrazit osvědčení Zelená úsporám"></button></li>
+        </ul>
+        <p class="cert-list">ISO 9001 · ISO 14001 · ISO 45001 · Zelená úsporám</p>
+      </div>
+    </section>
+
+    <article class="glow-box about-projects">
+      <p>Za téměř 30 let jsme postavili desítky staveb po celém regionu. Mezi ty nejvýznamnější patří:</p>
+      <ul class="projects-list">
+        <li><strong>Průmyslová výstavba</strong> – dostavba výrobní haly WIKOV MGI v Hronově (185,3 mil. Kč, 2008), stavební část modernizace NUTRICIA DEVA v Novém Městě nad Metují (164,5 mil. Kč, 2004) a výrobní areál MESA ve Vysokově (146,5 mil. Kč, 2006).</li>
+        <li><strong>Občanská výstavba</strong> – stavební úpravy a přístavba ZUŠ Náchod (69,4 mil. Kč, 2011), rozšíření Domova sv. Josefa v Žirči (67,4 mil. Kč, 2015) a výstavba pavilonu ARO a centrální kuchyně v Nemocnici Náchod.</li>
+        <li><strong>Bytová výstavba</strong> – rodinný dům v Rtyni v Podkrkonoší a rekonstrukce fasád se zateplením a výměnou oken u bytových domů v Červeném Kostelci a v Novém Městě nad Metují.</li>
+      </ul>
+      <p class="projects-note">Uvedené náklady staveb jsou bez DPH.</p>
+    </article>
+  </section>
+
+  <!-- ===== 4 · Kontakt a mapa ===== -->
+  <section class="contact" id="kontakt" aria-labelledby="kontakt-nadpis">
+    <h2 class="section-title reveal" id="kontakt-nadpis">A kde nás najdete a jak nás kontaktovat?</h2>
+
+    <article class="contact-info">
+      <p class="contact-lead">Máme pro Vás kontaktní formulář.</p>
+      <p>Neváhejte se ozvat s jakýmkoliv dotazem.</p>
+      <!-- Tlačítko: thelaazyguy – Css Button Hover #5 „Button Change“ (viz style.css) -->
+      <p class="btn-change-wrap">
+        <a class="btn-change" href="kontakt.html#formular">Vyplnit formulář</a>
+        <span class="btn-change-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 268.832 268.832"><path d="M265.17 125.577l-80-80c-4.88-4.88-12.796-4.88-17.677 0-4.882 4.882-4.882 12.796 0 17.678l58.66 58.66H12.5c-6.903 0-12.5 5.598-12.5 12.5 0 6.903 5.597 12.5 12.5 12.5h213.654l-58.66 58.662c-4.88 4.882-4.88 12.796 0 17.678 2.44 2.44 5.64 3.66 8.84 3.66s6.398-1.22 8.84-3.66l79.997-80c4.883-4.882 4.883-12.796 0-17.678z"/></svg>
+        </span>
+      </p>
+      <p class="call-box">
+        <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
+        <span>Nebo nám můžete zavolat na číslo: <a class="rainbow" href="tel:+420606616848" data-text="+420 606 616 848">+420&nbsp;606&nbsp;616&nbsp;848</a></span>
+      </p>
+    </article>
+
+    <iframe class="contact-map" title="Mapa – Průmstav Náchod s.r.o., Dobrošovská 1776, 547 01 Náchod" src="https://www.google.com/maps?q=Pr%C5%AFmstav%20N%C3%A1chod%20s.r.o.%2C%20Dobro%C5%A1ovsk%C3%A1%201776%2C%20547%2001%20N%C3%A1chod&amp;z=15&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+  </section>
+
+</main>
+
+<!-- ===== 5 · Patička ===== -->
+<footer class="site-footer">
+  <a class="footer-brand" href="#uvod"><img class="footer-logo" src="img/logo-bile.svg" width="3052" height="624" alt="Průmstav Náchod – logo"></a>
+
+  <section class="footer-col" aria-labelledby="pata-kontakt">
+    <h2 class="footer-title" id="pata-kontakt">Kontakt</h2>
+    <ul class="footer-list">
+      <li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><a href="https://www.google.com/maps/search/?api=1&amp;query=Dobro%C5%A1ovsk%C3%A1%201776%2C%20547%2001%20N%C3%A1chod" target="_blank" rel="noopener">Dobrošovská 1776, 547 01 Náchod</a></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:+420606616848">+420&nbsp;606&nbsp;616&nbsp;848</a></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:zitka@prumstavnachod.cz">zitka@prumstavnachod.cz</a></li>
+    </ul>
+  </section>
+
+  <section class="footer-col" aria-labelledby="pata-certifikaty">
+    <h2 class="footer-title" id="pata-certifikaty">Certifikáty</h2>
+    <ul class="footer-list">
+      <li><svg class="icon" aria-hidden="true"><use href="#i-award"/></svg><a href="img/certifikaty/iso-9001.jpg" data-cert="0">ČSN EN ISO 9001:2015</a></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-award"/></svg><a href="img/certifikaty/iso-14001.jpg" data-cert="1">ČSN EN ISO 14001:2015</a></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-award"/></svg><a href="img/certifikaty/iso-45001.jpg" data-cert="2">ČSN EN ISO 45001:2018</a></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-award"/></svg><a href="img/certifikaty/zelena-usporam.jpg" data-cert="3">Zelená úsporám – osvědčení</a></li>
+    </ul>
+  </section>
+
+  <nav class="footer-col" aria-labelledby="pata-menu">
+    <h2 class="footer-title" id="pata-menu">Menu</h2>
+    <ul class="footer-list">
+      <li><a href="#o-nas">O nás</a></li>
+      <li><a href="#sluzby">Služby</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+      <li><a href="kariera.html">Kariéra</a></li>
+    </ul>
+  </nav>
+
+  <p class="footer-legal">Průmstav Náchod s.r.o. · IČO 25275062 · DIČ CZ25275062 · Dobrošovská 1776, 547 01 Náchod</p>
+  <p class="footer-copy">© <span data-rok>2026</span> Průmstav Náchod s.r.o. · Všechna práva vyhrazena. Kopírování obsahu bez souhlasu je zakázáno.</p>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
