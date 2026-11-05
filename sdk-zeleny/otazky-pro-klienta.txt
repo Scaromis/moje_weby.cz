@@ -1,0 +1,23 @@
+﻿SDK Zelený - na co se zeptat pana Zeleného
+
+Logo
+- Má logo jako SVG nebo PDF? Na webu je zatím vyříznuté z PNG se starého webu.
+- Na starém webu jsou dvě verze: se žlutější zelenou a se třemi čárami střechy, a s tmavší zelenou a dvěma čárami. Která je aktuální?
+- Na webu je logo přebarvené do svěžejší zelené (#16a34a). Souhlasí s tím, nebo chce původní barvu?
+
+Fotky
+- Na starém webu jsou fotky jeho prací jako dvě koláže. Rozřezal jsem je na jednotlivé, ale mají malé rozlišení. Má originály?
+- Má i fotky hotových prací po výmalbě? Teď je většina rozpracovaná.
+
+Adresa
+- Může být Běloveská 1774, Náchod veřejně na mapě? Je to provozovna, nebo bydliště?
+- Na webu v textu zůstává Náchod a okolí. Má se tam psát celá adresa?
+
+Formulář
+- Mají poptávky chodit na info@sdkzeleny.cz?
+
+Protipožární konstrukce
+- Má certifikát, který by šel na webu ukázat?
+
+Doména a hosting
+- Web běží na Webnode. Má přístupy k doméně sdkzeleny.cz a kde ji platí?
