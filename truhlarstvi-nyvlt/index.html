@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Zakázkové truhlářství Nývlt z Náchoda – kuchyně na míru, dřevěné dveře, vestavěné skříně, dřevěná schodiště a nábytek. Na trhu od roku 1991.">
+<title>Truhlářství Nývlt | Zakázkové truhlářství Náchod</title>
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<!-- Sada SVG ikonek (používá se přes <use>) -->
+<svg class="icon-sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></g></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></g></symbol>
+  <symbol id="i-fax" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></g></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+</svg>
+
+<!-- ===== Lišta po sjetí (position: fixed) – sem „přiletí“ název a odkazy z úvodu ===== -->
+<nav class="topbar" aria-label="Menu v liště">
+  <a class="brand topbar-brand" href="#uvod">Truhlářství Nývlt</a>
+  <button class="burger" type="button" aria-label="Otevřít menu" aria-expanded="false" aria-controls="topbar-menu"><span></span></button>
+  <ul class="menu topbar-menu" id="topbar-menu">
+    <li><a class="menu-link" href="#uvod"><span>Domů</span></a></li>
+    <li class="has-sub">
+      <a class="menu-link" href="#sluzby"><span>Služby</span></a>
+      <button class="sub-toggle" type="button" aria-expanded="false" aria-label="Zobrazit služby"><svg aria-hidden="true"><use href="#i-chevron"/></svg></button>
+      <ul class="sub">
+        <li style="--i:0"><a class="sub-link" href="kuchyne-na-miru.html"><img class="sub-img" src="img/kuchyne/kuchyne_na_miru_16.jpg" data-thumb="kuchyne" width="160" height="100" alt=""><span>Kuchyně na míru</span></a></li>
+        <li style="--i:1"><a class="sub-link" href="drevene-dvere.html"><img class="sub-img" src="img/dvere/interierove_dvere_28.jpg" data-thumb="dvere" width="160" height="100" alt=""><span>Dřevěné dveře</span></a></li>
+        <li style="--i:2"><a class="sub-link" href="vestavene-skrine.html"><img class="sub-img" src="img/skrine/vestavene_skrine_34.jpg" data-thumb="skrine" width="160" height="100" alt=""><span>Vestavěné skříně</span></a></li>
+        <li style="--i:3"><a class="sub-link" href="drevene-schodiste.html"><img class="sub-img" src="img/schodiste/drevene_schody_62.jpg" data-thumb="schodiste" width="160" height="100" alt=""><span>Dřevěné schodiště</span></a></li>
+        <li style="--i:4"><a class="sub-link" href="nabytek.html"><img class="sub-img" src="img/nabytek/obyvaci_pokoj_2.jpg" data-thumb="nabytek" width="160" height="100" alt=""><span>Nábytek</span></a></li>
+        <li style="--i:5"><a class="sub-link" href="vybaveni-dilny.html"><img class="sub-img" src="img/dilna/sirokopasova_bruska_nachod.jpg" data-thumb="dilna" width="160" height="100" alt=""><span>Vybavení dílny</span></a></li>
+      </ul>
+    </li>
+    <li><a class="menu-link" href="#kontakt"><span>Kontakt</span></a></li>
+  </ul>
+</nav>
+
+<!-- ===== 1 · Úvod ===== -->
+<header class="hero" id="uvod">
+  <div class="hero-slides" aria-hidden="true"></div>
+  <h1 class="brand hero-brand">Truhlářství Nývlt</h1>
+  <p class="hero-sub">Zakázkové truhlářství Náchod | Petr Nývlt</p>
+  <nav class="hero-nav" aria-label="Hlavní menu">
+    <ul class="menu">
+      <li><a class="menu-link" href="#uvod" style="--i:0"><span>Domů</span></a></li>
+      <li class="has-sub">
+        <a class="menu-link" href="#sluzby" style="--i:1"><span>Služby</span></a>
+        <ul class="sub">
+          <li style="--i:0"><a class="sub-link" href="kuchyne-na-miru.html"><img class="sub-img" src="img/kuchyne/kuchyne_na_miru_16.jpg" data-thumb="kuchyne" width="160" height="100" alt=""><span>Kuchyně na míru</span></a></li>
+          <li style="--i:1"><a class="sub-link" href="drevene-dvere.html"><img class="sub-img" src="img/dvere/interierove_dvere_28.jpg" data-thumb="dvere" width="160" height="100" alt=""><span>Dřevěné dveře</span></a></li>
+          <li style="--i:2"><a class="sub-link" href="vestavene-skrine.html"><img class="sub-img" src="img/skrine/vestavene_skrine_34.jpg" data-thumb="skrine" width="160" height="100" alt=""><span>Vestavěné skříně</span></a></li>
+          <li style="--i:3"><a class="sub-link" href="drevene-schodiste.html"><img class="sub-img" src="img/schodiste/drevene_schody_62.jpg" data-thumb="schodiste" width="160" height="100" alt=""><span>Dřevěné schodiště</span></a></li>
+          <li style="--i:4"><a class="sub-link" href="nabytek.html"><img class="sub-img" src="img/nabytek/obyvaci_pokoj_2.jpg" data-thumb="nabytek" width="160" height="100" alt=""><span>Nábytek</span></a></li>
+          <li style="--i:5"><a class="sub-link" href="vybaveni-dilny.html"><img class="sub-img" src="img/dilna/sirokopasova_bruska_nachod.jpg" data-thumb="dilna" width="160" height="100" alt=""><span>Vybavení dílny</span></a></li>
+        </ul>
+      </li>
+      <li><a class="menu-link" href="#kontakt" style="--i:2"><span>Kontakt</span></a></li>
+    </ul>
+  </nav>
+  <a class="scroll-cue" href="#o-nas" aria-label="Sjet níž"></a>
+</header>
+
+<main>
+
+  <!-- ===== 2 · Co je naše truhlářství zač? ===== -->
+  <section class="about" id="o-nas" aria-labelledby="o-nas-nadpis">
+    <h2 class="section-title reveal" id="o-nas-nadpis">Co je naše truhlářství zač?</h2>
+    <figure class="about-photo reveal" data-photos="vse" aria-hidden="true"></figure>
+    <article class="about-text reveal">
+      <p>Zakázkové truhlářství Nývlt z Náchoda funguje na českém trhu <strong>již od roku 1991</strong>. Navazujeme na <strong>truhlářskou tradici</strong>, a proto pro všechny naše výrobky používáme <strong>kvalitní materiály</strong> a moderní technologie. Kuchyně, vestavěné skříně, dveře i schodiště tak zhotovujeme v <strong>nadčasovém a zároveň stylovém provedení</strong>.</p>
+      <p>Každou zakázku děláme <strong>přímo na míru</strong>. Stačí nám poslat rozměry, nebo za vámi <strong>přijedeme a prostory sami zaměříme</strong>. Vyrobíme vám <strong>kompletní vybavení domu či bytu</strong> – od kuchyně přes dětský pokoj a šatnu až po koupelnu – a stejně tak vybavíme <strong>kanceláře, ordinace, obchody, restaurace, hotely i penziony</strong>.</p>
+      <p>Dbáme na <strong>co nejvyšší kvalitu</strong> materiálů, kování i odvedené práce. Díky tomu naší vizitkou byli, jsou a i nadále budou <strong>maximálně spokojení zákazníci</strong> z Náchoda, Hradce Králové, Trutnova i širokého okolí.</p>
+    </article>
+    <figure class="about-photo reveal" data-photos="vse" aria-hidden="true"></figure>
+  </section>
+
+  <!-- ===== 3 · Co vše pro vás můžeme udělat? ===== -->
+  <section class="services" id="sluzby" aria-labelledby="sluzby-nadpis">
+    <h2 class="section-title reveal" id="sluzby-nadpis">Co vše pro vás můžeme udělat?</h2>
+    <a class="phone-glow reveal" href="tel:+420739588888">
+      <svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>
+      <span data-text="+420 739 588 888">+420&nbsp;739&nbsp;588&nbsp;888</span>
+    </a>
+
+    <ul class="cards">
+      <li class="reveal"><a class="card" href="kuchyne-na-miru.html" data-photos="kuchyne">
+        <h3 class="card-name">Kuchyně na míru</h3>
+        <p class="card-text">Z kvalitních materiálů, s kováním Blum s doživotní zárukou a se spotřebiči na přání.</p>
+      </a></li>
+      <li class="reveal"><a class="card" href="drevene-dvere.html" data-photos="dvere">
+        <h3 class="card-name">Dřevěné dveře</h3>
+        <p class="card-text">Vstupní i interiérové dveře z masivu či dýhy, se zasklením a kováním podle vás.</p>
+      </a></li>
+      <li class="reveal"><a class="card" href="vestavene-skrine.html" data-photos="skrine">
+        <h3 class="card-name">Vestavěné skříně</h3>
+        <p class="card-text">Zdarma zaměříme a naceníme. Sklo, zrcadla, hliník i osvětlení.</p>
+      </a></li>
+      <li class="reveal"><a class="card" href="drevene-schodiste.html" data-photos="schodiste">
+        <h3 class="card-name">Dřevěné schodiště</h3>
+        <p class="card-text">Rovná, točitá i samonosná schodiště z masivu, i se skleněným zábradlím.</p>
+      </a></li>
+      <li class="reveal"><a class="card" href="nabytek.html" data-photos="nabytek">
+        <h3 class="card-name">Nábytek</h3>
+        <p class="card-text">Dětské pokoje, ložnice, obývací pokoje, šatny i koupelny – vše na míru.</p>
+      </a></li>
+      <li class="reveal"><a class="card" href="vybaveni-dilny.html" data-photos="dilna">
+        <h3 class="card-name">Vybavení dílny</h3>
+        <p class="card-text">Širokopásová bruska s přesností 0,1 mm a formátovací pila SCM.</p>
+      </a></li>
+    </ul>
+
+    <p class="more-hint">Pro více informací klikněte na jednotlivé položky…</p>
+  </section>
+
+  <!-- ===== 4 · Kontaktní formulář ===== -->
+  <section class="contact" id="kontakt" aria-labelledby="kontakt-nadpis">
+    <h2 class="section-title reveal" id="kontakt-nadpis">Kontaktní formulář</h2>
+
+    <form class="offer-form" novalidate>
+      <p class="field">
+        <label for="f-jmeno">Vaše jméno</label>
+        <input id="f-jmeno" name="jmeno" type="text" autocomplete="name" placeholder="Jan Novák" aria-describedby="e-jmeno" required>
+        <span class="field-error" id="e-jmeno" aria-live="polite"></span>
+      </p>
+      <p class="field">
+        <label for="f-email">Váš e-mail</label>
+        <input id="f-email" name="email" type="email" autocomplete="email" placeholder="jannovak@seznam.cz" aria-describedby="e-email" required>
+        <span class="field-error" id="e-email" aria-live="polite"></span>
+      </p>
+      <p class="field field-wide">
+        <label for="f-telefon">Váš telefon (nepovinné)</label>
+        <input id="f-telefon" name="telefon" type="tel" autocomplete="tel" placeholder="+420 777 123 456" aria-describedby="e-telefon">
+        <span class="field-error" id="e-telefon" aria-live="polite"></span>
+      </p>
+      <p class="field field-wide">
+        <label for="f-zprava">Vaše zpráva</label>
+        <textarea id="f-zprava" name="zprava" rows="6" placeholder="Dobrý den, měl bych zájem o…" aria-describedby="e-zprava" required></textarea>
+        <span class="field-error" id="e-zprava" aria-live="polite"></span>
+      </p>
+      <p class="form-actions">
+        <!-- Tlačítko: Vitor Siqueira – 100 days css Button N° 045 (viz style.css) -->
+        <button class="btn-draw" type="submit">
+          <svg width="220" height="60" viewBox="0 0 220 60" aria-hidden="true">
+            <polyline points="219,1 219,59 1,59 1,1 219,1"/>
+          </svg>
+          <span>Odeslat zprávu</span>
+        </button>
+      </p>
+      <p class="form-success" role="status" hidden>Děkujeme! Brzy se vám ozveme.</p>
+      <p class="form-note">Odesláním formuláře berete na vědomí zpracování osobních údajů za účelem vyřízení vaší poptávky.</p>
+    </form>
+
+    <aside class="contact-side">
+      <p class="contact-box">
+        Můžete nám i zavolat na číslo:
+        <a class="contact-big" href="tel:+420739588888"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>+420&nbsp;739&nbsp;588&nbsp;888</a>
+        nebo napsat na e-mail:
+        <a class="contact-big contact-mail" href="mailto:info@truhlarstvi-nyvlt.cz"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>info@truhlarstvi-nyvlt.cz</a>
+      </p>
+      <img class="contact-logo" src="img/logo-svetle.png" width="436" height="162" alt="Truhlářství Nývlt – logo">
+    </aside>
+  </section>
+
+  <!-- ===== 5 · Kde nás najdete? ===== -->
+  <section class="map" id="mapa" aria-labelledby="mapa-nadpis">
+    <article class="map-card">
+      <h2 class="map-title" id="mapa-nadpis">Kde nás najdete?</h2>
+      <p><strong>Truhlářství Nývlt</strong><br>Dolní Radechová 138<br>(areál bývalé baterkárny)<br>549 11 Dolní Radechová</p>
+      <a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Doln%C3%AD%20Radechov%C3%A1%20138%2C%20549%2011%20Doln%C3%AD%20Radechov%C3%A1" target="_blank" rel="noopener">Otevřít v Mapách Google <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </article>
+    <iframe class="map-frame" title="Mapa – Truhlářství Nývlt, Dolní Radechová 138" src="https://www.google.com/maps?q=Doln%C3%AD%20Radechov%C3%A1%20138%2C%20549%2011%20Doln%C3%AD%20Radechov%C3%A1&amp;z=15&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+  </section>
+
+</main>
+
+<!-- ===== 6 · Patička ===== -->
+<footer class="site-footer">
+  <section class="footer-brand">
+    <a href="#uvod"><img class="footer-logo" src="img/logo-svetle.png" width="436" height="162" alt="Truhlářství Nývlt – logo"></a>
+    <p class="footer-since">Na trhu od roku 1991</p>
+  </section>
+
+  <section class="footer-col" aria-labelledby="pata-kontakt">
+    <h2 class="footer-title" id="pata-kontakt">Kontakt</h2>
+    <ul class="footer-list">
+      <li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><a href="https://www.google.com/maps/search/?api=1&amp;query=Doln%C3%AD%20Radechov%C3%A1%20138%2C%20549%2011%20Doln%C3%AD%20Radechov%C3%A1" target="_blank" rel="noopener">Dolní Radechová 138, 549 11 Dolní Radechová</a></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:+420739588888">+420&nbsp;739&nbsp;588&nbsp;888</a></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-fax"/></svg><span>Fax: +420&nbsp;494&nbsp;948&nbsp;947</span></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:info@truhlarstvi-nyvlt.cz">info@truhlarstvi-nyvlt.cz</a></li>
+    </ul>
+  </section>
+
+  <nav class="footer-col" aria-labelledby="pata-menu">
+    <h2 class="footer-title" id="pata-menu">Menu</h2>
+    <ul class="footer-list">
+      <li><a href="#uvod">Domů</a></li>
+      <li><a href="#sluzby">Služby</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <p class="footer-legal">Petr Nývlt · IČ 67471374 · DIČ CZ8007143232 · Fyzická osoba zapsaná v živnostenském rejstříku města Náchod</p>
+  <p class="footer-copy">© <span data-rok>2026</span> Truhlářství Nývlt · Všechna práva vyhrazena. Kopírování obsahu bez souhlasu je zakázáno.</p>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

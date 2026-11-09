@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Zakázkové truhlářství Nývlt z Náchoda – kuchyně na míru, dřevěné dveře, vestavěné skříně, dřevěná schodiště a nábytek. Na trhu od roku 1991.">
+<title>Kuchyně na míru | Truhlářství Nývlt</title>
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500..800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js', 'is-ready', 'intro-done', 'is-docked');</script>
+</head>
+<body>
+
+<!-- Sada SVG ikonek (používá se přes <use>) -->
+<svg class="icon-sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></g></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></g></symbol>
+  <symbol id="i-fax" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></g></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+</svg>
+
+<!-- ===== Lišta po sjetí (position: fixed) – sem „přiletí“ název a odkazy z úvodu ===== -->
+<nav class="topbar" aria-label="Menu v liště">
+  <a class="brand topbar-brand" href="index.html">Truhlářství Nývlt</a>
+  <button class="burger" type="button" aria-label="Otevřít menu" aria-expanded="false" aria-controls="topbar-menu"><span></span></button>
+  <ul class="menu topbar-menu" id="topbar-menu">
+    <li><a class="menu-link" href="index.html"><span>Domů</span></a></li>
+    <li class="has-sub">
+      <a class="menu-link" href="index.html#sluzby"><span>Služby</span></a>
+      <button class="sub-toggle" type="button" aria-expanded="false" aria-label="Zobrazit služby"><svg aria-hidden="true"><use href="#i-chevron"/></svg></button>
+      <ul class="sub">
+        <li style="--i:0"><a class="sub-link" href="kuchyne-na-miru.html" aria-current="page"><img class="sub-img" src="img/kuchyne/kuchyne_na_miru_16.jpg" data-thumb="kuchyne" width="160" height="100" alt=""><span>Kuchyně na míru</span></a></li>
+        <li style="--i:1"><a class="sub-link" href="drevene-dvere.html"><img class="sub-img" src="img/dvere/interierove_dvere_28.jpg" data-thumb="dvere" width="160" height="100" alt=""><span>Dřevěné dveře</span></a></li>
+        <li style="--i:2"><a class="sub-link" href="vestavene-skrine.html"><img class="sub-img" src="img/skrine/vestavene_skrine_34.jpg" data-thumb="skrine" width="160" height="100" alt=""><span>Vestavěné skříně</span></a></li>
+        <li style="--i:3"><a class="sub-link" href="drevene-schodiste.html"><img class="sub-img" src="img/schodiste/drevene_schody_62.jpg" data-thumb="schodiste" width="160" height="100" alt=""><span>Dřevěné schodiště</span></a></li>
+        <li style="--i:4"><a class="sub-link" href="nabytek.html"><img class="sub-img" src="img/nabytek/obyvaci_pokoj_2.jpg" data-thumb="nabytek" width="160" height="100" alt=""><span>Nábytek</span></a></li>
+        <li style="--i:5"><a class="sub-link" href="vybaveni-dilny.html"><img class="sub-img" src="img/dilna/sirokopasova_bruska_nachod.jpg" data-thumb="dilna" width="160" height="100" alt=""><span>Vybavení dílny</span></a></li>
+      </ul>
+    </li>
+    <li><a class="menu-link" href="index.html#kontakt"><span>Kontakt</span></a></li>
+  </ul>
+</nav>
+
+<main class="subpage-main">
+  <h1 class="section-title">Kuchyně na míru</h1>
+  <p>Tuto stránku teprve připravujeme.</p>
+  <a class="back-link" href="index.html#sluzby">← Zpět na služby</a>
+</main>
+
+<!-- ===== 6 · Patička ===== -->
+<footer class="site-footer">
+  <section class="footer-brand">
+    <a href="index.html"><img class="footer-logo" src="img/logo-svetle.png" width="436" height="162" alt="Truhlářství Nývlt – logo"></a>
+    <p class="footer-since">Na trhu od roku 1991</p>
+  </section>
+
+  <section class="footer-col" aria-labelledby="pata-kontakt">
+    <h2 class="footer-title" id="pata-kontakt">Kontakt</h2>
+    <ul class="footer-list">
+      <li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><a href="https://www.google.com/maps/search/?api=1&amp;query=Doln%C3%AD%20Radechov%C3%A1%20138%2C%20549%2011%20Doln%C3%AD%20Radechov%C3%A1" target="_blank" rel="noopener">Dolní Radechová 138, 549 11 Dolní Radechová</a></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:+420739588888">+420&nbsp;739&nbsp;588&nbsp;888</a></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-fax"/></svg><span>Fax: +420&nbsp;494&nbsp;948&nbsp;947</span></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:info@truhlarstvi-nyvlt.cz">info@truhlarstvi-nyvlt.cz</a></li>
+    </ul>
+  </section>
+
+  <nav class="footer-col" aria-labelledby="pata-menu">
+    <h2 class="footer-title" id="pata-menu">Menu</h2>
+    <ul class="footer-list">
+      <li><a href="index.html">Domů</a></li>
+      <li><a href="index.html#sluzby">Služby</a></li>
+      <li><a href="index.html#kontakt">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <p class="footer-legal">Petr Nývlt · IČ 67471374 · DIČ CZ8007143232 · Fyzická osoba zapsaná v živnostenském rejstříku města Náchod</p>
+  <p class="footer-copy">© <span data-rok>2026</span> Truhlářství Nývlt · Všechna práva vyhrazena. Kopírování obsahu bez souhlasu je zakázáno.</p>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
