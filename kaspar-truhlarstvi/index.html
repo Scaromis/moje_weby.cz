@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kašpar truhlářství z Vysoké nad Labem u Hradce Králové – interiérové dveře, kuchyňské linky, schody a schodiště, vestavěné skříně, postele na míru a truhlářská výroba na zakázku. Pro vás už od roku 1995.">
+<title>Kašpar truhlářství | Truhlářství Hradec Králové</title>
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Titillium+Web:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+<!-- Sada SVG ikonek (používá se přes <use>) -->
+<svg class="icon-sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></g></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></g></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></g></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+</svg>
+
+<!-- ===== Lišta po sjetí (position: fixed) – sem „přiletí“ název a odkazy z úvodu ===== -->
+<nav class="topbar" aria-label="Menu v liště">
+  <a class="brand topbar-brand" href="#uvod"><span class="brand-k">Kašpar</span> <span class="brand-t">truhlářství</span></a>
+  <button class="burger" type="button" aria-label="Otevřít menu" aria-expanded="false" aria-controls="topbar-menu"><span></span></button>
+  <ul class="menu topbar-menu" id="topbar-menu">
+    <li><a class="menu-link" href="#uvod"><span>Domů</span></a></li>
+    <li class="has-sub">
+      <a class="menu-link" href="#sluzby"><span>Služby</span></a>
+      <button class="sub-toggle" type="button" aria-expanded="false" aria-label="Zobrazit služby"><svg aria-hidden="true"><use href="#i-chevron"/></svg></button>
+      <ul class="sub">
+        <li style="--i:0"><a class="sub-link" href="interierove-dvere.html"><img class="sub-img" src="img/dvere/05.jpg" data-thumb="dvere" width="160" height="100" alt=""><span>Interiérové dveře</span></a></li>
+        <li style="--i:1"><a class="sub-link" href="kuchynske-linky.html"><img class="sub-img" src="img/kuchyne/02.jpg" data-thumb="kuchyne" width="160" height="100" alt=""><span>Kuchyňské linky</span></a></li>
+        <li style="--i:2"><a class="sub-link" href="schody-a-schodiste.html"><img class="sub-img" src="img/schody/08.jpg" data-thumb="schody" width="160" height="100" alt=""><span>Schody a schodiště</span></a></li>
+        <li style="--i:3"><a class="sub-link" href="vestavene-skrine.html"><img class="sub-img" src="img/skrine/04.jpg" data-thumb="skrine" width="160" height="100" alt=""><span>Vestavěné skříně</span></a></li>
+        <li style="--i:4"><a class="sub-link" href="postele-na-miru.html"><img class="sub-img" src="img/postele/07.jpg" data-thumb="postele" width="160" height="100" alt=""><span>Postele na míru</span></a></li>
+        <li style="--i:5"><a class="sub-link" href="vyroba-na-zakazku.html"><img class="sub-img" src="img/zakazka/05.jpg" data-thumb="zakazka" width="160" height="100" alt=""><span>Výroba na zakázku</span></a></li>
+      </ul>
+    </li>
+    <li><a class="menu-link" href="#kontakt"><span>Kontakt</span></a></li>
+  </ul>
+</nav>
+
+<!-- ===== 1 · Úvod ===== -->
+<header class="hero" id="uvod">
+  <div class="hero-slides" aria-hidden="true"></div>
+  <h1 class="brand hero-brand"><span class="brand-k">Kašpar</span> <span class="brand-t">truhlářství</span></h1>
+
+  <!-- E-mail a telefon: ikonky, na najetí se rozevřou (odkaz + zkopírování) -->
+  <ul class="hero-contact">
+    <li class="hc" style="--i:0">
+      <span class="hc-icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
+      <a class="hc-link" href="tel:+420602466956">+420&nbsp;602&nbsp;466&nbsp;956</a>
+      <button class="hc-copy" type="button" data-copy="+420 602 466 956" aria-label="Zkopírovat telefon"><svg aria-hidden="true"><use href="#i-copy"/></svg></button>
+    </li>
+    <li class="hc" style="--i:1">
+      <span class="hc-icon"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span>
+      <a class="hc-link" href="mailto:kaspar@kaspar-truhlarstvi.cz">kaspar@kaspar-truhlarstvi.cz</a>
+      <button class="hc-copy" type="button" data-copy="kaspar@kaspar-truhlarstvi.cz" aria-label="Zkopírovat e-mail"><svg aria-hidden="true"><use href="#i-copy"/></svg></button>
+    </li>
+  </ul>
+
+  <nav class="hero-nav" aria-label="Hlavní menu">
+    <ul class="menu">
+      <li><a class="menu-link" href="#uvod" style="--i:0"><span>Domů</span></a></li>
+      <li class="has-sub">
+        <a class="menu-link" href="#sluzby" style="--i:1"><span>Služby</span></a>
+        <ul class="sub">
+          <li style="--i:0"><a class="sub-link" href="interierove-dvere.html"><img class="sub-img" src="img/dvere/05.jpg" data-thumb="dvere" width="160" height="100" alt=""><span>Interiérové dveře</span></a></li>
+          <li style="--i:1"><a class="sub-link" href="kuchynske-linky.html"><img class="sub-img" src="img/kuchyne/02.jpg" data-thumb="kuchyne" width="160" height="100" alt=""><span>Kuchyňské linky</span></a></li>
+          <li style="--i:2"><a class="sub-link" href="schody-a-schodiste.html"><img class="sub-img" src="img/schody/08.jpg" data-thumb="schody" width="160" height="100" alt=""><span>Schody a schodiště</span></a></li>
+          <li style="--i:3"><a class="sub-link" href="vestavene-skrine.html"><img class="sub-img" src="img/skrine/04.jpg" data-thumb="skrine" width="160" height="100" alt=""><span>Vestavěné skříně</span></a></li>
+          <li style="--i:4"><a class="sub-link" href="postele-na-miru.html"><img class="sub-img" src="img/postele/07.jpg" data-thumb="postele" width="160" height="100" alt=""><span>Postele na míru</span></a></li>
+          <li style="--i:5"><a class="sub-link" href="vyroba-na-zakazku.html"><img class="sub-img" src="img/zakazka/05.jpg" data-thumb="zakazka" width="160" height="100" alt=""><span>Výroba na zakázku</span></a></li>
+        </ul>
+      </li>
+      <li><a class="menu-link" href="#kontakt" style="--i:2"><span>Kontakt</span></a></li>
+    </ul>
+  </nav>
+  <a class="scroll-cue" href="#o-nas" aria-label="Sjet níž"></a>
+</header>
+
+<main>
+
+  <!-- ===== 2 · Kdo jsme? ===== -->
+  <section class="about" id="o-nas" aria-labelledby="o-nas-nadpis">
+    <h2 class="section-title reveal" id="o-nas-nadpis">Kdo jsme?</h2>
+
+    <article class="about-text reveal">
+      <p>Vítejte na stránkách <strong>truhlářství Kašpar</strong>, které pro vás pracuje <strong>už od roku 1995</strong>! Specializujeme se na výrobu <strong>vysoce kvalitního nábytku a interiérových prvků</strong>.</p>
+      <p>Srdcem naší truhlárny jsou <strong>zruční truhláři</strong> s odbornými znalostmi a vášní pro své řemeslo. Každý kus nábytku, který opouští naši dílnu, je pečlivě vyroben <strong>s důrazem na každý detail</strong> a pracujeme <strong>pouze s kvalitními materiály</strong>, aby naše výrobky splňovaly ty nejvyšší standardy.</p>
+      <section class="about-more" id="o-nas-vice" aria-label="Více o nás">
+        <div class="about-more-inner">
+          <p>Jsme hrdí na svou flexibilitu a umíme se přizpůsobit <strong>individuálním požadavkům</strong> každého zákazníka. Ať potřebujete dveře, skříně, schodiště, postel nebo kuchyňskou linku, vytvoříme kus, který bude <strong>přesně odpovídat vašim potřebám</strong>. Společně s vámi navrhneme originální a jedinečný design, který se stane středobodem vašeho interiéru.</p>
+          <p>Svěřte se truhlárně s dlouhou historií a získejte <strong>kvalitní nábytek, který vydrží mnoho let</strong>. Naše práce je založena na preciznosti a každý výrobek je výsledkem pečlivého zpracování a pozornosti k detailům. Hotový výrobek vám <strong>dovezeme až k vám a odborně namontujeme</strong>.</p>
+          <p>Jsme pro vás k dispozici v <strong>Hradci Králové, Mýtě, Pardubicích, Praze</strong> a na dalších místech ČR.</p>
+        </div>
+      </section>
+      <button class="more-btn" type="button" aria-expanded="false" aria-controls="o-nas-vice"><span>Zobrazit více…</span><svg aria-hidden="true"><use href="#i-chevron"/></svg></button>
+    </article>
+
+    <aside class="about-side">
+      <img class="about-logo reveal" src="img/logo.png" data-logo width="594" height="236" alt="Kašpar truhlářství – logo">
+      <figure class="about-photo reveal" data-photos="vse" aria-hidden="true"></figure>
+      <figure class="about-photo reveal" data-photos="vse" aria-hidden="true"></figure>
+    </aside>
+  </section>
+
+  <!-- ===== 3 · Co vše vám můžeme nabídnout? ===== -->
+  <section class="services" id="sluzby" aria-labelledby="sluzby-nadpis">
+    <h2 class="section-title reveal" id="sluzby-nadpis">Co vše vám můžeme nabídnout?</h2>
+
+    <ul class="offer">
+      <li class="reveal c1"><a class="card" href="interierove-dvere.html" data-photos="dvere"><span class="card-btn">Interiérové dveře</span></a></li>
+      <li class="reveal c2"><a class="card" href="kuchynske-linky.html" data-photos="kuchyne"><span class="card-btn">Kuchyňské linky</span></a></li>
+      <li class="reveal c3"><a class="card" href="schody-a-schodiste.html" data-photos="schody"><span class="card-btn">Schody a schodiště</span></a></li>
+
+      <li class="reveal side side-l" aria-hidden="true"><figure class="side-photo" data-photos="vse"></figure></li>
+      <li class="reveal zak-item"><a class="zakazka" href="vyroba-na-zakazku.html" data-photos="zakazka"><span class="zak-name">Truhlářská výroba na zakázku</span></a></li>
+      <li class="reveal side side-r" aria-hidden="true"><figure class="side-photo" data-photos="vse"></figure></li>
+
+      <li class="reveal c4"><a class="card" href="vestavene-skrine.html" data-photos="skrine"><span class="card-btn">Vestavěné skříně</span></a></li>
+      <li class="reveal c5"><a class="card" href="postele-na-miru.html" data-photos="postele"><span class="card-btn">Postele na míru</span></a></li>
+    </ul>
+  </section>
+
+  <!-- ===== 4 · Kontakt ===== -->
+  <section class="contact" id="kontakt" aria-labelledby="kontakt-nadpis">
+    <h2 class="contact-title reveal" id="kontakt-nadpis">Kde nás najdete?</h2>
+    <a class="form-cta reveal" href="kontakt.html#formular">
+      <span>Chcete nás kontaktovat? <strong>Zde klikněte</strong> pro kontaktní formulář.</span>
+    </a>
+    <address class="contact-address reveal">
+      <svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>
+      <span><strong>Adresa:</strong><br>Kašpar truhlářství s.r.o.<br>Vysoká nad Labem 612<br>503 31 Vysoká nad Labem</span>
+    </address>
+  </section>
+
+  <!-- ===== 5 · Mapa ===== -->
+  <iframe class="map-frame" title="Mapa – Kašpar truhlářství, Vysoká nad Labem 612" src="https://www.google.com/maps?q=Ka%C5%A1par%20truhl%C3%A1%C5%99stv%C3%AD%2C%20s.r.o.%2C%20503%2031%20Vysok%C3%A1%20nad%20Labem&amp;ll=50.1591297,15.8160653&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+
+</main>
+
+<!-- ===== 6 · Patička ===== -->
+<footer class="site-footer">
+  <section class="footer-brand">
+    <a href="#uvod"><img class="footer-logo" src="img/logo-svetle.png" data-logo-light width="594" height="236" alt="Kašpar truhlářství – logo"></a>
+    <p class="footer-since">Pro vás už od roku 1995</p>
+  </section>
+
+  <section class="footer-col" aria-labelledby="pata-kontakt">
+    <h2 class="footer-title" id="pata-kontakt">Kontakt</h2>
+    <ul class="footer-list">
+      <li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><a href="https://www.google.com/maps/search/?api=1&amp;query=Ka%C5%A1par%20truhl%C3%A1%C5%99stv%C3%AD%2C%20s.r.o.%2C%20503%2031%20Vysok%C3%A1%20nad%20Labem" target="_blank" rel="noopener">Vysoká nad Labem 612, 503 31 Vysoká nad Labem</a></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:+420602466956">+420&nbsp;602&nbsp;466&nbsp;956</a></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:kaspar@kaspar-truhlarstvi.cz">kaspar@kaspar-truhlarstvi.cz</a></li>
+    </ul>
+  </section>
+
+  <nav class="footer-col" aria-labelledby="pata-sluzby">
+    <h2 class="footer-title" id="pata-sluzby">Služby</h2>
+    <ul class="footer-list">
+      <li><a href="interierove-dvere.html">Interiérové dveře</a></li>
+      <li><a href="kuchynske-linky.html">Kuchyňské linky</a></li>
+      <li><a href="schody-a-schodiste.html">Schody a schodiště</a></li>
+      <li><a href="vestavene-skrine.html">Vestavěné skříně</a></li>
+      <li><a href="postele-na-miru.html">Postele na míru</a></li>
+      <li><a href="vyroba-na-zakazku.html">Truhlářská výroba na zakázku</a></li>
+    </ul>
+  </nav>
+
+  <nav class="footer-col" aria-labelledby="pata-menu">
+    <h2 class="footer-title" id="pata-menu">Menu</h2>
+    <ul class="footer-list">
+      <li><a href="#uvod">Domů</a></li>
+      <li><a href="#sluzby">Služby</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+      <li><a href="kontakt.html#formular">Kontaktní formulář</a></li>
+    </ul>
+  </nav>
+
+  <p class="footer-legal">Kašpar truhlářství s.r.o. · Vysoká nad Labem 612, 503 31 Vysoká nad Labem · Zakázková truhlářská výroba pro Hradec Králové, Pardubice, Prahu a další místa ČR</p>
+  <p class="footer-copy">© <span data-rok>2026</span> Kašpar truhlářství s.r.o. · Všechna práva vyhrazena. Kopírování obsahu bez souhlasu je zakázáno.</p>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
