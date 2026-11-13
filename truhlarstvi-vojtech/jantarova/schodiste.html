@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="cs" data-barvy="jantar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Truhlářství Vojtěch z Dolní Radechové u Náchoda – nábytek na míru od roku 1991. Kuchyně, dveře, schodiště, skříně, dětské pokoje i komerční prostory. Specialita: dýha.">
+<title>Schodiště | Truhlářství Vojtěch</title>
+<link rel="icon" href="../img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Titillium+Web:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js');</script>
+<script>document.documentElement.classList.add('is-ready', 'intro-done', 'is-docked');</script>
+</head>
+<body>
+
+<!-- Sada SVG ikonek (používá se přes <use>) -->
+<svg class="icon-sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></g></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></g></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></g></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></g></symbol>
+</svg>
+
+<!-- ===== Lišta po sjetí (position: fixed) – sem „přiletí“ název a odkazy z úvodu ===== -->
+<nav class="topbar" aria-label="Menu v liště">
+  <a class="brand topbar-brand" href="index.html">Truhlářství Vojtěch</a>
+  <button class="burger" type="button" aria-label="Otevřít menu" aria-expanded="false" aria-controls="topbar-menu"><span></span></button>
+  <ul class="menu topbar-menu" id="topbar-menu">
+    <li><a class="menu-link" href="index.html"><span>Domů</span></a></li>
+    <li class="has-sub">
+      <a class="menu-link" href="index.html#sluzby"><span>Služby</span></a>
+      <button class="sub-toggle" type="button" aria-expanded="false" aria-label="Zobrazit služby"><svg aria-hidden="true"><use href="#i-chevron"/></svg></button>
+      <ul class="sub">
+        <li style="--i:0"><a class="sub-link" href="kuchyne.html"><img class="sub-img" src="../img/kuchyne/01.jpg" width="160" height="100" alt=""><span>Kuchyně</span></a></li>
+        <li style="--i:1"><a class="sub-link" href="dvere-interierove.html"><img class="sub-img" src="../img/dvere-interierove/02.jpg" width="160" height="100" alt=""><span>Dveře interiérové</span></a></li>
+        <li style="--i:2"><a class="sub-link" href="schodiste.html" aria-current="page"><img class="sub-img" src="../img/schodiste/01.jpg" width="160" height="100" alt=""><span>Schodiště</span></a></li>
+        <li style="--i:3"><a class="sub-link" href="skrine-a-doplnky.html"><img class="sub-img" src="../img/skrine-a-doplnky/01.jpg" width="160" height="100" alt=""><span>Skříně a doplňky</span></a></li>
+        <li style="--i:4"><a class="sub-link" href="obyvaci-pokoje.html"><img class="sub-img" src="../img/obyvaci-pokoje/01.jpg" width="160" height="100" alt=""><span>Obývací pokoje</span></a></li>
+        <li style="--i:5"><a class="sub-link" href="komercni-prostory.html"><img class="sub-img" src="../img/komercni-prostory/01.jpg" width="160" height="100" alt=""><span>Komerční prostory</span></a></li>
+        <li class="sub-all" style="--i:6"><a class="sub-link sub-link-all" href="sluzby.html"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg><span>Zobrazit vše (13 oborů)</span></a></li>
+      </ul>
+    </li>
+    <li><a class="menu-link" href="index.html#kontakt"><span>Kontakt</span></a></li>
+  </ul>
+</nav>
+
+<main class="subpage-main">
+  <h1 class="section-title">Schodiště</h1>
+  <p>Tuto stránku teprve připravujeme.</p>
+  <a class="back-link" href="sluzby.html">← Zpět na všechny obory</a>
+</main>
+
+<!-- ===== 6 · Patička ===== -->
+<footer class="site-footer">
+  <section class="footer-brand">
+    <a class="brand footer-name" href="index.html">Truhlářství Vojtěch</a>
+    <p class="footer-since">Nábytek na míru od roku 1991</p>
+  </section>
+
+  <section class="footer-col" aria-labelledby="pata-kontakt">
+    <h2 class="footer-title" id="pata-kontakt">Kontakt</h2>
+    <ul class="footer-list">
+      <li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><a href="https://www.google.com/maps/search/?api=1&amp;query=Truhl%C3%A1%C5%99stv%C3%AD%20-%20Vojt%C4%9Bch%20Svatopluk%2C%20K%20Oreln%C4%9B%20206%2C%20549%2011%20Doln%C3%AD%20Radechov%C3%A1" target="_blank" rel="noopener">K Orelně 206, 549 11 Dolní Radechová</a></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:+420776038937">+420&nbsp;776&nbsp;038&nbsp;937</a></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:+420608038901">+420&nbsp;608&nbsp;038&nbsp;901</a>&nbsp;<span class="footer-note">(kancelář)</span></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:svatoplukvojtech@seznam.cz">svatoplukvojtech@seznam.cz</a></li>
+    </ul>
+  </section>
+
+  <nav class="footer-col" aria-labelledby="pata-sluzby">
+    <h2 class="footer-title" id="pata-sluzby">Služby</h2>
+    <ul class="footer-list">
+      <li><a href="kuchyne.html">Kuchyně</a></li>
+      <li><a href="dvere-interierove.html">Dveře interiérové</a></li>
+      <li><a href="schodiste.html">Schodiště</a></li>
+      <li><a href="skrine-a-doplnky.html">Skříně a doplňky</a></li>
+      <li><a href="komercni-prostory.html">Komerční prostory</a></li>
+      <li><a href="sluzby.html">Všech 13 oborů</a></li>
+    </ul>
+  </nav>
+
+  <nav class="footer-col" aria-labelledby="pata-menu">
+    <h2 class="footer-title" id="pata-menu">Menu</h2>
+    <ul class="footer-list">
+      <li><a href="index.html">Domů</a></li>
+      <li><a href="index.html#sluzby">Služby</a></li>
+      <li><a href="index.html#kontakt">Kontakt</a></li>
+      <li><a href="kontakt.html#formular">Kontaktní formulář</a></li>
+    </ul>
+  </nav>
+
+  <p class="footer-legal">Svatopluk Vojtěch – truhlářství · K Orelně 206, 549 11 Dolní Radechová, okr. Náchod · IČO 11592826</p>
+  <p class="footer-copy">© <span data-rok>2026</span> Truhlářství Vojtěch · Všechna práva vyhrazena. Kopírování obsahu bez souhlasu je zakázáno.</p>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
