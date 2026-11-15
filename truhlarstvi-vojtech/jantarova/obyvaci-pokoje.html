@@ -24,6 +24,8 @@
   <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5"/></symbol>
   <symbol id="i-chevron" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></g></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></g></symbol>
   <symbol id="i-grid" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></g></symbol>
 </svg>
 
@@ -35,7 +37,6 @@
     <li><a class="menu-link" href="index.html"><span>Domů</span></a></li>
     <li class="has-sub">
       <a class="menu-link" href="index.html#sluzby"><span>Služby</span></a>
-      <button class="sub-toggle" type="button" aria-expanded="false" aria-label="Zobrazit služby"><svg aria-hidden="true"><use href="#i-chevron"/></svg></button>
       <ul class="sub">
         <li style="--i:0"><a class="sub-link" href="kuchyne.html"><img class="sub-img" src="../img/kuchyne/01.jpg" width="160" height="100" alt=""><span>Kuchyně</span></a></li>
         <li style="--i:1"><a class="sub-link" href="dvere-interierove.html"><img class="sub-img" src="../img/dvere-interierove/02.jpg" width="160" height="100" alt=""><span>Dveře interiérové</span></a></li>
@@ -43,16 +44,25 @@
         <li style="--i:3"><a class="sub-link" href="skrine-a-doplnky.html"><img class="sub-img" src="../img/skrine-a-doplnky/01.jpg" width="160" height="100" alt=""><span>Skříně a doplňky</span></a></li>
         <li style="--i:4"><a class="sub-link" href="obyvaci-pokoje.html" aria-current="page"><img class="sub-img" src="../img/obyvaci-pokoje/01.jpg" width="160" height="100" alt=""><span>Obývací pokoje</span></a></li>
         <li style="--i:5"><a class="sub-link" href="komercni-prostory.html"><img class="sub-img" src="../img/komercni-prostory/01.jpg" width="160" height="100" alt=""><span>Komerční prostory</span></a></li>
-        <li class="sub-all" style="--i:6"><a class="sub-link sub-link-all" href="sluzby.html"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg><span>Zobrazit vše (13 oborů)</span></a></li>
+        <li class="sub-all" style="--i:6"><a class="sub-link sub-link-all" href="sluzby.html"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg><span>Zobrazit vše (12 oborů)</span></a></li>
       </ul>
     </li>
-    <li><a class="menu-link" href="index.html#kontakt"><span>Kontakt</span></a></li>
+    <li><a class="menu-link" href="kontakt.html"><span>Kontakt</span></a></li>
   </ul>
 </nav>
 
-<main class="subpage-main">
+<main class="subpage-main obor-page">
   <h1 class="section-title">Obývací pokoje</h1>
-  <p>Tuto stránku teprve připravujeme.</p>
+  <p class="obor-text">Obývací stěny, knihovny, televizní stolky a police, které přesně padnou do vašeho obýváku. Materiál i barvu vybereme spolu, aby vše ladilo s podlahou a dveřmi.</p>
+  <!-- Galerie: až přijdou fotky, místo každého <li class="photo-slot"> bude <li><img …></li> -->
+  <ul class="obor-gallery" aria-label="Fotky – Obývací pokoje">
+    <li class="photo-slot"><svg class="icon" aria-hidden="true"><use href="#i-image"/></svg><span>Fotka bude doplněna</span></li>
+    <li class="photo-slot"><svg class="icon" aria-hidden="true"><use href="#i-image"/></svg><span>Fotka bude doplněna</span></li>
+    <li class="photo-slot"><svg class="icon" aria-hidden="true"><use href="#i-image"/></svg><span>Fotka bude doplněna</span></li>
+    <li class="photo-slot"><svg class="icon" aria-hidden="true"><use href="#i-image"/></svg><span>Fotka bude doplněna</span></li>
+    <li class="photo-slot"><svg class="icon" aria-hidden="true"><use href="#i-image"/></svg><span>Fotka bude doplněna</span></li>
+    <li class="photo-slot"><svg class="icon" aria-hidden="true"><use href="#i-image"/></svg><span>Fotka bude doplněna</span></li>
+  </ul>
   <a class="back-link" href="sluzby.html">← Zpět na všechny obory</a>
 </main>
 
@@ -70,6 +80,7 @@
       <li><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:+420776038937">+420&nbsp;776&nbsp;038&nbsp;937</a></li>
       <li><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:+420608038901">+420&nbsp;608&nbsp;038&nbsp;901</a>&nbsp;<span class="footer-note">(kancelář)</span></li>
       <li><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:svatoplukvojtech@seznam.cz">svatoplukvojtech@seznam.cz</a></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><span>Pracovní doba 10:00–19:00</span></li>
     </ul>
   </section>
 
@@ -81,7 +92,7 @@
       <li><a href="schodiste.html">Schodiště</a></li>
       <li><a href="skrine-a-doplnky.html">Skříně a doplňky</a></li>
       <li><a href="komercni-prostory.html">Komerční prostory</a></li>
-      <li><a href="sluzby.html">Všech 13 oborů</a></li>
+      <li><a href="sluzby.html">Všech 12 oborů</a></li>
     </ul>
   </nav>
 
@@ -90,8 +101,7 @@
     <ul class="footer-list">
       <li><a href="index.html">Domů</a></li>
       <li><a href="index.html#sluzby">Služby</a></li>
-      <li><a href="index.html#kontakt">Kontakt</a></li>
-      <li><a href="kontakt.html#formular">Kontaktní formulář</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
     </ul>
   </nav>
 

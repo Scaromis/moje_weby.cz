@@ -8,7 +8,8 @@
    5) Kdo jsme? – „Zobrazit více…“
    6) karty oborů – na hlavní stránce se obory náhodně střídají,
       na stránce „Zobrazit vše“ se střídají fotky v každé kartě
-   7) box s formulářem – „click“ nápisy
+   Na telefonu / tabletu (bez myši) nejsou žádné hover efekty
+   a „Služby“ vedou rovnou na sekci (bez vyskakovací nabídky).
    ========================================================= */
 (() => {
   'use strict';
@@ -29,7 +30,6 @@
   const CATS = [
     { k: 'detske-pokoje', name: 'Dětské pokoje', n: 15 },
     { k: 'dvere-interierove', name: 'Dveře interiérové', n: 20 },
-    { k: 'dvere-venkovni', name: 'Dveře venkovní', n: 20 },
     { k: 'komercni-prostory', name: 'Komerční prostory', n: 20 },
     { k: 'kuchyne', name: 'Kuchyně', n: 20 },
     { k: 'loznice', name: 'Ložnice', n: 20 },
@@ -268,31 +268,15 @@
 
   /* ---------------------------------------------------------
      3 · Vyjíždějící nabídka u „Služby“
-     Myš: otevře se na najetí (CSS). Dotyk: 1. ťuknutí otevře,
-     2. ťuknutí přejde na sekci. V ☰ ji rozbalí šipka vedle.
+     Jen na počítači s myší (otevře se na najetí – CSS).
+     Na telefonu / tabletu a v ☰ vede „Služby“ rovnou na sekci.
      --------------------------------------------------------- */
   $$('.has-sub').forEach((li) => {
     const link = $('.menu-link', li);
-    const toggle = $('.sub-toggle', li);
-
-    link.addEventListener('click', (e) => {
-      const inBurger = mqCompact.matches && li.closest('.topbar');
-      if (!canHover && !inBurger && !li.classList.contains('is-sub-open')) {
-        e.preventDefault();
-        closeSubs(li);
-        li.classList.add('is-sub-open');
-        return;
-      }
+    link.addEventListener('click', () => {
       closeSubs();
-      if (inBurger) setMenu(false);
+      if (mqCompact.matches && li.closest('.topbar')) setMenu(false);
       link.blur();                    // ať nabídka nezůstane otevřená kvůli fokusu
-    });
-
-    if (toggle) toggle.addEventListener('click', () => {
-      const open = !li.classList.contains('is-sub-open');
-      closeSubs(li);
-      li.classList.toggle('is-sub-open', open);
-      toggle.setAttribute('aria-expanded', String(open));
     });
   });
   $$('.sub-link').forEach((a) => a.addEventListener('click', () => a.blur()));
@@ -334,6 +318,59 @@
     });
   });
 
+  /* Stránka Kontakty: kolečko vedle položky zkopíruje údaj */
+  $$('.kontakt-bubble').forEach((btn) => {
+    const li = btn.closest('.kontakt-item');
+    const use = $('use', btn);
+    const icon = use ? use.getAttribute('href') : '';   // ikonka podle údaje (telefon / e-mail / adresa)
+    let timer = 0;
+    btn.addEventListener('click', async () => {
+      const ok = await copyText(btn.dataset.copy);
+      li.dataset.tip = ok ? 'Zkopírováno' : 'Nepodařilo se zkopírovat';
+      btn.classList.toggle('is-copied', ok);
+      if (ok && use) use.setAttribute('href', '#i-check');
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        delete li.dataset.tip;
+        btn.classList.remove('is-copied');
+        if (use) use.setAttribute('href', icon);
+      }, 1800);
+    });
+  });
+
+  /* ---------------------------------------------------------
+     Pracovní doba (stránka Kontakty)
+     Dnešní den svítí zeleně, když má pan Vojtěch zrovna otevřeno,
+     jinak červeně. Čas se bere podle Česka (i když návštěvník
+     sedí jinde). Časy jsou v HTML: data-od / data-do u každého dne.
+     --------------------------------------------------------- */
+  const hours = $('.hours');
+  if (hours) {
+    const days = $$('.hours-days li', hours);
+    const toMin = (t) => { const [h, m] = t.split(':').map(Number); return h * 60 + m; };
+    const WD = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 };
+    const nowInCz = () => {
+      const parts = new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Europe/Prague', weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23',
+      }).formatToParts(new Date());
+      const get = (type) => (parts.find((p) => p.type === type) || {}).value;
+      return { day: WD[get('weekday')], min: Number(get('hour')) * 60 + Number(get('minute')) };
+    };
+    const update = () => {
+      const now = nowInCz();
+      days.forEach((li) => {
+        const today = Number(li.dataset.den) === now.day;
+        const open = today && li.dataset.od
+          && now.min >= toMin(li.dataset.od) && now.min < toMin(li.dataset.do);
+        li.classList.toggle('is-today', today);
+        li.classList.toggle('is-open', !!open);
+        li.classList.toggle('is-closed', today && !open);
+      });
+    };
+    update();
+    setInterval(update, 30000);
+  }
+
   /* ---------------------------------------------------------
      5 · Kdo jsme? – „Zobrazit více…“
      --------------------------------------------------------- */
@@ -351,8 +388,7 @@
 
   /* ---------------------------------------------------------
      6 · Karty oborů
-     Myš: efekt na najetí. Telefon/tablet bez myši: efekt
-     se spustí, když je prvek uprostřed obrazovky.
+     Efekt na najetí jen na počítači s myší (na dotyku žádné hovery).
      --------------------------------------------------------- */
   // 4 šipky kolem rohů tlačítka v kartě
   $$('.card-btn').forEach((btn) => {
@@ -364,8 +400,7 @@
     });
   });
 
-  const hoverables = $$('.card');
-  hoverables.forEach((el) => {
+  if (canHover) $$('.card').forEach((el) => {
     const on = () => el.classList.add('is-hover');
     const off = () => el.classList.remove('is-hover');
     el.addEventListener('mouseenter', on);
@@ -375,9 +410,9 @@
   });
 
   /* Hlavní stránka: 6 karet, ve kterých se obory náhodně a rychle
-     střídají (13 oborů → nikdy nevíš, kde která karta bude).
-     Karta, na které je myš (nebo je na mobilu uprostřed obrazovky),
-     se nemění, aby se na ni dalo v klidu kliknout. */
+     střídají (12 oborů → nikdy nevíš, kde která karta bude).
+     Na mobilu jsou vidět jen 3 karty (zbytek schová CSS).
+     Karta, na které je myš, se nemění, aby se na ni dalo v klidu kliknout. */
   const rotating = $('.offer-rotating');
   if (rotating) {
     const cards = $$('.card', rotating);
@@ -409,7 +444,8 @@
     setInterval(() => {
       if (document.hidden) return;
       const now = performance.now();
-      const free = cards.filter((c, i) => !c.classList.contains('is-hover') && now - lastChange[i] > 3200);
+      const free = cards.filter((c, i) => c.offsetParent !== null      // jen viditelné karty
+        && !c.classList.contains('is-hover') && now - lastChange[i] > 3200);
       if (!free.length) return;
       const card = free[Math.floor(Math.random() * free.length)];
       const used = new Set(cards.map((c) => c.dataset.cat));
@@ -417,57 +453,6 @@
       lastChange[cards.indexOf(card)] = now;
       setCard(card, options[Math.floor(Math.random() * options.length)]);
     }, 1200);
-  }
-
-  /* ---------------------------------------------------------
-     7 · Box s formulářem – kolem textu „cvakají“ nápisy click
-     --------------------------------------------------------- */
-  const cta = $('.form-cta');
-  let clickTimer = 0;
-  const spawnClick = () => {
-    if (!cta) return;
-    let x;
-    let y;
-    let tries = 0;
-    do {                                   // mimo střed, kde je text
-      x = 6 + Math.random() * 88;
-      y = 12 + Math.random() * 76;
-      tries += 1;
-    } while (Math.abs(x - 50) < 34 && Math.abs(y - 50) < 24 && tries < 30);
-    const pop = document.createElement('span');
-    pop.className = 'click-pop';
-    pop.setAttribute('aria-hidden', 'true');
-    pop.textContent = 'click';
-    pop.style.left = x + '%';
-    pop.style.top = y + '%';
-    pop.style.setProperty('--r', (Math.random() * 28 - 14).toFixed(1) + 'deg');
-    pop.style.setProperty('--size', (0.8 + Math.random() * 0.4).toFixed(2) + 'rem');
-    pop.addEventListener('animationend', (e) => { if (e.target === pop) pop.remove(); });
-    cta.append(pop);
-  };
-  const startClicks = () => {
-    if (clickTimer) return;
-    spawnClick();
-    clickTimer = setInterval(spawnClick, 380);
-  };
-  const stopClicks = () => { clearInterval(clickTimer); clickTimer = 0; };
-  if (cta) {
-    cta.addEventListener('mouseenter', startClicks);
-    cta.addEventListener('mouseleave', stopClicks);
-    cta.addEventListener('focus', startClicks);
-    cta.addEventListener('blur', stopClicks);
-  }
-
-  // Telefon/tablet bez myši: efekty, když je prvek uprostřed obrazovky
-  if (!canHover && 'IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => entries.forEach((e) => {
-      e.target.classList.toggle('is-hover', e.isIntersecting);
-      if (e.target === cta) {
-        if (e.isIntersecting) startClicks(); else stopClicks();
-      }
-    }), { rootMargin: '-40% 0px -40% 0px' });
-    hoverables.forEach((el) => io.observe(el));
-    if (cta) io.observe(cta);
   }
 
   /* ---------------------------------------------------------
