@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="cs" data-barvy="jantar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Truhlářství Vojtěch z Dolní Radechové u Náchoda – nábytek na míru od roku 1991. Kuchyně, dveře, schodiště, skříně, dětské pokoje i komerční prostory. Specialita: dýha.">
+<title>Luxusní nábytek | Truhlářství Vojtěch</title>
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Titillium+Web:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js');</script>
+<script>document.documentElement.classList.add('is-ready', 'intro-done', 'is-docked');</script>
+</head>
+<body>
+
+<!-- Sada SVG ikonek (používá se přes <use>) -->
+<svg class="icon-sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></g></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></g></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></g></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m6 9 6 6 6-6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></g></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></g></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></g></symbol>
+</svg>
+
+<!-- ===== Lišta po sjetí (position: fixed) – sem „přiletí“ název a odkazy z úvodu ===== -->
+<nav class="topbar" aria-label="Menu v liště">
+  <a class="brand topbar-brand" href="index.html">Truhlářství Vojtěch</a>
+  <button class="burger" type="button" aria-label="Otevřít menu" aria-expanded="false" aria-controls="topbar-menu"><span></span></button>
+  <ul class="menu topbar-menu" id="topbar-menu">
+    <li><a class="menu-link" href="index.html"><span>Domů</span></a></li>
+    <li class="has-sub">
+      <a class="menu-link" href="index.html#sluzby"><span>Služby</span></a>
+      <ul class="sub">
+        <li style="--i:0"><a class="sub-link" href="kuchyne.html"><img class="sub-img" src="img/kuchyne/02.jpg" width="160" height="100" alt=""><span>Kuchyně</span></a></li>
+        <li style="--i:1"><a class="sub-link" href="koupelny.html"><img class="sub-img" src="img/koupelny/14.jpg" width="160" height="100" alt=""><span>Koupelny</span></a></li>
+        <li style="--i:2"><a class="sub-link" href="luxusni-nabytek.html" aria-current="page"><img class="sub-img" src="img/luxusni-nabytek/22.jpg" width="160" height="100" alt=""><span>Luxusní nábytek</span></a></li>
+        <li style="--i:3"><a class="sub-link" href="schodiste.html"><img class="sub-img" src="img/schodiste/03.jpg" width="160" height="100" alt=""><span>Schodiště</span></a></li>
+        <li style="--i:4"><a class="sub-link" href="komercni-prostory.html"><img class="sub-img" src="img/komercni-prostory/08.jpg" width="160" height="100" alt=""><span>Komerční prostory</span></a></li>
+        <li style="--i:5"><a class="sub-link" href="restaurace.html"><img class="sub-img" src="img/restaurace/04.jpg" width="160" height="100" alt=""><span>Restaurace a dentální klinika</span></a></li>
+        <li class="sub-all" style="--i:6"><a class="sub-link sub-link-all" href="sluzby.html"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg><span>Zobrazit vše (11 oborů)</span></a></li>
+      </ul>
+    </li>
+    <li><a class="menu-link" href="kontakt.html"><span>Kontakt</span></a></li>
+  </ul>
+</nav>
+
+<main class="subpage-main obor-page">
+  <h1 class="section-title">Luxusní nábytek</h1>
+  <p class="obor-text">Nábytek pro náročné – celé interiéry, ve kterých do sebe vše zapadá: kuchyně, vestavěné skříně, obklady i atypické prvky z dýhy a masivu. Každý kus navrhujeme a vyrábíme přesně pro daný prostor.</p>
+  <!-- Galerie: kliknutím se fotka zvětší (main.js). Nová fotka = nový <li> + přepsat počet v CATS. -->
+  <ul class="obor-gallery" aria-label="Fotky – Luxusní nábytek">
+    <li><a href="img/luxusni-nabytek/01.jpg"><img src="img/luxusni-nabytek/01.jpg" alt="Luxusní nábytek – fotka 1" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/02.jpg"><img src="img/luxusni-nabytek/02.jpg" alt="Luxusní nábytek – fotka 2" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/03.jpg"><img src="img/luxusni-nabytek/03.jpg" alt="Luxusní nábytek – fotka 3" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/04.jpg"><img src="img/luxusni-nabytek/04.jpg" alt="Luxusní nábytek – fotka 4" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/05.jpg"><img src="img/luxusni-nabytek/05.jpg" alt="Luxusní nábytek – fotka 5" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/06.jpg"><img src="img/luxusni-nabytek/06.jpg" alt="Luxusní nábytek – fotka 6" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/07.jpg"><img src="img/luxusni-nabytek/07.jpg" alt="Luxusní nábytek – fotka 7" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/08.jpg"><img src="img/luxusni-nabytek/08.jpg" alt="Luxusní nábytek – fotka 8" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/09.jpg"><img src="img/luxusni-nabytek/09.jpg" alt="Luxusní nábytek – fotka 9" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/10.jpg"><img src="img/luxusni-nabytek/10.jpg" alt="Luxusní nábytek – fotka 10" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/11.jpg"><img src="img/luxusni-nabytek/11.jpg" alt="Luxusní nábytek – fotka 11" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/12.jpg"><img src="img/luxusni-nabytek/12.jpg" alt="Luxusní nábytek – fotka 12" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/13.jpg"><img src="img/luxusni-nabytek/13.jpg" alt="Luxusní nábytek – fotka 13" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/14.jpg"><img src="img/luxusni-nabytek/14.jpg" alt="Luxusní nábytek – fotka 14" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/15.jpg"><img src="img/luxusni-nabytek/15.jpg" alt="Luxusní nábytek – fotka 15" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/16.jpg"><img src="img/luxusni-nabytek/16.jpg" alt="Luxusní nábytek – fotka 16" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/17.jpg"><img src="img/luxusni-nabytek/17.jpg" alt="Luxusní nábytek – fotka 17" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/18.jpg"><img src="img/luxusni-nabytek/18.jpg" alt="Luxusní nábytek – fotka 18" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/19.jpg"><img src="img/luxusni-nabytek/19.jpg" alt="Luxusní nábytek – fotka 19" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/20.jpg"><img src="img/luxusni-nabytek/20.jpg" alt="Luxusní nábytek – fotka 20" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/21.jpg"><img src="img/luxusni-nabytek/21.jpg" alt="Luxusní nábytek – fotka 21" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/22.jpg"><img src="img/luxusni-nabytek/22.jpg" alt="Luxusní nábytek – fotka 22" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/23.jpg"><img src="img/luxusni-nabytek/23.jpg" alt="Luxusní nábytek – fotka 23" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/24.jpg"><img src="img/luxusni-nabytek/24.jpg" alt="Luxusní nábytek – fotka 24" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/25.jpg"><img src="img/luxusni-nabytek/25.jpg" alt="Luxusní nábytek – fotka 25" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/26.jpg"><img src="img/luxusni-nabytek/26.jpg" alt="Luxusní nábytek – fotka 26" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/27.jpg"><img src="img/luxusni-nabytek/27.jpg" alt="Luxusní nábytek – fotka 27" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/28.jpg"><img src="img/luxusni-nabytek/28.jpg" alt="Luxusní nábytek – fotka 28" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/29.jpg"><img src="img/luxusni-nabytek/29.jpg" alt="Luxusní nábytek – fotka 29" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/30.jpg"><img src="img/luxusni-nabytek/30.jpg" alt="Luxusní nábytek – fotka 30" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/31.jpg"><img src="img/luxusni-nabytek/31.jpg" alt="Luxusní nábytek – fotka 31" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/32.jpg"><img src="img/luxusni-nabytek/32.jpg" alt="Luxusní nábytek – fotka 32" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/33.jpg"><img src="img/luxusni-nabytek/33.jpg" alt="Luxusní nábytek – fotka 33" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/34.jpg"><img src="img/luxusni-nabytek/34.jpg" alt="Luxusní nábytek – fotka 34" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/35.jpg"><img src="img/luxusni-nabytek/35.jpg" alt="Luxusní nábytek – fotka 35" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/36.jpg"><img src="img/luxusni-nabytek/36.jpg" alt="Luxusní nábytek – fotka 36" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/37.jpg"><img src="img/luxusni-nabytek/37.jpg" alt="Luxusní nábytek – fotka 37" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/38.jpg"><img src="img/luxusni-nabytek/38.jpg" alt="Luxusní nábytek – fotka 38" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/39.jpg"><img src="img/luxusni-nabytek/39.jpg" alt="Luxusní nábytek – fotka 39" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/40.jpg"><img src="img/luxusni-nabytek/40.jpg" alt="Luxusní nábytek – fotka 40" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/41.jpg"><img src="img/luxusni-nabytek/41.jpg" alt="Luxusní nábytek – fotka 41" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/42.jpg"><img src="img/luxusni-nabytek/42.jpg" alt="Luxusní nábytek – fotka 42" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/43.jpg"><img src="img/luxusni-nabytek/43.jpg" alt="Luxusní nábytek – fotka 43" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/44.jpg"><img src="img/luxusni-nabytek/44.jpg" alt="Luxusní nábytek – fotka 44" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/45.jpg"><img src="img/luxusni-nabytek/45.jpg" alt="Luxusní nábytek – fotka 45" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/46.jpg"><img src="img/luxusni-nabytek/46.jpg" alt="Luxusní nábytek – fotka 46" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/47.jpg"><img src="img/luxusni-nabytek/47.jpg" alt="Luxusní nábytek – fotka 47" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/48.jpg"><img src="img/luxusni-nabytek/48.jpg" alt="Luxusní nábytek – fotka 48" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/49.jpg"><img src="img/luxusni-nabytek/49.jpg" alt="Luxusní nábytek – fotka 49" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/50.jpg"><img src="img/luxusni-nabytek/50.jpg" alt="Luxusní nábytek – fotka 50" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/51.jpg"><img src="img/luxusni-nabytek/51.jpg" alt="Luxusní nábytek – fotka 51" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/52.jpg"><img src="img/luxusni-nabytek/52.jpg" alt="Luxusní nábytek – fotka 52" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/53.jpg"><img src="img/luxusni-nabytek/53.jpg" alt="Luxusní nábytek – fotka 53" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/54.jpg"><img src="img/luxusni-nabytek/54.jpg" alt="Luxusní nábytek – fotka 54" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/55.jpg"><img src="img/luxusni-nabytek/55.jpg" alt="Luxusní nábytek – fotka 55" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/56.jpg"><img src="img/luxusni-nabytek/56.jpg" alt="Luxusní nábytek – fotka 56" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/57.jpg"><img src="img/luxusni-nabytek/57.jpg" alt="Luxusní nábytek – fotka 57" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/58.jpg"><img src="img/luxusni-nabytek/58.jpg" alt="Luxusní nábytek – fotka 58" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/59.jpg"><img src="img/luxusni-nabytek/59.jpg" alt="Luxusní nábytek – fotka 59" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/60.jpg"><img src="img/luxusni-nabytek/60.jpg" alt="Luxusní nábytek – fotka 60" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/61.jpg"><img src="img/luxusni-nabytek/61.jpg" alt="Luxusní nábytek – fotka 61" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/62.jpg"><img src="img/luxusni-nabytek/62.jpg" alt="Luxusní nábytek – fotka 62" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/63.jpg"><img src="img/luxusni-nabytek/63.jpg" alt="Luxusní nábytek – fotka 63" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/64.jpg"><img src="img/luxusni-nabytek/64.jpg" alt="Luxusní nábytek – fotka 64" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/65.jpg"><img src="img/luxusni-nabytek/65.jpg" alt="Luxusní nábytek – fotka 65" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/66.jpg"><img src="img/luxusni-nabytek/66.jpg" alt="Luxusní nábytek – fotka 66" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/67.jpg"><img src="img/luxusni-nabytek/67.jpg" alt="Luxusní nábytek – fotka 67" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/68.jpg"><img src="img/luxusni-nabytek/68.jpg" alt="Luxusní nábytek – fotka 68" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/69.jpg"><img src="img/luxusni-nabytek/69.jpg" alt="Luxusní nábytek – fotka 69" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/70.jpg"><img src="img/luxusni-nabytek/70.jpg" alt="Luxusní nábytek – fotka 70" loading="lazy" decoding="async"></a></li>
+    <li><a href="img/luxusni-nabytek/71.jpg"><img src="img/luxusni-nabytek/71.jpg" alt="Luxusní nábytek – fotka 71" loading="lazy" decoding="async"></a></li>
+  </ul>
+  <a class="back-link" href="sluzby.html">← Zpět na všechny obory</a>
+</main>
+
+<!-- ===== 6 · Patička ===== -->
+<footer class="site-footer">
+  <section class="footer-brand">
+    <a class="brand footer-name" href="index.html">Truhlářství Vojtěch</a>
+    <p class="footer-since">Nábytek na míru od roku 1991</p>
+  </section>
+
+  <section class="footer-col" aria-labelledby="pata-kontakt">
+    <h2 class="footer-title" id="pata-kontakt">Kontakt</h2>
+    <ul class="footer-list">
+      <li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><a href="https://www.google.com/maps/search/?api=1&amp;query=Truhl%C3%A1%C5%99stv%C3%AD%20-%20Vojt%C4%9Bch%20Svatopluk%2C%20K%20Oreln%C4%9B%20206%2C%20549%2011%20Doln%C3%AD%20Radechov%C3%A1" target="_blank" rel="noopener">K Orelně 206, 549 11 Dolní Radechová</a></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:+420776038937">+420&nbsp;776&nbsp;038&nbsp;937</a></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:+420608038901">+420&nbsp;608&nbsp;038&nbsp;901</a>&nbsp;<span class="footer-note">(kancelář)</span></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:svatoplukvojtech@seznam.cz">svatoplukvojtech@seznam.cz</a></li>
+      <li><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><span>Pracovní doba 10:00–19:00</span></li>
+    </ul>
+  </section>
+
+  <nav class="footer-col" aria-labelledby="pata-sluzby">
+    <h2 class="footer-title" id="pata-sluzby">Služby</h2>
+    <ul class="footer-list">
+      <li><a href="kuchyne.html">Kuchyně</a></li>
+      <li><a href="koupelny.html">Koupelny</a></li>
+      <li><a href="luxusni-nabytek.html">Luxusní nábytek</a></li>
+      <li><a href="schodiste.html">Schodiště</a></li>
+      <li><a href="komercni-prostory.html">Komerční prostory</a></li>
+      <li><a href="sluzby.html">Všech 11 oborů</a></li>
+    </ul>
+  </nav>
+
+  <nav class="footer-col" aria-labelledby="pata-menu">
+    <h2 class="footer-title" id="pata-menu">Menu</h2>
+    <ul class="footer-list">
+      <li><a href="index.html">Domů</a></li>
+      <li><a href="index.html#sluzby">Služby</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <p class="footer-legal">Svatopluk Vojtěch – truhlářství · K Orelně 206, 549 11 Dolní Radechová, okr. Náchod · IČO 11592826</p>
+  <p class="footer-copy">© <span data-rok>2026</span> Truhlářství Vojtěch · Všechna práva vyhrazena. Kopírování obsahu bez souhlasu je zakázáno.</p>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
